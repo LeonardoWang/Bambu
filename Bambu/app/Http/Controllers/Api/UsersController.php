@@ -47,11 +47,11 @@ class UsersController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|unique:users|max:255',
-            'email' => 'required'
+            'tel' => 'required'
         ]);
         $user = User::find($id);
         $user->name = $request->input('name');
-        $user->email = $request->input('email');
+        $user->tel = $request->input('tel');
         if ($user->save()) {
             return 1;
         } else {
@@ -75,13 +75,13 @@ class UsersController extends Controller
     public function login(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required',
+            'tel' => 'required',
             'password' => 'required'
         ]);
-        $email = $request->input('email');
+        $tel = $request->input('tel');
         $password = $request->input('password');
         
-        if (Auth::attempt(['email' => $email, 'password' =>$password])) {
+        if (Auth::attempt(['tel' => $tel, 'password' =>$password])) {
             //return User::where('email', $email)->first();
             return redirect()->intended('/');
         }
@@ -96,14 +96,14 @@ class UsersController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255|unique:users',
-            'email' => 'required|email|max:255|unique:users',
+            'tel' => 'required|max:255|unique:users',
             'password' => 'required|min:6',
         ]);
         $messages = $validator->messages();
         if(!$validator->fails()) {
             $user = User::create([
                 'name' => $request->input('name'),
-                'email' => $request->input('email'),
+                'tel' => $request->input('tel'),
                 'password' => Hash::make($request->input('password')),
             ]);
             Auth::login($user);

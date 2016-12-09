@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     {
       DB::table('users')->insert([
           'name' => 'admin',
-          'email' => 'wtf@wtf.com',
+          'tel' => '1300013000',
           'password' => bcrypt('secret'),
           'is_admin' => True
       ]);

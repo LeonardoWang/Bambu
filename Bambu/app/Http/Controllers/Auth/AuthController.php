@@ -50,7 +50,7 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'tel' => 'required|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -65,7 +65,7 @@ class AuthController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'tel' => $data['tel'],
             'password' => bcrypt($data['password']),
         ]);
     }
@@ -77,7 +77,7 @@ class AuthController extends Controller
      */
     public function authenticate()
     {
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+        if (Auth::attempt(['tel' => $tel, 'password' => $password])) {
             // 认证通过...
             return redirect()->intended('/');
         }
