@@ -33,6 +33,7 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 	Route::post('users/{id}', 'Api\UsersController@update');
 	Route::get('users/{id}/delete', 'Api\UsersController@destroy');
 
+	Route::get('product','Api\ItemsController@ProductIndex');
 
 	Route::resource('items', 'Api\ItemsController', ['only' => ['index', 'store', 'show']]);
 	Route::post('items/{id}', 'Api\ItemsController@update');
