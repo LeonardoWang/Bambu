@@ -22,6 +22,7 @@ Route::controllers([
 ]);
 
 Route::post('login', 'Api\UsersController@login');
+Route::get('logout','Api\UsersController@logout');
 Route::post('register', 'Api\UsersController@register');
 
 Route::group(['prefix' => 'api','middleware' => 'auth'], function () {

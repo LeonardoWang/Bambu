@@ -92,6 +92,13 @@ class UsersController extends Controller
 
         
     }
+    public function logout()
+    {
+        if (Auth::check()) {
+            Auth::logout();
+        }
+        return redirect()->intended('/');
+    }
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [

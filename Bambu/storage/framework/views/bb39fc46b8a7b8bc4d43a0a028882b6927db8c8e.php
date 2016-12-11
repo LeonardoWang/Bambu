@@ -39,7 +39,12 @@
         <div class="container">
             <div class="content">
                 <div class="title">Laravel 5</div>
-                <p> hello <?php echo e($user->name); ?> </p>
+                <?php if(isset($user) > 0): ?>
+                    <p> hello <?php echo e($user->name); ?> </p>
+                    <a href="/web/Bambu/public/logout" ><button>logout</button></a>
+                <?php else: ?>
+                    <a href="/web/Bambu/public/login" ><button>login</button></a>
+                <?php endif; ?>
             </div>
         </div>
     </body>
