@@ -163,8 +163,8 @@ class ItemsController extends Controller
                 $image_record = New Image;
                 $image_record->item_id = $item_id;
                 $image_record->filename = $file_name;
-
-                if ($image_record->save()) {
+                $item->image_file = $file_name;
+                if ($image_record->save() && $item->save()) {
                     
                     return $file_name;
                 } else {
@@ -178,5 +178,10 @@ class ItemsController extends Controller
             return 'save error';
         }
 
+    }
+
+    public function ProductShow()
+    {
+        return view('productshow', ['products'=>Item::orderBy('updated_at', 'desc')->get()]);
     }
 }

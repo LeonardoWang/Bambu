@@ -35,6 +35,7 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 
 	Route::get('product','Api\ItemsController@ProductIndex');
 	Route::post('product/addProduct','Api\ItemsController@ProductAdd');
+	Route::get('product/show','Api\ItemsController@ProductShow');
 	
 	Route::resource('items', 'Api\ItemsController', ['only' => ['index', 'store', 'show']]);
 	Route::post('items/{id}', 'Api\ItemsController@update');
@@ -58,6 +59,6 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 	});
 
 	Route::post('images', 'Api\ImagesController@store');
-	Route::get('images/{image_file}', 'Api\ImagesController@show');
+	Route::get('product/images/{image_file}', 'Api\ImagesController@show');
 	Route::get('images/{image_file}/delete', 'Api\ImagesController@destroy');
 });
