@@ -34,7 +34,8 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 	Route::get('users/{id}/delete', 'Api\UsersController@destroy');
 
 	Route::get('product','Api\ItemsController@ProductIndex');
-
+	Route::post('product/addProduct','Api\ItemsController@ProductAdd');
+	
 	Route::resource('items', 'Api\ItemsController', ['only' => ['index', 'store', 'show']]);
 	Route::post('items/{id}', 'Api\ItemsController@update');
 	Route::get('items/{id}/delete', 'Api\ItemsController@destroy');

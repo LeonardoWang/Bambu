@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use DB;
 use Storage;
 use Crypt;
@@ -12,6 +14,8 @@ use App\Http\Controllers\ImagesController;
 use App\User;
 use App\Item;
 use App\TradeRequest;
+use App\Image;
+
 class ItemsController extends Controller
 {
     /**
@@ -131,5 +135,48 @@ class ItemsController extends Controller
     public function ProductIndex()
     {
         return view('product');
+    }
+
+    public function ProductAdd(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'image' => 'required|image'
+        ]);
+        
+        $user = Auth::user();
+        $item = new Item;
+        $item->title = $request->input('title');
+        $item->user_id = $user->id;
+        $item->price = $request->input('price');
+        $item->description = $request->input('description');
+        $item->status = 'unreviewed';
+
+        if ($item->save()) {
+            $item_id = $item->id;
+            if ($request->hasFile('image')) {
+                $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+                Storage::put('images/' . $file_name,
+                    file_get_contents($request->file('image')->getRealPath()));
+                $image_record = New Image;
+                $image_record->item_id = $item_id;
+                $image_record->filename = $file_name;
+
+                if ($image_record->save()) {
+                    
+                    return $file_name;
+                } else {
+                    return 0;
+                }
+            }
+            else {
+                return 'no image file';
+            }
+        } else {
+            return 'save error';
+        }
+
     }
 }

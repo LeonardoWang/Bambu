@@ -27,7 +27,7 @@ class ImagesController extends Controller
             $image_record->item_id = $item_id;
             $image_record->filename = $file_name;
             if ($image_record->save()) {
-                return $file_name;
+                return public_path()+'/images/'+$file_name;
             } else {
                 return 0;
             }

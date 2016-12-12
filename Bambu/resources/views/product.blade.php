@@ -6,14 +6,14 @@
             <div class="panel-title">新增商品</div>
         </div>
         <div class="panel-body" >
-            <form method="POST" action="/admin/product/save" class="form-horizontal" enctype="multipart/form-data" role="form">
+            <form method="POST" action="product/addProduct" class="form-horizontal" enctype="multipart/form-data" role="form">
                 {!! csrf_field() !!}
                 <fieldset>
                     <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="name">名称</label>
                         <div class="col-md-9">
-                            <input id="name" name="name" type="text" placeholder="商品名称" class="form-control input-md" required="">
+                            <input id="name" name="title" type="text" placeholder="商品名称" class="form-control input-md" required="">
 
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="file">文件</label>
                         <div class="col-md-9">
-                            <input id="file" name="file" class="input-file" type="file">
+                            <input id="file" name="image" class="input-file" type="file">
                         </div>
                     </div>
                     <div class="form-group">
