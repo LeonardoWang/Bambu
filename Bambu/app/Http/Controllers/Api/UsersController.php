@@ -12,6 +12,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Item;
+use App\UserInformation;
 
 class UsersController extends Controller
 {
@@ -113,6 +114,11 @@ class UsersController extends Controller
                 'tel' => $request->input('tel'),
                 'password' => Hash::make($request->input('password')),
             ]);
+            $userinformation = new UserInformation();
+            $userinformation->user_id = $user->id;
+            $userinformation->sex ='unknown';
+
+            $userinformation->save();
             Auth::login($user);
             return redirect()->intended('/');
             /*User::where('email', $request->input('email'))->first();*/
@@ -138,5 +144,34 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         return $user->received_trade_requests()->orderBy('updated_at', 'desc')->get()->pluck('id');
+    }
+
+    public function UserInformationUpdate(Request $request)
+    {
+        $this->validate($request, [
+            'sex' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'image' => 'required|image'
+        ]);
+        
+        $user = Auth::user();
+        $userinformation = new UserInformation();
+        $userinformation->sex = $request->input('sex');
+        $userinformation->location = $request->input('location');
+
+        if ($request->hasFile('image')) {
+            $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+            Storage::put('images/' . $file_name,
+                file_get_contents($request->file('image')->getRealPath()));
+            $userinformation->user_image = $file_name;
+            $userinformation->save();
+            return 'save with picture';
+        }
+        else {
+            $userinformation->save();
+            return 'save without picture';
+        }
+
     }
 }
