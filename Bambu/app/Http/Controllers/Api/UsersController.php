@@ -148,12 +148,6 @@ class UsersController extends Controller
 
     public function UserInformationUpdate(Request $request)
     {
-        $this->validate($request, [
-            'sex' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-            'image' => 'required|image'
-        ]);
         
         $user = Auth::user();
         $userinformation = new UserInformation();
@@ -173,5 +167,12 @@ class UsersController extends Controller
             return 'save without picture';
         }
 
+    }
+
+    public function UserInormationPage()
+    {
+        $user = Auth::user();
+        $user_information = UserInformation::find($user->id);
+        return $user_information;//view('user_information')->with('user_information',$user_information);
     }
 }

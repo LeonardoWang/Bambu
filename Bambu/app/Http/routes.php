@@ -32,7 +32,8 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 	Route::resource('users', 'Api\UsersController', ['only' => ['index', 'show']]);
 	Route::post('users/{id}', 'Api\UsersController@update');
 	Route::get('users/{id}/delete', 'Api\UsersController@destroy');
-
+	Route::get('users_information','Api\UsersController@UserInormationPage');
+	
 	Route::get('product','Api\ItemsController@ProductIndex');
 	Route::post('product/addProduct','Api\ItemsController@ProductAdd');
 	Route::get('product/show','Api\ItemsController@ProductShow');
