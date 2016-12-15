@@ -150,11 +150,15 @@ class UsersController extends Controller
     {
         
         $user = Auth::user();
-        $userinformation = new UserInformation();
+        $userinformation = UserInformation::find($user->id);
         $userinformation->sex = $request->input('sex');
         $userinformation->location = $request->input('location');
 
         if ($request->hasFile('image')) {
+            if(!empty($userinformation->user_image))
+            {
+                Storage::delete('images/' . $userinformation->user_image);
+            }
             $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
             Storage::put('images/' . $file_name,
                 file_get_contents($request->file('image')->getRealPath()));
