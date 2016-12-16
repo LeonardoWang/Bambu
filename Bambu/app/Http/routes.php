@@ -48,6 +48,8 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 	Route::post('trade_requests/{id}', 'Api\TradeRequestsController@update');
 	Route::get('trade_requests/{id}/delete', 'Api\TradeRequestsController@destroy');
 
+	Route::get('chat_room/{item_id}','Api\ChatController@ChatRoomIndex');
+
 	Route::group(['prefix' => 'users/{user_id}'], function()
 	{
         Route::get('favorites', 'Api\FavoritesController@index');

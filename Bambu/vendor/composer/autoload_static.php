@@ -253,9 +253,11 @@ class ComposerStaticInit86c9895922af5fcfcdd59a6d21a4fcc0
     );
 
     public static $classMap = array (
+        'CreateChatRoomTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_16_083431_create_chat_room_table.php',
         'CreateFavoritesTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_23_115301_create_favorites_table.php',
         'CreateImagesTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_06_101427_create_images_table.php',
         'CreateItemsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_23_111139_create_items_table.php',
+        'CreateMessageTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_16_083447_create_message_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateTradeRequestsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_105503_create_trade_requests_table.php',
         'CreateUserInformationTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_15_131902_create_user_information_table.php',

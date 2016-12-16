@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItemsTable extends Migration
+class CreateChatRoomTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,18 +12,12 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-      Schema::create('items', function (Blueprint $table) {
+        Schema::create('chat_room_table', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('title');
-          $table->integer('user_id');
-          $table->float('price');
-          $table->text('description');
-          $table->string('image_file');
-          $table->enum('status', ['selling', 'sold']);
-
+          $table->integer('chat_room_id');
+          $table->integer('item_id');
           $table->timestamps();
       });
-
     }
 
     /**
@@ -33,6 +27,6 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('items');
+         Schema::drop('chat_room');
     }
 }
