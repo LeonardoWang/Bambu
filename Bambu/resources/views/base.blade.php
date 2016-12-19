@@ -39,7 +39,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">王尧快写前端</div>
+                <div class="title">login</div>
                 <div class="row">
                     @yield('content')
                 </div>

@@ -8,11 +8,10 @@
         <meta name="viewport" content="width=100%, initial-scale=1.0, maximum-scale=1.0">
 
         <!-- Loading Bootstrap -->
-        <link href="../../Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Loading Flat UI -->
-        <link href="../../Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
-        <link href="../../Flat-UI-master/docs/assets/css/demo.css" rel="stylesheet">
+        <link href="／Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
 
         <link rel="shortcut icon" href="../../Flat-UI-master/img/favicon.ico">
 
@@ -31,8 +30,6 @@
                 padding: 0;
                 width: 100%;
                 display: table;
-                font-weight: 100;
-                font-family: 'Lato';
             }
 
             .container {
@@ -48,6 +45,7 @@
 
             .title {
                 font-size: 96px;
+
             }
         </style>
     </head>
@@ -59,13 +57,26 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="#">bambu</a>
+        <a class="navbar-brand" href="#">bambu.com</a>
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li><a href="/login">login</a></li>
-            <li><a href="#">about us</a></li>
-            <li><form class="navbar-form navbar-right" role="search">
+            <li>
+            @if (isset($user) > 0)
+                    <!--<p> hello {{$user->name}} </p>-->
+                    <a href="/logout" >登出</a>
+                @else
+                    <a href="/login" >登入</a>
+                @endif
+            </li>
+          <li>
+            <a href ="/api/product">发布闲置</a>
+            </li>
+          <li>
+            <a href="#">我的闲置</a>
+          </li>
+          <li><a href="#aboutUs">about us</a></li>
+          <li><form class="navbar-form navbar-right" role="search">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Search">
               </div>
@@ -77,32 +88,37 @@
     </div>
 </nav>
 
-
-
-
-       
-            <div class="content">
-                <div class="title">Bambu</div>
-                @if (isset($user) > 0)
-                    <p> hello {{$user->name}} </p>
-                    <a href="/logout" ><button>logout</button></a>
-                @else
-                    <a href="/login" ><button>login</button></a>
-                @endif
+    <div class="row">
+            <div class="col-lg-12">
+                <img src="/img/1.jpg" width="400 px">
             </div>
-        </div>
+    </div>
+    <div class="row">
+        <ul class="pagination">
+            <li><a href="#">&laquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&raquo;</a></li>
+        </ul>
+    </div>
+    <div class="row">
+            
+        
+    </div>
 
+</div>
 
-<footer class="footer navbar-fixed-bottom ">
+<footer class="footer navbar-fixed-bottom" id = "aboutUs">
     <div class="container">
-     <p style="color:#f44336">     copyright@2016 Yao Wang & Xupu Wang</p>
+     <p style="color:#f44336"> copyright@2016 bambu.com ICP:</p>
     
     </div>
 </footer>
 
-    <script src="dist/js/vendor/jquery.min.js"></script>
-    <script src="dist/js/vendor/video.js"></script>
-    <script src="dist/js/flat-ui.min.js"></script>
-    <script src="docs/assets/js/application.js"></script>
+    <script src="/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
+    <script src="/Flat-UI-master/docs/assets/js/application.js"></script>
     </body>
 </html>
