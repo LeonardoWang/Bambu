@@ -11,7 +11,7 @@
         <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Loading Flat UI -->
-        <link href="／Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
+        <link href="/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
 
         <link rel="shortcut icon" href="/img/favicon.ico">
 
@@ -88,27 +88,12 @@
     </div>
 </nav>
 
+    <div class="content">
     <div class="row">
-            <div class="col-lg-12">
-                <img src="/img/1.jpg" width="400 px">
-            </div>
+    <p>please log in before you upload the item.</p>
+      <button href="/login">login</button>>
     </div>
-    <div class="row">
-        <ul class="pagination">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
-        </ul>
-    </div>
-    <div class="row">
-            
-        
-    </div>
-
+</div>
 </div>
 
 <footer class="footer navbar-fixed-bottom" id = "aboutUs">
