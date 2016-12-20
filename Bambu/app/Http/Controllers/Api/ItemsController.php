@@ -184,4 +184,10 @@ class ItemsController extends Controller
     {
         return view('productshow', ['products'=>Item::orderBy('updated_at', 'desc')->get()]);
     }
+
+    public function MyProduct()
+    {
+        $user = Auth::user();
+        return view('myProduct',['products'=>Item::where('user_id', $user->id)->orderBy('updated_at', 'desc')->get()]);
+    }
 }

@@ -37,6 +37,7 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 	Route::get('product','Api\ItemsController@ProductIndex');
 	Route::post('product/addProduct','Api\ItemsController@ProductAdd');
 	Route::get('product/show','Api\ItemsController@ProductShow');
+	Route::get('product/myProduct','Api\ItemsController@MyProduct');
 	
 	Route::resource('items', 'Api\ItemsController', ['only' => ['index', 'store', 'show']]);
 	Route::post('items/{id}', 'Api\ItemsController@update');
@@ -48,7 +49,12 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 	Route::post('trade_requests/{id}', 'Api\TradeRequestsController@update');
 	Route::get('trade_requests/{id}/delete', 'Api\TradeRequestsController@destroy');
 
+	Route::get('chat_room','Api\ChatController@Chatroom');
+	Route::get('chat_room/MyChatroom','Api\ChatController@MyChatroom');
 	Route::get('chat_room/{item_id}','Api\ChatController@ChatRoomIndex');
+
+	Route::post('chat','Api\ChatController@Chat');
+
 
 	Route::group(['prefix' => 'users/{user_id}'], function()
 	{
