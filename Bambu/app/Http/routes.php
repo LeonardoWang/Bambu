@@ -13,7 +13,7 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/wangyao', 'HomeController@haha');
-Route::get('/login', 'HomeController@haha');
+Route::get('/login', 'HomeController@login');
 Route::get('/register','HomeController@register');
 
 Route::controllers([

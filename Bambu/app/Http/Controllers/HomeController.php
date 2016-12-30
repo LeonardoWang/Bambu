@@ -21,7 +21,7 @@ class HomeController extends Controller
             return view('welcome');
     }
 
-    public function haha()
+    public function login()
     {
         return view('auth.login');
     }
@@ -29,5 +29,10 @@ class HomeController extends Controller
     public function register()
     {
         return view('auth.register');
+    }
+
+    public function haha()
+    {
+        return view('Home');
     }
 }
