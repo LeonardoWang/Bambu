@@ -182,7 +182,7 @@ class ItemsController extends Controller
 
     public function ProductShow()
     {
-        return view('productshow', ['products'=>Item::orderBy('updated_at', 'desc')->get()]);
+        return ['products'=>Item::orderBy('updated_at', 'desc')->get()];//view('productshow', ['products'=>Item::orderBy('updated_at', 'desc')->get()]);
     }
 
     public function MyProduct()

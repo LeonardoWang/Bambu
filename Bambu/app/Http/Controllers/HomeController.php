@@ -15,7 +15,7 @@ class HomeController extends Controller
         if(Auth::check())
         {
             $user = Auth::user();
-            return view('welcome')->with('user',$user);
+            return view('welcome')->with(['products'=>Item::orderBy('updated_at', 'desc')->get()]);
         }
         else
             return view('welcome');
@@ -26,7 +26,7 @@ class HomeController extends Controller
         return view('auth.login');
     }
 
-    public function register()
+    public function haha2()
     {
         return view('auth.register');
     }

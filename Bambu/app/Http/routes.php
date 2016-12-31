@@ -14,7 +14,7 @@
 Route::get('/', 'HomeController@index');
 Route::get('/wangyao', 'HomeController@haha');
 Route::get('/login', 'HomeController@haha');
-Route::get('/register','HomeController@register');
+Route::get('/register','HomeController@haha2');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

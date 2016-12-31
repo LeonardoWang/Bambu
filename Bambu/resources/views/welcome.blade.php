@@ -76,22 +76,44 @@
             <a href="#">我的闲置</a>
           </li>
           <li><a href="#aboutUs">about us</a></li>
-          <li><form class="navbar-form navbar-right" role="search">
+          <li><div class="navbar-form navbar-right">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" id="inpu1" name="keyword" class="form-control" placeholder="Search"/>
               </div>
-              <button type="submit" class="btn btn-default">搜索</button>
+              <button onclick="sb()" class="btn btn-default">搜索</button>
             </form>
             </li>
         </ul>
     </div>
     </div>
 </nav>
-
+    
     <div class="row">
-            <div class="col-lg-12">
-                <img src="/img/1.jpg" width="400 px">
-            </div>
+            @foreach ($products as $product)
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="thumbnail" >
+                            <img src="images/{{$product->image_file}}" class="img-responsive">
+                            <div class="caption">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-xs-12">
+                                        <h5>{{$product->name}}</h5></div>
+                                    <div class="col-lg-12 col-md-12 col-xs-12">
+                                        <p>{{$product->image_file}}</p>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-xs-12">
+                                        <p>
+                                            <label>￥{{$product->price}}</label></p>
+                                    </div>
+                                </div>
+                                <p>{{$product->description}}</p>
+                                <div class="row">
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <a href="/addProduct/{{$product->id}}" class="btn btn-success btn-product"><span class="fa fa-shopping-cart"></span> 购买</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
     </div>
     <div class="row">
         <ul class="pagination">
@@ -105,7 +127,9 @@
         </ul>
     </div>
     <div class="row">
+        <div class="col-lg-3 col-md-4 col-xs-6">
             
+        </div>    
         
     </div>
 
@@ -117,7 +141,12 @@
     
     </div>
 </footer>
+    <script type="text/javascript">
+        function sb(){
+            window.location.href="api/items/search/" + document.getElementById('inpu1').value;
+        }
 
+    </script>
     <script src="/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
     <script src="/Flat-UI-master/docs/assets/js/application.js"></script>
     </body>
