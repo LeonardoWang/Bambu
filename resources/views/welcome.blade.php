@@ -129,22 +129,18 @@
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="thumbnail" >
                             <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
-                            <img src="/img/1.jpg" class="img-responsive">
+                            <img src="/public/img/1.jpg" class="img-responsive">
                             
                             <div class="caption">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-xs-12">
-                                        <h5>{{$product->name}}</h5></div>
-                                    <div class="col-lg-12 col-md-12 col-xs-12">
+                                        <h5>{{$product->name}}</h5>
                                         <p>{{$product->image_file}}</p>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-xs-12">
-                                        <p>
-                                            <label>￥{{$product->price}}</label></p>
+                                        <p><label>￥{{$product->price}}</label></p>
+                                        <p>{{$product->description}}</p>
+                                        <p>{{$product->created_at}}</p>
                                     </div>
                                 </div>
-                                <p>{{$product->description}}</p>
-                                <p>{{$product->created_at}}</p>
                                 <div class="row">
                                     <div class="col-offset-3">
                                         <a href="/api/trade_requests/{{$product->id}}" class="btn btn-success btn-product bambu-color1"><span class="fa fa-shopping-cart"></span> buy it!</a></div>

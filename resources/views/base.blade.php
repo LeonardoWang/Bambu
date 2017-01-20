@@ -32,12 +32,21 @@
                 display: table;
                 font-family: 'Microsoft Yahei', Helvetica, Arial, sans-serif; 
             }
-  
+            
+            img{
+                max-width: 500px;
+                max-height: 500px;
+            }
+
             a,a:hover,a:focus,a:active,a:visited {
                 color: white;
                 background-color:#e53935;
                 border-color:#e53935;
                 }
+
+            label{
+                line-height: 1;
+            }
 
             .container {
                 text-align: center;
@@ -86,6 +95,7 @@
                 border-color: #e53935;
                 background-color: white;   
             }
+
         </style>
         <!-- bambu-color1:#e53935;
         bambu-color2:#f44336;

@@ -108,6 +108,6 @@ class TradeRequestsController extends Controller
 
     public function doRequest($id)
     {
-        return view('welcome',['products'=>Item::where('id', $id)->get()]);
+        return view('productshow',['products'=>Item::where('id', $id)->get()]);
     }
 }
