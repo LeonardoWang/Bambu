@@ -23,6 +23,7 @@
         <style>
             html, body {
                 height: 100%;
+
             }
 
             body {
@@ -30,7 +31,7 @@
                 padding: 0;
                 width: 100%;
                 display: table;
-                
+                font-family: 'Microsoft Yahei', Helvetica, Arial, sans-serif; 
             }
   
             a,a:hover,a:focus,a:active,a:visited {
@@ -75,6 +76,10 @@
             .btn:visited{
                 color:#ffffff;
                 background-color: #e53935;
+                border-color: #e53935;
+            }
+
+            .form-control:focus{
                 border-color: #e53935;
             }
 

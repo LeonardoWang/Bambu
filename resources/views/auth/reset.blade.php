@@ -1,15 +1,13 @@
 @extends('base')
 
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-xs-12 col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
 				<div class="panel-heading">Reset Password</div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
+							<strong>Wrong username or wrong password!<br><a href = "/password/email">Forgot your password?</a></strong>
 							<ul>
 								@foreach ($errors->all() as $error)
 									<li>{{ $error }}</li>
@@ -54,6 +52,4 @@
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
 @endsection

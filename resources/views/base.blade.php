@@ -30,7 +30,7 @@
                 padding: 0;
                 width: 100%;
                 display: table;
-                
+                font-family: 'Microsoft Yahei', Helvetica, Arial, sans-serif; 
             }
   
             a,a:hover,a:focus,a:active,a:visited {
@@ -78,6 +78,14 @@
                 border-color: #e53935;
             }
 
+            .form-control:focus{
+                border-color: #e53935;
+            }
+
+            .panel,.panel-info, .panel-title,.panel-heading{
+                border-color: #e53935;
+                background-color: white;   
+            }
         </style>
         <!-- bambu-color1:#e53935;
         bambu-color2:#f44336;
@@ -99,10 +107,10 @@
                 @endif
             </li>
           <li>
-            <a href ="/public/api/product">post items</a>
+            <a href ="/api/product">post items</a>
             </li>
           <li>
-            <a href="#">my items</a>
+            <a href="/api/product/myProduct">my items</a>
           </li>
           <li><a href="#aboutUs">about us</a></li>
           <li><div class="navbar-form navbar-right">
@@ -121,4 +129,12 @@
                 </div>
             </div>
     </body>
+        <script type="text/javascript">
+        function sb(){
+            window.location.href="api/items/search/" + document.getElementById('inpu1').value;
+        }
+        function home(){
+            window.location.href="/public";
+        }
+    </script>
 </html>
