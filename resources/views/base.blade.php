@@ -30,7 +30,7 @@
                 padding: 0;
                 width: 100%;
                 display: table;
-                font-family: 'Microsoft Yahei', Helvetica, Arial, sans-serif; 
+                font-family: sans-serif, Helvetica, Arial, 'Microsoft Yahei'; 
             }
             
             img{
@@ -43,6 +43,16 @@
                 background-color:#e53935;
                 border-color:#e53935;
                 }
+
+            a:focus,a:active{
+                background: hsla(0,0%,7%,0.5);
+                background-color: rgba(17,17,17,0.5);
+                background-image: none;
+                background-clip: border-box;
+                background-position-x: 0%;
+                background-position-y: 0%;
+            }
+
 
             label{
                 line-height: 1;

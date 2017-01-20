@@ -18,7 +18,7 @@
 
         <title>Bambu</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" type="text/css">
 
         <style>
             html, body {
@@ -31,7 +31,7 @@
                 padding: 0;
                 width: 100%;
                 display: table;
-                font-family: 'Microsoft Yahei', Helvetica, Arial, sans-serif; 
+                font-family: sans-serif, Helvetica, Arial, 'Microsoft Yahei'; 
             }
   
             a,a:hover,a:focus,a:active,a:visited {
@@ -39,6 +39,15 @@
                 background-color:#e53935;
                 border-color:#e53935;
                 }
+
+            a:focus,a:active{
+                background: hsla(0,0%,7%,0.5);
+                background-color: rgba(17,17,17,0.5);
+                background-image: none;
+                background-clip: border-box;
+                background-position-x: 0%;
+                background-position-y: 0%;
+            }
 
             .container {
                 text-align: center;
@@ -53,7 +62,8 @@
                 display: inline-block;
             }
 
-            .bambu-color1,.bambu-color1:hover,.bambu-color1:after {
+            .bambu-color1,.bambu-color1:hover,.bambu-color1:active,.bambu-color1:after {
+                color:white;
                 background-color:#e53935;
                 border-color:#e53935;
             } 
@@ -106,7 +116,7 @@
                 @endif
             </li>
           <li>
-            <a href ="/api/product">post items</a>
+            <a href ="/api/product">post item</a>
             </li>
           <li>
             <a href="/api/product/myProduct">my items</a>
@@ -124,7 +134,7 @@
 
 <div class="container">
     <div class="row" style="margin-top:56px;margin-bottom:80px;">
-        @if (!isset($product) > 0)
+        @if (isset($products) > 0)
             @foreach ($products as $product)
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="thumbnail" >
@@ -133,9 +143,9 @@
                             
                             <div class="caption">
                                 <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-xs-12">
-                                        <h5>{{$product->name}}</h5>
-                                        <p>{{$product->image_file}}</p>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <h5>{{$product->title}}</h5>
+                                        <!--<p>{{$product->image_file}}</p>-->
                                         <p><label>￥{{$product->price}}</label></p>
                                         <p>{{$product->description}}</p>
                                         <p>{{$product->created_at}}</p>
@@ -143,14 +153,23 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-offset-3">
-                                        <a href="/api/trade_requests/{{$product->id}}" class="btn btn-success btn-product bambu-color1"><span class="fa fa-shopping-cart"></span> buy it!</a></div>
+                                        <a href="/api/trade_requests/{{$product->id}}" class="btn btn-success btn-product bambu-color1"><span class="fa fa-shopping-cart"></span> I want it!</a></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endforeach
-            @endif
+            @endforeach
+            <ul class="col-sm-12 col-md-12 col-lg-12 pagination">
+            @for ($i = 1; $i < count($products)/3;$i++)
+                @if($i==1)
+                <li class="bambu-color1"><a>{{$i}}</a></li>
+                @else
+                <li><a>{{$i}}</a></li>
+                @endif
+            @endfor
+            </ul>
     </div>
+        @endif
 </div>
 
 <footer class="footer navbar-fixed-bottom" id = "aboutUs">
