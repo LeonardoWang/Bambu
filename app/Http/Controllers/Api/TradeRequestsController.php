@@ -1,12 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use Illuminate\Http\Response;
+use DB;
+use Storage;
+use Crypt;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\TradeRequest;
+use App\Item;
 class TradeRequestsController extends Controller
 {
     /**
@@ -66,7 +70,9 @@ class TradeRequestsController extends Controller
      */
     //public function update(Request $request, $id)
     public function update($id)
-    {/*
+    {
+
+        /*
         $this->validate($request, [
             'user_id' => 'required',
             'item_id' => 'required',
@@ -84,7 +90,7 @@ class TradeRequestsController extends Controller
         } else {
             return 0;
         }*/
-        return view('welcome',['products'=>Item::where('item_id', $id)->get()]);
+        return 1;//view('welcome');//['products'=>Item::where('id', $id)->get()]);
     }
 
     /**
@@ -98,5 +104,10 @@ class TradeRequestsController extends Controller
         $trade_request = TradeRequest::find($id);
         $trade_request->delete();
         return 1;
+    }
+
+    public function doRequest($id)
+    {
+        return view('welcome',['products'=>Item::where('id', $id)->get()]);
     }
 }

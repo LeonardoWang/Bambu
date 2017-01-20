@@ -129,7 +129,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="thumbnail" >
                             <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
-                            <img src="/public/img/1.jpg" class="img-responsive">
+                            <img src="/img/1.jpg" class="img-responsive">
                             
                             <div class="caption">
                                 <div class="row">
@@ -147,7 +147,7 @@
                                 <p>{{$product->created_at}}</p>
                                 <div class="row">
                                     <div class="col-offset-3">
-                                        <a href="/public/api/trade_requests/{{$product->item_id}}" class="btn btn-success btn-product bambu-color1"><span class="fa fa-shopping-cart"></span> buy it!</a></div>
+                                        <a href="/api/trade_requests/{{$product->id}}" class="btn btn-success btn-product bambu-color1"><span class="fa fa-shopping-cart"></span> buy it!</a></div>
                                 </div>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
 </footer>
     <script type="text/javascript">
         function sb(){
-            window.location.href="/public/api/items/search/" + document.getElementById('inpu1').value;
+            window.location.href="/api/items/search/" + document.getElementById('inpu1').value;
         }
         function home(){
             window.location.href="/public";
