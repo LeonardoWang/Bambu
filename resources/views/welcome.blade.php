@@ -122,8 +122,8 @@
     </div>
 </nav>
 
-    <div class="container">
-    <div class="row" style="margin-top:56px;margin-bottom:30px;">
+<div class="container">
+    <div class="row" style="margin-top:56px;margin-bottom:80px;">
         @if (!isset($product) > 0)
             @foreach ($products as $product)
                     <div class="col-sm-12 col-md-6 col-lg-4">
@@ -155,19 +155,24 @@
                 @endforeach
             @endif
     </div>
-
 </div>
 
 <footer class="footer navbar-fixed-bottom" id = "aboutUs">
-     <p style="text-align:center;color:#f44336"> copyright@2016 Bambu. All Rights Reserved</br>ICP:</p>
-
+     <p style="text-align:center;"> copyright@2016 Bambu. All Rights Reserved<br>京ICP备15050380-2<br>
+        <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:bambu@pku.edu.cn">contact us</a></p>
 </footer>
+
     <script type="text/javascript">
         function sb(){
-            window.location.href="/api/items/search/" + document.getElementById('inpu1').value;
+            s = document.getElementById('inpu1').value;
+            if(s){
+            window.location.href="/api/items/search/" + s;
+            }
+            else
+                alert("the search field can't be empty"); 
         }
         function home(){
-            window.location.href="/public";
+            window.location.href="/";
         }
     </script>
     <script src="/public/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>

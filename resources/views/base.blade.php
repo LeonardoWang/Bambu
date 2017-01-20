@@ -129,12 +129,23 @@
                 </div>
             </div>
     </body>
-        <script type="text/javascript">
+
+<footer class="footer navbar-fixed-bottom" id = "aboutUs">
+     <p style="text-align:center;"> copyright@2016 Bambu. All Rights Reserved<br>京ICP备15050380-2<br>
+        <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:bambu@pku.edu.cn">contact us</a></p>
+</footer>
+
+    <script type="text/javascript">
         function sb(){
-            window.location.href="api/items/search/" + document.getElementById('inpu1').value;
+            s = document.getElementById('inpu1').value;
+            if(s){
+            window.location.href="/api/items/search/" + s;
+            }
+            else
+                alert("the search field can't be empty"); 
         }
         function home(){
-            window.location.href="/public";
+            window.location.href="/";
         }
     </script>
 </html>
