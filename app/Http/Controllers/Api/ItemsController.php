@@ -188,6 +188,6 @@ class ItemsController extends Controller
     public function MyProduct()
     {
         $user = Auth::user();
-        return view('myProduct',['products'=>Item::where('user_id', $user->id)->orderBy('updated_at', 'desc')->get()]);
+        return view('welcome',['products'=>Item::where('user_id', $user->id)->orderBy('updated_at', 'desc')->get()]);
     }
 }

@@ -101,10 +101,10 @@
                 @endif
             </li>
           <li>
-            <a href ="/public/api/product">post items</a>
+            <a href ="/api/product">post items</a>
             </li>
           <li>
-            <a href="#">my items</a>
+            <a href="/api/product/myProduct">my items</a>
           </li>
           <li><a href="#aboutUs">about us</a></li>
           <li><div class="navbar-form navbar-right">
