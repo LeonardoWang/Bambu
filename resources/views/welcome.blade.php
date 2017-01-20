@@ -119,6 +119,7 @@
 
     <div class="container">
     <div class="row" style="margin-top:56px;margin-bottom:30px;">
+        @if (isset($product) > 0)
             @foreach ($products as $product)
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="thumbnail" >
@@ -146,6 +147,7 @@
                         </div>
                     </div>
                 @endforeach
+            @endif
     </div>
 
 </div>

@@ -32,12 +32,12 @@ class HomeController extends Controller
         return view('auth.login');
     }
 
-    public function haha2()
+    public function register()
     {
         return view('auth.register');
     }
 
-    public function haha()
+    public function test()
     {
         return view('Home');
     }

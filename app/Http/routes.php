@@ -13,14 +13,12 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@home');
-Route::get('/wangyao', 'HomeController@haha');
-<<<<<<< HEAD:Bambu/app/Http/routes.php
-Route::get('/login', 'HomeController@login');
+Route::get('/test', 'HomeController@test');
+
 Route::get('/register','HomeController@register');
-=======
-Route::get('/login', 'HomeController@haha');
-Route::get('/register','HomeController@haha2');
->>>>>>> b72d1a83164c67f41c656464ea6bb44698371ba8:app/Http/routes.php
+
+Route::get('/login', 'HomeController@login');
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
