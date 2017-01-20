@@ -1,9 +1,8 @@
 @extends('base')
 
 @section('content')
-    <div class="container">
-        <div class="row">
             <div class="col-lg-6 col-md-12 col-xs-6">
+
                 @foreach ($products as $product)
                         <div class="thumbnail" >
                             <img src="images/{{$product->image_file}}" class="img-responsive">
@@ -23,7 +22,4 @@
                         </div>
                 @endforeach
             </div>
-        </div>
-    </div>
-
 @endsection

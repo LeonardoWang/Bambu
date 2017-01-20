@@ -128,10 +128,10 @@ class ItemsController extends Controller
 
     public function search($keyword)
     {
-        return Item::where('title', 'like', '%'.$keyword.'%')
-            ->orWhere('description', 'like', '%'.$keyword.'%')->get()->pluck('id');
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+        return view('welcome',['products'=>Item::where('title', 'like', '%'.$keyword.'%')->get()]);
+        //->orWhere('description', 'like', '%'.$keyword.'%')->pluck('id')]);
     }
-
     public function ProductIndex()
     {
         return view('product');

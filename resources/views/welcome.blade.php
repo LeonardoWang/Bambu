@@ -124,7 +124,7 @@
 
     <div class="container">
     <div class="row" style="margin-top:56px;margin-bottom:30px;">
-        @if (isset($product) > 0)
+        @if (!isset($product) > 0)
             @foreach ($products as $product)
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="thumbnail" >
@@ -144,9 +144,10 @@
                                     </div>
                                 </div>
                                 <p>{{$product->description}}</p>
+                                <p>{{$product->created_at}}</p>
                                 <div class="row">
                                     <div class="col-offset-3">
-                                        <a href="/addProduct/{{$product->id}}" class="btn btn-success btn-product bambu-color1"><span class="fa fa-shopping-cart"></span> buy it!</a></div>
+                                        <a href="/public/api/trade_requests/{{$product->item_id}}" class="btn btn-success btn-product bambu-color1"><span class="fa fa-shopping-cart"></span> buy it!</a></div>
                                 </div>
                             </div>
                         </div>
@@ -163,7 +164,7 @@
 </footer>
     <script type="text/javascript">
         function sb(){
-            window.location.href="api/items/search/" + document.getElementById('inpu1').value;
+            window.location.href="/public/api/items/search/" + document.getElementById('inpu1').value;
         }
         function home(){
             window.location.href="/public";

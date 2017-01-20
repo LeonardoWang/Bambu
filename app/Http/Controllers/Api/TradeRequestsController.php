@@ -64,8 +64,9 @@ class TradeRequestsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
-    {
+    //public function update(Request $request, $id)
+    public function update($id)
+    {/*
         $this->validate($request, [
             'user_id' => 'required',
             'item_id' => 'required',
@@ -82,7 +83,8 @@ class TradeRequestsController extends Controller
             return 1;
         } else {
             return 0;
-        }
+        }*/
+        return view('welcome',['products'=>Item::where('item_id', $id)->get()]);
     }
 
     /**
