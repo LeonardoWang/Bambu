@@ -128,11 +128,16 @@ class ItemsController extends Controller
 
     public function search($keyword)
     {
-        //!!!!!!!!!!!!!!!!!!xp I need you!!!!!!!!!!!!!!!!!!!!!//
+        $user = Auth::user();
         if(isset($keyword))
-            return view('welcome',['products'=>Item::where('title', 'like', '%'.$keyword.'%')->orWhere('description', 'like', '%'.$keyword.'%')->pluck('id')]);
+        {
+
+           $products = Item::where('title', 'like', '%'.$keyword.'%')->orWhere('description', 'like', '%'.$keyword.'%')->get();
+            return view('welcome',compact('user','products'));
+            //view('welcome',['products'=>Item::where('title', 'like', '%'.$keyword.'%')->orWhere('description', 'like', '%'.$keyword.'%')->get()]);
+        }
         else
-            return view('welcome');
+            return view('welcome')->with('user',$user);
         //->orWhere('description', 'like', '%'.$keyword.'%')->pluck('id')]);
     }
     public function ProductIndex()
@@ -159,7 +164,8 @@ class ItemsController extends Controller
         $item->price = $request->input('price');
         $item->description = $request->input('description');
         $item->status = 'unreviewed';
-
+        $item->category = $request->input('category');
+        //$item->keywords = $request->input('keywords');
         if ($item->save()) {
             $item_id = $item->id;
             if ($request->hasFile('image')) {
@@ -204,6 +210,8 @@ class ItemsController extends Controller
     public function MyProduct()
     {
         $user = Auth::user();
-        return view('welcome',['products'=>Item::where('user_id', $user->id)->orderBy('updated_at', 'desc')->get()]);
+        $products = Item::where('user_id', $user->id)->orderBy('updated_at', 'desc')->get();
+        return view('welcome',compact('user','products'));
+        //view('welcome',['products'=>Item::where('user_id', $user->id)->orderBy('updated_at', 'desc')->get()]);
     }
 }

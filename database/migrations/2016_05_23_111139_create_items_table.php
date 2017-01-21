@@ -20,7 +20,8 @@ class CreateItemsTable extends Migration
           $table->text('description');
           $table->string('image_file');
           $table->enum('status', ['selling', 'sold']);
-
+          $table->string('category');
+          
           $table->timestamps();
       });
 

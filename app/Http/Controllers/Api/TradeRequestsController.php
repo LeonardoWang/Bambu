@@ -109,9 +109,10 @@ class TradeRequestsController extends Controller
 
     public function doRequest($id)
     {
+        $user = Auth::user();
         $products = Item::where('id', $id)->get();
         $comments = Comment::where('item_id',$id)->get();
-        return view('welcome',compact('products','comments'));
+        return view('welcome',compact('user','products','comments'));
         //return view('productshow',['products'=>Item::where('id', $id)->get()]);
     }
 
