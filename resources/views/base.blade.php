@@ -126,58 +126,75 @@
                 color: #004974;
                 text-decoration: none;
             }
+            
+            .navbar-toggle::before{
+                color:white;
+            }
+            .navbar-toggle:hover::before, .navbar-toggle:focus::before{
+                color:#bdc3c7;
+            }
+
+
             #home{
+                width:53px;
                 cursor: pointer;
             }
         </style>
-        <!-- bambu-color1:#e53935;
+                <!-- bambu-color1:#e53935;
         bambu-color2:#f44336;
+        grey:#bdc3c7;
     -->
     </head>
     <body>
-<nav class="navbar navbar-fixed-top" role="navigation">
-    <div class="container-fluid" style="background-color:#e53935;">
-        
-        <ul class="nav navbar-nav">
-            <li>
-                <img id="home" onclick="home()" src='/public/img/favicon.ico' style="width:50px;"></img></li>
-            <li>
-            @if (isset($user) > 0)
+<div class="col-lg-12" style="margin-left:0px;margin-right:0px;">
+        <nav class="navbar navbar-fixed-top" role="navigation">
+            <div class="navbar-header bambu-color1">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+                <span class="sr-only">Toggle navigation</span>
+              </button>
+              <img id="home" onclick="home()" src='/public/img/favicon.ico'></img>
+            </div>
+            <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
+              <ul class="nav navbar-nav">
+                <li>
+                @if (isset($user) > 0)
                     <a href="#"> hello, {{$user->name}} </a></li><li>
                     <a href="/logout" >logout</a>
                 @else
                     <a href="/login" >login</a>
                 @endif
-            </li>
-          <li>
-            <a href ="/api/product">post items</a>
-            </li>
-          <li>
-            <a href="/api/product/myProduct">my items</a>
-          </li>
-          <li><a href="#aboutUs">about us</a></li>
-          <li><div class="navbar-form navbar-right">
-              <div class="form-group">
-                <input type="text" id="inpu1" name="keyword" class="form-control" placeholder="Search"/>
-              </div>
-              <button onclick="sb()" class="btn btn-primary bambu-color1" style="background-color:#f44336">search</button>
-            </div>
-            </li>
+                </li>
+                <li>
+                    <a href ="/api/product">post item</a>
+                </li>
+                <li>
+                    <a href="/api/product/myProduct">my items</a>
+                </li>
+                <li><a href="#aboutUs">about us</a></li>
+                <li><div class="navbar-form navbar-right">
+                    <div class="form-group">
+                    <input type="text" id="inpu1" name="keyword" class="form-control" placeholder="Search"/>
+                    </div>
+                    <button onclick="sb()" class="btn btn-primary bambu-color1" style="background-color:#f44336">search</button>
+                    </div>
+                </li>
+               </ul>
+            </div><!-- /.navbar-collapse -->
+          </nav><!-- /navbar -->
     </div>
-</nav>
 
 <div class="container" style="width:100%;">
                 <div class="row">
                     @yield('content')
                 </div>
             </div>
-    </body>
 
 <footer class="footer navbar-fixed-bottom" id = "aboutUs">
      <p style="text-align:center;"> copyright@2016 Bambu. All Rights Reserved<br>京ICP备15050380-2<br>
         <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:bambu@pku.edu.cn">contact us</a></p>
 </footer>
 
+</body>
     <script type="text/javascript">
         function sb(){
             s = document.getElementById('inpu1').value;
@@ -191,4 +208,7 @@
             window.location.href="/";
         }
     </script>
+    <script src="/public/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
+    <script src="/public/Flat-UI-master/docs/assets/js/application.js"></script>
+    <script src="/public/Flat-UI-master/dist/js/flat-ui.min.js"></script>
 </html>

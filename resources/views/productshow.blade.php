@@ -8,7 +8,7 @@ trade confirmation page
     @if (isset($products)==1)
         @foreach ($products as $product)
             <div class="col-lg-4 col-md-4 col-sm-6">
-                <div><h5>item info</h5></div>
+                <div style="padding-top:60px;"><h5>item info</h5></div>
                 <div>
                     <div class="thumbnail" >
                         <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
@@ -63,8 +63,9 @@ trade confirmation page
 
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="submit"></label>
-                        <div class="col-md-9">
+                        <div style="padding-bottom:70px;"><div class="col-md-9">
                             <button id="submit" name="submit" class="btn btn-primary bambu-color1">trade</button>
+                        </div>
                         </div>
                     </div>
                 </fieldset>
