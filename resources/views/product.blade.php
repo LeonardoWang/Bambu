@@ -6,7 +6,6 @@ item uploading page
 
 @section('content')
 
-
     <div class="col-lg-6 col-md-8 col-sm-12 col-lg-offset-3 col-md-offset-2 panel panel-info">
         <div class="panel-title"><h3>upload a item</h3></div>
         <div class="panel-body" >
@@ -15,46 +14,63 @@ item uploading page
                 <fieldset>
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="name">Name</label>
-                        <div class="col-md-9">
-                            <input id="name" name="title" type="text" placeholder="name your item!" class="form-control input-md" required="">
-
+                        <label class="col-sm-3 col-md-3 control-label" for="name">Name</label>
+                        <div class="col-sm-8 col-md-8">
+                            <input id="name" name="title" type="text" placeholder="name your item!" class="form-control input-md" required="required">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="textarea">Description</label>
-                        <div class="col-md-9">
+                        <label class="col-sm-3 col-md-3 control-label" for="textarea">Description</label>
+                        <div class="col-sm-8 col-md-8">
                             <textarea class="form-control" id="textarea" name="description" placeholder="describe more about your item"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="price">Price</label>
-                        <div class="col-md-9">
-                            <input id="price" name="price" type="text" placeholder="￥your price" class="form-control input-md" required="">
+                        <label class="col-sm-3 col-md-3 control-label" for="price">Price</label>
+                        <div class="col-sm-8 col-md-8">
+                            <input id="price" name="price" type="text" placeholder="￥your price" class="form-control input-md" required="required">
 
                         </div>
                     </div>
+                    <!-- amount
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="file">One picture for item</label>
-                        <div class="col-md-9">
-                            <input id="file" name="image" class="input-file" type="file">
+                        <label class="col-sm-3 col-md-3 control-label" for="amount">Amount</label>
+                        <div class="col-sm-8 col-md-8">
+                            <input id="amount" name="amount" type="text" placeholder="amount"  class="form-control input-md" required="required">
+
+                        </div>
+                    </div>
+                    -->
+                    <div class="form-group">
+                        <label class="col-sm-3 col-md-3 control-label" for="file">One picture for item</label>
+                        <div class="col-sm-8 col-md-8">
+                            <input id="file" name="image" class="form-control input-md" type="file" accept="image/jpeg, image/png">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="price">Categorys</label>
-                        <div class="col-md-9">
-                            <input id="price" name="price" type="text" placeholder="￥your price" class="form-control input-md" required="">
+                        <label class="col-sm-3 col-md-3 control-label" for="category">Category</label>
+                        <div class="col-sm-8 col-md-8">
+                            <select id="category" name="category" class="form-control input-md" default="computer" required="required">
+                                <option value="art">Art & Music</option>
+                                <option value="beauty">Beauty, Health & Geocery</option>
+                                <option value="book">Book & Study</option>
+                                <option value="clothing">Clothing & Fashion</option>
+                                <option value="computer">Computer & Electronics</option>
+                                <option value="home">Home, Garden & Tools</option>
+                                <option value="sports">Sports & Outdoor</option>
+                                <option value="toys">Toys & Kids</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="price">Keywords</label>
-                        <div class="col-md-9">
-                            <input id="price" name="price" type="text" placeholder="seperate each keyword by;" class="form-control input-md" required="">
+                        <label class="col-sm-3 col-md-3 control-label" for="keywords">Keywords</label>
+                        <div class="col-sm-8 col-md-8">
+                            <input id="keywords" name="keywords" type="text" placeholder="what's the feature of your deal? seperate each keyword by;" class="form-control input-md">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="submit"></label>
-                        <div class="col-md-9">
+                        <div class="col-md-6">
                             <button id="submit" name="submit" class="btn btn-primary bambu-color1">upload and sell!</button>
                         </div>
                     </div>

@@ -35,6 +35,7 @@
             }
   
             a,a:hover,a:focus,a:active,a:visited {
+                cursor: pointer;
                 color: white;
                 background-color:#e53935;
                 border-color:#e53935;
@@ -92,7 +93,9 @@
             .form-control:focus{
                 border-color: #e53935;
             }
-
+            #home{
+                cursor: pointer;
+            }
         </style>
         <!-- bambu-color1:#e53935;
         bambu-color2:#f44336;
@@ -106,7 +109,7 @@
         
         <ul class="nav navbar-nav">
             <li>
-                <img onclick="home()" src='/public/img/favicon.ico' style="width:50px;"></img></li>
+                <img id="home" onclick="home()" src='/public/img/favicon.ico' style="width:50px;"></img></li>
             <li>
             @if (isset($user) > 0)
                     <a href="#"> hello, {{$user->name}} </a></li><li>
@@ -132,9 +135,9 @@
     </div>
 </nav>
 
-<div class="container">
-    <div class="row" style="margin-top:56px;margin-bottom:80px;">
-        @if (isset($products) > 0)
+@if (isset($products) > 0)
+    <div class="container" style="width:100%;">
+        <div class="row" style="width:100%;margin-top:56px;margin-bottom:80px;">
             @foreach ($products as $product)
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="thumbnail" >
@@ -168,9 +171,15 @@
                 @endif
             @endfor
             </ul>
+        </div>
     </div>
-        @endif
-</div>
+@else
+    <div class="container">
+        <div class="row" style="margin-top:56px;margin-bottom:80px;">
+            <h1>Sorry,no available items yet.</h1>
+        </div>
+    </div>
+@endif
 
 <footer class="footer navbar-fixed-bottom" id = "aboutUs">
      <p style="text-align:center;"> copyright@2016 Bambu. All Rights Reserved<br>京ICP备15050380-2<br>

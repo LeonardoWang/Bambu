@@ -102,10 +102,33 @@
             }
 
             .panel,.panel-info, .panel-title,.panel-heading{
-                border-color: #e53935;
+                border-color: #888888;
                 background-color: white;   
             }
 
+            #file {
+                cursor: pointer;
+                position: relative;
+                display: inline-block;
+                background: #white;
+                border: 2px solid #b2bcc5;
+                border-radius: 4px;
+                padding: 0px 10px;
+                overflow: hidden;
+                color: #34495e;
+                text-decoration: none;
+                text-indent: 0;
+                line-height: 20px;
+            }
+
+            #file:hover,#file:active,#file:focus {
+                border-color: #e53935;
+                color: #004974;
+                text-decoration: none;
+            }
+            #home{
+                cursor: pointer;
+            }
         </style>
         <!-- bambu-color1:#e53935;
         bambu-color2:#f44336;
@@ -117,7 +140,7 @@
         
         <ul class="nav navbar-nav">
             <li>
-                <img onclick="home()" src='/public/img/favicon.ico' style="width:50px;"></img></li>
+                <img id="home" onclick="home()" src='/public/img/favicon.ico' style="width:50px;"></img></li>
             <li>
             @if (isset($user) > 0)
                     <a href="#"> hello, {{$user->name}} </a></li><li>

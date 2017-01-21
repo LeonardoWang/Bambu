@@ -128,9 +128,9 @@ class ItemsController extends Controller
 
     public function search($keyword)
     {
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+        //!!!!!!!!!!!!!!!!!!xp I need you!!!!!!!!!!!!!!!!!!!!!//
         if(isset($keyword))
-            return view('welcome',['products'=>Item::where('title', 'like', '%'.$keyword.'%')->get()]);
+            return view('welcome',['products'=>Item::where('title', 'like', '%'.$keyword.'%')->orWhere('description', 'like', '%'.$keyword.'%')->pluck('id')]);
         else
             return view('welcome');
         //->orWhere('description', 'like', '%'.$keyword.'%')->pluck('id')]);
@@ -149,6 +149,9 @@ class ItemsController extends Controller
             'image' => 'required|image'
         ]);
         
+        if(Auth::check())
+        {
+
         $user = Auth::user();
         $item = new Item;
         $item->title = $request->input('title');
@@ -167,10 +170,13 @@ class ItemsController extends Controller
                 $image_record->item_id = $item_id;
                 $image_record->filename = $file_name;
                 $item->image_file = $file_name;
-                if ($image_record->save() && $item->save()) {
-                    
-                    return $file_name;
-                } else {
+                if ($image_record->save() && $item->save()){
+                    echo "<script type='text/javascript'>alert('your item is successfully uploaded!')</script>";
+                    $products = Item::orderBy('updated_at', 'desc')->get();
+                    //return $file_name;
+                    return view('welcome',compact('user','products'));
+                }else {
+                    echo "<script type='text/javascript'>alert('There's something wrong! Please check your nerwork connection.)</script>";
                     return 0;
                 }
             }
@@ -180,6 +186,13 @@ class ItemsController extends Controller
         } else {
             return 'save error';
         }
+        }
+        else
+        {
+            echo "<script type='text/javascript'>alert('you haven't logged in!)</script>";
+            return view('auth.login');  
+        }
+
 
     }
 
