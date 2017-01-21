@@ -62,12 +62,13 @@ item uploading page
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <label class="col-sm-3 col-md-3 control-label" for="keywords">Keywords</label>
                         <div class="col-sm-8 col-md-8">
                             <input id="keywords" name="keywords" type="text" placeholder="what's the feature of your deal? seperate each keyword by;" class="form-control input-md">
                         </div>
                     </div>
+                    -->
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="submit"></label>
                         <div class="col-md-6">

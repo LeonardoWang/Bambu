@@ -142,7 +142,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="thumbnail" >
                             <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
-                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive">
+                            <img src="/public/api/product/images/{{$product->image_file}}" class="img-responsive">
                             
                             <div class="caption">
                                 <div class="row">

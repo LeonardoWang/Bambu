@@ -132,7 +132,7 @@ class ItemsController extends Controller
         if(isset($keyword))
         {
 
-           $products = Item::where('title', 'like', '%'.$keyword.'%')->orWhere('description', 'like', '%'.$keyword.'%')->get();
+            $products = Item::where('title', 'like', '%'.$keyword.'%')->orWhere('description', 'like', '%'.$keyword.'%')->get();
             return view('welcome',compact('user','products'));
             //view('welcome',['products'=>Item::where('title', 'like', '%'.$keyword.'%')->orWhere('description', 'like', '%'.$keyword.'%')->get()]);
         }
