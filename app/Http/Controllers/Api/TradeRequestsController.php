@@ -109,7 +109,9 @@ class TradeRequestsController extends Controller
 
     public function doRequest($id)
     {
-        return view('welcome',['products'=>Item::where('id', $id)->get()]);
+        $products = Item::where('id', $id)->get();
+        $comments = Comment::where('item_id',$id)->get();
+        return view('welcome',compact('products','comments'));
     }
 
     public function postRequest(Request $request)

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserInformation extends Model
+class Comment extends Model
 {
     public $table = 'comment_table';
     public function item()
