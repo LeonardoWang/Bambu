@@ -41,4 +41,6 @@ class HomeController extends Controller
     {
         return view('Home');
     }
+
+    
 }
