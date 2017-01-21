@@ -11,6 +11,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\TradeRequest;
 use App\Item;
+use App\Comment;
 class TradeRequestsController extends Controller
 {
     /**
@@ -108,6 +109,26 @@ class TradeRequestsController extends Controller
 
     public function doRequest($id)
     {
-        return view('productshow',['products'=>Item::where('id', $id)->get()]);
+        $products = Item::where('id', $id)->get();
+        $comments = Comment::where('item_id',$id)->get();
+        return view('welcome',compact('products','comments'));
+        //return view('productshow',['products'=>Item::where('id', $id)->get()]);
+    }
+
+    public function postRequest(Request $request)
+    {
+        $this->validate($request, [
+            'user_id' => 'required',
+            'item_id' => 'required',
+            'message' => 'required',
+        ]);
+        $comment = new Comment;
+        $comment->user_id = $request->input('user_id');
+        $comment->item_id = $request->input('item_id');
+        $comment->message = $request->input('message');
+        if($comment->save())
+            return 1;
+        else 
+            return 0;
     }
 }
