@@ -5,7 +5,7 @@ trade confirmation page
 @extends('base')
 
 @section('content')
-    @if (!isset($product) > 0)
+    @if (isset($products)==1)
         @foreach ($products as $product)
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <div><h5>item info</h5></div>
@@ -45,17 +45,22 @@ trade confirmation page
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="file">And/Or add item for trade</label>
+                        <label class="col-md-3 control-label" for="itemfortrade">And/Or add item for trade</label>
                         <div class="col-md-9">
-                            <input id="file" name="image" class="form-control input-md" type="file" accept="image/jpeg, image/png">
+                            <input id="itemfortrade" name="itemfortrade" type="text" placeholder="your item" class="form-control input-md">
+                            <!--<input id="file" name="image" class="form-control input-md" type="file" accept="image/jpeg, image/png">-->
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="textarea">Leave a message</label>
+                        <label class="col-md-3 control-label" for="message">Leave a message</label>
                         <div class="col-md-9">
-                            <textarea class="form-control" id="textarea" name="description" placeholder="any more specific comments?"></textarea>
+                            <textarea class="form-control" id="message" name="message" placeholder="any more specific about your trade offer?"></textarea>
                         </div>
                     </div>
+
+                    <input name="user_id" type="hidden" value="{{$product->user_id}}">
+                    <input name="item_id" type="hidden" value="{{$user->id}}">
+
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="submit"></label>
                         <div class="col-md-9">

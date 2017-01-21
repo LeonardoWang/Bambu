@@ -152,6 +152,7 @@
                                         <p><label>￥{{$product->price}}</label></p>
                                         <p>{{$product->description}}</p>
                                         <p>{{$product->created_at}}</p>
+                                        <!--<p>created by user:{{$product->user_id}}</p>-->
                                     </div>
                                 </div>
                                 <div class="row">

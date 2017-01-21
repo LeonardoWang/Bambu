@@ -128,7 +128,7 @@ class TradeRequestsController extends Controller
         $comment = new Comment;
         $comment->user_id = $request->input('user_id');
         $comment->item_id = $request->input('item_id');
-        $comment->message = $request->input('message');
+        $comment->description = $request->input('message');
         if($comment->save())
             {echo "<script type='text/javascript'>alert('your comment is successfully added!')</script>";
             return 1;
