@@ -8,12 +8,12 @@
         <meta name="viewport" content="width=100%, initial-scale=1.0, maximum-scale=1.0">
 
         <!-- Loading Bootstrap -->
-        <link href="/public/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Loading Flat UI -->
-        <link href="/public/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
+        <link href="/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
 
-        <link rel="shortcut icon" href="/public/img/favicon.ico">
+        <link rel="shortcut icon" href="/img/favicon.ico">
 
 
         <title>Bambu</title>
@@ -152,7 +152,7 @@
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
                 <span class="sr-only">Toggle navigation</span>
               </button>
-              <img id="home" onclick="home()" src='/public/img/favicon.ico'></img>
+              <img id="home" onclick="home()" src='/img/favicon.ico'></img>
             </div>
             <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
               <ul class="nav navbar-nav">
@@ -208,7 +208,7 @@
             window.location.href="/";
         }
     </script>
-    <script src="/public/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
-    <script src="/public/Flat-UI-master/docs/assets/js/application.js"></script>
-    <script src="/public/Flat-UI-master/dist/js/flat-ui.min.js"></script>
+    <script src="/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
+    <script src="/Flat-UI-master/docs/assets/js/application.js"></script>
+    <script src="/Flat-UI-master/dist/js/flat-ui.min.js"></script>
 </html>

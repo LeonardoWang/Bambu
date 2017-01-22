@@ -211,7 +211,7 @@ class ItemsController extends Controller
     {
         $user = Auth::user();
         $products = Item::where('user_id', $user->id)->orderBy('updated_at', 'desc')->get();
-        return view('welcome',compact('user','products'));
+        return view('myproduct',compact('user','products'));
         //view('welcome',['products'=>Item::where('user_id', $user->id)->orderBy('updated_at', 'desc')->get()]);
     }
 }

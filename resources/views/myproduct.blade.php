@@ -177,39 +177,7 @@
           </nav><!-- /navbar -->
     </div>
 </div>
-<!--
-<nav class="navbar navbar-fixed-top" role="navigation">
-    <div class="container-fluid" style="background-color:#e53935;">
-        
-        <ul class="nav navbar-nav">
-            <li>
-                <img id="home" onclick="home()" src='/img/favicon.ico' style="width:50px;"></img></li>
-            <li>
-            @if (isset($user) > 0)
-                    <a href="#"> hello, {{$user->name}} </a></li><li>
-                    <a href="/logout" >logout</a>
-                @else
-                    <a href="/login" >login</a>
-                @endif
-            </li>
-          <li>
-            <a href ="/api/product">post item</a>
-            </li>
-          <li>
-            <a href="/api/product/myProduct">my items</a>
-          </li>
-          <li><a href="#aboutUs">about us</a></li>
-          <li><div class="navbar-form navbar-right">
-              <div class="form-group">
-                <input type="text" id="inpu1" name="keyword" class="form-control" placeholder="Search"/>
-              </div>
-              <button onclick="sb()" class="btn btn-primary bambu-color1" style="background-color:#f44336">search</button>
-            </div>
-            </li>
-        </ul>
-    </div>
-</nav>
--->
+
 @if (isset($products) > 0)
     <div class="container" style="width:100%;">
         <div class="row" style="width:100%;margin-top:56px;margin-bottom:80px;">

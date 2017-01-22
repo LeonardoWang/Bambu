@@ -12,7 +12,7 @@ trade confirmation page
                 <div>
                     <div class="thumbnail" >
                         <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
-                        <img src="/public/api/product/images/{{$product->image_file}}" class="img-responsive">
+                        <img src="/api/product/images/{{$product->image_file}}" class="img-responsive">
                             
                         <div class="caption">
                             <div class="row">
@@ -58,8 +58,8 @@ trade confirmation page
                         </div>
                     </div>
 
-                    <input name="user_id" type="hidden" value="{{$product->user_id}}">
-                    <input name="item_id" type="hidden" value="{{$user->id}}">
+                    <input name="user_id" type="hidden" value="{{$user->id}}">
+                    <input name="item_id" type="hidden" value="{{$product->id}}">
 
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="submit"></label>

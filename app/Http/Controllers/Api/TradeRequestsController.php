@@ -119,7 +119,8 @@ class TradeRequestsController extends Controller
 
     public function postRequest(Request $request)
     {
-        
+        return $request->input('user_id');
+
         
         $this->validate($request, [
             'user_id' => 'required',
@@ -136,7 +137,7 @@ class TradeRequestsController extends Controller
         if($comment->save())
         {
             echo "<script type='text/javascript'>alert('your comment is added successfully!')</script>";
-            return 1;
+            return view('productshow',compact('user','products','comments'));
         }
         else 
         {
