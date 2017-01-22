@@ -142,7 +142,8 @@ class ItemsController extends Controller
     }
     public function ProductIndex()
     {
-        return view('product');
+        $user = Auth::user();
+        return view('product')->with('user',$user);
     }
 
     public function ProductAdd(Request $request)

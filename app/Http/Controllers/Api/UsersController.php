@@ -88,7 +88,7 @@ class UsersController extends Controller
         }
         else {
             
-            return back()->withErrors('登录失败');//back()->with('errors','登录失败');
+            return back()->withErrors('login failed!');//back()->with('errors','登录失败');
         }
 
         
@@ -120,6 +120,7 @@ class UsersController extends Controller
 
             $userinformation->save();
             Auth::login($user);
+            echo "<script type='text/javascript'>alert('you have successfully registered!)</script>";
             return redirect()->intended('/');
             /*User::where('email', $request->input('email'))->first();*/
         }
