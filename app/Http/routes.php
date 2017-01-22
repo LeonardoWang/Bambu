@@ -50,7 +50,7 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 	Route::get('items/search/{keyword}', 'Api\ItemsController@search');
 	Route::get('trade_requests/{id}','Api\TradeRequestsController@doRequest');
 	Route::post('trade_request_making','Api\TradeRequestsController@postRequest');
-	Route::resource('trade_requests', 'Api\TradeRequestsController', ['only' => ['index', 'store', 'show']]);
+	//Route::resource('trade_requests', 'Api\TradeRequestsController', ['only' => ['index', 'store', 'show']]);
 	
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	//Route::post('trade_requests/{id}', 'Api\TradeRequestsController@update');
