@@ -17,6 +17,8 @@ class CreateCommentsTable extends Migration
           $table->integer('item_id');
           $table->integer('user_id');
           $table->text('message');
+          $table->text('itemfortrade');
+          $table->text('price');
           $table->timestamps();
       });
     }

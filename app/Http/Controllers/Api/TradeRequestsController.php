@@ -124,22 +124,22 @@ class TradeRequestsController extends Controller
         $this->validate($request, [
             'user_id' => 'required',
             'item_id' => 'required',
-            'description' => 'required',
+            'message' => 'required',
         ]);
         $comment = new Comment;
         $comment->user_id = $request->input('user_id');
         $comment->item_id = $request->input('item_id');
         //$comment->description = $request->input('message');
-        $comment->message = $request->input('description');
+        $comment->message = $request->input('message');
         if($comment->save())
         {
-            return 1;
+           
             echo "<script type='text/javascript'>alert('your comment is successfully added!')</script>";
             return 1;
         }
         else 
         {
-            return 0;
+            
             echo "<script type='text/javascript'>alert('your comment is not successfully added!')</script>";
             return 0;
         }       
