@@ -27,7 +27,7 @@ trade confirmation page
                 </div>
             </div>
             <div class="col-lg-4 col-lg-offset-1 col-md-6 col-md-offset-1 col-sm-4 col-sm-offset-1" style="margin-top:10%">
-                        <form method="POST" action="/api/trade_request_making" class="form-horizontal" enctype="multipart/form-data" role="form">
+                        <form method="post" action="/api/trade_request_making" class="form-horizontal" enctype="multipart/form-data" role="form">
                 {!! csrf_field() !!}
                 <fieldset>
                     <!-- Text input-->
