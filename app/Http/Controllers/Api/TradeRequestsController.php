@@ -119,24 +119,28 @@ class TradeRequestsController extends Controller
 
     public function postRequest(Request $request)
     {
-        
-        
+        //echo "<script type='text/javascript'>alert('begin posting comment')</script>";
         $this->validate($request, [
             'user_id' => 'required',
             'item_id' => 'required',
             'message' => 'required',
+            'price' => 'required',
         ]);
         $comment = new Comment;
         $comment->user_id = $request->input('user_id');
+        $comment->user_name = $request->input('user_name');
         $comment->item_id = $request->input('item_id');
-
-        //$comment->description = $request->input('message');
         $comment->message = $request->input('message');
-
+        $comment->itemfortrade = $request->input('itemfortrade');
+        $comment->price = $request->input('price');
+        
         if($comment->save())
         {
+            $user = Auth::user();
+            $products = Item::where('id', $comment->item_id)->get();
+            $comments = Comment::where('item_id',$comment->item_id)->get();
             echo "<script type='text/javascript'>alert('your comment is added successfully!')</script>";
-            return 1;
+            return view('productshow',compact('user','products','comments'));
         }
         else 
         {

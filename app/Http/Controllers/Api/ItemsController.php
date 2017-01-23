@@ -50,6 +50,7 @@ class ItemsController extends Controller
         $item->title = $request->input('title');
         $item->number = $request->input('number');
         $item->user_id = $request->input('user_id');
+        $item->user_name = $request->input('user_name');
         $item->price = $request->input('price');
         $item->description = $request->input('description');
         $item->status = $request->input('status');
@@ -117,7 +118,10 @@ class ItemsController extends Controller
     {
         $item = Item::find($id);
         $item->delete();
-        return 1;
+        $user = Auth::user();
+        $products = Item::where('user_id', $user->id)->orderBy('updated_at', 'desc')->get();
+        echo "<script type='text/javascript'>alert('Your item is successfully deleted!')</script>";
+        return view('myproduct',compact('user','products')); 
     }
 
     public function images($id)
@@ -142,7 +146,8 @@ class ItemsController extends Controller
     }
     public function ProductIndex()
     {
-        return view('product');
+        $user = Auth::user();
+        return view('product')->with('user',$user);
     }
 
     public function ProductAdd(Request $request)
@@ -161,6 +166,7 @@ class ItemsController extends Controller
         $item = new Item;
         $item->title = $request->input('title');
         $item->user_id = $user->id;
+        $item->user_name = $user->name;
         $item->price = $request->input('price');
         $item->description = $request->input('description');
         $item->status = 'unreviewed';
@@ -182,7 +188,7 @@ class ItemsController extends Controller
                     //return $file_name;
                     return view('welcome',compact('user','products'));
                 }else {
-                    echo "<script type='text/javascript'>alert('There's something wrong! Please check your nerwork connection.)</script>";
+                    echo "<script type='text/javascript'>alert('There's something wrong! Please check your nerwork connection.')</script>";
                     return 0;
                 }
             }
@@ -195,7 +201,7 @@ class ItemsController extends Controller
         }
         else
         {
-            echo "<script type='text/javascript'>alert('you haven't logged in!)</script>";
+            echo "<script type='text/javascript'>alert('you haven't logged in!')</script>";
             return view('auth.login');  
         }
 
@@ -211,7 +217,7 @@ class ItemsController extends Controller
     {
         $user = Auth::user();
         $products = Item::where('user_id', $user->id)->orderBy('updated_at', 'desc')->get();
-        return view('welcome',compact('user','products'));
+        return view('myproduct',compact('user','products'));
         //view('welcome',['products'=>Item::where('user_id', $user->id)->orderBy('updated_at', 'desc')->get()]);
     }
 }

@@ -8,12 +8,12 @@
         <meta name="viewport" content="width=100%, initial-scale=1.0, maximum-scale=1.0">
 
         <!-- Loading Bootstrap -->
-        <link href="/public/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Loading Flat UI -->
-        <link href="/public/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
+        <link href="/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
 
-        <link rel="shortcut icon" href="/public/img/favicon.ico">
+        <link rel="shortcut icon" href="/img/favicon.ico">
 
 
         <title>Bambu</title>
@@ -26,14 +26,20 @@
 
             }
 
+
             body {
                 margin: 0;
                 padding: 0;
                 width: 100%;
                 display: table;
-                font-family: sans-serif, Helvetica, Arial, 'Microsoft Yahei'; 
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; 
             }
-  
+
+            img{
+                max-width: 500px;
+                max-height: 500px;
+            }
+
             a,a:hover,a:focus,a:active,a:visited {
                 cursor: pointer;
                 color: white;
@@ -146,13 +152,13 @@
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
                 <span class="sr-only">Toggle navigation</span>
               </button>
-              <img id="home" onclick="home()" src='/public/img/favicon.ico'></img>
+              <img id="home" onclick="home()" src='/img/favicon.ico'>
             </div>
             <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
               <ul class="nav navbar-nav">
                 <li>
                 @if (isset($user) > 0)
-                    <a href="#"> hello, {{$user->name}} </a></li><li>
+                    <a href="/api/users_information"> hello, {{$user->name}} </a></li><li>
                     <a href="/logout" >logout</a>
                 @else
                     <a href="/login" >login</a>
@@ -176,14 +182,13 @@
             </div><!-- /.navbar-collapse -->
           </nav><!-- /navbar -->
     </div>
-</div>
 <!--
 <nav class="navbar navbar-fixed-top" role="navigation">
     <div class="container-fluid" style="background-color:#e53935;">
         
         <ul class="nav navbar-nav">
             <li>
-                <img id="home" onclick="home()" src='/public/img/favicon.ico' style="width:50px;"></img></li>
+                <img id="home" onclick="home()" src='/img/favicon.ico' style="width:50px;"></img></li>
             <li>
             @if (isset($user) > 0)
                     <a href="#"> hello, {{$user->name}} </a></li><li>
@@ -212,32 +217,46 @@
 -->
 @if (isset($products) > 0)
     <div class="container" style="width:100%;">
-        <div class="row" style="width:100%;margin-top:56px;margin-bottom:80px;">
+        <div class="row" style="width:100%;margin-top:58px;padding-bottom:80px;">
             @foreach ($products as $product)
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="thumbnail" >
                             <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
-                            <img src="/public/api/product/images/{{$product->image_file}}" class="img-responsive">
+                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive">
                             
                             <div class="caption">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <h5>{{$product->title}}</h5>
+                                        <div style="color:#9aa4af; overflow:hidden; height:35px;">
+                                            <p style="margin:0 0 0 0px;">{{$product->description}}</p>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-7 col-xs-6" style="text-align:left;padding-left: 0px;">
+                                            <div class="col-lg-1 col-md-1 col-sm-1" style="padding-left:5px;">
+                                            <img style="width:20px;" src="/img/icons/svg/clocks.svg"/>
+                                            </div>
+                                            <div class="col-lg-9 col-md-9 col-sm-9">
+                                            <p style="color:#bdc3c7; font-size:15px; margin-top:5px;">{{substr($product->created_at,0,10)}}<p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6" style="text-align:left;">
+                                            <p style="color:#f44336; margin-top:0px;">￥{{$product->price}}</p>
+                                        </div>
+                                        <!--<h5>{{$product->title}}</h5>-->
                                         <!--<p>{{$product->image_file}}</p>-->
-                                        <p><label>￥{{$product->price}}</label></p>
-                                        <p>{{$product->description}}</p>
-                                        <p>{{$product->created_at}}</p>
-                                        <!--<p>created by user:{{$product->user_id}}</p>-->
+                                        <!--<p>created by <a href="#" class="bambu-color1">{{$product->user_name}}</a></p>-->
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-offset-3">
-                                        <a href="/api/trade_requests/{{$product->id}}" class="btn btn-success btn-product bambu-color1"><span class="fa fa-shopping-cart"></span> I want it!</a></div>
+                                        <a href="/api/trade_requests/{{$product->id}}" class="btn btn-success btn-product bambu-color1"><span class="fa fa-shopping-cart"></span> I want it!</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
             @endforeach
+            <!--pagination
             <ul class="col-sm-12 col-md-12 col-lg-12 pagination">
             @for ($i = 1; $i < count($products)/3;$i++)
                 @if($i==1)
@@ -247,6 +266,7 @@
                 @endif
             @endfor
             </ul>
+            -->
         </div>
     </div>
 @else
@@ -275,8 +295,8 @@
             window.location.href="/";
         }
     </script>
-    <script src="/public/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
-    <script src="/public/Flat-UI-master/docs/assets/js/application.js"></script>
-    <script src="/public/Flat-UI-master/dist/js/flat-ui.min.js"></script>
+    <script src="/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
+    <script src="/Flat-UI-master/docs/assets/js/application.js"></script>
+    <script src="/Flat-UI-master/dist/js/flat-ui.min.js"></script>
     </body>
 </html>

@@ -7,34 +7,44 @@ trade confirmation page
 @section('content')
     @if (isset($products)==1)
         @foreach ($products as $product)
-            <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12" style="padding-bottom:80px;">
                 <div style="padding-top:60px;"><h5>item info</h5></div>
                 <div>
                     <div class="thumbnail" >
                         <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
-                        <img src="/public/api/product/images/{{$product->image_file}}" class="img-responsive">
+                        <img src="/api/product/images/{{$product->image_file}}" class="img-responsive">
                             
                         <div class="caption">
                             <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <p>name:{{$product->title}}</p>
-                                    <p>price:￥{{$product->price}}</p>
-                                    <p>seller:{{$product->user_id}}</p>
+                                <div class="col-lg-12 col-md-12 col-sm-12" style="text-align:left;">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <p style="color:#f44336;">￥{{$product->price}}</p>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <p>seller: <a href="#" class="normala">{{$product->user_name}}</a></p>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div style="overflow: auto; height:120px;"><p>{{$product->description}}</p></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-lg-offset-1 col-md-6 col-md-offset-1 col-sm-4 col-sm-offset-1" style="margin-top:10%">
-                        <form method="post" action="/api/trade_request_making" class="form-horizontal" enctype="multipart/form-data" role="form">
+            <div class="col-lg-4 col-lg-offset-1 col-md-5 col-sm-12 col-xs-12" style="margin-top:8%">
+                <form method="post" action="/api/trade_request_making" class="form-horizontal" enctype="multipart/form-data" role="form">
                 {!! csrf_field() !!}
                 <fieldset>
+                    <div class="form-group">               
+                        <label class="col-md-3 control-label" style="font-size:24px;"><b>{{$product->title}}</b>
+                    </label>
+                    </div>
                     <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-sm-4 col-md-3 control-label" for="name">Item price</label>
-                        <div class="col-sm-8 col-md-9">
-                            <p>￥{{$product->price}}</p>
+                    <div class="form-group">               
+                        <label class="col-md-3 control-label">Price</label>
+                        <div class="col-md-9">
+                            <p style="margin:0 0 0 0px; color:#f44336;">￥{{$product->price}}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -58,8 +68,9 @@ trade confirmation page
                         </div>
                     </div>
 
-                    <input name="user_id" type="hidden" value="{{$product->user_id}}">
-                    <input name="item_id" type="hidden" value="{{$user->id}}">
+                    <input name="user_name" type="hidden" value="{{$user->name}}">
+                    <input name="user_id" type="hidden" value="{{$user->id}}">
+                    <input name="item_id" type="hidden" value="{{$product->id}}">
 
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="submit"></label>
@@ -69,8 +80,48 @@ trade confirmation page
                         </div>
                     </div>
                 </fieldset>
-            </form>
-        </div>
+                </form>
+                <hr style="margin-top:-30px;">
+                <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom:70px">
+                    @if (isset($comments)>0)
+                        <p>Comments to this item:</p>
+                        @foreach ($comments as $comment)
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                <p style="margin-top:0px;">{{$comment->user_name}}</p>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="text-align:left;">
+                                <div class="thumbnail" >
+                                <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
+                                <div class="caption">
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-8 col-sm-7 col-xs-6" style="text-align:left;">
+                                            <p style="margin:0 0 0 0px;">{{$comment->message}}</p>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6" style="text-align:left;">
+                                            <p style="color:#bdc3c7; font-size:10px; margin-top:0px;">{{substr($comment->created_at,0,10)}}<p>
+                                            <p style="color:#f44336; margin:0 0 0 0px;">￥ {{$comment->price}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    @else
+                        <div class="thumbnail" >
+                            <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
+                            <div class="caption">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <p>Not any comment yet</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </div>
         @endforeach
     @endif
 @endsection

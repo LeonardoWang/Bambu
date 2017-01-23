@@ -8,12 +8,12 @@
         <meta name="viewport" content="width=100%, initial-scale=1.0, maximum-scale=1.0">
 
         <!-- Loading Bootstrap -->
-        <link href="/public/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Loading Flat UI -->
-        <link href="/public/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
+        <link href="/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
 
-        <link rel="shortcut icon" href="/public/img/favicon.ico">
+        <link rel="shortcut icon" href="/img/favicon.ico">
 
 
         <title>Bambu</title>
@@ -30,7 +30,7 @@
                 padding: 0;
                 width: 100%;
                 display: table;
-                font-family: sans-serif, Helvetica, Arial, 'Microsoft Yahei'; 
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; 
             }
             
             img{
@@ -38,13 +38,13 @@
                 max-height: 500px;
             }
 
-            a,a:hover,a:focus,a:active,a:visited {
+            a{
                 color: white;
-                background-color:#e53935;
                 border-color:#e53935;
                 }
 
-            a:focus,a:active{
+            a:hover,a:focus,a:active{
+                color:#bdc3c7;
                 background: hsla(0,0%,7%,0.5);
                 background-color: rgba(17,17,17,0.5);
                 background-image: none;
@@ -134,11 +134,31 @@
                 color:#bdc3c7;
             }
 
-
             #home{
                 width:53px;
                 cursor: pointer;
             }
+
+            .normala{
+                color:#34495e;
+                background-color: white;
+                font-style: italic;
+            }
+
+            .login-link{
+                color:#bdc3c7;
+                display: inline-block;
+                background-color:white;
+                margin-top:0px;
+                text-align: right;
+            }
+
+            .login-link:hover,.login-link:focus,.login-link:active{
+                color:#444444;
+                background-color:white;
+                border-color:none;
+                }
+
         </style>
                 <!-- bambu-color1:#e53935;
         bambu-color2:#f44336;
@@ -152,13 +172,13 @@
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
                 <span class="sr-only">Toggle navigation</span>
               </button>
-              <img id="home" onclick="home()" src='/public/img/favicon.ico'></img>
+              <img id="home" onclick="home()" src='/img/favicon.ico'>
             </div>
             <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
               <ul class="nav navbar-nav">
                 <li>
                 @if (isset($user) > 0)
-                    <a href="#"> hello, {{$user->name}} </a></li><li>
+                    <a href="/api/users_information"> hello, {{$user->name}} </a></li><li>
                     <a href="/logout" >logout</a>
                 @else
                     <a href="/login" >login</a>
@@ -208,7 +228,7 @@
             window.location.href="/";
         }
     </script>
-    <script src="/public/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
-    <script src="/public/Flat-UI-master/docs/assets/js/application.js"></script>
-    <script src="/public/Flat-UI-master/dist/js/flat-ui.min.js"></script>
+    <script src="/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
+    <script src="/Flat-UI-master/docs/assets/js/application.js"></script>
+    <script src="/Flat-UI-master/dist/js/flat-ui.min.js"></script>
 </html>
