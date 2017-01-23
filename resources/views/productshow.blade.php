@@ -8,12 +8,11 @@ trade confirmation page
     @if (isset($products)==1)
         @foreach ($products as $product)
             <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12" style="padding-bottom:80px;">
-                <div style="padding-top:60px;"><h5>item info</h5></div>
-                <div>
+                <div style="padding-top:60px;">
                     <div class="thumbnail" >
-                        <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
-                        <img src="/api/product/images/{{$product->image_file}}" class="img-responsive">
-                            
+                        <div class="demo-image" data-image="/api/product/images/{{$product->image_file}}" data-title="{{$product->title}}" data-caption="{{$product->description}}">
+                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive">
+                        </div>
                         <div class="caption">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12" style="text-align:left;">
