@@ -50,6 +50,7 @@ class ItemsController extends Controller
         $item->title = $request->input('title');
         $item->number = $request->input('number');
         $item->user_id = $request->input('user_id');
+        $item->user_name = $request->input('user_name');
         $item->price = $request->input('price');
         $item->description = $request->input('description');
         $item->status = $request->input('status');
@@ -162,6 +163,7 @@ class ItemsController extends Controller
         $item = new Item;
         $item->title = $request->input('title');
         $item->user_id = $user->id;
+        $item->user_name = $user->name;
         $item->price = $request->input('price');
         $item->description = $request->input('description');
         $item->status = 'unreviewed';

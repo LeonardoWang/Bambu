@@ -124,9 +124,11 @@ class TradeRequestsController extends Controller
             'user_id' => 'required',
             'item_id' => 'required',
             'message' => 'required',
+            'price' => 'required',
         ]);
         $comment = new Comment;
         $comment->user_id = $request->input('user_id');
+        $comment->user_name = $request->input('user_name');
         $comment->item_id = $request->input('item_id');
         $comment->message = $request->input('message');
         $comment->itemfortrade = $request->input('itemfortrade');

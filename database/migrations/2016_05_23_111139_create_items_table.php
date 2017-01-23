@@ -16,6 +16,7 @@ class CreateItemsTable extends Migration
           $table->increments('id');
           $table->string('title');
           $table->integer('user_id');
+          $table->string('user_name');
           $table->float('price');
           $table->text('description');
           $table->string('image_file');

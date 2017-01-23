@@ -15,10 +15,11 @@ class CreateCommentsTable extends Migration
         Schema::create('comment_table', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('item_id');
-          $table->text('user_id');
+          $table->integer('user_id');
+          $table->string('user_name');
           $table->text('message');
           $table->text('itemfortrade');
-          $table->text('price');
+          $table->float('price');
           $table->timestamps();
       });
     }

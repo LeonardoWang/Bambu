@@ -134,11 +134,17 @@
                 color:#bdc3c7;
             }
 
-
             #home{
                 width:53px;
                 cursor: pointer;
             }
+
+            .normala{
+                color:#34495e;
+                background-color: white;
+                font-style: italic;
+            }
+
         </style>
                 <!-- bambu-color1:#e53935;
         bambu-color2:#f44336;

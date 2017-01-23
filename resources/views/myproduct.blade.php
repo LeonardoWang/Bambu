@@ -190,17 +190,17 @@
                             <div class="caption">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <h5>{{$product->title}}</h5>
+                                        <!--<h5>{{$product->title}}</h5>-->
                                         <!--<p>{{$product->image_file}}</p>-->
                                         <p><label>￥{{$product->price}}</label></p>
-                                        <p>{{$product->description}}</p>
-                                        <p>{{$product->created_at}}</p>
+                                        <p style="overflow: hidden">{{$product->description}}</p>
+                                        <p>{{substr($product->created_at,0,10)}}</p>
                                         <!--<p>created by user:{{$product->user_id}}</p>-->
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-offset-3">
-                                        <a href="/api/trade_requests/{{$product->id}}" class="btn btn-success btn-product bambu-color1"><span class="fa fa-shopping-cart"></span> I want it!</a></div>
+                                        <a href="/api/trade_requests/{{$product->id}}" class="btn btn-success btn-product bambu-color1"><span class="fa fa-shopping-cart"></span> Delete it</a></div>
                                 </div>
                             </div>
                         </div>
