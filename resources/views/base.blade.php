@@ -30,7 +30,7 @@
                 padding: 0;
                 width: 100%;
                 display: table;
-                font-family: sans-serif, Helvetica, Arial, 'Microsoft Yahei'; 
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; 
             }
             
             img{
@@ -172,13 +172,13 @@
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
                 <span class="sr-only">Toggle navigation</span>
               </button>
-              <img id="home" onclick="home()" src='/img/favicon.ico'/>
+              <img id="home" onclick="home()" src='/img/favicon.ico'>
             </div>
             <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
               <ul class="nav navbar-nav">
                 <li>
                 @if (isset($user) > 0)
-                    <a href="#"> hello, {{$user->name}} </a></li><li>
+                    <a href="/api/users_information"> hello, {{$user->name}} </a></li><li>
                     <a href="/logout" >logout</a>
                 @else
                     <a href="/login" >login</a>

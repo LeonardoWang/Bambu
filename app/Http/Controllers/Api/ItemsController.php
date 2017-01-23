@@ -120,7 +120,7 @@ class ItemsController extends Controller
         $item->delete();
         $user = Auth::user();
         $products = Item::where('user_id', $user->id)->orderBy('updated_at', 'desc')->get();
-        echo "<script type='text/javascript'>alert('Your item is successfully deleted!)</script>";
+        echo "<script type='text/javascript'>alert('Your item is successfully deleted!')</script>";
         return view('myproduct',compact('user','products')); 
     }
 
@@ -188,7 +188,7 @@ class ItemsController extends Controller
                     //return $file_name;
                     return view('welcome',compact('user','products'));
                 }else {
-                    echo "<script type='text/javascript'>alert('There's something wrong! Please check your nerwork connection.)</script>";
+                    echo "<script type='text/javascript'>alert('There's something wrong! Please check your nerwork connection.')</script>";
                     return 0;
                 }
             }
@@ -201,7 +201,7 @@ class ItemsController extends Controller
         }
         else
         {
-            echo "<script type='text/javascript'>alert('you haven't logged in!)</script>";
+            echo "<script type='text/javascript'>alert('you haven't logged in!')</script>";
             return view('auth.login');  
         }
 

@@ -48,7 +48,7 @@ class UsersController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|unique:users|max:255',
-            'tel' => 'required'
+            'tel' => 'required|unique:users'
         ]);
         $user = User::find($id);
         $user->name = $request->input('name');
@@ -147,34 +147,52 @@ class UsersController extends Controller
         return $user->received_trade_requests()->orderBy('updated_at', 'desc')->get()->pluck('id');
     }
 
-    public function UserInformationUpdate(Request $request)
+    public function userInformationUpdate(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|unique:users|max:255',
+            'tel' => 'required|unique:users'
+        ]);
+        echo "<script type='text/javascript'>alert('111')</script>";
+                
+        $user = User::find($user->id);
+        $user->name = $request->input('name');
+        $user->tel = $request->input('tel');
         
-        $user = Auth::user();
-        $userinformation = UserInformation::find($user->id);
-        $userinformation->sex = $request->input('sex');
-        $userinformation->location = $request->input('location');
+        if ($user->save()) {
+            $user = Auth::user();
+            $userinformation = UserInformation::find($user->id);
+            $userinformation->sex = $request->input('sex');
+            $userinformation->location = $request->input('location');
 
-        if ($request->hasFile('image')) {
-            if(!empty($userinformation->user_image))
-            {
-                Storage::delete('images/' . $userinformation->user_image);
+            if ($request->hasFile('image')) {
+                if(!empty($userinformation->user_image)){
+                    Storage::delete('images/' . $userinformation->user_image);
+                }
+                $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+                Storage::put('images/' . $file_name,
+                    file_get_contents($request->file('image')->getRealPath()));
+                $userinformation->user_image = $file_name;
+                $userinformation->save();
+                echo "<script type='text/javascript'>alert('save with picture!')</script>";
+                $user_information = UserInformation::find($user->id);
+                return view('myprofile',compact('user','user_information'));
             }
-            $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
-            Storage::put('images/' . $file_name,
-                file_get_contents($request->file('image')->getRealPath()));
-            $userinformation->user_image = $file_name;
-            $userinformation->save();
-            return 'save with picture';
-        }
-        else {
-            $userinformation->save();
-            return 'save without picture';
+            else{
+                $userinformation->save();
+                echo "<script type='text/javascript'>alert('profile successfully update. Save without picture')</script>";
+                $user_information = UserInformation::find($user->id);
+                return view('myprofile',compact('user','user_information'));
+            }
+
+        } else {
+            echo "<script type='text/javascript'>alert('profile update failed! Please check your name and tel!')</script>";
+            return 0;
         }
 
     }
 
-    public function UserInormationPage()
+    public function userInformationPage()
     {
         $user = Auth::user();
         $user_information = UserInformation::find($user->id);
