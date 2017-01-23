@@ -5,7 +5,7 @@ myprofile page
 @extends('base')
 
 @section('content')
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" style="padding-top:60px;">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" style="margin-top:60px;">
         <div class="thumbnail" >
             <div class="caption">
                 <form method="post" action="/api/users/{{$user->id}}" class="form-horizontal" enctype="multipart/form-data" role="form">

@@ -65,10 +65,10 @@
     </div>
 
 <div class="container" style="width:100%;">
-                <div class="row">
-                    @yield('content')
-                </div>
-            </div>
+    <div class="row">
+        @yield('content')
+    </div>
+</div>
 
 <footer class="footer navbar-fixed-bottom" id = "aboutUs">
      <p style="text-align:center;"> copyright@2016 Bambu. All Rights Reserved<br>京ICP备15050380-2<br>
