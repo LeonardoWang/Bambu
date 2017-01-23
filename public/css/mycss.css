@@ -15,7 +15,21 @@
             a:hover,a:focus,a:active{
                 color:#bdc3c7;
                 background: hsla(0,0%,7%,0.5);
-                background-color: rgba(17,17,17,0.5);
+                background-color: white;
+                background-image: none;
+                background-clip: border-box;
+                background-position-x: 0%;
+                background-position-y: 0%;
+            }
+
+            .ba{
+                color:#34495e;
+            }
+
+            .ba:hover,.ba:focus,.ba:active{
+                color:#f44336;
+                background: hsla(0,0%,7%,0.5);
+                background-color: white;
                 background-image: none;
                 background-clip: border-box;
                 background-position-x: 0%;
@@ -137,3 +151,10 @@
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-bottom: 16px; }
+
+            .profile{
+                margin-top: -10px;
+                padding-bottom: 15px;
+                color:#34495e;
+                font-size: 20px;
+            }

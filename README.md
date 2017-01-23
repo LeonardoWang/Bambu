@@ -1,27 +1,18 @@
-After you download this, there are still several things to do to make it work.
+# [Bambu](http://www.thebambu.com), your idle item trading app
 
-First, you need to install composer:
-	curl -sS https://getcomposer.org/installer | php
-	mv composer.phar /usr/local/bin/composer
+![Bambu](https://github.com/LeonardoWang/Bambu/blob/master/public/img/favicon.ico)
+---
 
-Then cd to this folder, install all the packages needed:
-	composer install
+Bambu is a idle item trading platform. Here you can sell your idle items or find useful stuffs and take them home! 
 
-Then you should check your .env, make sure that all settings are corroct. If this file does not exist, you can copy .env.example to .env
+### Our website
+[www.thebambu.com](http://www.thebambu.com) 
 
-Next, run:
-	php artisan key:generate
-This gonna generate a key for the application
+### developer:
+1. [Marc Wong](https://github.com/MarcWong) 
+	* Front end enginer
+2. [Leonardo Wang](https://github.com/LeonardoWang)
+	* Back end enginer
 
-Finally, you need to change the root dir of your server to the folder public.
-Be aware: the rewrite module of apache must be enabled!
-	sudo ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
-And in apache2.conf or httpd.conf, the AllowOverride config of your directory should be: AllowOverride All
-
-Directories within the storage and the bootstrap/cache directories should be writable by your web server or Laravel will not run.
-
-Once you have configured your database settings in .env, you can run:
-	php artisan migrate:refresh --seed
-to create all the tables and the initial data.
-
-Here is a tutorial for laravel: https://lvwenhan.com/sort/laravel
+### Contact us
+[contact bambu](mailto:brucewayne@pku.edu.cn) 

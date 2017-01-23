@@ -12,6 +12,8 @@ use App\Http\Controllers\Controller;
 use App\TradeRequest;
 use App\Item;
 use App\Comment;
+use App\User;
+use App\UserInformation;
 class TradeRequestsController extends Controller
 {
     /**
@@ -126,7 +128,10 @@ class TradeRequestsController extends Controller
             'message' => 'required',
             'price' => 'required',
         ]);
+        $user = Auth::user();
+        $userinformation = UserInformation::find($user->id);
         $comment = new Comment;
+        $comment->user_image = $userinformation->user_image;
         $comment->user_id = $request->input('user_id');
         $comment->user_name = $request->input('user_name');
         $comment->item_id = $request->input('item_id');
@@ -134,9 +139,10 @@ class TradeRequestsController extends Controller
         $comment->itemfortrade = $request->input('itemfortrade');
         $comment->price = $request->input('price');
         
+
+
         if($comment->save())
         {
-            $user = Auth::user();
             $products = Item::where('id', $comment->item_id)->get();
             $comments = Comment::where('item_id',$comment->item_id)->get();
             echo "<script type='text/javascript'>alert('your comment is added successfully!')</script>";

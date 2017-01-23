@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Bambu, your idle items renting app</title>
-        <meta name="description" content="Bambu, your idle items renting app."/>
+        <title>Bambu, your idle items trading app</title>
+        <meta name="description" content="Bambu, your idle items trading app."/>
 
         <meta name="viewport" content="width=100%, initial-scale=1.0, maximum-scale=1.0">
 

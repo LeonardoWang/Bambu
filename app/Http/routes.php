@@ -37,6 +37,7 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 	Route::post('users/{id}', 'Api\UsersController@userInformationUpdate');
 	Route::get('users/{id}/delete', 'Api\UsersController@destroy');
 	Route::get('users_information','Api\UsersController@userInformationPage');
+	Route::get('user/{id}/info', 'Api\UsersController@otherUserInformationPage');
 	
 	Route::get('product','Api\ItemsController@ProductIndex');
 	Route::post('product/addProduct','Api\ItemsController@ProductAdd');

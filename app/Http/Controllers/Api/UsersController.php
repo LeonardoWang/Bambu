@@ -119,7 +119,9 @@ class UsersController extends Controller
             $userinformation = new UserInformation();
             $userinformation->user_id = $user->id;
             $userinformation->sex ='unknown';
-
+            $userinformation->location ='Earth';
+            $userinformation->user_image = '/img/default_user_profile.jpg';
+          
             $userinformation->save();
             Auth::login($user);
             echo "<script type='text/javascript'>alert('you have successfully registered!)</script>";
@@ -202,5 +204,11 @@ class UsersController extends Controller
         $user = Auth::user();
         $user_information = UserInformation::find($user->id);
         return view('myprofile',compact('user','user_information'));//view('user_information')->with('user_information',$user_information);
+    }
+    public function otheruserInformationPage($id)
+    {
+        $user = Auth::user();
+        $user_information = UserInformation::find($id);
+        return view('profile',compact('user','user_information'));//view('user_information')->with('user_information',$user_information);
     }
 }

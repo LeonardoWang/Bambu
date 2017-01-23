@@ -20,6 +20,7 @@ class CreateCommentsTable extends Migration
           $table->text('message');
           $table->text('itemfortrade');
           $table->float('price');
+          $table->string('user_image');
           $table->timestamps();
       });
     }

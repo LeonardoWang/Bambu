@@ -20,7 +20,7 @@ trade confirmation page
                                         <p style="color:#f44336;">￥{{$product->price}}</p>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <p>seller: <a href="#" class="normala">{{$product->user_name}}</a></p>
+                                        <p style="text-align:right;">seller: <a href="/api/user/{{$product->user_id}}/info/" class = "ba">{{$product->user_name}}</a></p>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div style="overflow: auto; max-height:180px;"><p>{{$product->description}}</p></div>
@@ -88,17 +88,20 @@ trade confirmation page
                         @foreach ($comments as $comment)
                         <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                                <p style="margin-top:0px;">{{$comment->user_name}}</p>
+                                <a href="/api/user/{{$comment->user_id}}/info/">
+                                    <img class="img-circle" src="{{$comment->user_image}}" style="max-width:80px;">
+                                </a>
                             </div>
                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="text-align:left;">
                                 <div class="thumbnail" >
                                 <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
-                                <div class="caption">
+                                <div class="caption" style="padding-top:0px;">
                                     <div class="row">
-                                        <div class="col-lg-8 col-md-8 col-sm-7 col-xs-6" style="text-align:left;">
-                                            <p style="margin:0 0 0 0px;">{{$comment->message}}</p>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-6" style="text-align:left;">
+                                            <p style="margin:0 0 0 0px;"><b><a href="/api/user/{{$comment->user_id}}/info/" class = "ba">{{$comment->user_name}}</a></b><br>
+                                                {{$comment->message}}</p>
                                         </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6" style="text-align:left;">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-6" style="text-align:left;">
                                             <p style="color:#bdc3c7; font-size:10px; margin-top:0px;">{{substr($comment->created_at,0,10)}}<p>
                                             <p style="color:#f44336; margin:0 0 0 0px;">￥ {{$comment->price}}</p>
                                         </div>
