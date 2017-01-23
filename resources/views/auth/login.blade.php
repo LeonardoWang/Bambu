@@ -48,8 +48,8 @@
 							</div>
 						</div>
 						<div class="form-group" style="text-align:right;">
-							<a href="/password/email" style="color:black; background-color:white;">Forgot Your Password?</a><br>
-							<a href="/register" style="color:black; background-color:white;">Register now</a>
+							<a href="/password/email" class="login-link">Forgot Your Password?</a><br>
+							<a href="/register" class="login-link">Register now</a>
 						</div>
 					</form>
 				</div>

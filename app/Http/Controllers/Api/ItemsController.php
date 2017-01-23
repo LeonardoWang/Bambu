@@ -118,7 +118,10 @@ class ItemsController extends Controller
     {
         $item = Item::find($id);
         $item->delete();
-        return 1;
+        $user = Auth::user();
+        $products = Item::where('user_id', $user->id)->orderBy('updated_at', 'desc')->get();
+        echo "<script type='text/javascript'>alert('Your item is successfully deleted!)</script>";
+        return view('myproduct',compact('user','products')); 
     }
 
     public function images($id)

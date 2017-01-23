@@ -48,6 +48,8 @@ class ImagesController extends Controller
         Storage::delete('images/' . $image_file);
         $image_record = Image::where('filename', $image_file)->first();
         $image_record->delete();
+        echo "<script type='text/javascript'>alert('your item is deleted successfully!')</script>";
+            
         return 1;
     }
 }

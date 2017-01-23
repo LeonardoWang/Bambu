@@ -178,6 +178,6 @@ class UsersController extends Controller
     {
         $user = Auth::user();
         $user_information = UserInformation::find($user->id);
-        return $user_information;//view('user_information')->with('user_information',$user_information);
+        return view('myprofile',compact('user','user_information'));//view('user_information')->with('user_information',$user_information);
     }
 }

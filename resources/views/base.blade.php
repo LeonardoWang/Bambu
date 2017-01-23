@@ -38,13 +38,13 @@
                 max-height: 500px;
             }
 
-            a,a:hover,a:focus,a:active,a:visited {
+            a{
                 color: white;
-                background-color:#e53935;
                 border-color:#e53935;
                 }
 
-            a:focus,a:active{
+            a:hover,a:focus,a:active{
+                color:#bdc3c7;
                 background: hsla(0,0%,7%,0.5);
                 background-color: rgba(17,17,17,0.5);
                 background-image: none;
@@ -145,6 +145,20 @@
                 font-style: italic;
             }
 
+            .login-link{
+                color:#bdc3c7;
+                display: inline-block;
+                background-color:white;
+                margin-top:0px;
+                text-align: right;
+            }
+
+            .login-link:hover,.login-link:focus,.login-link:active{
+                color:#444444;
+                background-color:white;
+                border-color:none;
+                }
+
         </style>
                 <!-- bambu-color1:#e53935;
         bambu-color2:#f44336;
@@ -158,7 +172,7 @@
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
                 <span class="sr-only">Toggle navigation</span>
               </button>
-              <img id="home" onclick="home()" src='/img/favicon.ico'></img>
+              <img id="home" onclick="home()" src='/img/favicon.ico'/>
             </div>
             <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
               <ul class="nav navbar-nav">

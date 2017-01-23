@@ -24,7 +24,7 @@ trade confirmation page
                                         <p>seller: <a href="#" class="normala">{{$product->user_name}}</a></p>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div style="overflow: scroll; height:120px;"><p>{{$product->description}}</p></div>
+                                        <div style="overflow: auto; height:120px;"><p>{{$product->description}}</p></div>
                                     </div>
                                 </div>
                             </div>

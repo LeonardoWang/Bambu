@@ -157,7 +157,7 @@
               <ul class="nav navbar-nav">
                 <li>
                 @if (isset($user) > 0)
-                    <a href="#"> hello, {{$user->name}} </a></li><li>
+                    <a href="/api/users_information"> hello, {{$user->name}} </a></li><li>
                     <a href="/logout" >logout</a>
                 @else
                     <a href="/login" >login</a>
