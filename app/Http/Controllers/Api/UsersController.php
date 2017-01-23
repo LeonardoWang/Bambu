@@ -151,59 +151,50 @@ class UsersController extends Controller
 
     public function userInformationUpdate(Request $request)
     {
-        
+        $user = Auth::user();
         $this->validate($request, [
             'name' => 'required|max:255',
-            'tel' => 'required'
         ]);
-        echo "<script type='text/javascript'>alert('111')</script>";
+        //echo "<script type='text/javascript'>alert('start updating')</script>";
         
-        $tmp_usr = User::where('tel', $request->tel);
-        if(isset($tmp_usr))
+        if($user->name != $request->input('name'))//change name
         {
-            return 0;// tel is used by other
+            $tmp_usr = User::where('name', $request->input('name'));
+            if(!isset($tmp_usr))
+            {
+                $user = Auth::user();
+                $user_information = UserInformation::find($user->id);
+                echo "<script type='text/javascript'>alert('this name is occupied by other!')</script>";
+                return view('myprofile',compact('user','user_information'));// tel is used by other
+            }
+            $user->name = $request->input('name');// user name is changed
+            $user->save();
+            echo "<script type='text/javascript'>alert('name changed successfully!')</script>";
         }
-        $user = User::find($request->id);
-        if($user->name != $request->input('name'))
-        {
-            return 0;// user name is changed
-        }
-        $user->name = $request->input('name');
-        $user->tel = $request->input('tel');
-        
-
-        if ($user->save()) {
             
-            $user = Auth::user();
-            $userinformation = UserInformation::find($user->id);
-            $userinformation->sex = $request->input('sex');
-            $userinformation->location = $request->input('location');
+        $userinformation = UserInformation::find($user->id);
+        $userinformation->sex = $request->input('sex');
+        $userinformation->location = $request->input('location');
 
-            if ($request->hasFile('image')) {
-                if(!empty($userinformation->user_image)){
-                    Storage::delete('images/' . $userinformation->user_image);
-                }
-                $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
-                Storage::put('images/' . $file_name,
-                    file_get_contents($request->file('image')->getRealPath()));
-                $userinformation->user_image = $file_name;
-                $userinformation->save();
-                echo "<script type='text/javascript'>alert('save with picture!')</script>";
-                $user_information = UserInformation::find($user->id);
-                return view('myprofile',compact('user','user_information'));
+        if ($request->hasFile('image')) {
+            if(!empty($userinformation->user_image)){
+                Storage::delete('images/' . $userinformation->user_image);
             }
-            else{
-                $userinformation->save();
-                echo "<script type='text/javascript'>alert('profile successfully update. Save without picture')</script>";
-                $user_information = UserInformation::find($user->id);
-                return view('myprofile',compact('user','user_information'));
-            }
-
-        } else {
-            echo "<script type='text/javascript'>alert('profile update failed! Please check your name and tel!')</script>";
-            return 0;
+            $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+            Storage::put('images/' . $file_name,
+                file_get_contents($request->file('image')->getRealPath()));
+            $userinformation->user_image = $file_name;
+            $userinformation->save();
+            echo "<script type='text/javascript'>alert('save with picture!')</script>";
+            $user_information = UserInformation::find($user->id);
+            return view('myprofile',compact('user','user_information'));
         }
-
+        else{
+            $userinformation->save();
+            echo "<script type='text/javascript'>alert('profile successfully update. Save without picture')</script>";
+            $user_information = UserInformation::find($user->id);
+            return view('myprofile',compact('user','user_information'));
+        }
     }
 
     public function userInformationPage()
