@@ -1,19 +1,27 @@
 <!doctype html>
 <html>
   <head>
-   <script src="http://localhost:6001/socket.io/socket.io.js"></script>
+    <script src="/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
+    <script src="http://localhost:6001/socket.io/socket.io.js"></script>
+  
   </head>
   <body>
-    TEST!
+    <p id="dialog"></p>
+
+
   </body>
-  <script>
+    <script>
     var socket = io('http://localhost:6001');
     socket.on('connection', function (data) {
       console.log(data);
       });
     socket.on('2:App\\Events\\SomeEvent', function(message){
       console.log(message);
+      document.getElementById("dialog").append(message.user_id + message.message);
     });
     console.log(socket);
+    
+
   </script>
+
 </html>

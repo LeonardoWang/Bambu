@@ -64,7 +64,7 @@
           </nav><!-- /navbar -->
     </div>
 
-<div class="container" style="width:100%;">
+<div class="container" style="width:100%; padding-left: 0px; margin-left: 0px;">
     <div class="row">
         @yield('content')
     </div>
@@ -97,4 +97,5 @@
     <script src="/Flat-UI-master/docs/assets/js/application.js"></script>
     <script src="/Flat-UI-master/dist/js/flat-ui.min.js"></script>
     <script src='/js/intense.js'></script>
+    <script src="http://localhost:6001/socket.io/socket.io.js"></script>
 </html>
