@@ -40,6 +40,8 @@ class ChatController extends Controller
         $message->chat_room_id = $request->input('chat_room_id');
         $message->user_id = Auth::user()->id;
         $message->information = $request->input('chat_information');
+
+        Event::fire(new \App\Events\SomeEvent($message->chat_room_id,$message->user_id,$message->information));
         return 'success';
         
     }
