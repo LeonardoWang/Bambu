@@ -33,6 +33,7 @@
     </head>
 
     <body>
+<!--navbar-->
 <div class="col-lg-12" style="margin-left:0px;margin-right:0px;">
         <nav class="navbar navbar-fixed-top" role="navigation">
             <div class="navbar-header bambu-color1">
@@ -58,11 +59,15 @@
                     <a href="/api/product/myProduct">my items</a>
                 </li>
                 <li><a href="#aboutUs">about us</a></li>
-                <li><div class="navbar-form navbar-right">
+                <li><div class="navbar-form col-xs-2" style="margin-left:0px;padding-left:21px;">
                     <div class="form-group">
-                    <input type="text" id="inpu1" name="keyword" class="form-control" placeholder="Search"/>
+                        <div class="input-group">
+                            <input type="text" id="inpu1" class="form-control" placeholder="Search"/>
+                            <span class="input-group-btn">
+                                <button onclick="sb()" class="btn"><span class="fui-search"></span></button>
+                            </span>
+                        </div>
                     </div>
-                    <button onclick="sb()" class="btn btn-primary bambu-color1" style="background-color:#f44336">search</button>
                     </div>
                 </li>
                </ul>
