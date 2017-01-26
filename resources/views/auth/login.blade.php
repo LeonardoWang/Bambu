@@ -1,5 +1,9 @@
 @extends('base')
 
+<script>
+$("#aboutUs").css("display")="none";
+</script>
+
 @section('content')
 		<div class="col-xs-12 col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3" style="margin-top:60px;">
 			<div class="panel panel-default">
@@ -57,6 +61,3 @@
 		</div>
 @endsection
 
-<script>
-$("#aboutUs").css("display")="none";
-</script>

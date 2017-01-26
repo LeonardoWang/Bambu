@@ -79,8 +79,6 @@
     <div class="row">
         @yield('content')
     </div>
-</div>
-
 <footer class="footer navbar col-lg-12" id = "aboutUs" style="margin: 0px; padding: 0px; width:105%; left:-4%">
     @if (isset($user) > 0)
     <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;display:none;">
@@ -100,6 +98,7 @@
     <p style="text-align:center;font-size: 11px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
         <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
 </footer>
+</div>
 
 </body>
     <script type="text/javascript">
