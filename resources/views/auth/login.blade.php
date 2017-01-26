@@ -1,8 +1,4 @@
-@extends('base')
-
-<script>
-$("#aboutUs").css("display")="none";
-</script>
+@extends('basenofooter')
 
 @section('content')
 		<div class="col-xs-12 col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3" style="margin-top:60px;">

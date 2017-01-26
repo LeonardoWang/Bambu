@@ -2,7 +2,7 @@
 item uploading page
 -->
 
-@extends('base')
+@extends('basenofooter')
 
 @section('content')
 

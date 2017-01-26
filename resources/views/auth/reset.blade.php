@@ -1,16 +1,4 @@
-@extends('base')
-
-<script type="text/javascript">
-	$("#aboutUs").css("display")="none";
-        function sendSMS(){
-            s = document.getElementById('tel').value;
-            if(s){
-            window.location.href="/api/items/search/" + s;
-            }
-            else
-                alert("please input a right cell phone number!"); 
-        }
-    </script>
+@extends('basenofooter')
 
 @section('content')
 		<div class="col-xs-12 col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3" style="margin-top:60px;">
