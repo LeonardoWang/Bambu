@@ -127,16 +127,8 @@
             </ul>
             -->
         </div>
-    </div>
-@else
-    <div class="container">
-        <div class="row" style="margin-top:56px;margin-bottom:80px;">
-            <h1>Sorry,no available items yet.</h1>
-        </div>
-    </div>
-@endif
 
-<footer class="footer navbar-fixed-bottom" id = "aboutUs">
+    <footer class="footer navbar col-lg-12" id = "aboutUs" style = "margin-left: 0px;margin-right: 0px;">
     @if (isset($user) > 0)
     <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;display:none;">
         <div class="col-md-12 column">
@@ -154,7 +146,20 @@
     @endif
     <p style="text-align:center;font-size: 11px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
         <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:bambu@pku.edu.cn">contact us</a></p>
+    </footer>
+    </div>
+@else
+    <div class="container">
+        <div class="row" style="margin-top:56px;margin-bottom:80px;">
+            <h1>Sorry,no available items yet.</h1>
+        </div>
+    </div>
+
+    <footer class="footer navbar-fixed-bottom" id = "aboutUs">
+    <p style="text-align:center;font-size: 11px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
+        <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:bambu@pku.edu.cn">contact us</a></p>
 </footer>
+@endif
 
 </body>
      <script type="text/javascript">
