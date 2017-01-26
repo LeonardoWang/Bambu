@@ -82,6 +82,7 @@
 </div>
 
 <footer class="footer navbar-fixed-bottom" id = "aboutUs">
+    @if (isset($user) > 0)
     <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;display:none;">
         <div class="col-md-12 column">
             <div class="thumbnail" style="height:200px;">
@@ -95,7 +96,7 @@
         </div>
     </div>
     <button id="chatroomButton" onclick="toggleChat()" class="btn btn-primary bambu-color1" style="position:absolute;bottom:10px; left:165px;">show</button>
-
+    @endif
     <p style="text-align:center;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
         <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:bambu@pku.edu.cn">contact us</a></p>
 </footer>
