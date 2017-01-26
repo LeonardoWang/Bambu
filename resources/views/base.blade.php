@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
         <title>Bambu, your idle items trading app</title>
-        <meta name="description" content="Bambu, your idle items trading app."/>
 
+        <meta charset="utf-8">
+        <meta name="baidu-site-verification" content="X5TO9MtQAq" />
+        <meta name="description" content="Bambu, your idle items trading app."/>
+        <meta name="keywords" content="Bambu, second hand, idle item"/>
+        <meta name="robots" content="all" />
+        <meta name="author" content="Marc Wang and Leonardo Wang" />
         <meta name="viewport" content="width=100%, initial-scale=1.0, maximum-scale=1.0">
 
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src='/js/intense.js'></script>
+        <script src="http://localhost:6001/socket.io/socket.io.js"></script>
+   
         <!-- Loading Bootstrap -->
         <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Loading Flat UI -->
+        <script src="/Flat-UI-master/dist/js/flat-ui.min.js"></script>
         <link href="/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
 
         <!-- Loading mycss -->
         <link href="/css/mycss.css" rel="stylesheet">
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" type="text/css">
-
         <link rel="shortcut icon" href="/img/favicon.ico">
 
         <!-- bambu-color1:#e53935;
@@ -71,12 +77,47 @@
 </div>
 
 <footer class="footer navbar-fixed-bottom" id = "aboutUs">
-     <p style="text-align:center;"> copyright@Onesia Group ltd.. All Rights Reserved<br>京ICP备15050380-2<br>
+    @if (isset($user) > 0)
+    <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;display:none;">
+        <div class="col-md-12 column">
+            <div class="thumbnail" style="height:200px;">
+                <div class="col-md-3 caption" id="dialog_userid"></div>
+                <div class="col-md-9 caption" id="dialog_message"></div>
+            </div>
+            <form onsubmit="onSubmit(); return false;">
+                <textarea class="form-control thumbnail" id="sendtext" placeholder="please reply here"></textarea>
+                <div><input type="submit" class="btn" value="send" /></div>
+            </form>
+        </div>
+    </div>
+    <button id="chatroomButton" onclick="toggleChat()" class="btn btn-primary bambu-color1" style="position:absolute;bottom:10px; left:165px;">show</button>
+    @endif
+    <p style="text-align:center;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
         <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:bambu@pku.edu.cn">contact us</a></p>
 </footer>
 
 </body>
     <script type="text/javascript">
+        window.onload = function() {
+            var elements = document.querySelectorAll( '.demo-image' );
+            Intense( elements );
+            var socket = io('http://localhost:6001');
+            socket.on('connection', function (data) {
+                console.log(data);
+            });
+            socket.on('2:App\\Events\\SomeEvent', function(message){
+                console.log(message);
+            document.getElementById("dialog_userid").innerHTML+=message.user_id + "<br>";
+            document.getElementById("dialog_message").innerHTML+=message.message + "<br>";
+            });
+            console.log(socket);
+        }
+        /*function turnpage(id){
+
+            window.location.href="/";
+        }*/
+
+    
         function sb(){
             s = document.getElementById('inpu1').value;
             if(s){
@@ -85,17 +126,25 @@
             else
                 alert("the search field can't be empty"); 
         }
+
         function home(){
             window.location.href="/";
         }
-        window.onload = function() {
-        var elements = document.querySelectorAll( '.demo-image' );
-        Intense( elements );
+
+        function onSubmit(){
+            document.getElementById("dialog_userid").innerHTML+="marc<br>";
+            document.getElementById("dialog_message").innerHTML+=document.getElementById("sendtext").value + "<br>";
+        }
+
+        function toggleChat(){
+            if($("#chatroom").css("display")=="none") {
+                $("#chatroom").css("display","block");
+                document.getElementById("chatroomButton").innerHTML="hide";
+                //alert(document.getElementById("chatroomButton").innerHTML);
+            }else {
+                $("#chatroom").css("display","none");
+                document.getElementById("chatroomButton").innerHTML="show";
+            }
         }
     </script>
-    <script src="/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
-    <script src="/Flat-UI-master/docs/assets/js/application.js"></script>
-    <script src="/Flat-UI-master/dist/js/flat-ui.min.js"></script>
-    <script src='/js/intense.js'></script>
-    <script src="http://localhost:6001/socket.io/socket.io.js"></script>
 </html>

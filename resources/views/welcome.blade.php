@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
         <title>Bambu, your idle items trading app</title>
-        <meta name="description" content="Bambu, your idle items trading app."/>
 
+        <meta charset="utf-8">
+        <meta name="baidu-site-verification" content="X5TO9MtQAq" />
+        <meta name="description" content="Bambu, your idle items trading app."/>
+        <meta name="keywords" content="Bambu, second hand, idle item"/>
+        <meta name="robots" content="all" />
+        <meta name="author" content="Marc Wang and Leonardo Wang" />
         <meta name="viewport" content="width=100%, initial-scale=1.0, maximum-scale=1.0">
 
+        <script src="/js/jquery-3.1.1.min.js"></script>
+        <script src='/js/intense.js'></script>
+        <script src="http://localhost:6001/socket.io/socket.io.js"></script>
+   
         <!-- Loading Bootstrap -->
         <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Loading Flat UI -->
+        <script src="/Flat-UI-master/dist/js/flat-ui.min.js"></script>
         <link href="/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
 
         <!-- Loading mycss -->
         <link href="/css/mycss.css" rel="stylesheet">
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" type="text/css">
-
         <link rel="shortcut icon" href="/img/favicon.ico">
 
         <!-- bambu-color1:#e53935;
@@ -27,6 +33,7 @@
     </head>
     
     <body>
+<!--navbar-->
 <div class="col-lg-12" style="margin-left:0px;margin-right:0px;">
         <nav class="navbar navbar-fixed-top" role="navigation">
             <div class="navbar-header bambu-color1">
@@ -63,40 +70,8 @@
             </div><!-- /.navbar-collapse -->
           </nav><!-- /navbar -->
     </div>
-<!--
-<nav class="navbar navbar-fixed-top" role="navigation">
-    <div class="container-fluid" style="background-color:#e53935;">
-        
-        <ul class="nav navbar-nav">
-            <li>
-                <img id="home" onclick="home()" src='/img/favicon.ico' style="width:50px;"></img></li>
-            <li>
-            @if (isset($user) > 0)
-                    <a href="#"> hello, {{$user->name}} </a></li><li>
-                    <a href="/logout" >logout</a>
-                @else
-                    <a href="/login" >login</a>
-                @endif
-            </li>
-          <li>
-            <a href ="/api/product">post item</a>
-            </li>
-          <li>
-            <a href="/api/product/myProduct">my items</a>
-          </li>
-          <li><a href="#aboutUs">about us</a></li>
-          <li><div class="navbar-form navbar-right">
-              <div class="form-group">
-                <input type="text" id="inpu1" name="keyword" class="form-control" placeholder="Search"/>
-              </div>
-              <button onclick="sb()" class="btn btn-primary bambu-color1" style="background-color:#f44336">search</button>
-            </div>
-            </li>
-        </ul>
-    </div>
-</nav>
--->
 
+<!-- products on the home page -->
 @if (isset($products) > 0)
     <div class="container" style="width:100%;">
         <div class="row" style="width:100%;margin-top:58px;padding-bottom:80px;">
@@ -158,44 +133,46 @@
 @endif
 
 <footer class="footer navbar-fixed-bottom" id = "aboutUs">
-    <div style="position:absolute;background-color:transparent;bottom:20px;">
-            <div class="col-md-12 column">
-               <div class="thumbnail" style="height:200px;">
-                   <div class="col-md-3 caption" id="dialog_userid"></div>
-                   <div class="col-md-9 caption" id="dialog_message"></div>
-               </div>
-               <form onsubmit="onSubmit(); return false;">
-                    <textarea class="form-control thumbnail" id="sendtext" placeholder="please reply here"></textarea>
-                    <div class="say-btn"><input type="submit" class="btn btn-default" value="发表" /></div>
-               </form>
+    @if (isset($user) > 0)
+    <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;display:none;">
+        <div class="col-md-12 column">
+            <div class="thumbnail" style="height:200px;">
+                <div class="col-md-3 caption" id="dialog_userid"></div>
+                <div class="col-md-9 caption" id="dialog_message"></div>
             </div>
+            <form onsubmit="onSubmit(); return false;">
+                <textarea class="form-control thumbnail" id="sendtext" placeholder="please reply here"></textarea>
+                <div><input type="submit" class="btn" value="send" /></div>
+            </form>
         </div>
+    </div>
+    <button id="chatroomButton" onclick="toggleChat()" class="btn btn-primary bambu-color1" style="position:absolute;bottom:10px; left:165px;">show</button>
+    @endif
     <p style="text-align:center;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
         <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:bambu@pku.edu.cn">contact us</a></p>
 </footer>
 
 </body>
-    <script src="/Flat-UI-master/dist/js/vendor/jquery.min.js"></script>
-    <script src="/Flat-UI-master/docs/assets/js/application.js"></script>
-    <script src="/Flat-UI-master/dist/js/flat-ui.min.js"></script>
-    <script src='/js/intense.js'></script>
-    <script src="http://localhost:6001/socket.io/socket.io.js"></script>
-    <script type="text/javascript">
+     <script type="text/javascript">
+        window.onload = function() {
+            var elements = document.querySelectorAll( '.demo-image' );
+            Intense( elements );
+            var socket = io('http://localhost:6001');
+            socket.on('connection', function (data) {
+                console.log(data);
+            });
+            socket.on('2:App\\Events\\SomeEvent', function(message){
+                console.log(message);
+            document.getElementById("dialog_userid").innerHTML+=message.user_id + "<br>";
+            document.getElementById("dialog_message").innerHTML+=message.message + "<br>";
+            });
+            console.log(socket);
+        }
         /*function turnpage(id){
 
             window.location.href="/";
         }*/
 
-        var socket = io('http://localhost:6001');
-        socket.on('connection', function (data) {
-            console.log(data);
-        });
-        socket.on('2:App\\Events\\SomeEvent', function(message){
-        console.log(message);
-        document.getElementById("dialog_userid").append(message.user_id);
-        document.getElementById("dialog_message").append(message.message);
-        });
-        console.log(socket);
     
         function sb(){
             s = document.getElementById('inpu1').value;
@@ -210,15 +187,20 @@
             window.location.href="/";
         }
 
-        window.onload = function() {
-        var elements = document.querySelectorAll( '.demo-image' );
-        Intense( elements );
-        }
-
         function onSubmit(){
-            document.getElementById("dialog_userid").append("marc");
-            document.getElementById("dialog_message").append(document.getElementById("sendtext").value);
+            document.getElementById("dialog_userid").innerHTML+="marc<br>";
+            document.getElementById("dialog_message").innerHTML+=document.getElementById("sendtext").value + "<br>";
         }
 
+        function toggleChat(){
+            if($("#chatroom").css("display")=="none") {
+                $("#chatroom").css("display","block");
+                document.getElementById("chatroomButton").innerHTML="hide";
+                //alert(document.getElementById("chatroomButton").innerHTML);
+            }else {
+                $("#chatroom").css("display","none");
+                document.getElementById("chatroomButton").innerHTML="show";
+            }
+        }
     </script>
 </html>
