@@ -80,9 +80,9 @@
     <div class="container" style="width:100%;">
         <div class="row" style="width:100%;margin-top:58px;padding-bottom:80px;">
             <!--{{$i=0}}-->
-            @for ($i = 1; $i < count($products);$i++)
+            @for ($i = 0; $i < count($products);$i++)
             <!--foreach (products as product)-->
-                @if ($i<=12)
+                @if ($i < 12)
                     <!--{{$product=$products[$i]}}-->
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
                         <div class="thumbnail">
