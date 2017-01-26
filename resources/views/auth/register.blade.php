@@ -75,6 +75,7 @@
 @endsection
 
 <script type="text/javascript">
+	$("#aboutUs").css("display")="none";
         function sendSMS(){
             s = document.getElementById('tel').value;
             if(s){

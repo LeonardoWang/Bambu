@@ -56,3 +56,7 @@
 			</div>
 		</div>
 @endsection
+
+<script>
+$("#aboutUs").css("display")="none";
+</script>

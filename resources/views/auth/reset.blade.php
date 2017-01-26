@@ -53,3 +53,15 @@
 			</div>
 		</div>
 @endsection
+
+<script type="text/javascript">
+	$("#aboutUs").css("display")="none";
+        function sendSMS(){
+            s = document.getElementById('tel').value;
+            if(s){
+            window.location.href="/api/items/search/" + s;
+            }
+            else
+                alert("please input a right cell phone number!"); 
+        }
+    </script>
