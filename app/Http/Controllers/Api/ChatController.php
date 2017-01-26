@@ -46,7 +46,7 @@ class ChatController extends Controller
         
     }
 
-    public function ChatMessageByChatRoomID()
+    public function GetChatMessageByChatRoomID()
     {
     	$this->validate($request, [
             'chat_room_id' => 'required',
@@ -56,7 +56,7 @@ class ChatController extends Controller
         return Message::Where('chat_room_id',$chat_room_id)->get();
     }
 
-    public function ChatMessageByUserId()
+    public function GetChatMessageByUserId()
     {
         $this->validate($request,[
             'user_id' => 'required']
