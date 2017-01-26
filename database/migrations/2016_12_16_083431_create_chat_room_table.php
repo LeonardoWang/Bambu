@@ -14,7 +14,6 @@ class CreateChatRoomTable extends Migration
     {
         Schema::create('chat_room_table', function (Blueprint $table) {
           $table->increments('id');
-          $table->integer('item_id');
           $table->integer('user_sell_id');
           $table->integer('user_buy_id');
           $table->timestamps();
