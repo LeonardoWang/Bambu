@@ -60,10 +60,13 @@
                 </li>
                 <li><a href="#aboutUs">about us</a></li>
                 <li><div class="navbar-form navbar-right">
-                    <div class="form-group">
-                    <input type="text" id="inpu1" name="keyword" class="form-control" placeholder="Search"/>
-                    </div>
-                    <button onclick="sb()" class="btn btn-primary bambu-color1" style="background-color:#f44336">search</button>
+                    	<div class="form-group">
+                    		  <input type="text" id="inpu1" name="keyword" class="form-control" placeholder="Search"/>
+  						<span class="input-group-btn">
+    						<button type="submit" class="btn"><span class="fui-search"></span></button>
+  						</span>
+                    	</div>
+                    	<button onclick="sb()" class="btn btn-primary bambu-color1" style="background-color:#f44336">search</button>
                     </div>
                 </li>
                </ul>
