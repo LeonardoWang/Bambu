@@ -44,7 +44,7 @@ item uploading page
                     <div class="form-group">
                         <label class="col-sm-3 col-md-3 control-label" for="file">One picture for item</label>
                         <div class="col-sm-8 col-md-8">
-                            <input id="file" name="image" class="form-control input-md" type="file" accept="image/jpeg, image/png">
+                            <input id="file" name="image" class="form-control input-md" type="file">
                         </div>
                     </div>
                     <div class="form-group">
