@@ -59,10 +59,10 @@
                     <a href="/api/product/myProduct">my items</a>
                 </li>
                 <li><a href="#aboutUs">about us</a></li>
-                <li><div class="navbar-form col-sm-2" style="margin-left:0px;padding-left:21px;">
+                <li><div class="navbar-form" style="margin-left:0px;padding-left:21px;">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" id="inpu1" class="form-control" placeholder="Search"/>
+                            <input type="text" id="inpu1" class="form-control col-sm-2 col-md-2" placeholder="Search"/>
                             <span class="input-group-btn">
                                 <button onclick="sb()" class="btn"><span class="fui-search"></span></button>
                             </span>
@@ -78,7 +78,7 @@
 <!-- products on the home page -->
 @if (isset($products) > 0)
     <div class="container" style="width:100%;">
-        <div class="row" style="width:100%;margin-top:58px;padding-bottom:80px;">
+        <div class="row" style="width:100%;margin-top:58px;">
             <!--{{$i=0}}-->
             @for ($i = 0; $i < count($products);$i++)
             <!--foreach (products as product)-->
@@ -150,7 +150,7 @@
     </div>
 @else
     <div class="container">
-        <div class="row" style="margin-top:56px;margin-bottom:80px;">
+        <div class="row" style="margin-top:56px;">
             <h1>Sorry,no available items yet.</h1>
         </div>
     </div>
