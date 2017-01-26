@@ -4,15 +4,11 @@
         <title>Bambu, your idle items trading app</title>
 
         <meta charset="utf-8">
-
+        <meta name="baidu-site-verification" content="X5TO9MtQAq" />
         <meta name="description" content="Bambu, your idle items trading app."/>
-
         <meta name="keywords" content="Bambu, second hand, idle item"/>
-
         <meta name="robots" content="all" />
-
         <meta name="author" content="Marc Wang and Leonardo Wang" />
-
         <meta name="viewport" content="width=100%, initial-scale=1.0, maximum-scale=1.0">
 
         <script src="/js/jquery-3.1.1.min.js"></script>
@@ -23,12 +19,11 @@
         <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Loading Flat UI -->
-        <link href="/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
         <script src="/Flat-UI-master/dist/js/flat-ui.min.js"></script>
-    
+        <link href="/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
+
         <!-- Loading mycss -->
         <link href="/css/mycss.css" rel="stylesheet">
-
         <link rel="shortcut icon" href="/img/favicon.ico">
 
         <!-- bambu-color1:#e53935;
