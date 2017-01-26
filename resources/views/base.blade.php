@@ -59,7 +59,7 @@
                     <a href="/api/product/myProduct">my items</a>
                 </li>
                 <li><a href="#aboutUs">about us</a></li>
-                <li><div class="navbar-form col-xs-2" style="margin-left:0px;padding-left:21px;">
+                <li><div class="navbar-form col-sm-2" style="margin-left:0px;padding-left:21px;">
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text" id="inpu1" class="form-control" placeholder="Search"/>
@@ -81,8 +81,7 @@
     </div>
 </div>
 
-<footer class="footer navbar-fixed-bottom" id = "aboutUs">
-    @if (isset($user) > 0)
+@if (isset($user) > 0)
     <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;display:none;">
         <div class="col-md-12 column">
             <div class="thumbnail" style="height:200px;">
@@ -96,10 +95,7 @@
         </div>
     </div>
     <button id="chatroomButton" onclick="toggleChat()" class="btn btn-primary bambu-color1" style="position:absolute;bottom:10px; left:165px;">show</button>
-    @endif
-    <p style="text-align:center;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
-        <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:bambu@pku.edu.cn">contact us</a></p>
-</footer>
+@endif
 
 </body>
     <script type="text/javascript">

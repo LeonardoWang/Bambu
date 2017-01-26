@@ -59,7 +59,7 @@
                     <a href="/api/product/myProduct">my items</a>
                 </li>
                 <li><a href="#aboutUs">about us</a></li>
-                <li><div class="navbar-form col-xs-2" style="margin-left:0px;padding-left:21px;">
+                <li><div class="navbar-form col-sm-2" style="margin-left:0px;padding-left:21px;">
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text" id="inpu1" class="form-control" placeholder="Search"/>
@@ -84,7 +84,7 @@
             <!--foreach (products as product)-->
                 @if ($i < 12)
                     <!--{{$product=$products[$i]}}-->
-                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+                    <div class="col-sm-12 col-md-6 col-lg-3">
                         <div class="thumbnail">
                             <div class="demo-image" data-image="/api/product/images/{{$product->image_file}}" data-title="{{$product->title}}" data-caption="{{$product->description}}"><img src="/api/product/images/{{$product->image_file}}" class="img-responsive"></div>
                             <div class="caption" style="padding-top:0px;">
@@ -93,16 +93,16 @@
                                         <div style="color:#9aa4af; overflow:hidden; height:35px;">
                                             <p style="margin:0 0 0 0px;">{{$product->description}}</p>
                                         </div>
-                                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="text-align:left;padding-left: 0px;">
-                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:5px;">
+                                        <div class="col-lg-9 col-md-9 col-sm-8" style="text-align:left;padding-left: 0px;">
+                                            <div class="col-lg-1 col-md-1 col-sm-1" style="padding-left:5px;">
                                             <img style="width:20px;" src="/img/icons/svg/clocks.svg"/>
                                             </div>
-                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <div class="col-lg-8 col-md-8 col-sm-8">
                                             <p style="color:#bdc3c7; font-size:15px; margin-top:2px;">{{substr($product->created_at,0,10)}}<p>
                                             </div>
                                         </div>
                                         
-                                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="text-align:left;">
+                                        <div class="col-lg-3 col-md-3 col-sm-4" style="text-align:left;">
                                             <p style="color:#f44336; margin-top:0px;">￥{{$product->price}}</p>
                                         </div>
                                         <!--<p>{{$product->image_file}}</p>-->
