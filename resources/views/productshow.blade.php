@@ -23,7 +23,7 @@ trade confirmation page
                                         <p style="text-align:right;">seller: <a href="/api/user/{{$product->user_id}}/info/" class = "ba">{{$product->user_name}}</a></p>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div style="overflow: auto; max-height:180px;"><p>{{$product->description}}</p></div>
+                                        <div style="overflow: auto; max-height:180px;"><p style="font-size: 15px;">{{$product->description}}</p></div>
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@ trade confirmation page
                 {!! csrf_field() !!}
                 <fieldset>
                     <div class="form-group">               
-                        <label class="col-md-3 control-label" style="font-size:24px;"><b>{{$product->title}}</b>
+                        <label class="col-md-12 control-label" style="font-size:24px;"><b>{{$product->title}}</b>
                     </label>
                     </div>
                     <!-- Text input-->
@@ -82,7 +82,7 @@ trade confirmation page
                 </fieldset>
                 </form>
                 <hr style="margin-top:-30px;">
-                <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom:70px">
+                <div class="col-md-12" style="padding-bottom:70px">
                     @if (isset($comments)>0)
                         <p>Comments to this item:</p>
                         @foreach ($comments as $comment)

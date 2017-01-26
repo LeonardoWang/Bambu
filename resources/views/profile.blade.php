@@ -12,17 +12,14 @@ myprofile page
                     <fieldset>-->
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3">
-                                <div style="color:#9aa4af; max-height:600px;">
-                                    <img style="width:80px;" src="/img/icons/svg/clipboard.svg"/>
-                                    <h6>Profile</h6>
-                                    <hr>
-                                    <div class="form-group">
-                                        @if(!strlen($user_information->user_image))
+                                <div style="color:#9aa4af; max-height:550px; overflow: auto;">
+                                    @if(!strlen($user_information->user_image))
                                             <img style="width:100px;" src="/img/default_user_profile.jpg"/>
                                         @else
                                             <img style="width:100px;" src="{{$user_information->user_image}}"/>
                                         @endif
-                                    </div>
+                                    <h6>{{$user->name}}'s Profile</h6>
+                                    <hr>
                                     <div class="form-group">
                                         <label class="col-md-3 col-sm-3 col-xs-3 control-label" for="name">Name</label>
                                         <div class="col-md-9 col-sm-9 col-xs-9">
