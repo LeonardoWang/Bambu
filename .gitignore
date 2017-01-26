@@ -1,9 +1,8 @@
 /vendor
-/config
 /test
-/node_modules
 /public/storage
 Homestead.yaml
 Homestead.json
 .env
 *.DS_Store
+composer.json
