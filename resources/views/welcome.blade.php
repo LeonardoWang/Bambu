@@ -59,14 +59,15 @@
                     <a href="/api/product/myProduct">my items</a>
                 </li>
                 <li><a href="#aboutUs">about us</a></li>
-                <li><div class="navbar-form navbar-right">
-                    	<div class="form-group">
-                    		  <input type="text" id="inpu1" name="keyword" class="form-control" placeholder="Search"/>
-  						<span class="input-group-btn">
-    						<button type="submit" class="btn"><span class="fui-search"></span></button>
-  						</span>
-                    	</div>
-                    	<button onclick="sb()" class="btn btn-primary bambu-color1" style="background-color:#f44336">search</button>
+                <li><div class="navbar-form col-xs-2" style="margin-left:0px;padding-left:21px;">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" id="inpu1" class="form-control" placeholder="Search"/>
+                            <span class="input-group-btn">
+                                <button onclick="sb()" class="btn"><span class="fui-search"></span></button>
+                            </span>
+                        </div>
+                    </div>
                     </div>
                 </li>
                </ul>
