@@ -22,7 +22,7 @@ class ChatController extends Controller
     public function MyChatroom()
     {
     	$user = Auth::user();
-    	return ChatRoom::where('user_sell_id',$user->id)->get();
+    	return ChatRoom::where('user_sell_id',$user->id)->orWhere('user_buy_id',$user->id)->get();
     }
 
     public function Chatroom()
@@ -46,16 +46,41 @@ class ChatController extends Controller
         
     }
 
-    public function ChatMessageByChatRoomID()
+    public function GetChatMessageByChatRoomID()
     {
     	$this->validate($request, [
             'chat_room_id' => 'required',
         ]);
         $chat_room_id = $request->input('chat_room_id');
 
-        return Message::Where('chat_room_id','$chat_room_id')->get();
+        return Message::Where('chat_room_id',$chat_room_id)->get();
     }
 
+    public function GetChatMessageByUserId()
+    {
+        $this->validate($request,[
+            'user_id' => 'required']
+            );
+        $user_id = Auth::user()->id;
+        $tmp_user_id = $request->input('user_id');
+
+        $chat_room_id = ChatRoom::where('user_sell_id',$user_id)->Where('user_buy_id',$tmp_user_id)->get();
+        if(empty($chat_room_id))
+        {
+            $chat_room_id = ChatRoom::where('user_sell_id',$tmp_user_id)->Where('user_buy_id',$user_id)->get();
+            if(empty($chat_room_id))
+            {
+                $chatroom = new ChatRoom();
+                $chatroom->user_sell_id = $user_id;
+                $chatroom->user_buy_id = $tmp_user_id;
+                $chatroom->save();
+                $chat_room_id = $chatroom->id;
+            }
+        }
+        return Message::Where('chat_room_id','$chat_room_id')->get();
+
+    }
+    
     public function ChatMessageByItemID()
     {
     	$this->validate($request, [
@@ -80,7 +105,7 @@ class ChatController extends Controller
     			return "view chat room";
     		}
     		$chat_room_id = $chatroom->id;
-    		return Message::Where('chat_room_id','$chat_room_id')->get();
+    		return Message::Where('chat_room_id',$chat_room_id)->get();
     	}
     	else
     	{
