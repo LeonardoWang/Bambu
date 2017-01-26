@@ -18,7 +18,12 @@ Route::get('/test', 'HomeController@test');
 Route::get('/register','HomeController@register');
 
 Route::get('/login', 'HomeController@login');
+Route::get('/test',"HomeController@test");
 
+Route::get('/event', function(){
+    Event::fire(new \App\Events\SomeEvent(3,2,"2"));
+    return "hello world";
+});
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

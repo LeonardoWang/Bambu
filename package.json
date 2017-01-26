@@ -1,4 +1,7 @@
 {
+  "name": "bambu",
+  "version": "1.0",
+  "description": "bambu server",
   "private": true,
   "scripts": {
     "prod": "gulp --production",
