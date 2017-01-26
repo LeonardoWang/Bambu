@@ -6,7 +6,7 @@ item uploading page
 
 @section('content')
 
-    <div class="col-lg-6 col-md-6 col-sm-8 col-lg-offset-3 col-md-offset-3 col-sm-offset-2 panel" style="margin-top:80px;margin-bottom:90px;">
+    <div class="col-lg-6 col-md-6 col-sm-8 col-lg-offset-3 col-md-offset-3 col-sm-offset-2 panel" style="margin-top:80px;">
         <div class="panel-title"><h3>upload a item</h3></div>
         <div class="panel-body" >
             <form method="POST" action="product/addProduct" class="form-horizontal" enctype="multipart/form-data" role="form">

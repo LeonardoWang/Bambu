@@ -7,7 +7,7 @@ trade confirmation page
 @section('content')
     @if (isset($products)==1)
         @foreach ($products as $product)
-            <div class="col-lg-5 col-md-6 col-sm-12" style="padding-bottom:80px;">
+            <div class="col-lg-5 col-md-6 col-sm-12">
                 <div style="padding-top:80px;">
                     <div class="thumbnail" >
                         <div class="demo-image" data-image="/api/product/images/{{$product->image_file}}" data-title="{{$product->title}}" data-caption="{{$product->description}}">
@@ -82,7 +82,7 @@ trade confirmation page
                 </fieldset>
                 </form>
                 <hr style="margin-top:-30px;">
-                <div class="col-md-12" style="padding-bottom:70px">
+                <div class="col-md-12">
                     @if (isset($comments)>0)
                         <p>Comments to this item:</p>
                         @foreach ($comments as $comment)
