@@ -7,11 +7,11 @@ trade confirmation page
 @section('content')
     @if (isset($products)==1)
         @foreach ($products as $product)
-            <div class="col-lg-5 col-md-6 col-sm-12">
-                <div style="padding-top:80px;">
+            <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-8 col-sm-offset-2">
+                <div>
                     <div class="thumbnail" >
                         <div class="demo-image" data-image="/api/product/images/{{$product->image_file}}" data-title="{{$product->title}}" data-caption="{{$product->description}}">
-                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive">
+                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="max-height:600px;">
                         </div>
                         <div class="caption">
                             <div class="row">
@@ -32,7 +32,7 @@ trade confirmation page
                 </div>
             </div>
 
-            <div class="col-lg-4 col-lg-offset-1 col-md-5 col-sm-12" style="margin-top:8%">
+            <div class="col-lg-4 col-lg-offset-1 col-md-6 col-md-offset-0 col-sm-8 col-sm-offset-2" style="margin-top:4%">
                 <form method="post" action="/api/trade_request_making" class="form-horizontal" enctype="multipart/form-data" role="form">
                 {!! csrf_field() !!}
                 <fieldset>

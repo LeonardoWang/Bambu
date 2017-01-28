@@ -79,7 +79,7 @@
     <div class="row" style="width:100%;margin:58px auto 0px auto; padding:auto;">
         @yield('content')
     </div>
-<footer class="footer navbar" id = "aboutUs" style="margin: 0px; padding: 0px; width:103%; left:-1%">
+<footer class="footer navbar" id = "aboutUs" style="margin: 0px; padding: 0px; width:102.5%; left:-1.5%">
     @if (isset($user) > 0)
     <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;display:none;">
         <div class="col-md-12 column">
