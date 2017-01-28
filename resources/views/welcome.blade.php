@@ -34,7 +34,7 @@
     
     <body>
 <!--navbar-->
-<div class="col-lg-12" style="margin-left:0px;margin-right:0px;">
+<div style="margin-left:0px;margin-right:0px;">
         <nav class="navbar navbar-fixed-top" role="navigation">
             <div class="navbar-header bambu-color1">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
@@ -59,10 +59,10 @@
                     <a href="/api/product/myProduct">my items</a>
                 </li>
                 <li><a href="#aboutUs">about us</a></li>
-                <li><div class="navbar-form" style="margin-left:0px;padding-left:21px;">
+                <li><div class="navbar-form col-xs-2 col-sm-2" style="margin-left:0px;padding-left:21px;">
                     <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" id="inpu1" class="form-control col-sm-2 col-md-2" placeholder="Search"/>
+                        <div class="input-group" >
+                            <input type="text" id="inpu1" class="form-control" placeholder="Search"/>
                             <span class="input-group-btn">
                                 <button onclick="sb()" class="btn"><span class="fui-search"></span></button>
                             </span>
@@ -77,8 +77,8 @@
 
 <!-- products on the home page -->
 @if (isset($products) > 0)
-    <div class="container" style="width:100%;">
-        <div class="row" style="width:100%;margin-top:58px;">
+    <div class="container">
+        <div class="row" style="width:100%;margin:58px auto 0px auto; padding:auto;">
             <!--{{$i=0}}-->
             @for ($i = 0; $i < count($products);$i++)
             <!--foreach (products as product)-->
@@ -128,7 +128,7 @@
             -->
         </div>
 
-    <footer class="footer navbar col-lg-12" id = "aboutUs" style="margin: 0px; padding: 0px; width:105%; left:-4%">
+    <footer class="footer navbar" id = "aboutUs" style="margin: 0px; padding: 0px; width:102.5%; left:-2%">
     @if (isset($user) > 0)
     <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;display:none;">
         <div class="col-md-12 column">
@@ -144,7 +144,7 @@
     </div>
     <button id="chatroomButton" onclick="toggleChat()" class="btn btn-primary bambu-color1" style="position:absolute;bottom:10px; left:165px;">show</button>
     @endif
-    <p style="text-align:center;font-size: 11px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
+    <p style="text-align:center;font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
         <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
     </footer>
     </div>
@@ -156,7 +156,7 @@
     </div>
 
     <footer class="footer navbar-fixed-bottom" id = "aboutUs">
-    <p style="text-align:center;font-size: 11px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
+     <p style="text-align:center;font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
         <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
 </footer>
 @endif

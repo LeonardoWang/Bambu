@@ -34,7 +34,7 @@
 
     <body>
 <!--navbar-->
-<div class="col-lg-12" style="margin-left:0px;margin-right:0px;">
+<div style="margin-left:0px;margin-right:0px;">
         <nav class="navbar navbar-fixed-top" role="navigation">
             <div class="navbar-header bambu-color1">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
@@ -59,10 +59,10 @@
                     <a href="/api/product/myProduct">my items</a>
                 </li>
                 <li><a href="#aboutUs">about us</a></li>
-                <li><div class="navbar-form" style="margin-left:0px;padding-left:21px;">
+                <li><div class="navbar-form col-xs-2 col-sm-2" style="margin-left:0px;padding-left:21px;">
                     <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" id="inpu1" class="form-control col-sm-2 col-md-2" placeholder="Search"/>
+                        <div class="input-group" >
+                            <input type="text" id="inpu1" class="form-control" placeholder="Search"/>
                             <span class="input-group-btn">
                                 <button onclick="sb()" class="btn"><span class="fui-search"></span></button>
                             </span>
@@ -75,8 +75,8 @@
           </nav><!-- /navbar -->
     </div>
 
-<div class="container" style="width:100%; padding-left: 0px; margin-left: 0px;">
-    <div class="row">
+<div class="container" style="width:100%;">
+    <div class="row" style="width:100%;margin:58px auto 0px auto; padding:auto;">
         @yield('content')
     </div>
     @if (isset($user) > 0)

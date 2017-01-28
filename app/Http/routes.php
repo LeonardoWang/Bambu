@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@home');
+Route::get('/home', 'HomeController@index');
 Route::get('/test', 'HomeController@test');
 
 Route::get('/register','HomeController@register');
@@ -21,7 +21,7 @@ Route::get('/login', 'HomeController@login');
 Route::get('/test',"HomeController@test");
 
 Route::get('/event', function(){
-    Event::fire(new \App\Events\SomeEvent(3,2,"2"));
+    Event::fire(new \App\Events\SomeEvent(3,2,"he你好! <img style='width:15px;' src='/img/default_user_profile.jpg'/>"));
     return "hello world";
 });
 

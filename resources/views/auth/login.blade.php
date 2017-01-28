@@ -1,7 +1,7 @@
 @extends('basenofooter')
 
 @section('content')
-		<div class="col-xs-12 col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3" style="margin-top:60px;">
+		<div class="col-xs-12 col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
 			<div class="panel panel-default">
 				<div class="panel-heading">Login</div>
 				<div class="panel-body">
@@ -35,14 +35,14 @@
 
 						<div class="form-group">
 							<div class="row">
-							<div class="col-lg-5 col-lg-offset-1 col-md-6 col-md-offset-1 col-sm-5 col-sm-offset-1">
+							<div class="col-lg-5 col-lg-offset-1 col-md-7 col-md-offset-1 col-sm-7 col-sm-offset-1 col-xs-7 col-xs-offset-1">
 								<div class="checkbox">
 									<label class="control-label" style="font-size:13px;">
 										<input type="checkbox" name="remember"> Remember Me
 									</label>
 								</div>
 							</div>
-							<div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-2 col-sm-1 col-sm-offset-2">
+							<div class="col-lg-1 col-lg-offset-3 col-md-1 col-sm-1 col-xs-1">
 								<button type="submit" class="btn btn-primary">Login</button>
 							</div>
 							</div>

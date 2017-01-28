@@ -89,6 +89,10 @@
                 border-color: #e53935;
             }
 
+            .control-label{
+                margin-top: 6px;
+            }
+
             .panel,.panel-info, .panel-title,.panel-heading{
                 border-color: #888888;
                 background-color: white;   

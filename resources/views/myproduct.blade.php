@@ -7,8 +7,6 @@ trade confirmation page
 @section('content')
 
 @if (isset($products) > 0)
-    <div class="container" style="width:100%;">
-        <div class="row" style="width:100%;margin-top:56px;">
             @foreach ($products as $product)
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="thumbnail" >
@@ -57,8 +55,6 @@ trade confirmation page
             @endfor
             </ul>
             -->
-        </div>
-    </div>
 @else
     <div class="container">
         <div class="row" style="margin-top:56px;">

@@ -22,11 +22,6 @@ class HomeController extends Controller
             return view('welcome')->with(['products'=>Item::orderBy('updated_at', 'desc')->get()]);
     }
 
-    public function home()
-    {
-            return view('welcome');
-    }
-
     public function login()
     {
         return view('auth.login');
@@ -42,5 +37,4 @@ class HomeController extends Controller
         return view('test');
     }
 
-    
 }
