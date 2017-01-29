@@ -13,7 +13,6 @@
 
         <script src="/js/jquery-3.1.1.min.js"></script>
         <script src='/js/intense.js'></script>
-        <script src="http://localhost:6001/socket.io/socket.io.js"></script>
    
         <!-- Loading Bootstrap -->
         <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -99,25 +98,6 @@
 
 </body>
     <script type="text/javascript">
-        window.onload = function() {
-            var elements = document.querySelectorAll( '.demo-image' );
-            Intense( elements );
-            var socket = io('http://localhost:6001');
-            socket.on('connection', function (data) {
-                console.log(data);
-            });
-            socket.on('2:App\\Events\\SomeEvent', function(message){
-                console.log(message);
-            document.getElementById("dialog_userid").innerHTML+=message.user_id + "<br>";
-            document.getElementById("dialog_message").innerHTML+=message.message + "<br>";
-            });
-            console.log(socket);
-        }
-        /*function turnpage(id){
-
-            window.location.href="/";
-        }*/
-
     
         function sb(){
             s = document.getElementById('inpu1').value;
@@ -130,22 +110,6 @@
 
         function home(){
             window.location.href="/";
-        }
-
-        function onSubmit(){
-            document.getElementById("dialog_userid").innerHTML+="marc<br>";
-            document.getElementById("dialog_message").innerHTML+=document.getElementById("sendtext").value + "<br>";
-        }
-
-        function toggleChat(){
-            if($("#chatroom").css("display")=="none") {
-                $("#chatroom").css("display","block");
-                document.getElementById("chatroomButton").innerHTML="hide";
-                //alert(document.getElementById("chatroomButton").innerHTML);
-            }else {
-                $("#chatroom").css("display","none");
-                document.getElementById("chatroomButton").innerHTML="show";
-            }
         }
 
         function sendSMS(){

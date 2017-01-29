@@ -12,7 +12,7 @@ myprofile page
                     <fieldset>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3">
-                                <div style="color:#9aa4af; max-height:550px; overflow: auto;">
+                                <div style="color:#9aa4af; max-height:550px; overflow-x:visible;">
                                     @if(!strlen($user_information->user_image))
                                             <img style="width:100px;" src="/img/default_user_profile.jpg"/>
                                         @else
