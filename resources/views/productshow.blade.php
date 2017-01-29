@@ -15,7 +15,7 @@ trade confirmation page
                         </div>
                         <div class="caption">
                             <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12" style="text-align:left;">
+                                <div class="col-lg-12 col-md-12 col-sm-12" style="text-align:center;">
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <p style="color:#f44336;">￥{{$product->price}}</p>
                                     </div>
@@ -37,7 +37,7 @@ trade confirmation page
                 {!! csrf_field() !!}
                 <fieldset>
                     <div class="form-group">               
-                        <label class="col-md-12 control-label" style="font-size:24px;"><b>{{$product->title}}</b>
+                        <label class="col-md-12 control-label" style="font-size:24px; text-align:left;"><b>{{$product->title}}</b>
                     </label>
                     </div>
                     <!-- Text input-->

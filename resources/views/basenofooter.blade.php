@@ -149,12 +149,23 @@
         }
 
         function sendSMS(){
-            s = document.getElementById('tel').value;
-            if(s){
-            window.location.href="/api/items/search/" + s;
+        //alert('1');
+        var iphone=$("#tel").val();
+        //console.log(iphone);
+        $.ajax({
+            type:"get",
+            url:'/smscode',
+            data:{'iphone':iphone},
+            success:function(msg){
+                console.log(msg);
+                document.getElementById("code").value = msg.substr(0,4);
+                if(msg.substr(13,3)=='100'){
+                    alert('短信发送成功');
+                }else{
+                    alert('短信发送失败');
+                }
             }
-            else
-                alert("please input a right cell phone number!"); 
+        });
         }
     </script>
 </html>

@@ -16,12 +16,13 @@ Route::get('/home', 'HomeController@index');
 Route::get('/test', 'HomeController@test');
 
 Route::get('/register','HomeController@register');
+Route::get('/smscode','HomeController@sendSMS');
 
 Route::get('/login', 'HomeController@login');
 Route::get('/test',"HomeController@test");
 
 Route::get('/event', function(){
-    Event::fire(new \App\Events\SomeEvent(3,2,"he你好! <img style='width:15px;' src='/img/default_user_profile.jpg'/>"));
+    Event::fire(new \App\Events\SomeEvent(3,2,"he你好! <img style='width:25px;' src='/img/default_user_profile.jpg'/>"));
     return "hello world";
 });
 

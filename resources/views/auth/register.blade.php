@@ -7,7 +7,7 @@
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
+							<strong>Error:</strong><br>
 							<ul>
 								@foreach ($errors->all() as $error)
 									<li>{{ $error }}</li>
@@ -39,13 +39,11 @@
 								<input type="text" class="form-control" name="smscode">
 							</div>
 							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-								<button onclick="sendSMS()" class="btn btn-primary">
+								<button type="button" onclick="sendSMS()" class="btn btn-primary">
 									send code
 								</button>
 							</div>
 						</div>
-
-
 
 						<div class="form-group">
 							<label class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label">Password</label>
@@ -60,6 +58,8 @@
 								<input type="password" class="form-control" name="password_confirmation">
 							</div>
 						</div>
+
+						<input name="verismscode" id="code" type="hidden" value="{{$code}}">
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-3">
