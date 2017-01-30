@@ -137,7 +137,7 @@
                 }else{
                     alert('SMS code sent failed, check your network.');
                 }
-            }
+            },
             error:function(msg){
                 console.log(msg);
             }
