@@ -112,8 +112,16 @@
             window.location.href="/";
         }
 
-        function sendSMS(){
-        //alert('1');
+        var clock = '';
+        var nums = 10;
+        var btn;
+
+        function sendSMS(thisBtn){
+        btn = thisBtn;
+        btn.disabled = true; //将按钮置为不可点击
+        btn.innerHTML = 'resend after ' + nums + ' s';
+        clock = setInterval(doLoop, 1000); //一秒执行一次
+
         var iphone=$("#tel").val();
         //console.log(iphone);
         $.ajax({
@@ -124,12 +132,26 @@
                 console.log(msg);
                 document.getElementById("code").value = msg.substr(0,4);
                 if(msg.substr(13,3)=='100'){
-                    alert('短信发送成功');
+                    alert('SMS code has sent!');
                 }else{
-                    alert('短信发送失败');
+                    alert('SMS code sent failed, check your network.');
                 }
             }
         });
         }
+
+        function doLoop()
+        {
+            nums--;
+            if(nums > 0){
+                btn.innerHTML = 'resend after ' + nums + ' s';
+            }else{
+                clearInterval(clock); //清除js定时器
+                btn.disabled = false;
+                btn.innerHTML = 'send code';
+                nums = 10; //重置时间
+            }
+        }
+
     </script>
 </html>

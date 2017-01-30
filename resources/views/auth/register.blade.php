@@ -39,7 +39,7 @@
 								<input type="text" class="form-control" name="smscode">
 							</div>
 							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-								<button type="button" onclick="sendSMS()" class="btn btn-primary">
+								<button type="button" onclick="sendSMS(this)" class="btn btn-primary">
 									send code
 								</button>
 							</div>
