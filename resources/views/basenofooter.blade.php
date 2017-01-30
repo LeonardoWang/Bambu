@@ -128,6 +128,7 @@
             type:"get",
             url:'/smscode',
             data:{'iphone':iphone},
+
             success:function(msg){
                 console.log(msg);
                 document.getElementById("code").value = msg.substr(0,4);
@@ -136,6 +137,9 @@
                 }else{
                     alert('SMS code sent failed, check your network.');
                 }
+            }
+            error:function(msg){
+                console.log(msg);
             }
         });
         }
