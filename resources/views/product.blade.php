@@ -8,6 +8,16 @@ item uploading page
 
     <div class="col-lg-6 col-md-6 col-sm-8 col-lg-offset-3 col-md-offset-3 col-sm-offset-2 panel">
         <div class="panel-title"><h3>upload a item</h3></div>
+        @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>Error:</strong><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
         <div class="panel-body" >
             <form method="POST" action="product/addProduct" class="form-horizontal" enctype="multipart/form-data" role="form">
                 {!! csrf_field() !!}

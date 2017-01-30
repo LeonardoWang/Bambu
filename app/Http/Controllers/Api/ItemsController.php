@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use DB;
 use Storage;
 use Crypt;
+use Validator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ImagesController;
@@ -152,11 +153,10 @@ class ItemsController extends Controller
 
     public function ProductAdd(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'title' => 'required',
             'price' => 'required|numeric',
             'description' => 'required|min:5',
-            'image' => 'image'
         ]);
         if(Auth::check())
         {
@@ -196,8 +196,7 @@ class ItemsController extends Controller
                 }
             } 
             else {
-                $messages = $validator->messages();
-                return back()->withErrors($messages);;
+                return back()->withErrors($validator->messages());
             }
         }
         else
