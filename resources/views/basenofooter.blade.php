@@ -138,9 +138,11 @@
                     alert('SMS code sent failed, check your network.');
                 }
             },
-            error:function(msg){
-                console.log(msg);
-            }
+            error: function(XMLHttpRequest, textStatus, errorThrown) {  //#3这个error函数调试时非常有用，如果解析不正确，将会弹出错误框
+                alert(XMLHttpRequest.status);
+                alert(XMLHttpRequest.readyState);
+                alert(textStatus); // paser error;
+            },
         });
         }
 
