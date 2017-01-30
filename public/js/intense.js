@@ -75,10 +75,10 @@ var Intense = (function() {
 
       var heightRatio = window.innerHeight / source.h;
 
-      if( (source.w * heightRatio) > window.innerWidth ) {
+      if( (source.w * heightRatio) > window.innerWidth /2) {
         return { w: source.w * heightRatio, h: source.h * heightRatio, fit: true };
       } else {
-        var widthRatio = window.innerWidth / source.w;
+        var widthRatio = window.innerWidth / source.w /2;
         return { w: source.w * widthRatio, h: source.h * widthRatio, fit: false };
       }
     }
@@ -146,8 +146,9 @@ var Intense = (function() {
        */
       var containerProperties = {
         'backgroundColor': 'rgba(0,0,0,0.8)',
-        'width': '100%',
+        'width': '50%',
         'height': '100%',
+        'min-width': '600px',
         'position': 'fixed',
         'top': '0px',
         'left': '0px',
@@ -180,7 +181,7 @@ var Intense = (function() {
        *  Caption Container
        */
       var captionContainerProperties = {
-        'font-family': 'Georgia, Times, "Times New Roman", serif',
+        'font-family': '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
         'position': 'fixed',
         'bottom': '0px',
         'left': '0px',
@@ -188,7 +189,7 @@ var Intense = (function() {
         'color': '#fff',
         'wordSpacing': '0.2px',
         'webkitFontSmoothing': 'antialiased',
-        'textShadow': '-1px 0px 1px rgba(0,0,0,0.4)'
+        'textShadow': '-1px 0px 1px rgba(0,0,0,0.7)'
       }
       var captionContainer = document.createElement( 'figcaption' );
       applyProperties( captionContainer, captionContainerProperties );
@@ -205,7 +206,8 @@ var Intense = (function() {
           'fontSize': '40px',
           'letterSpacing': '0.5px',
           'lineHeight': '35px',
-          'textAlign': 'left'
+          'textAlign': 'left',
+          'background': 'hsla(0,0%,7%,0.2)'
         }
         var captionTitle = document.createElement( 'h1' );
         applyProperties( captionTitle, captionTitleProperties );
@@ -222,8 +224,8 @@ var Intense = (function() {
           'letterSpacing': '0.1px',
           'maxWidth': '500px',
           'textAlign': 'left',
-          'background': 'none',
-          'marginTop': '5px'
+          'background': 'hsla(0,0%,7%,0.2)',
+          'marginTop': '10px'
         }
         var captionText = document.createElement( 'h2' );
         applyProperties( captionText, captionTextProperties );
@@ -290,7 +292,7 @@ var Intense = (function() {
       container.addEventListener( 'mousemove', onMouseMove, false );
       container.addEventListener("touchmove", onTouchMove, false);
       window.addEventListener( 'resize', setDimensions, false );
-      target.addEventListener( 'click', removeViewer, false )
+      window.addEventListener( 'click', removeViewer, false )
     }
 
     function unbindEvents() {
@@ -298,7 +300,7 @@ var Intense = (function() {
       container.removeEventListener( 'mousemove', onMouseMove, false );
       container.removeEventListener("touchmove", onTouchMove, false);
       window.removeEventListener( 'resize', setDimensions, false );
-      target.removeEventListener( 'click', removeViewer, false )
+      window.removeEventListener( 'click', removeViewer, false )
     }
   
     function onMouseMove( event ) {

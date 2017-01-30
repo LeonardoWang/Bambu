@@ -44,7 +44,8 @@ item uploading page
                     <div class="form-group">
                         <label class="col-sm-3 col-md-3 control-label" for="file">One picture for item</label>
                         <div class="col-sm-8 col-md-8">
-                            <input id="file" name="image" class="form-control input-md" type="file">
+                            <input id="file" name="image" class="form-control input-md" style="color:black;background:none;" type="file"> <!--multiple="true"-->
+                            <div style="position:absolute;width:64px;top:3px;left:18px;height:36px;padding:0px 15px 0px 15px; background-color:white;"></div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -62,13 +63,6 @@ item uploading page
                             </select>
                         </div>
                     </div>
-                    <!--<div class="form-group">
-                        <label class="col-sm-3 col-md-3 control-label" for="keywords">Keywords</label>
-                        <div class="col-sm-8 col-md-8">
-                            <input id="keywords" name="keywords" type="text" placeholder="what's the feature of your deal? seperate each keyword by;" class="form-control input-md">
-                        </div>
-                    </div>
-                    -->
 
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="submit"></label>
