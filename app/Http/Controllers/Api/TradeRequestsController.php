@@ -126,7 +126,7 @@ class TradeRequestsController extends Controller
             'user_id' => 'required',
             'item_id' => 'required',
             'message' => 'required',
-            'price' => 'required',
+            'price' => 'required|numeric',
         ]);
         $user = Auth::user();
         $userinformation = UserInformation::find($user->id);

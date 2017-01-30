@@ -154,7 +154,7 @@ class ItemsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'price' => 'required|digits',
+            'price' => 'required|numeric',
             'description' => 'required|min:5',
             'image' => 'image'
         ]);

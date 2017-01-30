@@ -49,8 +49,8 @@ class UsersController extends Controller
         
         
         $this->validate($request, [
-            'name' => 'required|unique:users|max:255',
-            'tel' => 'required|unique:users'
+            'name' => 'required|unique:users|max:20',
+            'tel' => 'required|unique:users|digits_between:5,32'
         ]);
         $user = User::find($id);
         $user->name = $request->input('name');
@@ -78,7 +78,7 @@ class UsersController extends Controller
     public function login(Request $request)
     {
         $this->validate($request, [
-            'tel' => 'required',
+            'tel' => 'required|digits_between:5,32',
             'password' => 'required'
         ]);
         $tel = $request->input('tel');
@@ -106,7 +106,7 @@ class UsersController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255|unique:users',
-            'tel' => 'required|digits_between:7,32|unique:users',
+            'tel' => 'required|digits_between:5,32|unique:users',
             'password' => 'required|min:6',
             'smscode' =>'required|digits:4'
         ]);
@@ -161,7 +161,9 @@ class UsersController extends Controller
     {
         $user = Auth::user();
         $this->validate($request, [
-            'name' => 'required|max:255',
+            'name' => 'required|max:20',
+            'image' => 'image',
+            'location' => 'max:20'
         ]);
         //echo "<script type='text/javascript'>alert('start updating')</script>";
         
