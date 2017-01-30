@@ -148,7 +148,7 @@ var Intense = (function() {
         'backgroundColor': 'rgba(0,0,0,0.8)',
         'width': '50%',
         'height': '100%',
-        'min-width': '600px',
+        'min-width': '500px',
         'position': 'fixed',
         'top': '0px',
         'left': '0px',
@@ -262,7 +262,12 @@ var Intense = (function() {
       horizontalOrientation = imageDimensions.fit;
 
       targetDimensions = { w: target.width, h: target.height };
-      containerDimensions = { w: window.innerWidth, h: window.innerHeight };
+      var wid;
+      if(window.innerWidth/2 < 500)
+        wid = window.innerWidth;
+      else
+        wid = window.innerWidth/2;
+      containerDimensions = { w: wid, h: window.innerHeight };
       overflowArea = {x: containerDimensions.w - targetDimensions.w, y: containerDimensions.h - targetDimensions.h};
 
     }

@@ -22,14 +22,14 @@
 						<div class="form-group">
 							<label class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label">Phone Number</label>
 							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-8">
-								<input type="tel" class="form-control" name="tel" value="{{ old('tel') }}">
+								<input type="tel" class="form-control" name="tel" required="">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label">Password</label>
 							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-8">
-								<input type="password" class="form-control" name="password">
+								<input type="password" class="form-control" name="password" required="">
 							</div>
 						</div>
 

@@ -154,50 +154,51 @@ class ItemsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-            'image' => 'required|image'
+            'price' => 'required|digits',
+            'description' => 'required|min:5',
+            'image' => 'image'
         ]);
-        
         if(Auth::check())
         {
-
-        $user = Auth::user();
-        $item = new Item;
-        $item->title = $request->input('title');
-        $item->user_id = $user->id;
-        $item->user_name = $user->name;
-        $item->price = $request->input('price');
-        $item->description = $request->input('description');
-        $item->status = 'unreviewed';
-        $item->category = $request->input('category');
-        //$item->keywords = $request->input('keywords');
-        if ($item->save()) {
-            $item_id = $item->id;
-            if ($request->hasFile('image')) {
-                $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
-                Storage::put('images/' . $file_name,
-                    file_get_contents($request->file('image')->getRealPath()));
-                $image_record = New Image;
-                $image_record->item_id = $item_id;
-                $image_record->filename = $file_name;
-                $item->image_file = $file_name;
-                if ($image_record->save() && $item->save()){
-                    echo "<script type='text/javascript'>alert('your item is successfully uploaded!')</script>";
-                    $products = Item::orderBy('updated_at', 'desc')->get();
-                    //return $file_name;
-                    return view('welcome',compact('user','products'));
-                }else {
-                    echo "<script type='text/javascript'>alert('There's something wrong! Please check your nerwork connection.')</script>";
-                    return 0;
+            $user = Auth::user();
+            if (!$validator->fails()) {
+                $item = new Item;
+                $item->title = $request->input('title');
+                $item->user_id = $user->id;
+                $item->user_name = $user->name;
+                $item->price = $request->input('price');
+                $item->description = $request->input('description');
+                $item->status = 'unreviewed';
+                $item->category = $request->input('category');
+                //$item->keywords = $request->input('keywords');
+                $item->save();
+                $item_id = $item->id;
+                if ($request->hasFile('image')) {
+                    $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+                    Storage::put('images/' . $file_name,
+                        file_get_contents($request->file('image')->getRealPath()));
+                    $image_record = New Image;
+                    $image_record->item_id = $item_id;
+                    $image_record->filename = $file_name;
+                    $item->image_file = $file_name;
+                    if ($image_record->save() && $item->save()){
+                        echo "<script type='text/javascript'>alert('your item is successfully uploaded!')</script>";
+                        $products = Item::orderBy('updated_at', 'desc')->get();
+                        //return $file_name;
+                        return view('welcome',compact('user','products'));
+                    }else {
+                        echo "<script type='text/javascript'>alert('There's something wrong! Please check your nerwork connection.')</script>";
+                        return 0;
+                    }
                 }
-            }
+                else {
+                    return 'no image file';
+                }
+            } 
             else {
-                return 'no image file';
+                $messages = $validator->messages();
+                return back()->withErrors($messages);;
             }
-        } else {
-            return 'save error';
-        }
         }
         else
         {

@@ -22,21 +22,21 @@
 						<div class="form-group">
 							<label class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label">Name</label>
 							<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-								<input type="text" class="form-control" name="name">
+								<input type="text" class="form-control" name="name" required="">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label">Your Phone Number</label>
 							<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-								<input type="tel" class="form-control" name="tel" id="tel">
+								<input type="tel" class="form-control" name="tel" id="tel" required="">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label">Verification Code</label>
 							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-								<input type="text" class="form-control" name="smscode">
+								<input type="text" class="form-control" name="smscode" required="">
 							</div>
 							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 								<button type="button" onclick="sendSMS(this)" class="btn btn-primary">
@@ -48,14 +48,14 @@
 						<div class="form-group">
 							<label class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label">Password</label>
 							<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-								<input type="password" class="form-control" name="password">
+								<input type="password" class="form-control" name="password" required="">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label">Confirm Password</label>
 							<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-								<input type="password" class="form-control" name="password_confirmation">
+								<input type="password" class="form-control" name="password_confirmation" required="">
 							</div>
 						</div>
 

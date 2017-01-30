@@ -22,7 +22,7 @@ item uploading page
                     <div class="form-group">
                         <label class="col-sm-3 col-md-3 control-label" for="textarea">Description</label>
                         <div class="col-sm-8 col-md-8">
-                            <textarea class="form-control" id="textarea" name="description" placeholder="describe more about your item"></textarea>
+                            <textarea id="description" name="description" placeholder="describe more about your item" class="form-control" required="required"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
