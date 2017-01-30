@@ -106,10 +106,16 @@ class UsersController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255|unique:users',
-            'tel' => 'required|max:255|unique:users',
+            'tel' => 'required|digits_between:7,32|unique:users',
             'password' => 'required|min:6',
+            'smscode' =>'required|digits:4'
         ]);
         $messages = $validator->messages();
+        /*if($request->input('smscode')!=$request->input('verismscode'))
+        {
+            $messages="Incorrect smscode!";
+            return back()->withErrors($messages);
+        }*/
         if(!$validator->fails()) {
             $user = User::create([
                 'name' => $request->input('name'),
@@ -121,11 +127,11 @@ class UsersController extends Controller
             $userinformation->sex ='unknown';
             $userinformation->location ='Earth';
             $userinformation->user_image = '/img/default_user_profile.jpg';
-          
             $userinformation->save();
             Auth::login($user);
-            echo "<script type='text/javascript'>alert('you have successfully registered!)</script>";
-            return redirect()->intended('/');
+            echo "<script type='text/javascript'>alert('you have successfully registered!')</script>";
+            $products = Item::orderBy('updated_at', 'desc')->get();
+            return view('welcome',compact('user','products'));
             /*User::where('email', $request->input('email'))->first();*/
         }
         else {
@@ -193,7 +199,7 @@ class UsersController extends Controller
         }
         else{
             $userinformation->save();
-            echo "<script type='text/javascript'>alert('profile successfully update. Save without picture')</script>";
+            echo "<script type='text/javascript'>alert('profile successfully update. Saved without picture.')</script>";
             $user_information = UserInformation::find($user->id);
             return view('myprofile',compact('user','user_information'));
         }

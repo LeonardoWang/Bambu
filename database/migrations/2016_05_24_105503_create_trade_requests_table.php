@@ -17,7 +17,7 @@ class CreateTradeRequestsTable extends Migration
           $table->integer('user_id');
           $table->integer('item_id');
           $table->string('message');
-          $table->enum('status', ['unreviewed', 'reviewed', 'rejected']);
+          $table->integer('owner_id');
 
           $table->timestamps();
       });

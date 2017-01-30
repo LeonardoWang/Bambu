@@ -7,15 +7,15 @@ trade confirmation page
 @section('content')
     @if (isset($products)==1)
         @foreach ($products as $product)
-            <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12" style="padding-bottom:80px;">
-                <div style="padding-top:80px;">
+            <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-8 col-sm-offset-2">
+                <div>
                     <div class="thumbnail" >
                         <div class="demo-image" data-image="/api/product/images/{{$product->image_file}}" data-title="{{$product->title}}" data-caption="{{$product->description}}">
-                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive">
+                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="max-height:600px;">
                         </div>
                         <div class="caption">
                             <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12" style="text-align:left;">
+                                <div class="col-lg-12 col-md-12 col-sm-12" style="text-align:center;">
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <p style="color:#f44336;">￥{{$product->price}}</p>
                                     </div>
@@ -23,7 +23,7 @@ trade confirmation page
                                         <p style="text-align:right;">seller: <a href="/api/user/{{$product->user_id}}/info/" class = "ba">{{$product->user_name}}</a></p>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div style="overflow: auto; max-height:180px;"><p>{{$product->description}}</p></div>
+                                        <div style="overflow: auto; max-height:180px;"><p style="font-size: 15px;">{{$product->description}}</p></div>
                                     </div>
                                 </div>
                             </div>
@@ -32,12 +32,12 @@ trade confirmation page
                 </div>
             </div>
 
-            <div class="col-lg-4 col-lg-offset-1 col-md-5 col-sm-12 col-xs-12" style="margin-top:8%">
+            <div class="col-lg-4 col-lg-offset-1 col-md-6 col-md-offset-0 col-sm-8 col-sm-offset-2" style="margin-top:4%">
                 <form method="post" action="/api/trade_request_making" class="form-horizontal" enctype="multipart/form-data" role="form">
                 {!! csrf_field() !!}
                 <fieldset>
                     <div class="form-group">               
-                        <label class="col-md-3 control-label" style="font-size:24px;"><b>{{$product->title}}</b>
+                        <label class="col-md-12 control-label" style="font-size:24px; text-align:left;"><b>{{$product->title}}</b>
                     </label>
                     </div>
                     <!-- Text input-->
@@ -82,26 +82,26 @@ trade confirmation page
                 </fieldset>
                 </form>
                 <hr style="margin-top:-30px;">
-                <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom:70px">
+                <div class="col-md-12">
                     @if (isset($comments)>0)
                         <p>Comments to this item:</p>
                         @foreach ($comments as $comment)
                         <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <div class="col-lg-3 col-md-3 col-sm-3">
                                 <a href="/api/user/{{$comment->user_id}}/info/">
                                     <img class="img-circle" src="{{$comment->user_image}}" style="max-width:80px;">
                                 </a>
                             </div>
-                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="text-align:left;">
+                            <div class="col-lg-9 col-md-9 col-sm-9" style="text-align:left;">
                                 <div class="thumbnail" >
                                 <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
                                 <div class="caption" style="padding-top:0px;">
                                     <div class="row">
-                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-6" style="text-align:left;">
+                                        <div class="col-lg-7 col-md-7 col-sm-7" style="text-align:left;">
                                             <p style="margin:0 0 0 0px;"><b><a href="/api/user/{{$comment->user_id}}/info/" class = "ba">{{$comment->user_name}}</a></b><br>
                                                 {{$comment->message}}</p>
                                         </div>
-                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-6" style="text-align:left;">
+                                        <div class="col-lg-5 col-md-5 col-sm-5" style="text-align:left;">
                                             <p style="color:#bdc3c7; font-size:10px; margin-top:0px;">{{substr($comment->created_at,0,10)}}<p>
                                             <p style="color:#f44336; margin:0 0 0 0px;">￥ {{$comment->price}}</p>
                                         </div>

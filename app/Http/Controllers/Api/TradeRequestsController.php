@@ -14,6 +14,7 @@ use App\Item;
 use App\Comment;
 use App\User;
 use App\UserInformation;
+
 class TradeRequestsController extends Controller
 {
     /**
@@ -138,13 +139,17 @@ class TradeRequestsController extends Controller
         $comment->message = $request->input('message');
         $comment->itemfortrade = $request->input('itemfortrade');
         $comment->price = $request->input('price');
-        
+        $products = Item::where('id', $comment->item_id)->first();
+        $comment->item_owner_id = $products->user_id;
 
 
         if($comment->save())
         {
             $products = Item::where('id', $comment->item_id)->get();
             $comments = Comment::where('item_id',$comment->item_id)->get();
+            $notif = new NotifiController;
+            $notif->addCommentNotif($comment->user_id);
+            $notif->sendNotif($comment->user_id);
             echo "<script type='text/javascript'>alert('your comment is added successfully!')</script>";
             return view('productshow',compact('user','products','comments'));
         }
@@ -153,6 +158,14 @@ class TradeRequestsController extends Controller
             echo "<script type='text/javascript'>alert('your comment is added unsuccessfully!')</script>";
             return 0;
         }       
+    }
+
+    public function myRequest()
+    {
+        $user = Auth::user();
+        $notif = new NotifiController;
+        $notif->removeCommentNotif($user->id);
+        return Comment::where('owner_id',$user->id)->get();
     }
 
 }

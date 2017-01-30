@@ -12,16 +12,17 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@home');
+Route::get('/home', 'HomeController@index');
 Route::get('/test', 'HomeController@test');
 
 Route::get('/register','HomeController@register');
+Route::get('/smscode','HomeController@sendSMS');
 
 Route::get('/login', 'HomeController@login');
 Route::get('/test',"HomeController@test");
 
 Route::get('/event', function(){
-    Event::fire(new \App\Events\SomeEvent(3,2,"2"));
+    Event::fire(new \App\Events\SomeEvent(3,2,"he你好! <img style='width:25px;' src='/img/default_user_profile.jpg'/>"));
     return "hello world";
 });
 
@@ -55,6 +56,7 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 	Route::get('items/{id}/images', 'Api\ItemsController@images');
 	Route::get('items/search/{keyword}', 'Api\ItemsController@search');
 	Route::get('trade_requests/{id}','Api\TradeRequestsController@doRequest');
+	Route::get('trade_requests/my','Api\TradeRequestsController@myRequest');
 	Route::post('trade_request_making','Api\TradeRequestsController@postRequest');
 	//Route::resource('trade_requests', 'Api\TradeRequestsController', ['only' => ['index', 'store', 'show']]);
 	

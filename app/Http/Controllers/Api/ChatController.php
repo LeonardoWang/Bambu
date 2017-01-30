@@ -10,6 +10,7 @@ use Storage;
 use App\Item;
 use App\ChatRoom;
 use App\Message;
+use Event;
 
 class ChatController extends Controller
 {
@@ -41,7 +42,26 @@ class ChatController extends Controller
         $message->user_id = Auth::user()->id;
         $message->information = $request->input('chat_information');
 
-        Event::fire(new \App\Events\SomeEvent($message->chat_room_id,$message->user_id,$message->information));
+        Event::fire(new \App\Events\SomeEvent($message->user_id,$message->chat_room_id,$message->information));
+
+        $room = ChatRoom::where('id',$message->chat_room_id)->get();
+        if(empty($room_id))
+            return 'false'
+
+        $notif = new NotifiController;
+        if($room->user_sell_id == $message->user_id)
+        {
+            $notif->sendNotif($room->user_buy_id);
+            $notif->addChatNotif($room->user_buy_id);
+            $notif->removeChatNotif($message->user_id);
+        }
+        else
+        {
+            $notif->sendNotif($room->user_buy_id);
+            $notif->addChatNotif($room->user_sell_id);
+            $notif->removeChatNotif($message->user_id);
+        }
+
         return 'success';
         
     }

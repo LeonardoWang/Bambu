@@ -2,11 +2,11 @@
 item uploading page
 -->
 
-@extends('base')
+@extends('basenofooter')
 
 @section('content')
 
-    <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 col-lg-offset-3 col-md-offset-3 col-sm-offset-2 col-xs-offset-2 panel" style="margin-top:80px;margin-bottom:90px;">
+    <div class="col-lg-6 col-md-6 col-sm-8 col-lg-offset-3 col-md-offset-3 col-sm-offset-2 panel">
         <div class="panel-title"><h3>upload a item</h3></div>
         <div class="panel-body" >
             <form method="POST" action="product/addProduct" class="form-horizontal" enctype="multipart/form-data" role="form">
@@ -44,7 +44,7 @@ item uploading page
                     <div class="form-group">
                         <label class="col-sm-3 col-md-3 control-label" for="file">One picture for item</label>
                         <div class="col-sm-8 col-md-8">
-                            <input id="file" name="image" class="form-control input-md" type="file" accept="image/jpeg, image/png">
+                            <input id="file" name="image" class="form-control input-md" type="file">
                         </div>
                     </div>
                     <div class="form-group">

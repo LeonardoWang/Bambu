@@ -1,7 +1,7 @@
-@extends('base')
+@extends('basenofooter')
 
 @section('content')
-		<div class="col-xs-12 col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3" style="margin-top:60px;">
+		<div class="col-xs-12 col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
 			<div class="panel panel-default">
 				<div class="panel-heading">Reset Password</div>
 				<div class="panel-body">

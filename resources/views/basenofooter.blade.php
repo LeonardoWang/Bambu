@@ -13,7 +13,6 @@
 
         <script src="/js/jquery-3.1.1.min.js"></script>
         <script src='/js/intense.js'></script>
-        <script src="http://localhost:6001/socket.io/socket.io.js"></script>
    
         <!-- Loading Bootstrap -->
         <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -75,11 +74,10 @@
           </nav><!-- /navbar -->
     </div>
 
-<div class="container">
+<div class="container" style="width:100%;">
     <div class="row" style="width:100%;margin:58px auto 0px auto; padding:auto;">
         @yield('content')
     </div>
-<footer class="footer navbar" id = "aboutUs" style="margin: 0px; padding: 0px; width:102.5%; left:-1.5%">
     @if (isset($user) > 0)
     <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;display:none;">
         <div class="col-md-12 column">
@@ -95,32 +93,11 @@
     </div>
     <button id="chatroomButton" onclick="toggleChat()" class="btn btn-primary bambu-color1" style="position:absolute;bottom:10px; left:165px;">show</button>
     @endif
-    <p style="text-align:center;font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
-        <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
-</footer>
+    
 </div>
 
 </body>
     <script type="text/javascript">
-        window.onload = function() {
-            var elements = document.querySelectorAll( '.demo-image' );
-            Intense( elements );
-            var socket = io('http://localhost:6001');
-            socket.on('connection', function (data) {
-                console.log(data);
-            });
-            socket.on('2:App\\Events\\SomeEvent', function(message){
-                console.log(message);
-            document.getElementById("dialog_userid").innerHTML+=message.user_id + "<br>";
-            document.getElementById("dialog_message").innerHTML+=message.message + "<br>";
-            });
-            console.log(socket);
-        }
-        /*function turnpage(id){
-
-            window.location.href="/";
-        }*/
-
     
         function sb(){
             s = document.getElementById('inpu1').value;
@@ -135,20 +112,24 @@
             window.location.href="/";
         }
 
-        function onSubmit(){
-            document.getElementById("dialog_userid").innerHTML+="marc<br>";
-            document.getElementById("dialog_message").innerHTML+=document.getElementById("sendtext").value + "<br>";
-        }
-
-        function toggleChat(){
-            if($("#chatroom").css("display")=="none") {
-                $("#chatroom").css("display","block");
-                document.getElementById("chatroomButton").innerHTML="hide";
-                //alert(document.getElementById("chatroomButton").innerHTML);
-            }else {
-                $("#chatroom").css("display","none");
-                document.getElementById("chatroomButton").innerHTML="show";
+        function sendSMS(){
+        //alert('1');
+        var iphone=$("#tel").val();
+        //console.log(iphone);
+        $.ajax({
+            type:"get",
+            url:'/smscode',
+            data:{'iphone':iphone},
+            success:function(msg){
+                console.log(msg);
+                document.getElementById("code").value = msg.substr(0,4);
+                if(msg.substr(13,3)=='100'){
+                    alert('短信发送成功');
+                }else{
+                    alert('短信发送失败');
+                }
             }
+        });
         }
     </script>
 </html>
