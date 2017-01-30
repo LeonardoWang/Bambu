@@ -113,7 +113,7 @@
         }
 
         var clock = '';
-        var nums = 10;
+        var nums = 30;
         var btn;
 
         function sendSMS(thisBtn){
@@ -139,6 +139,7 @@
                 }
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {  //#3这个error函数调试时非常有用，如果解析不正确，将会弹出错误框
+                console.log(XMLHttpRequest);
                 alert(XMLHttpRequest.status);
                 alert(XMLHttpRequest.readyState);
                 alert(textStatus); // paser error;
@@ -155,7 +156,7 @@
                 clearInterval(clock); //清除js定时器
                 btn.disabled = false;
                 btn.innerHTML = 'send code';
-                nums = 10; //重置时间
+                nums = 30; //重置时间
             }
         }
 
