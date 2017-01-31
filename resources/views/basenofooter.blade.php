@@ -78,22 +78,6 @@
     <div class="row" style="width:100%;margin:58px auto 0px auto; padding:auto;">
         @yield('content')
     </div>
-    @if (isset($user) > 0)
-    <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;display:none;">
-        <div class="col-md-12 column">
-            <div class="thumbnail" style="height:200px;">
-                <div class="col-md-3 caption" id="dialog_userid"></div>
-                <div class="col-md-9 caption" id="dialog_message"></div>
-            </div>
-            <form onsubmit="onSubmit(); return false;">
-                <textarea class="form-control thumbnail" id="sendtext" placeholder="please reply here"></textarea>
-                <div><input type="submit" class="btn" value="send" /></div>
-            </form>
-        </div>
-    </div>
-    <button id="chatroomButton" onclick="toggleChat()" class="btn btn-primary bambu-color1" style="position:absolute;bottom:10px; left:165px;">show</button>
-    @endif
-    
 </div>
 
 </body>
@@ -112,24 +96,53 @@
             window.location.href="/";
         }
 
-        function sendSMS(){
-        //alert('1');
+        var clock = '';
+        var nums = 30;
+        var btn;
+
+        function sendSMS(thisBtn){
+        btn = thisBtn;
+        btn.disabled = true; //将按钮置为不可点击
+        btn.innerHTML = 'resend after ' + nums + ' s';
+        clock = setInterval(doLoop, 1000); //一秒执行一次
+
         var iphone=$("#tel").val();
         //console.log(iphone);
         $.ajax({
             type:"get",
             url:'/smscode',
             data:{'iphone':iphone},
+
             success:function(msg){
                 console.log(msg);
                 document.getElementById("code").value = msg.substr(0,4);
                 if(msg.substr(13,3)=='100'){
-                    alert('短信发送成功');
+                    alert('SMS code has sent!');
                 }else{
-                    alert('短信发送失败');
+                    alert('SMS code sent failed, check your network.');
                 }
-            }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {  //#3这个error函数调试时非常有用，如果解析不正确，将会弹出错误框
+                console.log(XMLHttpRequest);
+                alert(XMLHttpRequest.status);
+                alert(XMLHttpRequest.readyState);
+                alert(textStatus); // paser error;
+            },
         });
         }
+
+        function doLoop()
+        {
+            nums--;
+            if(nums > 0){
+                btn.innerHTML = 'resend after ' + nums + ' s';
+            }else{
+                clearInterval(clock); //清除js定时器
+                btn.disabled = false;
+                btn.innerHTML = 'send code';
+                nums = 30; //重置时间
+            }
+        }
+
     </script>
 </html>

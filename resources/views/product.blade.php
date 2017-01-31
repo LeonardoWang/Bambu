@@ -8,6 +8,16 @@ item uploading page
 
     <div class="col-lg-6 col-md-6 col-sm-8 col-lg-offset-3 col-md-offset-3 col-sm-offset-2 panel">
         <div class="panel-title"><h3>upload a item</h3></div>
+        @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>Error:</strong><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
         <div class="panel-body" >
             <form method="POST" action="product/addProduct" class="form-horizontal" enctype="multipart/form-data" role="form">
                 {!! csrf_field() !!}
@@ -22,7 +32,7 @@ item uploading page
                     <div class="form-group">
                         <label class="col-sm-3 col-md-3 control-label" for="textarea">Description</label>
                         <div class="col-sm-8 col-md-8">
-                            <textarea class="form-control" id="textarea" name="description" placeholder="describe more about your item"></textarea>
+                            <textarea id="description" name="description" placeholder="describe more about your item" class="form-control" required="required"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -44,7 +54,7 @@ item uploading page
                     <div class="form-group">
                         <label class="col-sm-3 col-md-3 control-label" for="file">One picture for item</label>
                         <div class="col-sm-8 col-md-8">
-                            <input id="file" name="image" class="form-control input-md" type="file">
+                            <input id="file" name="image" class="form-control input-md" type="file"> <!--multiple="true"-->
                         </div>
                     </div>
                     <div class="form-group">
@@ -62,13 +72,6 @@ item uploading page
                             </select>
                         </div>
                     </div>
-                    <!--<div class="form-group">
-                        <label class="col-sm-3 col-md-3 control-label" for="keywords">Keywords</label>
-                        <div class="col-sm-8 col-md-8">
-                            <input id="keywords" name="keywords" type="text" placeholder="what's the feature of your deal? seperate each keyword by;" class="form-control input-md">
-                        </div>
-                    </div>
-                    -->
 
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="submit"></label>
