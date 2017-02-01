@@ -6,13 +6,15 @@ trade confirmation page
 
 @section('content')
 
+<div style="margin-top:58px;">
 @if (isset($products) > 0)
             @foreach ($products as $product)
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="thumbnail" >
                             <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
-                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive">
-                            
+                            <a href="/api/trade_requests/{{$product->id}}">
+                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="height:400px;">
+                            </a>
                             <div class="caption">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -38,7 +40,7 @@ trade confirmation page
                                 </div>
                                 <div class="row">
                                     <div class="col-offset-3">
-                                        <a href="/api/items/{{$product->id}}/delete" class="btn btn-success btn-product bambu-color1"><span class="fa fa-shopping-cart"></span> Delete it</a></div>
+                                        <a href="javascript:if(confirm('Are you sure to delete it?'))location='/api/items/{{$product->id}}/delete'" class="btn btn-success btn-product bambu-color1"><span class="fa fa-shopping-cart"></span> Delete it</a></div>
                                 </div>
                             </div>
                         </div>
@@ -56,11 +58,10 @@ trade confirmation page
             </ul>
             -->
 @else
-    <div class="container">
-        <div class="row" style="margin-top:56px;">
+    <div class="col-md-12">
             <h1>Sorry,no available items yet.</h1>
-        </div>
     </div>
 @endif
+</div>
 
 @endsection
