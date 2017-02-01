@@ -1,7 +1,17 @@
+            html {
+                height: 100%;
+                box-sizing: border-box;
+            }
+
+            *, *::after, *::before {
+                box-sizing: inherit;
+            }
+
             body {
                 margin: 0;
                 padding: 0;
                 width: 100%;
+                height:100%;
                 display: table;
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; 
             }
@@ -46,10 +56,12 @@
             }
 
             .container {
+                width:100%;
+                min-height:100%;
+                height:auto !important;
                 text-align: center;
                 display: table-cell;
                 vertical-align: middle;
-                width:100%;
             }
 
 
@@ -99,7 +111,6 @@
             }
 
             #file {
-                cursor: pointer;
                 position: relative;
                 display: inline-block;
                 background: white;
@@ -117,6 +128,13 @@
                 border-color: #e53935;
                 color: #004974;
                 text-decoration: none;
+            }
+
+            #aboutUs{
+                line-height: 50px;
+                text-align: center;
+                margin: 0px;
+                padding: 0px;
             }
 
             .navbar-toggle::before{

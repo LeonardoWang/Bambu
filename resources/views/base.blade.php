@@ -75,30 +75,22 @@
           </nav><!-- /navbar -->
     </div>
 
-<div class="container">
+<div class="container" style="width:100%;min-height:100%;">
     <div class="row" style="width:100%;margin:58px auto 0px auto; padding:auto;">
         @yield('content')
     </div>
-<footer class="footer navbar" id = "aboutUs" style="margin: 0px; padding: 0px; width:102.5%; left:-1.5%">
-    @if (isset($user) > 0)
-    <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;display:none;">
-        <div class="col-md-12 column">
-            <div class="thumbnail" style="height:200px;">
-                <div class="col-md-3 caption" id="dialog_userid"></div>
-                <div class="col-md-9 caption" id="dialog_message"></div>
-            </div>
-            <form onsubmit="onSubmit(); return false;">
-                <textarea class="form-control thumbnail" id="sendtext" placeholder="please reply here"></textarea>
-                <div><input type="submit" class="btn" value="send" /></div>
-            </form>
-        </div>
-    </div>
-    <button id="chatroomButton" onclick="toggleChat()" class="btn btn-primary bambu-color1" style="position:absolute;bottom:10px; left:165px;">show</button>
-    @endif
-    <p style="text-align:center;font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
-        <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
-</footer>
 </div>
+
+<footer class="footer navbar navbar-fixed-bottom" id = "aboutUs">
+    @if (isset($user) > 0)
+    <input type="hidden" id="userName" value="{{$user->name}}"></input>
+    <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;">
+        <!--chatroom added here-->
+    </div>
+    @endif
+    <p style="font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
+    <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
+</footer>
 
 </body>
     <script type="text/javascript">
@@ -106,13 +98,20 @@
             var elements = document.querySelectorAll( '.demo-image' );
             Intense( elements );
             var socket = io('http://localhost:6001');
+            var chatroomNum=0;
             socket.on('connection', function (data) {
                 console.log(data);
             });
             socket.on('2:App\\Events\\SomeEvent', function(message){
                 console.log(message);
-            document.getElementById("dialog_userid").innerHTML+=message.user_id + "<br>";
-            document.getElementById("dialog_message").innerHTML+=message.message + "<br>";
+                if(!document.getElementById("chatroom_"+message.user_id))//create a chatroom
+                {
+                    chatroomNum++;
+                    console.log("chatroomnumber: " + chatroomNum);
+                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+message.user_id+'" style="float:right">     <div class="thumbnail" style="height:200px;">     <button id="dialog_closebtn_'+message.user_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">close</button>                                                              <div class="col-md-3 caption" id="dialog_userid_'+message.user_id+'"></div>                                 <div class="col-md-9 caption" id="dialog_message_'+message.user_id+'"></div>                                </div>                                                                                                      <textarea class="thumbnail form-control" id="dialog_sendtext_'+message.user_id+'" placeholder="reply here"></textarea>                                                                                                  <div><input id="'+message.user_id+'" onclick="onSubmit(this)" class="btn" value="send" /></div></div>';
+                }
+                document.getElementById("dialog_userid_"+message.user_id).innerHTML+=message.user_id + "<br>";
+                document.getElementById("dialog_message_"+message.user_id).innerHTML+=message.message + "<br>";
             });
             console.log(socket);
         }
@@ -135,20 +134,31 @@
             window.location.href="/";
         }
 
-        function onSubmit(){
-            document.getElementById("dialog_userid").innerHTML+="marc<br>";
-            document.getElementById("dialog_message").innerHTML+=document.getElementById("sendtext").value + "<br>";
+        function onSubmit(btn){
+            var user_sent_id = btn.id;
+            var send_text = document.getElementById("dialog_sendtext_"+user_sent_id).value;
+            if(send_text)
+            {
+                document.getElementById("dialog_userid_"+user_sent_id).innerHTML+=document.getElementById("userName").value+"<br>";
+                document.getElementById("dialog_message_"+user_sent_id).innerHTML+=send_text + "<br>";
+            }
+            else{
+                alert('no text!');
+            }
         }
 
-        function toggleChat(){
-            if($("#chatroom").css("display")=="none") {
-                $("#chatroom").css("display","block");
-                document.getElementById("chatroomButton").innerHTML="hide";
+        function toggleChat(btn){
+            var user_sent_id = btn.id.replace(/dialog_closebtn_/,"");
+            chatroom_id = "#chatroom_"+user_sent_id;
+            $(chatroom_id).remove();
+            /*if($(chatroom_id).css("display")=="none") {
+                $(chatroom_id).css("display","block");
+                btn.innerHTML="hide";
                 //alert(document.getElementById("chatroomButton").innerHTML);
             }else {
-                $("#chatroom").css("display","none");
-                document.getElementById("chatroomButton").innerHTML="show";
-            }
+                $(chatroom_id).css("display","none");
+                btn.innerHTML="show";
+            }*/
         }
     </script>
 </html>
