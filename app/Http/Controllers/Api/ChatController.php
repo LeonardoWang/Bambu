@@ -26,6 +26,18 @@ class ChatController extends Controller
     	return ChatRoom::where('user_sell_id',$user->id)->orWhere('user_buy_id',$user->id)->get();
     }
 
+    public function GetChatRoom(Request $request)
+    {
+        $this->validate($request, [
+            'user_id' => 'required',
+        ]);
+        $user = Auth::user();
+        $user_id = $request->input('user_id');
+        $chat_room_id = ChatRoom::where('user_sell_id',$user->id)->Where('user_buy_id',$user_id)->first();
+        if(empty($chat_room_id))
+            $chat_room_id = ChatRoom::where('user_buy_id',$user->id)->Where('user_sell_id',$user_id)->first();
+        return $chat_room_id;
+    }
     public function Chatroom()
     {
     	return view('chat');
