@@ -86,9 +86,7 @@
                     <!--{{$product=$products[$i]}}-->
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="thumbnail">
-                            <a href="/api/trade_requests/{{$product->id}}">
-                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="height:400px;">
-                            </a>
+                            <div class="demo-image" data-image="/api/product/images/{{$product->image_file}}" data-title="{{$product->title}}" data-caption="{{$product->description}}"><img src="/api/product/images/{{$product->image_file}}" class="img-responsive"></div>
                             <div class="caption" style="padding-top:0px;">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -111,12 +109,17 @@
                                         <!--<p>created by <a href="#" class="bambu-color1">{{$product->user_name}}</a></p>-->
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-offset-3">
+                                        <a href="/api/trade_requests/{{$product->id}}" class="btn btn-success btn-product bambu-color1"><span class="fa fa-shopping-cart"></span> I want it!</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 @endif
             @endfor
-            <!--pagination not used in homepage
+            <!--pagination
             <ul class="col-sm-3 col-md-3 col-lg-2 pagination">
             @for ($i = 1; $i < count($products)/3;$i++)
                 <li id="{{$i}}" class="bambu-color1" onclick="turnpage({{$i}})"><a>{{$i}}</a></li>
@@ -175,8 +178,7 @@
             console.log(socket);
         }
         /*function turnpage(id){
-
-            window.location.href="/";
+            
         }*/
 
     
