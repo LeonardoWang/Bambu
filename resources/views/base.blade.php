@@ -76,7 +76,7 @@
     </div>
 
 <div class="container" style="width:100%;min-height:100%;">
-    <div class="row" style="width:100%;margin:58px auto 0px auto; padding:auto;">
+    <div class="row" style="width:100%;margin:0px auto 0px auto; padding:auto;">
         @yield('content')
     </div>
 </div>
@@ -115,11 +115,6 @@
             });
             //console.log(socket);
         }
-        /*function turnpage(id){
-
-            window.location.href="/";
-        }*/
-
     
         function sb(){
             s = document.getElementById('inpu1').value;
@@ -196,6 +191,25 @@
                 $(chatroom_id).css("display","none");
                 btn.innerHTML="show";
             }*/
+        }
+
+        function createChatRoom(){
+            var user_remote_id = $("#user_id").val();
+            $.ajax({
+                type:"get",
+                url:'/api/chat/GetChatMessageByUserId',
+                data:{'user_id':user_remote_id},
+                
+                success:function(msg){
+                    console.log(msg);
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                    //alert(XMLHttpRequest.status);
+                    //alert(XMLHttpRequest.readyState);
+                    console.log(textStatus); // paser error;
+                }
+                });
         }
     </script>
 </html>

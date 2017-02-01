@@ -174,11 +174,6 @@
             });
             console.log(socket);
         }
-        /*function turnpage(id){
-
-            window.location.href="/";
-        }*/
-
     
         function sb(){
             s = document.getElementById('inpu1').value;

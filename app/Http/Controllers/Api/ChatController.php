@@ -26,7 +26,7 @@ class ChatController extends Controller
     	return ChatRoom::where('user_sell_id',$user->id)->orWhere('user_buy_id',$user->id)->get();
     }
 
-    public function GetChatRoom() //worked
+    public function GetChatRoomIDByUserID() //worked
     {
         $user = Auth::user();
         $user_id = $_GET['user_id'];
@@ -38,6 +38,7 @@ class ChatController extends Controller
             'chat_room_id' => $chat_room_id
         ));
     }
+    
     public function Chatroom()
     {
     	return view('chat');
@@ -93,11 +94,8 @@ class ChatController extends Controller
 
     public function GetChatMessageByUserId()
     {
-        $this->validate($request,[
-            'user_id' => 'required']
-            );
         $user_id = Auth::user()->id;
-        $tmp_user_id = $request->input('user_id');
+        $tmp_user_id = $_GET['user_id'];
 
         $chat_room_id = ChatRoom::where('user_sell_id',$user_id)->Where('user_buy_id',$tmp_user_id)->get();
         if(empty($chat_room_id))
