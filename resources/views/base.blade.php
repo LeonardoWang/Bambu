@@ -100,20 +100,20 @@
             var socket = io('http://localhost:6001');
             var chatroomNum=0;
             socket.on('connection', function (data) {
-                console.log(data);
+                //console.log(data);
             });
             socket.on('2:App\\Events\\SomeEvent', function(message){
-                console.log(message);
+                //console.log(message);
                 if(!document.getElementById("chatroom_"+message.user_id))//create a chatroom
                 {
                     chatroomNum++;
-                    console.log("chatroomnumber: " + chatroomNum);
+                    //console.log("chatroomnumber: " + chatroomNum);
                     document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+message.user_id+'" style="float:right">     <div class="thumbnail" style="height:200px;">     <button id="dialog_closebtn_'+message.user_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">close</button>                                                              <div class="col-md-3 caption" id="dialog_userid_'+message.user_id+'"></div>                                 <div class="col-md-9 caption" id="dialog_message_'+message.user_id+'"></div>                                </div>                                                                                                      <textarea class="thumbnail form-control" id="dialog_sendtext_'+message.user_id+'" placeholder="reply here"></textarea>                                                                                                  <div><input id="'+message.user_id+'" onclick="onSubmit(this)" class="btn" value="send" /></div></div>';
                 }
                 document.getElementById("dialog_userid_"+message.user_id).innerHTML+=message.user_id + "<br>";
                 document.getElementById("dialog_message_"+message.user_id).innerHTML+=message.message + "<br>";
             });
-            console.log(socket);
+            //console.log(socket);
         }
         /*function turnpage(id){
 
@@ -149,15 +149,15 @@
                 data:{'user_id':user_remote_id},
                 
                 success:function(msg){
-                    //console.log(user_send_id + " -> " + msg.chat_room_id);
-                    console.log(msg);
-                    //chat_room_id = msg.chat_room_id;
+                    //console.log(msg);
+                    //console.log("user_send_id -> " + msg.chat_room_id);
+                    chat_room_id = msg.chat_room_id;
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     console.log(XMLHttpRequest);
                     //alert(XMLHttpRequest.status);
                     //alert(XMLHttpRequest.readyState);
-                    //alert(textStatus); // paser error;
+                    console.log(textStatus); // paser error;
                 }
                 });
 
@@ -170,18 +170,12 @@
                 
                 success:function(msg){
                     console.log(msg);
-                    /*document.getElementById("code").value = msg.substr(0,4);
-                    if(msg.substr(13,3)=='100'){
-                        alert('SMS code has sent!');
-                    }else{
-                        alert('SMS code sent failed, check your network.');
-                    }*/
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     console.log(XMLHttpRequest);
                     //alert(XMLHttpRequest.status);
                     //alert(XMLHttpRequest.readyState);
-                    //alert(textStatus); // paser error;
+                    console.log(textStatus); // paser error;
                 }
                 });
             }

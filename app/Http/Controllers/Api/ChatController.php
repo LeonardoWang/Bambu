@@ -26,42 +26,40 @@ class ChatController extends Controller
     	return ChatRoom::where('user_sell_id',$user->id)->orWhere('user_buy_id',$user->id)->get();
     }
 
-    public function GetChatRoom()
+    public function GetChatRoom() //worked
     {
         $user = Auth::user();
         $user_id = $_GET['user_id'];
         $chat_room_id = ChatRoom::where('user_sell_id',$user->id)->Where('user_buy_id',$user_id)->first();
         if(empty($chat_room_id))
             $chat_room_id = ChatRoom::where('user_buy_id',$user->id)->Where('user_sell_id',$user_id)->first();
-        echo "<script type='text/javascript'>alert('chatroomid= ".$chatroomid."')</script>";
-        return $chat_room_id;
-        /*return response()->json(array(
+
+        return response()->json(array(
             'chat_room_id' => $chat_room_id
-        ));*/
+        ));
     }
     public function Chatroom()
     {
     	return view('chat');
     }
 
-    public function Chat(Request $request)
+    public function Chat() //unworked
     {
-    	$this->validate($request, [
-            'chat_room_id' => 'required',
-            'chat_infomation'=> 'required'
-        ]);
         $message = new Message();
-        $message->chat_room_id = $request->input('chat_room_id');
+        $message->chat_room_id = $_POST['chat_room_id'];
         $message->user_id = Auth::user()->id;
-        $message->information = $request->input('chat_information');
+        $message->information = $_POST['chat_infomation'];
 
         Event::fire(new \App\Events\SomeEvent($message->user_id,$message->chat_room_id,$message->information));
 
         $room = ChatRoom::where('id',$message->chat_room_id)->get();
         if(empty($room_id))
-            return 'false'
+            return response()->json(array(
+            'status' => 'failed'
+        ));
+        //return 'failed';
 
-        $notif = new NotifiController;
+        $notif = new NotifiController();
         if($room->user_sell_id == $message->user_id)
         {
             $notif->sendNotif($room->user_buy_id);
@@ -75,7 +73,11 @@ class ChatController extends Controller
             $notif->removeChatNotif($message->user_id);
         }
 
-        return 'success';
+
+        return response()->json(array(
+            'status' => 'success'
+        ));
+        //return 'success';
         
     }
 

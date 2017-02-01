@@ -37,7 +37,7 @@ trade confirmation page
                 {!! csrf_field() !!}
                 <fieldset>
                     <div class="form-group">               
-                        <label class="col-md-12 control-label" style="font-size:24px; text-align:left;"><b>{{$product->title}}</b>
+                        <label class="col-md-12 control-label" style="font-size:24px; text-align:center;"><b>{{$product->title}}</b>
                     </label>
                     </div>
                     <!-- Text input-->
