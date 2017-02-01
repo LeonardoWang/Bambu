@@ -12,7 +12,6 @@
         <meta name="viewport" content="width=100%, initial-scale=1.0, maximum-scale=1.0">
 
         <script src="/js/jquery-3.1.1.min.js"></script>
-        <script src='/js/intense.js'></script>
    
         <!-- Loading Bootstrap -->
         <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -143,6 +142,5 @@
                 nums = 30; //重置时间
             }
         }
-
     </script>
 </html>

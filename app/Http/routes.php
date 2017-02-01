@@ -73,6 +73,7 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 	Route::post('chat','Api\ChatController@Chat');
 	Route::post('chat/GetChatMessageByUserId','Api\ChatController@GetChatMessageByUserId');
 	Route::post('chat/GetChatMessageByChatRoomID','Api\ChatController@GetChatMessageByChatRoomID');
+	Route::get('chat/GetChatRoomIDByUserID','Api\ChatController@GetChatRoom');
 
 	Route::group(['prefix' => 'users/{user_id}'], function()
 	{

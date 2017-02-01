@@ -135,12 +135,55 @@
         }
 
         function onSubmit(btn){
-            var user_sent_id = btn.id;
-            var send_text = document.getElementById("dialog_sendtext_"+user_sent_id).value;
+            var user_remote_id = btn.id;
+            var chat_room_id;
+            var send_text = document.getElementById("dialog_sendtext_"+user_remote_id).value;
             if(send_text)
             {
-                document.getElementById("dialog_userid_"+user_sent_id).innerHTML+=document.getElementById("userName").value+"<br>";
-                document.getElementById("dialog_message_"+user_sent_id).innerHTML+=send_text + "<br>";
+                document.getElementById("dialog_userid_"+user_remote_id).innerHTML+=document.getElementById("userName").value+"<br>";
+                document.getElementById("dialog_message_"+user_remote_id).innerHTML+=send_text + "<br>";
+                
+                $.ajax({
+                type:"get",
+                url:'/api/chat/GetChatRoomIDByUserID',
+                data:{'user_id':user_remote_id},
+                
+                success:function(msg){
+                    //console.log(user_send_id + " -> " + msg.chat_room_id);
+                    console.log(msg);
+                    //chat_room_id = msg.chat_room_id;
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                    //alert(XMLHttpRequest.status);
+                    //alert(XMLHttpRequest.readyState);
+                    //alert(textStatus); // paser error;
+                }
+                });
+
+
+                $.ajax({
+                type:"post",
+                url:'/api/chat',
+                data:{'chat_room_id':chat_room_id,
+                    'chat_infomation':send_text},
+                
+                success:function(msg){
+                    console.log(msg);
+                    /*document.getElementById("code").value = msg.substr(0,4);
+                    if(msg.substr(13,3)=='100'){
+                        alert('SMS code has sent!');
+                    }else{
+                        alert('SMS code sent failed, check your network.');
+                    }*/
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                    //alert(XMLHttpRequest.status);
+                    //alert(XMLHttpRequest.readyState);
+                    //alert(textStatus); // paser error;
+                }
+                });
             }
             else{
                 alert('no text!');
@@ -148,8 +191,8 @@
         }
 
         function toggleChat(btn){
-            var user_sent_id = btn.id.replace(/dialog_closebtn_/,"");
-            chatroom_id = "#chatroom_"+user_sent_id;
+            var user_remote_id = btn.id.replace(/dialog_closebtn_/,"");
+            chatroom_id = "#chatroom_"+user_remote_id;
             $(chatroom_id).remove();
             /*if($(chatroom_id).css("display")=="none") {
                 $(chatroom_id).css("display","block");
