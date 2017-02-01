@@ -5,6 +5,7 @@ trade confirmation page
 @extends('base')
 
 @section('content')
+<div style="margin-top:60px">
     @if (isset($products)==1)
         @foreach ($products as $product)
             <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-8 col-sm-offset-2">
@@ -15,16 +16,25 @@ trade confirmation page
                         </div>
                         <div class="caption">
                             <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12" style="text-align:center;">
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:center;">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                         <p style="color:#f44336;">￥{{$product->price}}</p>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <p style="text-align:right;">seller: <a href="/api/user/{{$product->user_id}}/info/" class = "ba">{{$product->user_name}}</a></p>
+                                    <div class="col-lg-7 col-md-7 col-sm-8 col-xs-9 col-lg-offset-2 col-md-offset-2 col-sm-offset-1">
+                                        <div class="col-lg-8 col-md-9 col-sm-10 col-xs-9">
+                                        <p style="text-align:right;font-size:15px;">seller :  <a href="/api/user/{{$product->user_id}}/info/" class = "ba">{{$product->user_name}}</a></p>
+                                        <input type="hidden" id="user_id" value="{{$product->user_id}}">
+                                        </div>
+                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+                                        <img onclick="createChatRoom()" style="width:35px;cursor:pointer;" src="/img/icons/svg/chat.svg"/>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div style="overflow: auto; max-height:180px;"><p style="font-size: 15px;">{{$product->description}}</p></div>
-                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <hr style="margin:0px;">
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div style="overflow: auto; max-height:180px;"><p style="font-size:15px;">{{$product->description}}</p></div>
                                 </div>
                             </div>
                         </div>
@@ -127,4 +137,5 @@ trade confirmation page
             </div>
         @endforeach
     @endif
+</div>
 @endsection

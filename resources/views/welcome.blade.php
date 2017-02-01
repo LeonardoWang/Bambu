@@ -78,7 +78,7 @@
 <!-- products on the home page -->
 @if (isset($products) > 0)
     <div class="container">
-        <div class="row" style="width:100%;margin:58px auto 0px auto; padding:auto;">
+        <div class="row" style="width:100%;margin:58px auto 60px auto; padding:auto;">
             <!--{{$i=0}}-->
             @for ($i = 0; $i < count($products);$i++)
             <!--foreach (products as product)-->
@@ -87,24 +87,24 @@
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="thumbnail">
                             <a href="/api/trade_requests/{{$product->id}}">
-                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="height:400px;">
+                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="max-height:350px;">
                             </a>
                             <div class="caption" style="padding-top:0px;">
                                 <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="col-md-12">
                                         <div style="color:#9aa4af; overflow:hidden; height:35px;">
                                             <p style="margin:0 0 0 0px;">{{$product->description}}</p>
                                         </div>
-                                        <div class="col-lg-9 col-md-9 col-sm-8" style="text-align:left;padding-left: 0px;">
-                                            <div class="col-lg-1 col-md-1 col-sm-1" style="padding-left:5px;">
+                                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="text-align:left;padding-left: 0px;">
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:5px;">
                                             <img style="width:20px;" src="/img/icons/svg/clocks.svg"/>
                                             </div>
-                                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                             <p style="color:#bdc3c7; font-size:15px; margin-top:2px;">{{substr($product->created_at,0,10)}}<p>
                                             </div>
                                         </div>
                                         
-                                        <div class="col-lg-3 col-md-3 col-sm-4" style="text-align:left;">
+                                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="text-align:left;">
                                             <p style="color:#f44336; margin-top:0px;">￥{{$product->price}}</p>
                                         </div>
                                         <!--<p>{{$product->image_file}}</p>-->
@@ -125,7 +125,7 @@
             -->
         </div>
 
-    <footer class="footer navbar" id = "aboutUs" style="margin: 0px; padding: 0px; width:102.5%; left:-1.5%">
+    <!--<footer class="footer navbar" id = "aboutUs" style="margin: 0px; padding: 0px; width:102.5%; left:-1.5%">
     @if (isset($user) > 0)
     <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;display:none;">
         <div class="col-md-12 column">
@@ -143,8 +143,18 @@
     @endif
     <p style="text-align:center;font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
         <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
-    </footer>
+    </footer>-->
     </div>
+<footer class="footer navbar navbar-fixed-bottom" id = "aboutUs">
+    @if (isset($user) > 0)
+    <input type="hidden" id="userName" value="{{$user->name}}"></input>
+    <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;">
+        <!--chatroom added here-->
+    </div>
+    @endif
+    <p style="font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
+    <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
+</footer>
 @else
     <div class="container">
         <div class="row" style="margin-top:56px;">
@@ -173,6 +183,18 @@
             document.getElementById("dialog_message").innerHTML+=message.message + "<br>";
             });
             console.log(socket);
+
+             $(".container").scroll(function(){  
+         var $this =$(this),  
+         viewH =$(this).height(),//可见高度  
+         contentH =$(this).get(0).scrollHeight,//内容高度  
+         scrollTop =$(this).scrollTop();//滚动高度  
+        //if(contentH - viewH - scrollTop <= 100) { //到达底部100px时,加载新内容  
+        if(scrollTop/(contentH -viewH)>=0.95){ //到达底部100px时,加载新内容  
+        // 这里加载数据..  
+        alert('666');
+        }  
+     });  
         }
     
         function sb(){
@@ -188,20 +210,88 @@
             window.location.href="/";
         }
 
-        function onSubmit(){
-            document.getElementById("dialog_userid").innerHTML+="marc<br>";
-            document.getElementById("dialog_message").innerHTML+=document.getElementById("sendtext").value + "<br>";
+        function onSubmit(btn){
+            var user_remote_id = btn.id;
+            var chat_room_id;
+            var send_text = document.getElementById("dialog_sendtext_"+user_remote_id).value;
+            if(send_text)
+            {
+                document.getElementById("dialog_userid_"+user_remote_id).innerHTML+=document.getElementById("userName").value+"<br>";
+                document.getElementById("dialog_message_"+user_remote_id).innerHTML+=send_text + "<br>";
+                
+                $.ajax({
+                type:"get",
+                url:'/api/chat/GetChatRoomIDByUserID',
+                data:{'user_id':user_remote_id},
+                
+                success:function(data){
+                    //console.log(data);
+                    //console.log("user_send_id -> " + data.chat_room_id);
+                    chat_room_id = data.chat_room_id;
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                    //alert(XMLHttpRequest.status);
+                    //alert(XMLHttpRequest.readyState);
+                    console.log(textStatus); // paser error;
+                }
+                });
+
+
+                $.ajax({
+                type:"post",
+                url:'/api/chat',
+                data:{'chat_room_id':chat_room_id,
+                    'chat_infomation':send_text},
+                
+                success:function(data){
+                    console.log(data);
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                    //alert(XMLHttpRequest.status);
+                    //alert(XMLHttpRequest.readyState);
+                    console.log(textStatus); // paser error;
+                }
+                });
+            }
+            else{
+                alert('no text!');
+            }
         }
 
-        function toggleChat(){
-            if($("#chatroom").css("display")=="none") {
-                $("#chatroom").css("display","block");
-                document.getElementById("chatroomButton").innerHTML="hide";
+        function toggleChat(btn){
+            var user_remote_id = btn.id.replace(/dialog_closebtn_/,"");
+            chatroom_id = "#chatroom_"+user_remote_id;
+            $(chatroom_id).remove();
+            /*if($(chatroom_id).css("display")=="none") {
+                $(chatroom_id).css("display","block");
+                btn.innerHTML="hide";
                 //alert(document.getElementById("chatroomButton").innerHTML);
             }else {
-                $("#chatroom").css("display","none");
-                document.getElementById("chatroomButton").innerHTML="show";
-            }
+                $(chatroom_id).css("display","none");
+                btn.innerHTML="show";
+            }*/
+        }
+
+        function createChatRoom(){
+            var user_remote_id = $("#user_id").val();
+            $.ajax({
+                type:"get",
+                url:'/api/chat/GetChatMessageByUserId',
+                data:{'user_id':user_remote_id},
+                
+                success:function(message) {
+                    console.log(message);
+                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+message.user_id+'" style="float:right">     <div class="thumbnail" style="height:200px;">     <button id="dialog_closebtn_'+message.user_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">close</button>                                                              <div class="col-md-3 caption" id="dialog_userid_'+message.user_id+'"></div>                                 <div class="col-md-9 caption" id="dialog_message_'+message.user_id+'"></div>                                </div>                                                                                                      <textarea class="thumbnail form-control" id="dialog_sendtext_'+message.user_id+'" placeholder="reply here"></textarea>                                                                                                  <div><input id="'+message.user_id+'" onclick="onSubmit(this)" class="btn" value="send" /></div></div>';
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                    //alert(XMLHttpRequest.status);
+                    //alert(XMLHttpRequest.readyState);
+                    console.log(textStatus); // paser error;
+                }
+                });
         }
     </script>
 </html>

@@ -58,7 +58,6 @@ class ChatController extends Controller
             return response()->json(array(
             'status' => 'failed'
         ));
-        //return 'failed';
 
         $notif = new NotifiController();
         if($room->user_sell_id == $message->user_id)
@@ -78,7 +77,6 @@ class ChatController extends Controller
         return response()->json(array(
             'status' => 'success'
         ));
-        //return 'success';
         
     }
 
@@ -110,7 +108,13 @@ class ChatController extends Controller
                 $chat_room_id = $chatroom->id;
             }
         }
-        return Message::Where('chat_room_id','$chat_room_id')->get();
+        
+        $message = Message::Where('chat_room_id','$chat_room_id')->get();
+
+        return response()->json(array(
+            'chat_room_id' => $chat_room_id,
+            'message' => $message
+        ));
 
     }
     

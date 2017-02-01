@@ -26,10 +26,6 @@
         <link href="/css/mycss.css" rel="stylesheet">
         <link rel="shortcut icon" href="/img/favicon.ico">
 
-        <!-- bambu-color1:#e53935;
-        bambu-color2:#f44336;
-        grey:#bdc3c7;
-    -->
     </head>
 
     <body>
@@ -204,7 +200,7 @@
                 
                 success:function(message) {
                     console.log(message);
-                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+message.user_id+'" style="float:right">     <div class="thumbnail" style="height:200px;">     <button id="dialog_closebtn_'+message.user_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">close</button>                                                              <div class="col-md-3 caption" id="dialog_userid_'+message.user_id+'"></div>                                 <div class="col-md-9 caption" id="dialog_message_'+message.user_id+'"></div>                                </div>                                                                                                      <textarea class="thumbnail form-control" id="dialog_sendtext_'+message.user_id+'" placeholder="reply here"></textarea>                                                                                                  <div><input id="'+message.user_id+'" onclick="onSubmit(this)" class="btn" value="send" /></div></div>';
+                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+message.chat_room_id+'" style="float:right"><div class="thumbnail" style="height:200px;">     <button id="dialog_closebtn_'+message.chat_room_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">close</button>                          <div class="col-md-3 caption" id="dialog_userid_'+message.chat_room_id+'"></div>                                                 <div class="col-md-9 caption" id="dialog_message_'+message.chat_room_id+'"></div></div>                                          <textarea class="thumbnail form-control" id="dialog_sendtext_'+message.chat_room_id+'" placeholder="reply here"></textarea>      <div><input id="'+message.chat_room_id+'" onclick="onSubmit(this)" class="btn" value="send" /></div></div>';
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     console.log(XMLHttpRequest);

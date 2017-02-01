@@ -5,12 +5,12 @@ other's profile page
 @extends('base')
 
 @section('content')
+
+<div style="margin-top:58px;">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
         <div class="thumbnail" >
             <div class="caption">
-               <!-- <form method="post" action="/api/users/{{$user->id}}" class="form-horizontal" enctype="multipart/form-data" role="form">
-                    <fieldset>-->
-                        <div class="row">
+                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3">
                                 <div style="color:#9aa4af; max-height:550px; overflow-x:visible;">
                                     @if(!strlen($user_information->user_image))
@@ -60,11 +60,9 @@ other's profile page
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
-                <!--    </fieldset>
-                </form>-->
             </div>
         </div>
     </div>
+</div>
 @endsection
