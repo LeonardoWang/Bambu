@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Item;
-
+use App\User;
 class HomeController extends Controller
 {
 	
@@ -87,6 +87,12 @@ class HomeController extends Controller
     public function test()
     {
         return view('test');
+    }
+
+    public function userName($id)
+    {
+        $user = User::Where('id',$id)->first();
+        return $user->name;
     }
 
 }

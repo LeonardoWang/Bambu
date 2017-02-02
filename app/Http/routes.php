@@ -26,6 +26,7 @@ Route::get('/event', function(){
     return "hello world";
 });
 
+Route::get('/user_name/{id}','HomeController@userName');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
