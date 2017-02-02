@@ -95,10 +95,10 @@ class ChatController extends Controller
         $user_id = Auth::user()->id;
         $tmp_user_id = $_GET['user_id'];
 
-        $chat_room_id = ChatRoom::where('user_sell_id',$user_id)->Where('user_buy_id',$tmp_user_id)->get();
+        $chat_room_id = ChatRoom::where('user_sell_id',$user_id)->Where('user_buy_id',$tmp_user_id)->first();
         if(empty($chat_room_id))
         {
-            $chat_room_id = ChatRoom::where('user_sell_id',$tmp_user_id)->Where('user_buy_id',$user_id)->get();
+            $chat_room_id = ChatRoom::where('user_sell_id',$tmp_user_id)->Where('user_buy_id',$user_id)->first();
             if(empty($chat_room_id))
             {
                 $chatroom = new ChatRoom();
