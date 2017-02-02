@@ -47,14 +47,14 @@ class ChatController extends Controller
     public function Chat() //unworked
     {
         $message = new Message();
-        $message->chat_room_id = $_POST['chat_room_id'];
+        $message->chat_room_id = $_GET['chat_room_id'];
         $message->user_id = Auth::user()->id;
-        $message->information = $_POST['chat_infomation'];
+        $message->information = $_GET['chat_infomation'];
 
         Event::fire(new \App\Events\SomeEvent($message->user_id,$message->chat_room_id,$message->information));
 
-        $room = ChatRoom::where('id',$message->chat_room_id)->get();
-        if(empty($room_id))
+        $room = ChatRoom::where('id',$message->chat_room_id)->first();
+        if(empty($room))
             return response()->json(array(
             'status' => 'failed'
         ));
@@ -63,13 +63,13 @@ class ChatController extends Controller
         if($room->user_sell_id == $message->user_id)
         {
             $notif->sendNotif($room->user_buy_id);
-            $notif->addChatNotif($room->user_buy_id);
+            $notif->addChatNotif($room->user_buy_id,$message->chat_room_id);
             $notif->removeChatNotif($message->user_id);
         }
         else
         {
             $notif->sendNotif($room->user_buy_id);
-            $notif->addChatNotif($room->user_sell_id);
+            $notif->addChatNotif($room->user_sell_id,$message->chat_room_id);
             $notif->removeChatNotif($message->user_id);
         }
 
@@ -96,11 +96,9 @@ class ChatController extends Controller
         $tmp_user_id = $_GET['user_id'];
 
         $chat_room = ChatRoom::where('user_sell_id',$user_id)->Where('user_buy_id',$tmp_user_id)->first();
-        $chat_room_id = $chat_room->id;
         if(empty($chat_room))
         {
             $chat_room = ChatRoom::where('user_sell_id',$tmp_user_id)->Where('user_buy_id',$user_id)->first();
-            $chat_room_id = $chat_room->id;
             if(empty($chat_room_id))
             {
                 $chatroom = new ChatRoom();
@@ -109,6 +107,12 @@ class ChatController extends Controller
                 $chatroom->save();
                 $chat_room_id = $chatroom->id;
             }
+            else{
+                $chat_room_id = $chat_room->id;
+            }
+        }
+        else{
+            $chat_room_id = $chat_room->id;
         }
         
         $message = Message::Where('chat_room_id','$chat_room_id')->get();
