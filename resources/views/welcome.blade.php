@@ -41,7 +41,7 @@
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
                 <span class="sr-only">Toggle navigation</span>
               </button>
-              <img id="home" onclick="home()" src='/img/favicon.ico'>
+              <img id="home" onclick="javascript:window.location.href='/'" src='/img/favicon.ico'>
             </div>
             <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
               <ul class="nav navbar-nav">
