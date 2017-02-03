@@ -69,7 +69,8 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 
 	Route::get('chat_room','Api\ChatController@Chatroom');
 	Route::get('chat_room/MyChatroom','Api\ChatController@MyChatroom');
-	Route::get('chat_room/{item_id}','Api\ChatController@ChatRoomIndex');
+	
+	Route::get('chat_room/MyNotif','Api\ChatController@MyNotif');
 
 	Route::get('chat','Api\ChatController@Chat');
 	Route::get('chat/GetChatMessageByUserId','Api\ChatController@GetChatMessageByUserId');

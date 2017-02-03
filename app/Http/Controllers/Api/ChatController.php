@@ -11,21 +11,35 @@ use App\Item;
 use App\ChatRoom;
 use App\Message;
 use Event;
+use App\Notification;
 
 class ChatController extends Controller
 {
     public function ChatRoomIndex(Request $request, $item_id)
     {
     	$user = Auth::user();
-    	return ChatRoom::where('item_id',$item_id)->where('user_id',$user->id)->get();
+    	return 0;
     }
 
     public function MyChatroom()
     {
     	$user = Auth::user();
-    	return ChatRoom::where('user_sell_id',$user->id)->orWhere('user_buy_id',$user->id)->get();
+        $chatroom = ChatRoom::where('user_sell_id',$user->id)->orWhere('user_buy_id',$user->id)->get();
+        $notif = Notification::where('user_id',$user->id)->get();
+
+    	return response()->json(array(
+            'chat_room_array' => $chatroom,
+            'notif' => $notif
+        ));
     }
 
+    public function MyNotif()
+    {
+        $user = Auth::user();
+        $notif = Notification::where('user_id',$user->id)->get();
+        return $notif;
+           
+    }
     public function GetChatRoomIDByUserID() //worked
     {
         $user = Auth::user();
@@ -49,30 +63,32 @@ class ChatController extends Controller
         $message = new Message();
         $message->chat_room_id = $_GET['chat_room_id'];
         $message->user_id = Auth::user()->id;
-        $message->information = $_GET['chat_infomation'];
+        $message->message = $_GET['chat_infomation'];
 
         Event::fire(new \App\Events\SomeEvent($message->user_id,$message->chat_room_id,$message->information));
 
         $room = ChatRoom::where('id',$message->chat_room_id)->first();
+
         if(empty($room))
             return response()->json(array(
-            'status' => 'failed'
+            'status' => 'failed',
+            '$chat_room_id' => $message->chat_room_id
         ));
-        /*
+        $message->save();
         $notif = new NotifiController();
         if($room->user_sell_id == $message->user_id)
         {
             $notif->sendNotif($room->user_buy_id);
             $notif->addChatNotif($room->user_buy_id,$message->chat_room_id);
-            $notif->removeChatNotif($message->user_id);
+            $notif->removeChatNotif($message->user_id,$message->chat_room_id);
         }
         else
         {
             $notif->sendNotif($room->user_buy_id);
             $notif->addChatNotif($room->user_sell_id,$message->chat_room_id);
-            $notif->removeChatNotif($message->user_id);
+            $notif->removeChatNotif($message->user_id,$message->chat_room_id);
         }
-        */
+        
 
         return response()->json(array(
             'status' => 'success'

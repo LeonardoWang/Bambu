@@ -28,6 +28,6 @@ class NotifEvent extends Event
      */
     public function broadcastOn()
     {
-        return [];
+        return ["USER".$this->user_id];
     }
 }

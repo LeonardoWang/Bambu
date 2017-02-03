@@ -42,7 +42,7 @@ class NotifiController extends Controller
 
     public function addChatNotif($user_id,$chat_room_id)
     {
-    	$notif = Notification::where('user_id',$user_id)->where('chat_room_id',$chat_room_id)->get();
+    	$notif = Notification::where('user_id',$user_id)->where('chat_room_id',$chat_room_id)->first();
     	if(empty($notif))
     	{
     		$notif = new Notification;
@@ -55,7 +55,7 @@ class NotifiController extends Controller
 
     public function removeChatNotif($user_id,$chat_room_id)
     {
-    	$notif = Notification::where('user_id',$user_id)->where('chat_room_id',$chat_room_id)->get();
+    	$notif = Notification::where('user_id',$user_id)->where('chat_room_id',$chat_room_id)->first();
     	if(!empty($notif))
     	{
     		$notif->delete();
