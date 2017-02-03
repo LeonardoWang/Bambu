@@ -53,12 +53,12 @@ class ChatController extends Controller
 
         Event::fire(new \App\Events\SomeEvent($message->user_id,$message->chat_room_id,$message->information));
 
-        $room = ChatRoom::where('id',$message->chat_room_id)->get();
-        if(empty($room_id))
+        $room = ChatRoom::where('id',$message->chat_room_id)->first();
+        if(empty($room))
             return response()->json(array(
             'status' => 'failed'
         ));
-
+        /*
         $notif = new NotifiController();
         if($room->user_sell_id == $message->user_id)
         {
@@ -72,7 +72,7 @@ class ChatController extends Controller
             $notif->addChatNotif($room->user_sell_id);
             $notif->removeChatNotif($message->user_id);
         }
-
+        */
 
         return response()->json(array(
             'status' => 'success'
