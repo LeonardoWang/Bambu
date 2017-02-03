@@ -12,7 +12,9 @@
         <meta name="viewport" content="width=100%, initial-scale=1.0, maximum-scale=1.0">
 
         <script src="/js/jquery-3.1.1.min.js"></script>
-        <!--<script src='/js/intense.js'></script>-->
+        <script src='/js/intense.js'></script>
+        <script src='/js/chat.js'></script>
+        <script src="/js/basic.js"></script>
         <script src="http://localhost:6001/socket.io/socket.io.js"></script>
    
         <!-- Loading Bootstrap -->
@@ -28,8 +30,7 @@
 
         <!-- bambu-color1:#e53935;
         bambu-color2:#f44336;
-        grey:#bdc3c7;
-    -->
+        grey:#bdc3c7; -->
     </head>
     
     <body>
@@ -144,17 +145,18 @@
     <p style="text-align:center;font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
         <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
     </footer>-->
+
     </div>
-<footer class="footer navbar navbar-fixed-bottom" id = "aboutUs">
+    <footer class="footer navbar navbar-fixed-bottom" id = "aboutUs">
     @if (isset($user) > 0)
-    <input type="hidden" id="userName" value="{{$user->name}}"></input>
-    <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;">
+        <input type="hidden" id="userName" value="{{$user->name}}"></input>
+        <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;">
         <!--chatroom added here-->
-    </div>
+        </div>
     @endif
-    <p style="font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
-    <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
-</footer>
+        <p style="font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
+        <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
+    </footer>
 @else
     <div class="container">
         <div class="row" style="margin-top:56px;">
@@ -169,129 +171,4 @@
 @endif
 
 </body>
-     <script type="text/javascript">
-        window.onload = function() {
-            //var elements = document.querySelectorAll( '.demo-image' );
-            //Intense( elements );
-            var socket = io('http://localhost:6001');
-            socket.on('connection', function (data) {
-                console.log(data);
-            });
-            socket.on('2:App\\Events\\SomeEvent', function(message){
-                console.log(message);
-            document.getElementById("dialog_userid").innerHTML+=message.user_id + "<br>";
-            document.getElementById("dialog_message").innerHTML+=message.message + "<br>";
-            });
-            console.log(socket);
-
-             $(".container").scroll(function(){  
-         var $this =$(this),  
-         viewH =$(this).height(),//可见高度  
-         contentH =$(this).get(0).scrollHeight,//内容高度  
-         scrollTop =$(this).scrollTop();//滚动高度  
-        //if(contentH - viewH - scrollTop <= 100) { //到达底部100px时,加载新内容  
-        if(scrollTop/(contentH -viewH)>=0.95){ //到达底部100px时,加载新内容  
-        // 这里加载数据..  
-        alert('666');
-        }  
-     });  
-        }
-    
-        function sb(){
-            s = document.getElementById('inpu1').value;
-            if(s){
-            window.location.href="/api/items/search/" + s;
-            }
-            else
-                alert("the search field can't be empty"); 
-        }
-
-        function home(){
-            window.location.href="/";
-        }
-
-        function onSubmit(btn){
-            var user_remote_id = btn.id;
-            var chat_room_id;
-            var send_text = document.getElementById("dialog_sendtext_"+user_remote_id).value;
-            if(send_text)
-            {
-                document.getElementById("dialog_userid_"+user_remote_id).innerHTML+=document.getElementById("userName").value+"<br>";
-                document.getElementById("dialog_message_"+user_remote_id).innerHTML+=send_text + "<br>";
-                
-                $.ajax({
-                type:"get",
-                url:'/api/chat/GetChatRoomIDByUserID',
-                data:{'user_id':user_remote_id},
-                
-                success:function(data){
-                    //console.log(data);
-                    //console.log("user_send_id -> " + data.chat_room_id);
-                    chat_room_id = data.chat_room_id;
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    console.log(XMLHttpRequest);
-                    //alert(XMLHttpRequest.status);
-                    //alert(XMLHttpRequest.readyState);
-                    console.log(textStatus); // paser error;
-                }
-                });
-
-
-                $.ajax({
-                type:"post",
-                url:'/api/chat',
-                data:{'chat_room_id':chat_room_id,
-                    'chat_infomation':send_text},
-                
-                success:function(data){
-                    console.log(data);
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    console.log(XMLHttpRequest);
-                    //alert(XMLHttpRequest.status);
-                    //alert(XMLHttpRequest.readyState);
-                    console.log(textStatus); // paser error;
-                }
-                });
-            }
-            else{
-                alert('no text!');
-            }
-        }
-
-        function toggleChat(btn){
-            var user_remote_id = btn.id.replace(/dialog_closebtn_/,"");
-            chatroom_id = "#chatroom_"+user_remote_id;
-            $(chatroom_id).remove();
-            /*if($(chatroom_id).css("display")=="none") {
-                $(chatroom_id).css("display","block");
-                btn.innerHTML="hide";
-                //alert(document.getElementById("chatroomButton").innerHTML);
-            }else {
-                $(chatroom_id).css("display","none");
-                btn.innerHTML="show";
-            }*/
-        }
-
-        function createChatRoom(){
-            var user_remote_id = $("#user_id").val();
-            $.ajax({
-                type:"get",
-                url:'/api/chat/GetChatMessageByUserId',
-                data:{'user_id':user_remote_id},
-                
-                success:function(message) {
-                    console.log(message);
-                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+message.user_id+'" style="float:right">     <div class="thumbnail" style="height:200px;">     <button id="dialog_closebtn_'+message.user_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">close</button>                                                              <div class="col-md-3 caption" id="dialog_userid_'+message.user_id+'"></div>                                 <div class="col-md-9 caption" id="dialog_message_'+message.user_id+'"></div>                                </div>                                                                                                      <textarea class="thumbnail form-control" id="dialog_sendtext_'+message.user_id+'" placeholder="reply here"></textarea>                                                                                                  <div><input id="'+message.user_id+'" onclick="onSubmit(this)" class="btn" value="send" /></div></div>';
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    console.log(XMLHttpRequest);
-                    //alert(XMLHttpRequest.status);
-                    //alert(XMLHttpRequest.readyState);
-                    console.log(textStatus); // paser error;
-                }
-                });
-        }
-    </script>
 </html>
