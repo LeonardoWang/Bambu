@@ -6,7 +6,7 @@ use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class NotifEvent extends Event
+class NotifEvent extends Event implements ShouldBroadcast
 {
     use SerializesModels;
     public $user_id;
@@ -28,6 +28,6 @@ class NotifEvent extends Event
      */
     public function broadcastOn()
     {
-        return ["USER".$this->user_id];
+        return [$this->user_id];
     }
 }

@@ -36,7 +36,7 @@ class SomeEvent extends Event implements ShouldBroadcast
     }
 
     public function broadcastWith()
-{
-    return ['user_id' => $this->user_id,'message' => $this->message];
-}
+    {
+        return ['user_id' => $this->user_id,'message' => $this->message];
+    }
 }

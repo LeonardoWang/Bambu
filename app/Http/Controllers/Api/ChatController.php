@@ -65,7 +65,7 @@ class ChatController extends Controller
         $message->user_id = Auth::user()->id;
         $message->message = $_GET['chat_infomation'];
 
-        Event::fire(new \App\Events\SomeEvent($message->user_id,$message->chat_room_id,$message->information));
+        Event::fire(new \App\Events\SomeEvent($message->user_id,$message->chat_room_id,$message->message));
 
         $room = ChatRoom::where('id',$message->chat_room_id)->first();
 

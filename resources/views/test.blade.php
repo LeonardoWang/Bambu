@@ -15,7 +15,7 @@
     socket.on('connection', function (data) {
       console.log(data);
       });
-    socket.on('1:App\\Events\\SomeEvent', function(message){
+    socket.on('1:App\\Events\\NotifEvent', function(message){
       console.log(message);
       document.getElementById("dialog").append(message.user_id + message.message);
     });
