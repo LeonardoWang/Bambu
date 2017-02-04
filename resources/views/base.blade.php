@@ -92,4 +92,9 @@
 </footer>
 
 </body>
+
+
+<script type="text/javascript">
+    var socket = io('http://localhost:6001');
+</script>
 </html>
