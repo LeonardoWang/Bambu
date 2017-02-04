@@ -90,12 +90,6 @@
 
 </body>
 <script src='/js/intense.js'></script>
-<script type='javascript/text'>
-    //load pic zoom func
-    var elements = document.querySelectorAll( '.demo-image' );
-    if(elements)
-        Intense( elements );
-</script>
 <script src='/js/chat.js'></script>
 <script src="/js/basic.js"></script>
 </html>
