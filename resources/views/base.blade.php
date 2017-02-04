@@ -82,6 +82,7 @@
 <footer class="footer navbar navbar-fixed-bottom" id = "aboutUs">
     @if (isset($user) > 0)
     <input type="hidden" id="userName" value="{{$user->name}}"></input>
+    <input type="hidden" id="user_id" value="{{$user->id}}">
     <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;">
         <!--chatroom added here-->
     </div>
