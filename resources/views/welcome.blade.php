@@ -12,11 +12,8 @@
         <meta name="viewport" content="width=100%, initial-scale=1.0, maximum-scale=1.0">
 
         <script src="/js/jquery-3.1.1.min.js"></script>
-        <script src='/js/intense.js'></script>
-        <script src='/js/chat.js'></script>
-        <script src="/js/basic.js"></script>
         <script src="http://localhost:6001/socket.io/socket.io.js"></script>
-   
+        
         <!-- Loading Bootstrap -->
         <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -28,9 +25,6 @@
         <link href="/css/mycss.css" rel="stylesheet">
         <link rel="shortcut icon" href="/img/favicon.ico">
 
-        <!-- bambu-color1:#e53935;
-        bambu-color2:#f44336;
-        grey:#bdc3c7; -->
     </head>
     
     <body>
@@ -147,16 +141,19 @@
     </footer>-->
 
     </div>
-    <footer class="footer navbar navbar-fixed-bottom" id = "aboutUs">
+
+<footer class="footer navbar navbar-fixed-bottom" id = "aboutUs">
     @if (isset($user) > 0)
-        <input type="hidden" id="userName" value="{{$user->name}}"></input>
-        <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;">
+    <input type="hidden" id="userName" value="{{$user->name}}">
+    <input type="hidden" id="user_id" value="{{$user->id}}">
+    <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;">
         <!--chatroom added here-->
-        </div>
+    </div>
     @endif
-        <p style="font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
-        <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
-    </footer>
+    <p style="font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
+    <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
+</footer>
+
 @else
     <div class="container">
         <div class="row" style="margin-top:56px;">
@@ -171,4 +168,6 @@
 @endif
 
 </body>
+<script src='/js/chat.js'></script>
+<script src="/js/basic.js"></script>
 </html>

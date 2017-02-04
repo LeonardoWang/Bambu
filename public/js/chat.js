@@ -1,22 +1,22 @@
 //var chatroomNum=0;
 var chat_room_id = 0; //chat room id
-
+var socket = io('http://localhost:6001');
+    
 window.onload = function() {
-    var elements = document.querySelectorAll( '.demo-image' );
-    if(elements)
-        Intense( elements );
-
-    var user_id = $("#user_id").val();
 
     //notif socket open when onload
+    var user_id = $("#user_id").val();
     socket_notif = user_id+':App\\Events\\NotifEvent';
+    socket.on('connection', function (data) {
+      console.log(data);
+      });
     socket.on(socket_notif, function(data){
         //console.log(data);
         console.log('listen to user_id= '+user_id+'\'s Notif ');
     });
-
     console.log(socket);
-  }
+
+}
 
 function onSubmit(id){
     chat_room_id = id;

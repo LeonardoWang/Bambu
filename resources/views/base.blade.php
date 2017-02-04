@@ -12,9 +12,6 @@
         <meta name="viewport" content="width=100%, initial-scale=1.0, maximum-scale=1.0">
 
         <script src="/js/jquery-3.1.1.min.js"></script>
-        <script src='/js/intense.js'></script>
-        <script src='/js/chat.js'></script>
-        <script src="/js/basic.js"></script>
         <script src="http://localhost:6001/socket.io/socket.io.js"></script>
         
         <!-- Loading Bootstrap -->
@@ -81,7 +78,7 @@
 
 <footer class="footer navbar navbar-fixed-bottom" id = "aboutUs">
     @if (isset($user) > 0)
-    <input type="hidden" id="userName" value="{{$user->name}}"></input>
+    <input type="hidden" id="userName" value="{{$user->name}}">
     <input type="hidden" id="user_id" value="{{$user->id}}">
     <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;">
         <!--chatroom added here-->
@@ -92,9 +89,13 @@
 </footer>
 
 </body>
-
-
-<script type="text/javascript">
-    var socket = io('http://localhost:6001');
+<script src='/js/intense.js'></script>
+<script type='javascript/text'>
+    //load pic zoom func
+    var elements = document.querySelectorAll( '.demo-image' );
+    if(elements)
+        Intense( elements );
 </script>
+<script src='/js/chat.js'></script>
+<script src="/js/basic.js"></script>
 </html>
