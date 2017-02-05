@@ -76,6 +76,9 @@
                                      <a href="/api/chat_room/MyNotif">Unread notifications</a>
                                 </li>
                                 <li>
+                                     <a href="/api/trade_requests/my">Trade requests</a>
+                                </li>
+                                <li>
                                      <a href="/api/chat_room/MyChatroom">My chatroom</a>
                                 </li>
                                 <li class="divider">
