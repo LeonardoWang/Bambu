@@ -110,14 +110,15 @@ class ChatController extends Controller
 
     public function GetChatMessageByUserId()
     {
-        $user_id = Auth::user()->id;
+        $user = Auth::user();
+        $user_id = $user->id;
         $tmp_user_id = $_GET['user_id'];
 
         $chat_room = ChatRoom::where('user_sell_id',$user_id)->Where('user_buy_id',$tmp_user_id)->first();
         if(empty($chat_room))
         {
             $chat_room = ChatRoom::where('user_sell_id',$tmp_user_id)->Where('user_buy_id',$user_id)->first();
-            if(empty($chat_room_id))
+            if(empty($chat_room))
             {
                 $chatroom = new ChatRoom();
                 $chatroom->user_sell_id = $user_id;
