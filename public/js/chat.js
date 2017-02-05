@@ -21,7 +21,7 @@ window.onload = function() {
         
         //notif btn
         document.getElementById('notif').src = '/img/icons/svg/bell-grey.svg';
-        $("#notif").attr({ 'data-toggle': 'popover', 'data-placement': 'bottom', 'data-content': 'hello js' });
+        $("#notif").attr({'data-container':'body', 'data-toggle': 'popover', 'data-placement': 'bottom', 'data-content': 'hello js' });
         //if(!document.getElementById("chatroom_"+chat_room_id)){}
     }); 
     //console.log(socket);
