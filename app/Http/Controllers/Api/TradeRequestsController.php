@@ -165,7 +165,7 @@ class TradeRequestsController extends Controller
         $user = Auth::user();
         $notif = new NotifiController;
         $notif->removeCommentNotif($user->id);
-        return Comment::where('owner_id',$user->id)->get();
+        return Comment::where('item_owner_id',$user->id)->get();
     }
 
 }
