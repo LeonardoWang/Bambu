@@ -28,6 +28,7 @@
     </head>
     
     <body>
+        
 <!--navbar-->
 <div style="margin-left:0px;margin-right:0px;">
         <nav class="navbar navbar-fixed-top" role="navigation">
@@ -41,14 +42,18 @@
               <ul class="nav navbar-nav">
                 <li>
                 @if (isset($user) > 0)
-                    <a href="/api/users_information"> hello, {{$user->name}} </a></li><li>
-                @else
-                    <a href="/login" >login</a>
-                @endif
+                    <a href="/api/users_information"> hello, {{$user->name}} </a>
                 </li>
                 <li>
                     <a href ="/api/product">post item</a>
+                @else
+                    <a href="/login" >login</a>
                 </li>
+                <li>
+                    <a href="/register" >register</a>
+                @endif
+                </li>
+                
                 <li><a href="#aboutUs">about us</a></li>
                 <li><div class="navbar-form col-xs-2 col-sm-2" style="margin-left:0px;padding-left:21px;">
                     <div class="form-group">
@@ -63,23 +68,20 @@
                 </li>
                </ul>
                @if (isset($user) > 0)
-               <ul class="nav navbar-nav navbar-right">
+               <ul class="nav navbar-nav navbar-right" style="padding-right:20px;">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" onclick="checkNotif()" src='/img/icons/svg/bell.svg'><strong class="caret"></strong></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                     <a href="#">Action</a>
+                                     <a href="/api/chat_room/MyNotif">Unread notifications</a>
                                 </li>
                                 <li>
-                                     <a href="#">Another action</a>
-                                </li>
-                                <li>
-                                     <a href="#">Something else here</a>
+                                     <a href="/api/chat_room/MyChatroom">My chatroom</a>
                                 </li>
                                 <li class="divider">
                                 </li>
                                 <li>
-                                     <a href="#">Separated link</a>
+                                     <a href="mailto:brucewayne@pku.edu.cn">Contact us</a>
                                 </li>
                             </ul>
                         </li>
@@ -88,23 +90,22 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="personal-card" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/personal-card.svg'><strong class="caret"></strong></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="/api/product/myProduct">my items</a>
+                                    <a href="/api/product/myProduct">My items</a>
                                 </li>
                                 <li>
-                                     <a href="/api/users_information">my personal info</a>
+                                     <a href="/api/users_information">Personal info</a>
                                 </li>
                                 <li class="divider">
                                 </li>
                                 <li>
-                                     <a href="/logout" >logout</a>
+                                     <a href="/logout" >Log out</a>
                                 </li>
-                                
                             </ul>
                         </li>
                     </ul>
                     @endif
             </div><!-- /.navbar-collapse -->
-          </nav><!-- /navbar -->
+        </nav><!-- /navbar -->
     </div>
 
 <!-- products on the home page -->

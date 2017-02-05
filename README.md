@@ -44,7 +44,10 @@ redis usage
 
 当redis开启后，就可以打开本地的websocket服务器 
 
-
+#####
+Other useful instructions:
+php artisan migrate:refresh
+composer dump-autoload
 
 ### developer:
 1. [Marc Wong](https://github.com/MarcWong) 

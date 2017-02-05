@@ -93,7 +93,7 @@ trade confirmation page
                 </fieldset>
                 </form>
                 <hr style="margin-top:-30px;">
-                <div class="col-md-12">
+                <div class="col-md-12" style="max-height:226px;overflow-y:auto;">
                     @if (isset($comments)>0)
                         <p>Comments to this item:</p>
                         @foreach ($comments as $comment)

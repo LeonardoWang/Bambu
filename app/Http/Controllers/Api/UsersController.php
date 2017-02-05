@@ -108,6 +108,7 @@ class UsersController extends Controller
             'name' => 'required|max:255|unique:users',
             'tel' => 'required|digits_between:5,32|unique:users',
             'password' => 'required|min:6',
+            'password_confirmation' => 'required|min:6',
             'smscode' =>'required|digits:4'
         ]);
         $messages = $validator->messages();
@@ -116,6 +117,11 @@ class UsersController extends Controller
             $messages="Incorrect smscode!";
             return back()->withErrors($messages);
         }*/
+        if($request->input('password')!=$request->input('password_confirmation'))
+        {
+            $messages="your must type same password two times!";
+            return back()->withErrors($messages);
+        }
         if(!$validator->fails()) {
             $user = User::create([
                 'name' => $request->input('name'),
