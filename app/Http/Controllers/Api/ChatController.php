@@ -91,19 +91,21 @@ class ChatController extends Controller
         
 
         return response()->json(array(
-            'status' => 'success'
+            'status' => 'success',
+            '$chat_room_id' => $message->chat_room_id
         ));
         
     }
 
     public function GetChatMessageByChatRoomID()
     {
-    	$this->validate($request, [
-            'chat_room_id' => 'required',
-        ]);
-        $chat_room_id = $request->input('chat_room_id');
-
-        return Message::Where('chat_room_id',$chat_room_id)->get();
+        $chat_room_id = $_GET['chat_room_id'];
+        $message = Message::Where('chat_room_id',$chat_room_id)->get();
+        json_decode($message,true);
+        return response()->json(array(
+            'chat_room_id' => $chat_room_id,
+            'message' => $message
+        ));
     }
 
     public function GetChatMessageByUserId()
@@ -131,7 +133,7 @@ class ChatController extends Controller
             $chat_room_id = $chat_room->id;
         }
         
-        $message = Message::Where('chat_room_id','$chat_room_id')->get();
+        $message = Message::Where('chat_room_id',$chat_room_id)->get();
 
         return response()->json(array(
             'chat_room_id' => $chat_room_id,

@@ -8,3 +8,14 @@ function sb(){
     }
 }
 
+function notifOnMouseOver(){
+	$("#notif").css("cursor","pointer");
+	document.getElementById('notif').src ='/img/icons/svg/bell-grey.svg';
+}
+
+function notifOnMouseOut(){
+	document.getElementById('notif').src ='/img/icons/svg/bell.svg';
+}
+
+function checkNotif(){}
+

@@ -18,49 +18,24 @@ window.onload = function() {
         console.log('listen to user_id= '+user_id+'\'s Notif ');
         //console.log(data.user_id);
         user_remote_id = data.user_id;
-        $.ajax({
-                type:"get",
-                url:'/api/chat/GetChatMessageByUserId',
-                data:{'user_id':user_remote_id},
-                
-                success:function(message) {
-                    console.log(message);
-                    chat_room_id = message.chat_room_id;
-
-                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+chat_room_id+'"><div class="thumbnail" style="height:200px; overflow-y:auto;"><button id="dialog_closebtn_'+chat_room_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">close</button><div class="col-md-3 caption" id="dialog_userid_'+chat_room_id+'"></div> <div class="col-md-9 caption" id="dialog_message_'+chat_room_id+'"></div></div> <textarea class="thumbnail form-control" id="dialog_sendtext_'+chat_room_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)"></textarea>      <input id="'+chat_room_id+'" onclick="onSubmit('+chat_room_id+')" class="btn" value="send" /></div>';
-
-                    socket_chatroom = chat_room_id+':App\\Events\\SomeEvent';
-                    socket.on(socket_chatroom, function(data){
-                        console.log('listen to chatroom '+chat_room_id);
-                        if(data.message !== null || '')
-                        {
-                            document.getElementById("dialog_userid_"+data.user_id).innerHTML+=data.user_id + "<br>";
-                            document.getElementById("dialog_message_"+data.user_id).innerHTML+=data.message + "<br>";
-                        }
-                    });
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    console.log(XMLHttpRequest);
-                    //alert(XMLHttpRequest.status);
-                    //alert(XMLHttpRequest.readyState);
-                    console.log(textStatus); // paser error;
-                }
-            });
-
-        socket_chatroom = chat_room_id+':App\\Events\\SomeEvent';
-        socket.on(socket_chatroom, function(data){
-            console.log('listen to chatroom '+chat_room_id);
-            if(data.message !== null || '')
-            {
-                document.getElementById("dialog_userid_"+data.user_id).innerHTML+=data.user_id + "<br>";
-                document.getElementById("dialog_message_"+data.user_id).innerHTML+=data.message + "<br>";
-            }
-        });
-
-    });
+        
+        //notif btn
+        document.getElementById('notif').src = '/img/icons/svg/bell-grey.svg';
+        $("#notif").attr({ 'data-toggle': 'popover', 'data-placement': 'bottom', 'data-content': 'hello js' });
+        //if(!document.getElementById("chatroom_"+chat_room_id)){}
+    }); 
     //console.log(socket);
-
+    socket_chatroom = chat_room_id+':App\\Events\\SomeEvent';
+    socket.on(socket_chatroom, function(data){
+    console.log('listen to chatroom '+chat_room_id);
+    if(data.message !== null || '')
+    {
+        document.getElementById("dialog_userid_"+data.user_id).innerHTML+=data.user_id + "<br>";
+        document.getElementById("dialog_message_"+data.user_id).innerHTML+=data.message + "<br>";
+    }
+    });
 }
+
 
 function onSubmit(id){
     chat_room_id = id;
@@ -118,6 +93,10 @@ function onSubmit(id){
 function toggleChat(btn){
     var user_remote_id = btn.id.replace(/dialog_closebtn_/,"");
     var chatroom_name = "#chatroom_"+user_remote_id;
+    socket.removeListener(user_remote_id + ':App\\Events\\SomeEvent', function(data){
+        console.log('remove listener of chatroom '+chat_room_id);
+    });
+
     $(chatroom_name).remove();
             /*if($(chatroom_id).css("display")=="none") {
                 $(chatroom_id).css("display","block");
@@ -131,28 +110,29 @@ function toggleChat(btn){
 
 function createChatRoom(){
     var user_remote_id = $("#user_remote_id").val();
-        if(!document.getElementById("chatroom_"+chat_room_id))
-        {
-            $.ajax({
+    var user_remote_name = $("#user_remote_name").val();
+    if(!document.getElementById("chatroom_"+chat_room_id))
+    {
+        $.ajax({
                 type:"get",
                 url:'/api/chat/GetChatMessageByUserId',
                 data:{'user_id':user_remote_id},
                 
-                success:function(message) {
-                    console.log(message);
-                    chat_room_id = message.chat_room_id;
+                success:function(data) {
+                    //console.log(data.message);
+                    chat_room_id = data.chat_room_id;
 
                     document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+chat_room_id+'"><div class="thumbnail" style="height:200px; overflow-y:auto;"><button id="dialog_closebtn_'+chat_room_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">close</button><div class="col-md-3 caption" id="dialog_userid_'+chat_room_id+'"></div> <div class="col-md-9 caption" id="dialog_message_'+chat_room_id+'"></div></div> <textarea class="thumbnail form-control" id="dialog_sendtext_'+chat_room_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)"></textarea>      <input id="'+chat_room_id+'" onclick="onSubmit('+chat_room_id+')" class="btn" value="send" /></div>';
 
-                    socket_chatroom = chat_room_id+':App\\Events\\SomeEvent';
-                    socket.on(socket_chatroom, function(data){
-                        console.log('listen to chatroom '+chat_room_id);
-                        if(data.message !== null || '')
-                        {
-                            document.getElementById("dialog_userid_"+data.user_id).innerHTML+=data.user_id + "<br>";
-                            document.getElementById("dialog_message_"+data.user_id).innerHTML+=data.message + "<br>";
+                    //show the last 3 messages
+                    for(i = data.message.length - 1; i >= data.message.length - 3; i--)
+                    {
+                        if(data.message[i]!=null){
+                            document.getElementById("dialog_userid_"+data.message[i].user_id).innerHTML+=user_remote_name + "<br>";
+                            document.getElementById("dialog_message_"+data.message[i].user_id).innerHTML+=data.message[i].message + "<br>";
                         }
-                    });
+                    }
+
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     console.log(XMLHttpRequest);
@@ -160,8 +140,18 @@ function createChatRoom(){
                     //alert(XMLHttpRequest.readyState);
                     console.log(textStatus); // paser error;
                 }
-            });
-        }
+        });
+        socket_chatroom = chat_room_id+':App\\Events\\SomeEvent';
+        socket.on(socket_chatroom, function(dd){
+            console.log('listen to chatroom '+chat_room_id);
+            console.log(dd);
+            if(dd.message !== null || '')
+            {
+                document.getElementById("dialog_userid_" + dd.message[dd.message.length-1].user_id).innerHTML+=dd.message[dd.message.length-1].user_id + "<br>";
+                document.getElementById("dialog_message_" + dd.message[dd.message.length-1].user_id).innerHTML+=dd.message[dd.message.length-1].message + "<br>";
+            }
+        });
+    }
 }
 
 function enterToSubmit(thisTextArea,e){
