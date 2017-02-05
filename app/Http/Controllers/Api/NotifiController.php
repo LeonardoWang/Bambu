@@ -21,7 +21,7 @@ class NotifiController extends Controller
 
     public function addCommentNotif($user_id)
     {
-    	$notif = Notification::where('user_id',$user_id)->where('is_comment',true)->get();
+    	$notif = Notification::where('user_id',$user_id)->where('is_comment',true)->first();
     	if(empty($notif))
     	{
     		$notif = new Notification;

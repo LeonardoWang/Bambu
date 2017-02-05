@@ -148,8 +148,8 @@ class TradeRequestsController extends Controller
             $products = Item::where('id', $comment->item_id)->get();
             $comments = Comment::where('item_id',$comment->item_id)->get();
             $notif = new NotifiController;
-            $notif->addCommentNotif($comment->user_id);
-            $notif->sendNotif($comment->user_id);
+            $notif->addCommentNotif($comment->item_owner_id);
+            $notif->sendNotif($comment->item_owner_id);
             echo "<script type='text/javascript'>alert('your comment is added successfully!')</script>";
             return view('productshow',compact('user','products','comments'));
         }
