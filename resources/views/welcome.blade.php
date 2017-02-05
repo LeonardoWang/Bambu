@@ -15,9 +15,8 @@
         <script src="http://localhost:6001/socket.io/socket.io.js"></script>
         
         <!-- Loading Bootstrap -->
-        <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        
+
         <!-- Loading Flat UI -->
         <script src="/Flat-UI-master/dist/js/flat-ui.min.js"></script>
         <link href="/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
@@ -43,16 +42,12 @@
                 <li>
                 @if (isset($user) > 0)
                     <a href="/api/users_information"> hello, {{$user->name}} </a></li><li>
-                    <a href="/logout" >logout</a>
                 @else
                     <a href="/login" >login</a>
                 @endif
                 </li>
                 <li>
                     <a href ="/api/product">post item</a>
-                </li>
-                <li>
-                    <a href="/api/product/myProduct">my items</a>
                 </li>
                 <li><a href="#aboutUs">about us</a></li>
                 <li><div class="navbar-form col-xs-2 col-sm-2" style="margin-left:0px;padding-left:21px;">
@@ -67,12 +62,10 @@
                     </div>
                 </li>
                </ul>
+               @if (isset($user) > 0)
                <ul class="nav navbar-nav navbar-right">
-                        <li>
-                             <img id="notif" style="width:32px; margin-top:8px;" onmouseover="notifOnMouseOver()" onmouseout="notifOnMouseOut()" onclick="checkNotif()" src='/img/icons/svg/bell.svg'>
-                        </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" onclick="checkNotif()" src='/img/icons/svg/bell.svg'><strong class="caret"></strong></a>
                             <ul class="dropdown-menu">
                                 <li>
                                      <a href="#">Action</a>
@@ -90,7 +83,26 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="personal-card" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/personal-card.svg'><strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/api/product/myProduct">my items</a>
+                                </li>
+                                <li>
+                                     <a href="/api/users_information">my personal info</a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                     <a href="/logout" >logout</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
                     </ul>
+                    @endif
             </div><!-- /.navbar-collapse -->
           </nav><!-- /navbar -->
     </div>
