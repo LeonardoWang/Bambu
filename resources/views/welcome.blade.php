@@ -15,8 +15,9 @@
         <script src="http://localhost:6001/socket.io/socket.io.js"></script>
         
         <!-- Loading Bootstrap -->
+        <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+        
         <!-- Loading Flat UI -->
         <script src="/Flat-UI-master/dist/js/flat-ui.min.js"></script>
         <link href="/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
@@ -66,6 +67,30 @@
                     </div>
                 </li>
                </ul>
+               <ul class="nav navbar-nav navbar-right">
+                        <li>
+                             <img id="notif" style="width:32px; margin-top:8px;" onmouseover="notifOnMouseOver()" onmouseout="notifOnMouseOut()" onclick="checkNotif()" src='/img/icons/svg/bell.svg'>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                     <a href="#">Action</a>
+                                </li>
+                                <li>
+                                     <a href="#">Another action</a>
+                                </li>
+                                <li>
+                                     <a href="#">Something else here</a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                     <a href="#">Separated link</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
             </div><!-- /.navbar-collapse -->
           </nav><!-- /navbar -->
     </div>
@@ -171,3 +196,5 @@
 <script src='/js/chat.js'></script>
 <script src="/js/basic.js"></script>
 </html>
+
+
