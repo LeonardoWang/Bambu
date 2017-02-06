@@ -108,9 +108,24 @@ function toggleChat(btn){
             }*/
 }
 
-function createChatRoom(){
-    var user_remote_id = $("#user_remote_id").val();
-    var user_remote_name = $("#user_remote_name").val();
+function createChatRoom(user_remote_id){
+    var user_remote_name;
+    $.ajax({
+                type:"get",
+                url:'/user_name/' + user_remote_id,
+                data:{},
+                
+                success:function(data) {
+                    user_remote_name = data.name;
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                    //alert(XMLHttpRequest.status);
+                    //alert(XMLHttpRequest.readyState);
+                    console.log(textStatus); // paser error;
+                }
+    });
+    
     if(!document.getElementById("chatroom_"+chat_room_id))
     {
         $.ajax({
@@ -122,10 +137,10 @@ function createChatRoom(){
                     //console.log(data.message);
                     chat_room_id = data.chat_room_id;
 
-                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+chat_room_id+'"><div class="thumbnail" style="height:200px; overflow-y:auto;"><button id="dialog_closebtn_'+chat_room_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">close</button><div class="col-md-3 caption" id="dialog_userid_'+chat_room_id+'"></div> <div class="col-md-9 caption" id="dialog_message_'+chat_room_id+'"></div></div> <textarea class="thumbnail form-control" id="dialog_sendtext_'+chat_room_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)"></textarea>      <input id="'+chat_room_id+'" onclick="onSubmit('+chat_room_id+')" class="btn" value="send" /></div>';
+                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+chat_room_id+'"><div class="thumbnail" style="height:200px; overflow-y:auto;"><p style="text-align:left;font-size:13px;">chat history with '+user_remote_name+'</p><button id="dialog_closebtn_'+chat_room_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">close</button><div class="col-md-3 caption" id="dialog_userid_'+chat_room_id+'"></div> <div class="col-md-9 caption" id="dialog_message_'+chat_room_id+'"></div></div> <textarea class="thumbnail form-control" id="dialog_sendtext_'+chat_room_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)"></textarea>      <input id="'+chat_room_id+'" onclick="onSubmit('+chat_room_id+')" class="btn" value="send" /></div>';
 
                     //show the last 3 messages
-                    for(i = data.message.length - 1; i >= data.message.length - 3; i--)
+                    for(i = data.message.length - 1; i >= 0; i--)
                     {
                         if(data.message[i]!=null){
                             document.getElementById("dialog_userid_"+data.message[i].user_id).innerHTML+=user_remote_name + "<br>";
@@ -169,4 +184,28 @@ function enterToSubmit(thisTextArea,e){
         id = thisTextArea.id.replace(/dialog_sendtext_/,"");
         onSubmit(id);
     }
+}
+
+function chatroom(){
+    $.ajax({
+                type:"get",
+                url:'/api/chat_room/MyChatroom',
+                data:{},
+                
+                success:function(data) {
+                    //console.log(data.message);
+
+                    for(i = data.notif.length - 1; i >= 0; i--)
+                    {
+                        createChatRoom(data.notif[i].chat_room_id);
+                    }
+
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                    //alert(XMLHttpRequest.status);
+                    //alert(XMLHttpRequest.readyState);
+                    console.log(textStatus); // paser error;
+                }
+        });
 }

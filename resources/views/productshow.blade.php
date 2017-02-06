@@ -23,11 +23,9 @@ trade confirmation page
                                     <div class="col-lg-7 col-md-7 col-sm-8 col-xs-9 col-lg-offset-2 col-md-offset-2 col-sm-offset-1">
                                         <div class="col-lg-8 col-md-9 col-sm-10 col-xs-9">
                                         <p style="text-align:right;font-size:15px;">seller :  <a href="/api/user/{{$product->user_id}}/info/" class = "ba">{{$product->user_name}}</a></p>
-                                        <input type="hidden" id="user_remote_id" value="{{$product->user_id}}">
-                                        <input type="hidden" id="user_remote_name" value="{{$product->user_name}}">
                                         </div>
                                         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-                                        <img onclick="createChatRoom()" style="width:35px;cursor:pointer;" src="/img/icons/svg/chat.svg"/>
+                                        <img onclick="createChatRoom({{$product->user_id}})" style="width:35px;cursor:pointer;" src="/img/icons/svg/chat.svg"/>
                                         </div>
                                     </div>
                                 </div>

@@ -77,11 +77,14 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" onclick="checkNotif()" src='/img/icons/svg/bell.svg'><strong class="caret"></strong></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                     <a href="/api/chat_room/MyNotif">Unread notifications</a>
+                                     <a href="/api/trade_requests/my">Trade requests</a>
                                 </li>
                                 <li>
-                                     <a href="/api/chat_room/MyChatroom">My chatroom</a>
+                                     <a onclick="chatroom()">Unread messages</a>
                                 </li>
+                                <!--<li>
+                                     <a href="/api/chat_room/MyChatroom">Chat history</a>
+                                </li>-->
                                 <li class="divider">
                                 </li>
                                 <li>
@@ -119,9 +122,4 @@
 </div>
 
 </body>
-    <script type="text/javascript">
-    
-        
-        
-    </script>
 </html>

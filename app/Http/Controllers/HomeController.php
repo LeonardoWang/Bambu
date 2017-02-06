@@ -92,7 +92,9 @@ class HomeController extends Controller
     public function userName($id)
     {
         $user = User::Where('id',$id)->first();
-        return $user->name;
+        return response()->json(array(
+            'name' => $user->name
+        ));
     }
 
 }
