@@ -1,7 +1,6 @@
-//var chatroomNum=0;
 var chat_room_id = 0; //chat room id
 var socket = io('http://localhost:6001');
-    
+var chatroomNum = 0;
 window.onload = function() {
     //load pic zoom func
     var elements = document.querySelectorAll( '.demo-image' );
@@ -18,7 +17,7 @@ window.onload = function() {
         console.log('listen to user_id= '+user_id+'\'s Notif ');
         //console.log(data.user_id);
         user_remote_id = data.user_id;
-        
+        alert('you\'ve received a message, check it in notification center!');
         //notif btn
         document.getElementById('bell').src = '/img/icons/svg/bell-yellow.svg';
         $("#bell").attr({'data-container':'body', 'data-toggle': 'popover', 'data-placement': 'bottom', 'data-content': 'hello js' });
@@ -98,6 +97,7 @@ function toggleChat(btn){
     });
 
     $(chatroom_name).remove();
+    chatroomNum--;
             /*if($(chatroom_id).css("display")=="none") {
                 $(chatroom_id).css("display","block");
                 btn.innerHTML="hide";
@@ -125,7 +125,7 @@ function createChatRoom(user_remote_id){
                     console.log(textStatus); // paser error;
                 }
     });
-    
+    chatroomNum++;
     if(!document.getElementById("chatroom_"+chat_room_id))
     {
         $.ajax({
@@ -137,9 +137,9 @@ function createChatRoom(user_remote_id){
                     //console.log(data.message);
                     chat_room_id = data.chat_room_id;
 
-                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+chat_room_id+'"><div class="thumbnail" style="height:200px; overflow-y:auto;"><p style="text-align:left;font-size:13px;">chat history with '+user_remote_name+'</p><button id="dialog_closebtn_'+chat_room_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">close</button><div class="col-md-3 col-sm-3 col-xs-3 caption" id="dialog_userid_'+chat_room_id+'"></div> <div class="col-md-9 col-sm-3 col-xs-3 caption" id="dialog_message_'+chat_room_id+'"></div></div> <textarea class="thumbnail form-control" id="dialog_sendtext_'+chat_room_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)"></textarea>      <input id="'+chat_room_id+'" onclick="onSubmit('+chat_room_id+')" class="btn" value="send" /></div>';
+                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+chat_room_id+'" style="position:absolute;bottom:0px;left:400px"><div class="thumbnail" style="height:200px; overflow-y:auto;"><p style="text-align:left;font-size:13px;">chat history with '+user_remote_name+'</p><button id="dialog_closebtn_'+chat_room_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">close</button><div class="col-md-3 col-sm-3 col-xs-3 caption" id="dialog_userid_'+chat_room_id+'"></div> <div class="col-md-9 col-sm-3 col-xs-3 caption" id="dialog_message_'+chat_room_id+'"></div></div> <textarea class="thumbnail form-control" id="dialog_sendtext_'+chat_room_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)"></textarea>      <input id="'+chat_room_id+'" onclick="onSubmit('+chat_room_id+')" class="btn btn" value="send" /></div>';
 
-                    //show the last 3 messages
+                    //show the last messages
                     for(i = data.message.length - 1; i >= 0; i--)
                     {
                         if(data.message[i]!=null){
@@ -188,24 +188,24 @@ function enterToSubmit(thisTextArea,e){
 
 function chatroom(){
     $.ajax({
-                type:"get",
-                url:'/api/chat_room/MyChatroom',
-                data:{},
+            type:"get",
+            url:'/api/chat_room/MyChatroom',
+            data:{},
                 
-                success:function(data) {
-                    //console.log(data.message);
+            success:function(data) {
+                //console.log(data.message);
 
-                    for(i = data.notif.length - 1; i >= 0; i--)
-                    {
-                        createChatRoom(data.notif[i].chat_room_id);
-                    }
-
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    console.log(XMLHttpRequest);
-                    //alert(XMLHttpRequest.status);
-                    //alert(XMLHttpRequest.readyState);
-                    console.log(textStatus); // paser error;
+                for(i = data.notif.length - 1; i >= 0; i--)
+                {
+                    createChatRoom(data.notif[i].chat_room_id);
                 }
+
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                console.log(XMLHttpRequest);
+                //alert(XMLHttpRequest.status);
+                //alert(XMLHttpRequest.readyState);
+                console.log(textStatus); // paser error;
+            }
         });
 }
