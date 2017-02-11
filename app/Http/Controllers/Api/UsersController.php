@@ -113,11 +113,15 @@ class UsersController extends Controller
             'smscode' =>'required|digits:4'
         ]);
         $messages = $validator->messages();
+        //smscode verification
+        /*
         if($request->input('smscode')!=$request->input('verismscode'))
         {
             $messages="Incorrect smscode!";
             return back()->withErrors($messages);
-        }
+        }*/
+
+        //password verification
         if($request->input('password')!=$request->input('password_confirmation'))
         {
             $messages="your must type the same password in two times!";
