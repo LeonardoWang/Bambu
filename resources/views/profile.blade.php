@@ -55,7 +55,7 @@ other's profile page
                                     <input id="user_id" type="hidden" value="{{$user->id}}">
                                     <div class="col-offset-3">
                                         <div class="form-group">
-                                            <button id="chat" onclick="createChatRoom()" class="btn btn-product bambu-color1">leave him/her a message</button>
+                                            <button id="chat" onclick="createChatRoom({{$user->id}})" class="btn btn-product bambu-color1">leave him/her a message</button>
                                         </div>
                                     </div>
                                 </div>

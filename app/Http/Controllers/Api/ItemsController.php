@@ -155,8 +155,8 @@ class ItemsController extends Controller
         if(isset($keyword))
         {
 
-            $products = Item::where('category',$category)->where(function($query){
-                $query->where('title', 'like', '%'.$keyword.'%')->orWhere('description', 'like', '%'.$keyword.'%')
+            $products = Item::where('category',$category)->where( function($query){
+                $query->where('title', 'like', '%'.$keyword.'%')->orWhere('description', 'like', '%'.$keyword.'%');
             })->get();
             return view('welcome',compact('user','products'));
             //view('welcome',['products'=>Item::where('title', 'like', '%'.$keyword.'%')->orWhere('description', 'like', '%'.$keyword.'%')->get()]);

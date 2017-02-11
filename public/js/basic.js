@@ -17,5 +17,27 @@ function notifOnMouseOut(btn){
 	document.getElementById(btn.id).src ='/img/icons/svg/' + btn.id + '.svg';
 }
 
-function checkNotif(){}
+function deleteComment(id){
+    var r=confirm("Do you really want to delete this comment?")
+    if (r==true)
+    {
+        $.ajax({
+            type:"get",
+            url:'/api/trage_requests/delete/'+id,
+            data:{},
+            async:false,
+
+            success:function(data){
+                console.log(data);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                console.log(XMLHttpRequest);
+                //alert(XMLHttpRequest.status);
+                //alert(XMLHttpRequest.readyState);
+                console.log(textStatus); // paser error;
+            }
+        });
+        window.location.reload();
+    }
+}
 
