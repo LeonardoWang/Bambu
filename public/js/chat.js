@@ -14,45 +14,14 @@ window.onload = function() {
       });
     socket_notif = user_id+':App\\Events\\NotifEvent';
     socket.on(socket_notif, function(data){
-        user_remote_id = data.user_id + '';
-        //console.log(data.user_id);
-        if(user_id !== user_remote_id){
-            alert('you\'ve received a message, check it in notification center!');
+        if(!document.getElementById("chatroom_"+user_remote_id)){
+            alert('you\'ve received a new message, check it in \'Unread messages!\'');
             //notif btn
             document.getElementById('bell').src = '/img/icons/svg/bell-yellow.svg';
             $("#bell").attr({'data-container':'body', 'data-toggle': 'popover', 'data-placement': 'bottom', 'data-content': 'hello js' });
-
-            /*$.ajax({
-                type:"get",
-                url:'/api/chat/GetChatRoomIDByUserID',
-                data:{'user_id':user_remote_id},
-                
-                success:function(data){
-                    console.log(data);
-                    chat_room_id = data.chat_room_id;
-
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    console.log(XMLHttpRequest);
-                    //alert(XMLHttpRequest.status);
-                    //alert(XMLHttpRequest.readyState);
-                    console.log(textStatus); // paser error;
-                }
-            });*/
-            createChatRoom(user_remote_id);
         }
-        //if(!document.getElementById("chatroom_"+chat_room_id)){}
     }); 
     //console.log(socket);
-    //socket_chatroom = chat_room_id+':App\\Events\\SomeEvent';
-    //socket.on(socket_chatroom, function(data){
-    //console.log('listen to chatroom '+chat_room_id);
-    /*if(data.message !== null || '')
-    {
-        document.getElementById("dialog_userid_"+data.user_id).innerHTML+=data.user_id + "<br>";
-        document.getElementById("dialog_message_"+data.user_id).innerHTML+=data.message + "<br>";
-    }*/
-    //});
 }
 
 
@@ -137,7 +106,8 @@ function createChatRoom(user_remote_id){
                 type:"get",
                 url:'/user_name/' + user_remote_id,
                 data:{},
-                
+                async:false,
+
                 success:function(data) {
                     console.log(data);
                     user_remote_name = data.name;
@@ -155,6 +125,7 @@ function createChatRoom(user_remote_id){
                 type:"get",
                 url:'/api/chat/GetChatRoomIDByUserID',
                 data:{'user_id':user_remote_id},
+                async:false,
                 
                 success:function(data){
                     console.log(data);
@@ -175,7 +146,8 @@ function createChatRoom(user_remote_id){
                 type:"get",
                 url:'/api/chat/GetChatMessageByUserId',
                 data:{'user_id':user_remote_id},
-                
+                async:false,
+
                 success:function(data) {
                     console.log(data);
                     chat_room_id = data.chat_room_id;
@@ -203,16 +175,18 @@ function createChatRoom(user_remote_id){
                     console.log(textStatus); // paser error;
                 }
         });
-        socket_chatroom = chat_room_id+':App\\Events\\SomeEvent';
+    
+        //socket_chatroom1 = '1:App\\Events\\SomeEvent';
+        socket_chatroom = chat_room_id + ':App\\Events\\SomeEvent';
         socket.on(socket_chatroom, function(dd){
-            console.log('listen to chatroom '+chat_room_id);
+            console.log('received a new message from ' + dd.user_id);
             console.log(dd);
-            /*if(dd.message !== null || '')
+            if(dd.message !== null || '')
             {
-                document.getElementById("dialog_userid_" + dd.message[dd.message.length-1].user_id).innerHTML+=dd.message[dd.message.length-1].user_id + "<br>";
-                document.getElementById("dialog_message_" + dd.message[dd.message.length-1].user_id).innerHTML+=dd.message[dd.message.length-1].message + "<br>";
-            }*/
-        });
+                document.getElementById("dialog_userid_" + dd.user_id).innerHTML+=user_remote_name + "<br>";
+                document.getElementById("dialog_message_" + dd.user_id).innerHTML+=dd.message + "<br>";
+            }
+     });
     }
 }
 

@@ -93,6 +93,7 @@ class ChatController extends Controller
 
         return response()->json(array(
             'status' => 'success',
+            'user_id' => $message->user_id,
             'chat_room_id' => $message->chat_room_id
         ));
         

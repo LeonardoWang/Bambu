@@ -21,8 +21,13 @@ Route::get('/smscode','HomeController@sendSMS');
 Route::get('/login', 'HomeController@login');
 Route::get('/test',"HomeController@test");
 
-Route::get('/event', function(){
+Route::get('/notifEvent', function(){
     Event::fire(new \App\Events\NotifEvent(1));
+    return "hello world";
+});
+
+Route::get('/event', function(){
+    Event::fire(new \App\Events\SomeEvent(2,1,"22132132"));
     return "hello world";
 });
 
