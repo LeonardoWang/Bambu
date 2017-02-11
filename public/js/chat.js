@@ -17,11 +17,29 @@ window.onload = function() {
         console.log('listen to user_id= '+user_id+'\'s Notif ');
         //console.log(data.user_id);
         user_remote_id = data.user_id;
-        if(user_id!==user_remote_id){
-        alert('you\'ve received a message, check it in notification center!');
+        if(user_id !== user_remote_id){
+            alert('you\'ve received a message, check it in notification center!');
             //notif btn
             document.getElementById('bell').src = '/img/icons/svg/bell-yellow.svg';
             $("#bell").attr({'data-container':'body', 'data-toggle': 'popover', 'data-placement': 'bottom', 'data-content': 'hello js' });
+
+            $.ajax({
+                type:"get",
+                url:'/api/chat/GetChatRoomIDByUserID',
+                data:{'user_id':user_id},
+                
+                success:function(data){
+                    console.log(data);
+                    chat_room_id = data.chat_room_id;
+
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                    //alert(XMLHttpRequest.status);
+                    //alert(XMLHttpRequest.readyState);
+                    console.log(textStatus); // paser error;
+                }
+          });
         }
         //if(!document.getElementById("chatroom_"+chat_room_id)){}
     }); 
@@ -199,12 +217,11 @@ function chatroom(){
             success:function(data) {
                 //console.log(data.message);
 
-                for(i = data.chat_room_array.length - 1; i >= 0; i--)
+                for(i = 0; i < data.chat_room_array.length; i++)
                 {
-                    if(data.chat_room_array[i].user_sell_id !== user_id)
-                        createChatRoom(data.chat_room_array[i].user_sell_id);
-                    else if(data.chat_room_array[i].user_buy_id !== user_id)
-                        createChatRoom(data.chat_room_array[i].user_buy_id);
+                    if(data.chat_room_array[i].user_sell_id !== data.chat_room_array[i].user_buy_id) 
+                        if(data.chat_room_array[i].user_sell_id != user_id || data.chat_room_array[i].user_buy_id !== user_id)
+                            createChatRoom(data.chat_room_array[i].id);
                 }
 
             },

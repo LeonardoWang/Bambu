@@ -49,7 +49,7 @@ class ChatController extends Controller
             $chat_room_id = ChatRoom::where('user_buy_id',$user->id)->Where('user_sell_id',$user_id)->first();
 
         return response()->json(array(
-            'chat_room_id' => $chat_room_id
+            'chat_room_id' => $chat_room_id->id
         ));
     }
     
@@ -72,7 +72,7 @@ class ChatController extends Controller
         if(empty($room))
             return response()->json(array(
             'status' => 'failed',
-            '$chat_room_id' => $message->chat_room_id
+            'chat_room_id' => $message->chat_room_id
         ));
         $message->save();
         $notif = new NotifiController();
@@ -92,7 +92,7 @@ class ChatController extends Controller
 
         return response()->json(array(
             'status' => 'success',
-            '$chat_room_id' => $message->chat_room_id
+            'chat_room_id' => $message->chat_room_id
         ));
         
     }
