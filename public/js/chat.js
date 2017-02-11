@@ -1,4 +1,3 @@
-var socket = io('http://localhost:6001');
 var chatroomNum = 0;
 
 window.onload = function() {
@@ -7,6 +6,7 @@ window.onload = function() {
     if(elements && typeof(Intense)=="function")
         Intense( elements );
 
+    var socket = io('http://localhost:6001');
     //notif socket open when onload
     var user_id = $("#user_id").val();
     socket.on('connection', function (data) {
@@ -175,7 +175,8 @@ function createChatRoom(user_remote_id){
                     console.log(textStatus); // paser error;
                 }
         });
-    
+
+        var socket = io('http://localhost:6001');
         //socket_chatroom1 = '1:App\\Events\\SomeEvent';
         socket_chatroom = chat_room_id + ':App\\Events\\SomeEvent';
         socket.on(socket_chatroom, function(dd){
