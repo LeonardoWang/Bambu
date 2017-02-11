@@ -19,15 +19,13 @@ myprofile page
                                         @else
                                             <img style="width:100px;" src="{{$user_information->user_image}}"/>
                                         @endif
-                                    <!--
                                     <div class="form-group">
-                                        <div class="col-md-2 col-sm-2 col-xs-2 col-md-offset-3 col-sm-offset-3">
+                                        <label class="col-md-3 col-sm-3 col-xs-3 control-label" for="name">Profile picture</label>
+                                        <div class="col-md-9 col-sm-9 col-xs-9">
                                             <input id="file" name="image" class="form-control input-sm" type="file">
+                                            <!--<button type="button" onclick="uploadProfilePicture()" class="btn btn-xs">upload your profile picture</button>-->
                                         </div>
-                                        <div class="col-md-3 col-sm-3 col-xs-3">
-                                            <button onclick="uploadProfilePicture" class="btn btn-xs">upload your profile picture</button>
-                                        </div>
-                                    </div>!-->
+                                    </div>
                                     <h6>{{$user->name}}'s Profile</h6>
                                     <hr>
                                     <div class="form-group">

@@ -41,3 +41,4 @@ function deleteComment(id){
     }
 }
 
+//function uploadProfilePicture(){}

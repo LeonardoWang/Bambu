@@ -73,7 +73,7 @@ product show page
                         <label class="col-md-3 control-label" for="itemfortrade">And/Or add item for trade</label>
                         <div class="col-md-9">
                             <input id="itemfortrade" name="itemfortrade" type="text" placeholder="your item" class="form-control input-md">
-                            <!--<input id="file" name="image" class="form-control input-md" type="file" accept="image/jpeg, image/png">-->
+                            <!--<input id="file" name="image" class="form-control input-md" type="file">-->
                         </div>
                     </div>
                     <div class="form-group">
@@ -141,15 +141,15 @@ product show page
                     <div class="form-group">
                         <label class="col-sm-3 col-md-3 control-label" for="category">Category</label>
                         <div class="col-sm-8 col-md-8">
-                            <select id="category" name="category" class="form-control input-md" default="{{$product->category}}" required="required">
-                                <option value="art">Art & Music</option>
-                                <option value="beauty">Beauty, Health & Geocery</option>
-                                <option value="book">Book & Study</option>
-                                <option value="clothing">Clothing & Fashion</option>
-                                <option value="computer">Computer & Electronics</option>
-                                <option value="home">Home, Garden & Tools</option>
-                                <option value="sports">Sports & Outdoor</option>
-                                <option value="toys">Toys & Kids</option>
+                            <select id="category" name="category" class="form-control input-md" required="required">
+                                <option value="art" {{($product->category=="art")?"selected=":""}}>Art & Music</option>
+                                <option value="beauty" {{($product->category=="beauty")?"selected=":""}}>Beauty, Health & Geocery</option>
+                                <option value="book" {{($product->category=="book")?"selected=":""}}>Book & Study</option>
+                                <option value="clothing" {{($product->category=="clothing")?"selected=":""}}>Clothing & Fashion</option>
+                                <option value="computer" {{($product->category=="computer")?"selected=":""}}>Computer & Electronics</option>
+                                <option value="home" {{($product->category=="home")?"selected=":""}}>Home, Garden & Tools</option>
+                                <option value="sports" {{($product->category=="sports")?"selected=":""}}>Sports & Outdoor</option>
+                                <option value="toys" {{($product->category=="toys")?"selected=":""}}>Toys & Kids</option>
                             </select>
                         </div>
                     </div>
