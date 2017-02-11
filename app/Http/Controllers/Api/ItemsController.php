@@ -131,7 +131,7 @@ class ItemsController extends Controller
         return $item->images()->pluck('filename');
     }
 
-    public function search($keyword)
+    public function KSearch($keyword)
     {
         $user = Auth::user();
         if(isset($keyword))
@@ -143,6 +143,29 @@ class ItemsController extends Controller
         }
         else
             return view('welcome')->with('user',$user);
+        //->orWhere('description', 'like', '%'.$keyword.'%')->pluck('id')]);
+    }
+    public function CSearch(Request $request,$keyword)
+    {
+        $this->validate($request, [
+            'category' => 'required',
+        ]);
+        $category = $request->input('category');
+        $user = Auth::user();
+        if(isset($keyword))
+        {
+
+            $products = Item::where('category',$category)->where(function($query){
+                $query->where('title', 'like', '%'.$keyword.'%')->orWhere('description', 'like', '%'.$keyword.'%')
+            })->get();
+            return view('welcome',compact('user','products'));
+            //view('welcome',['products'=>Item::where('title', 'like', '%'.$keyword.'%')->orWhere('description', 'like', '%'.$keyword.'%')->get()]);
+        }
+        else
+        {
+            $products = Item::where('category',$category)->get();
+            return view('welcome',compact('user','products'));
+        }    
         //->orWhere('description', 'like', '%'.$keyword.'%')->pluck('id')]);
     }
     public function ProductIndex()

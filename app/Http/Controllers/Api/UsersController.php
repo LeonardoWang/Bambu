@@ -213,6 +213,30 @@ class UsersController extends Controller
         }
     }
 
+    public function userImageUpdate(Request $request)
+    {
+        $user = Auth::user();
+        $userinformation = UserInformation::find($user->id);
+        if ($request->hasFile('image')) {
+            if(!empty($userinformation->user_image)){
+                Storage::delete('images/' . $userinformation->user_image);
+            }
+            $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+            Storage::put('images/' . $file_name,
+                file_get_contents($request->file('image')->getRealPath()));
+            $userinformation->user_image = $file_name;
+            $userinformation->save();
+            echo "<script type='text/javascript'>alert('save with picture!')</script>";
+            $user_information = UserInformation::find($user->id);
+            return view('myprofile',compact('user','user_information'));
+        }
+        else{
+            $userinformation->save();
+            echo "<script type='text/javascript'>alert('profile successfully update. Saved without picture.')</script>";
+            $user_information = UserInformation::find($user->id);
+            return view('myprofile',compact('user','user_information'));
+        }
+    }
     public function userInformationPage()
     {
         $user = Auth::user();

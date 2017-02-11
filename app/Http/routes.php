@@ -36,13 +36,17 @@ Route::post('login', 'Api\UsersController@login');
 Route::get('logout','Api\UsersController@logout');
 Route::post('register', 'Api\UsersController@register');
 Route::get('api/product/images/{image_file}', 'Api\ImagesController@show');
+Route::get('items/KSearch/{keyword}', 'Api\ItemsController@KSearch');
+Route::get('items/CSearch/{keyword}', 'Api\ItemsController@CSearch');
 Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 
 	//xp cannot sent DELETE request, so all destroy actions are seperatedly routed
 	//also he cannot sent PUT, so update are seperatedly routed
 	Route::resource('users', 'Api\UsersController', ['only' => ['index', 'show']]);
+
 	Route::post('users/{id}', 'Api\UsersController@userInformationUpdate');
 	Route::get('users/{id}/delete', 'Api\UsersController@destroy');
+	Route::post('userImage/{id}', 'Api\UsersController@userImageUpdate');
 	Route::get('users_information','Api\UsersController@userInformationPage');
 	Route::get('user/{id}/info', 'Api\UsersController@otherUserInformationPage');
 	
@@ -55,8 +59,9 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 	Route::post('items/{id}', 'Api\ItemsController@update');
 	Route::get('items/{id}/delete', 'Api\ItemsController@destroy');
 	Route::get('items/{id}/images', 'Api\ItemsController@images');
-	Route::get('items/search/{keyword}', 'Api\ItemsController@search');
+	
 	Route::get('trade_requests/my','Api\TradeRequestsController@myRequest');
+	Route::get('trage_requests/delete/{id}','Api\TradeRequestsController@destroy');
 	Route::get('trade_requests/{id}','Api\TradeRequestsController@doRequest');
 	
 	Route::post('trade_request_making','Api\TradeRequestsController@postRequest');

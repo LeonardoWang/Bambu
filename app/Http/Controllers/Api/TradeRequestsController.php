@@ -106,9 +106,14 @@ class TradeRequestsController extends Controller
      */
     public function destroy($id)
     {
-        $trade_request = TradeRequest::find($id);
-        $trade_request->delete();
-        return 1;
+        $comment = Comment::find($id);
+        if(!empty($comment))
+        {
+            $comment->delete();
+            return 1;
+        }
+        else
+            return 0;
     }
 
     public function doRequest($id)
