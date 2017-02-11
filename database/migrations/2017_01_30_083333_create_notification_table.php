@@ -13,6 +13,7 @@ class CreateNotificationTable extends Migration
     public function up()
     {
         Schema::create('notification', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('user_id');
             $table->integer('chat_room_id');
             $table->boolean('is_comment')->default(false);
