@@ -9,43 +9,46 @@ window.onload = function() {
 
     //notif socket open when onload
     var user_id = $("#user_id").val();
-    socket_notif = user_id+':App\\Events\\NotifEvent';
     socket.on('connection', function (data) {
       //console.log(data);
       });
+    socket_notif = user_id+':App\\Events\\NotifEvent';
     socket.on(socket_notif, function(data){
         console.log('listen to user_id= '+user_id+'\'s Notif ');
         //console.log(data.user_id);
         user_remote_id = data.user_id;
+        if(user_id!==user_remote_id){
         alert('you\'ve received a message, check it in notification center!');
-        //notif btn
-        document.getElementById('bell').src = '/img/icons/svg/bell-yellow.svg';
-        $("#bell").attr({'data-container':'body', 'data-toggle': 'popover', 'data-placement': 'bottom', 'data-content': 'hello js' });
+            //notif btn
+            document.getElementById('bell').src = '/img/icons/svg/bell-yellow.svg';
+            $("#bell").attr({'data-container':'body', 'data-toggle': 'popover', 'data-placement': 'bottom', 'data-content': 'hello js' });
+        }
         //if(!document.getElementById("chatroom_"+chat_room_id)){}
     }); 
     //console.log(socket);
-    socket_chatroom = chat_room_id+':App\\Events\\SomeEvent';
-    socket.on(socket_chatroom, function(data){
-    console.log('listen to chatroom '+chat_room_id);
-    if(data.message !== null || '')
+    //socket_chatroom = chat_room_id+':App\\Events\\SomeEvent';
+    //socket.on(socket_chatroom, function(data){
+    //console.log('listen to chatroom '+chat_room_id);
+    /*if(data.message !== null || '')
     {
         document.getElementById("dialog_userid_"+data.user_id).innerHTML+=data.user_id + "<br>";
         document.getElementById("dialog_message_"+data.user_id).innerHTML+=data.message + "<br>";
-    }
-    });
+    }*/
+    //});
 }
 
 
 function onSubmit(id){
     chat_room_id = id;
-    var user_remote_id = $("#user_remote_id").val();
+    //var user_remote_id = $("#user_remote_id").val();
     var send_text = $("#dialog_sendtext_" + chat_room_id).val();
     if(send_text)
     {
         //front end display
         document.getElementById("dialog_userid_"+chat_room_id).innerHTML+=document.getElementById("userName").value+"<br>";
         document.getElementById("dialog_message_"+chat_room_id).innerHTML+=send_text + "<br>";
-                
+        
+        /*        
         if(chat_room_id==0 || '')
         {
           $.ajax({
@@ -65,7 +68,7 @@ function onSubmit(id){
                     console.log(textStatus); // paser error;
                 }
           });
-        }
+        }*/
 
         $.ajax({
                 type:"get",
@@ -134,7 +137,7 @@ function createChatRoom(user_remote_id){
                 data:{'user_id':user_remote_id},
                 
                 success:function(data) {
-                    //console.log(data.message);
+                    console.log(data);
                     chat_room_id = data.chat_room_id;
 
                     document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+chat_room_id+'" style="position:absolute;bottom:0px;left:400px"><div class="thumbnail" style="height:200px; overflow-y:auto;"><p style="text-align:left;font-size:13px;">chat history with '+user_remote_name+'</p><button id="dialog_closebtn_'+chat_room_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">close</button><div class="col-md-3 col-sm-3 col-xs-3 caption" id="dialog_userid_'+chat_room_id+'"></div> <div class="col-md-9 col-sm-3 col-xs-3 caption" id="dialog_message_'+chat_room_id+'"></div></div> <textarea class="thumbnail form-control" id="dialog_sendtext_'+chat_room_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)"></textarea>      <input id="'+chat_room_id+'" onclick="onSubmit('+chat_room_id+')" class="btn btn" value="send" /></div>';
@@ -143,8 +146,8 @@ function createChatRoom(user_remote_id){
                     for(i = data.message.length - 1; i >= 0; i--)
                     {
                         if(data.message[i]!=null){
-                            document.getElementById("dialog_userid_"+data.message[i].user_id).innerHTML+=user_remote_name + "<br>";
-                            document.getElementById("dialog_message_"+data.message[i].user_id).innerHTML+=data.message[i].message + "<br>";
+                            document.getElementById("dialog_userid_"+chat_room_id).innerHTML+=user_remote_name + "<br>";
+                            document.getElementById("dialog_message_"+chat_room_id).innerHTML+=data.message[i].message + "<br>";
                         }
                     }
 
@@ -160,11 +163,11 @@ function createChatRoom(user_remote_id){
         socket.on(socket_chatroom, function(dd){
             console.log('listen to chatroom '+chat_room_id);
             console.log(dd);
-            if(dd.message !== null || '')
+            /*if(dd.message !== null || '')
             {
                 document.getElementById("dialog_userid_" + dd.message[dd.message.length-1].user_id).innerHTML+=dd.message[dd.message.length-1].user_id + "<br>";
                 document.getElementById("dialog_message_" + dd.message[dd.message.length-1].user_id).innerHTML+=dd.message[dd.message.length-1].message + "<br>";
-            }
+            }*/
         });
     }
 }
@@ -187,6 +190,7 @@ function enterToSubmit(thisTextArea,e){
 }
 
 function chatroom(){
+    var user_id = $("#user_id").val();
     $.ajax({
             type:"get",
             url:'/api/chat_room/MyChatroom',
@@ -195,9 +199,12 @@ function chatroom(){
             success:function(data) {
                 //console.log(data.message);
 
-                for(i = data.notif.length - 1; i >= 0; i--)
+                for(i = data.chat_room_array.length - 1; i >= 0; i--)
                 {
-                    createChatRoom(data.notif[i].chat_room_id);
+                    if(data.chat_room_array[i].user_sell_id !== user_id)
+                        createChatRoom(data.chat_room_array[i].user_sell_id);
+                    else if(data.chat_room_array[i].user_buy_id !== user_id)
+                        createChatRoom(data.chat_room_array[i].user_buy_id);
                 }
 
             },
