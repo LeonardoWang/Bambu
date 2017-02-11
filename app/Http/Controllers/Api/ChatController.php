@@ -84,7 +84,7 @@ class ChatController extends Controller
         }
         else
         {
-            $notif->sendNotif($room->user_buy_id);
+            $notif->sendNotif($room->user_sell_id);
             $notif->addChatNotif($room->user_sell_id,$message->chat_room_id);
             $notif->removeChatNotif($message->user_id,$message->chat_room_id);
         }
