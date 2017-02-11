@@ -1,12 +1,11 @@
 var chatroomNum = 0;
+var socket = io('http://localhost:6001');
 
 window.onload = function() {
     //load pic zoom func
     var elements = document.querySelectorAll( '.demo-image' );
     if(elements && typeof(Intense)=="function")
         Intense( elements );
-
-    var socket = io('http://localhost:6001');
     //notif socket open when onload
     var user_id = $("#user_id").val();
     socket.on('connection', function (data) {
@@ -14,7 +13,7 @@ window.onload = function() {
       });
     socket_notif = user_id+':App\\Events\\NotifEvent';
     socket.on(socket_notif, function(data){
-        if(!document.getElementById("chatroom_"+user_remote_id)){
+        if(!document.getElementById("chatroom_"+data.user_id)){
             alert('you\'ve received a new message, check it in \'Unread messages!\'');
             //notif btn
             document.getElementById('bell').src = '/img/icons/svg/bell-yellow.svg';
@@ -82,7 +81,6 @@ function onSubmit(id){
 function toggleChat(btn){
     var user_remote_id = btn.id.replace(/dialog_closebtn_/,"");
     var chatroom_name = "#chatroom_"+user_remote_id;
-    var socket = io('http://localhost:6001');
     socket.disconnect(user_remote_id + ':App\\Events\\SomeEvent', function(data){
         console.log('remove listener of chatroom '+chat_room_id);
     });
@@ -177,7 +175,6 @@ function createChatRoom(user_remote_id){
                 }
         });
 
-        var socket = io('http://localhost:6001');
         //socket_chatroom1 = '1:App\\Events\\SomeEvent';
         socket_chatroom = chat_room_id + ':App\\Events\\SomeEvent';
         socket.on(socket_chatroom, function(dd){

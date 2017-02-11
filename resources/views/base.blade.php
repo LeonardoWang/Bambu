@@ -13,13 +13,18 @@
 
         <script src="/js/jquery-3.1.1.min.js"></script>
         <script src="http://localhost:6001/socket.io/socket.io.js"></script>
-        
+
         <!-- Loading Bootstrap -->
         <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Loading Flat UI -->
         <script src="/Flat-UI-master/dist/js/flat-ui.min.js"></script>
         <link href="/Flat-UI-master/dist/css/flat-ui.css" rel="stylesheet">
+
+        <!-- Loading my scripts -->
+        <script src='/js/chat.js'></script>
+        <script src='/js/intense.js'></script>
+        <script src="/js/basic.js"></script>
 
         <!-- Loading mycss -->
         <link href="/css/mycss.css" rel="stylesheet">
@@ -130,7 +135,4 @@
 </footer>
 
 </body>
-<script src='/js/intense.js'></script>
-<script src='/js/chat.js'></script>
-<script src="/js/basic.js"></script>
 </html>
