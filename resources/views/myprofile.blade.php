@@ -15,14 +15,14 @@ myprofile page
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3">
                                 <div style="color:#9aa4af; max-height:550px; overflow-x:visible;">                                    
                                     @if(!strlen($user_information->user_image))
-                                            <img style="width:100px;" src="/img/default_user_profile.jpg"/>
+                                            <img style="width:100px;height:100px;margin-bottom:10px;" src="/img/default_user_profile.jpg"/>
                                         @else
-                                            <img style="width:100px;" src="{{$user_information->user_image}}"/>
+                                            <img style="width:100px;height:100px;margin-bottom:10px;" src="/api/product/images/{{$user_information->user_image}}"/>
                                         @endif
                                     <div class="form-group">
                                         <label class="col-md-3 col-sm-3 col-xs-3 control-label" for="name">Profile picture</label>
                                         <div class="col-md-9 col-sm-9 col-xs-9">
-                                            <input id="file" name="image" class="form-control input-sm" type="file">
+                                            <input id="image" name="image" class="form-control input-sm" type="file">
                                             <!--<button type="button" onclick="uploadProfilePicture()" class="btn btn-xs">upload your profile picture</button>-->
                                         </div>
                                     </div>

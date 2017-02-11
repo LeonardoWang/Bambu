@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Crypt;
 use Hash;
 use Auth;
+use Storage;
 use Validator;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -198,7 +199,7 @@ class UsersController extends Controller
             if(!empty($userinformation->user_image)){
                 Storage::delete('images/' . $userinformation->user_image);
             }
-            $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+            $file_name = strval($user->id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
             Storage::put('images/' . $file_name,
                 file_get_contents($request->file('image')->getRealPath()));
             $userinformation->user_image = $file_name;
@@ -223,7 +224,7 @@ class UsersController extends Controller
             if(!empty($userinformation->user_image)){
                 Storage::delete('images/' . $userinformation->user_image);
             }
-            $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+            $file_name = strval($user->id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
             Storage::put('images/' . $file_name,
                 file_get_contents($request->file('image')->getRealPath()));
             $userinformation->user_image = $file_name;
