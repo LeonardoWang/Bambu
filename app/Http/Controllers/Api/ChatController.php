@@ -61,8 +61,9 @@ class ChatController extends Controller
     public function Chat() //unworked
     {
         $message = new Message();
+        $user = Auth::user();
         $message->chat_room_id = $_GET['chat_room_id'];
-        $message->user_id = Auth::user()->id;
+        $message->user_id = $user->id;
         $message->message = $_GET['chat_infomation'];
 
         Event::fire(new \App\Events\SomeEvent($message->user_id,$message->chat_room_id,$message->message));
