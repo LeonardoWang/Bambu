@@ -112,7 +112,7 @@ product show page
                     <div class="form-group">
                         <label class="col-sm-3 col-md-3 control-label" for="textarea">Description</label>
                         <div class="col-sm-8 col-md-8">
-                            <textarea id="description" name="description" value="{{$product->description}}" class="form-control" required="required"></textarea>
+                            <textarea id="description" name="description" class="form-control" required="required">{{$product->description}}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
