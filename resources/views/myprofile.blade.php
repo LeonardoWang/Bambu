@@ -13,12 +13,21 @@ myprofile page
                     <fieldset>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3">
-                                <div style="color:#9aa4af; max-height:550px; overflow-x:visible;">
+                                <div style="color:#9aa4af; max-height:550px; overflow-x:visible;">                                    
                                     @if(!strlen($user_information->user_image))
                                             <img style="width:100px;" src="/img/default_user_profile.jpg"/>
                                         @else
                                             <img style="width:100px;" src="{{$user_information->user_image}}"/>
                                         @endif
+                                    <!--
+                                    <div class="form-group">
+                                        <div class="col-md-2 col-sm-2 col-xs-2 col-md-offset-3 col-sm-offset-3">
+                                            <input id="file" name="image" class="form-control input-sm" type="file">
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-xs-3">
+                                            <button onclick="uploadProfilePicture" class="btn btn-xs">upload your profile picture</button>
+                                        </div>
+                                    </div>!-->
                                     <h6>{{$user->name}}'s Profile</h6>
                                     <hr>
                                     <div class="form-group">
@@ -39,7 +48,6 @@ myprofile page
                                             <input id="location" name="location" type="text" value="{{$user_information->location}}" class="form-control input-md">
                                         </div>
                                     </div>
-                                    <!--<p>{{$user_information->sex}}</p>-->
                                     <div class="form-group">
                                         <label class="col-md-3 col-sm-3 col-xs-3 control-label" for="sex">Gender</label>
                                         <div class="col-md-9 col-sm-9 col-xs-9">

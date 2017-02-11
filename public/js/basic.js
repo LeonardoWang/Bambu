@@ -1,7 +1,7 @@
 function sb(){
     s = document.getElementById('inpu1').value;
     if(s){
-        window.location.href="/api/items/search/" + s;
+        window.location.href="/items/KSearch/" + s;
     }
     else{
         alert("the search field can't be empty"); 

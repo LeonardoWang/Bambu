@@ -189,7 +189,7 @@ product show page
                                         <div class="col-lg-5 col-md-5 col-sm-5" style="text-align:left;">
                                             <p style="color:#bdc3c7; font-size:10px; margin-top:0px;">{{substr($comment->created_at,0,10)}}<p>
                                             <p style="color:#f44336; margin:0 0 0 0px;">￥ {{$comment->price}}</p>
-                                            @if ($user->id == $product->user_id)
+                                            @if ($user->id == $product->user_id || $user->id == $comment->user_id)
                                             <button onclick="deleteComment({{$comment->id}})" class="btn btn-sm"> delete it</button>
                                             @endif
                                         </div>
