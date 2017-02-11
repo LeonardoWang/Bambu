@@ -113,14 +113,14 @@ class UsersController extends Controller
             'smscode' =>'required|digits:4'
         ]);
         $messages = $validator->messages();
-        /*if($request->input('smscode')!=$request->input('verismscode'))
+        if($request->input('smscode')!=$request->input('verismscode'))
         {
             $messages="Incorrect smscode!";
             return back()->withErrors($messages);
-        }*/
+        }
         if($request->input('password')!=$request->input('password_confirmation'))
         {
-            $messages="your must type same password two times!";
+            $messages="your must type the same password in two times!";
             return back()->withErrors($messages);
         }
         if(!$validator->fails()) {
@@ -132,7 +132,7 @@ class UsersController extends Controller
             $userinformation = new UserInformation();
             $userinformation->user_id = $user->id;
             $userinformation->sex ='unknown';
-            $userinformation->location ='Earth';
+            $userinformation->location ='Beijing';
             $userinformation->user_image = '/img/default_user_profile.jpg';
             $userinformation->save();
             Auth::login($user);
