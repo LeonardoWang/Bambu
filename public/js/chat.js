@@ -82,6 +82,7 @@ function onSubmit(id){
 function toggleChat(btn){
     var user_remote_id = btn.id.replace(/dialog_closebtn_/,"");
     var chatroom_name = "#chatroom_"+user_remote_id;
+    var socket = io('http://localhost:6001');
     socket.disconnect(user_remote_id + ':App\\Events\\SomeEvent', function(data){
         console.log('remove listener of chatroom '+chat_room_id);
     });
