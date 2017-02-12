@@ -15,26 +15,22 @@ product show page
                         </div>
                         <div class="caption">
                             <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:center;">
-                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                                        <p style="color:#f44336;">￥{{$product->price}}</p>
-                                    </div>
-                                    <div class="col-lg-7 col-md-7 col-sm-8 col-xs-9 col-lg-offset-2 col-md-offset-2 col-sm-offset-1">
-                                        <div class="col-lg-8 col-md-9 col-sm-10 col-xs-9">
-                                        <p style="text-align:right;font-size:15px;">seller :  <a href="/api/user/{{$product->user_id}}/info/" class = "ba">{{$product->user_name}}</a></p>
-                                        </div>
+                                <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-1">
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="padding:0px;">
+                                        <p style="text-align:left;font-size:15px;">seller :  <a href="/api/user/{{$product->user_id}}/info/" class = "ba">{{$product->user_name}}</a>
                                         @if ($user->id != $product->user_id)
-                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-                                        <img onclick="createChatRoom({{$product->user_id}})" style="width:35px;cursor:pointer;" src="/img/icons/svg/chat.svg"/>
-                                        </div>
-                                        @endif
+                                        <img onclick="createChatRoom({{$product->user_id}})" style="margin-left:10px;width:35px;cursor:pointer;" src="/img/icons/svg/chat.svg"/>@endif
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <p style="text-align:right;color:#f44336;">￥{{$product->price}}</p>
                                     </div>
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-1">
                                     <hr style="margin:0px;">
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div style="overflow: auto; max-height:180px;"><p style="font-size:15px;">{{$product->description}}</p></div>
+                                <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-1">
+                                    <div style="overflow: auto; max-height:180px;"><p style="font-size:15px;text-align:left;">{{$product->description}}</p></div>
                                 </div>
                             </div>
                         </div>
