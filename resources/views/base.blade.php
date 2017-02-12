@@ -133,8 +133,7 @@
 <script src='/js/intense.js'></script>
 <script type='text/javascript'>
 var chatroomNum = 0;
-var socket = io('http://localhost:6001');
-
+var socket;
 window.onload = function() {
     //load pic zoom func
     var elements = document.querySelectorAll( '.demo-image' );
@@ -142,6 +141,7 @@ window.onload = function() {
         Intense( elements );
     //notif socket open when onload
     var user_id = $("#user_id").val();
+    socket = io('http://localhost:6001');
     socket.on('connection', function (data) {
       //console.log(data);
       });
