@@ -1,4 +1,5 @@
 var chatroomNum = 0;
+var socket = io('http://localhost:6001');
 
 window.onload = function() {
     //load pic zoom func
@@ -7,7 +8,6 @@ window.onload = function() {
         Intense( elements );
     //notif socket open when onload
     var user_id = $("#user_id").val();
-    var socket = io('http://localhost:6001');
     socket.on('connection', function (data) {
       //console.log(data);
       });
@@ -81,7 +81,6 @@ function onSubmit(id){
 function toggleChat(btn){
     var user_remote_id = btn.id.replace(/dialog_closebtn_/,"");
     var chatroom_name = "#chatroom_"+user_remote_id;
-    var socket = io('http://localhost:6001');
     socket.disconnect(user_remote_id + ':App\\Events\\SomeEvent', function(data){
         console.log('remove listener of chatroom '+chat_room_id);
     });
@@ -176,7 +175,6 @@ function createChatRoom(user_remote_id){
                 }
         });
 
-        var socket = io('http://localhost:6001');
         //socket_chatroom1 = '1:App\\Events\\SomeEvent';
         socket_chatroom = chat_room_id + ':App\\Events\\SomeEvent';
         socket.on(socket_chatroom, function(dd){
