@@ -12,7 +12,6 @@
         <meta name="viewport" content="width=100%, initial-scale=1.0, maximum-scale=1.0">
 
         <script src="/js/jquery-3.1.1.min.js"></script>
-        <script src="http://localhost:6001/socket.io/socket.io.js"></script>
         
         <!-- Loading Bootstrap -->
         <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -209,6 +208,9 @@
 @endif
 
 </body>
+
+<script src="http://localhost:6001/socket.io/socket.io.js"></script>
+var socket = io('http://localhost:6001');
 <script type="text/javascript">
 var chatroomNum = 0;
 
@@ -219,8 +221,7 @@ window.onload = function() {
         Intense( elements );
     //notif socket open when onload
     var user_id = $("#user_id").val();
-    var socket = io('http://localhost:6001');
-    socket.on('connection', function (data) {
+     socket.on('connection', function (data) {
       //console.log(data);
       });
     socket_notif = user_id+':App\\Events\\NotifEvent';
@@ -293,7 +294,6 @@ function onSubmit(id){
 function toggleChat(btn){
     var user_remote_id = btn.id.replace(/dialog_closebtn_/,"");
     var chatroom_name = "#chatroom_"+user_remote_id;
-    var socket = io('http://localhost:6001');
     socket.disconnect(user_remote_id + ':App\\Events\\SomeEvent', function(data){
         console.log('remove listener of chatroom '+chat_room_id);
     });
@@ -387,8 +387,7 @@ function createChatRoom(user_remote_id){
                     console.log(textStatus); // paser error;
                 }
         });
-
-        var socket = io('http://localhost:6001');
+        
         //socket_chatroom1 = '1:App\\Events\\SomeEvent';
         socket_chatroom = chat_room_id + ':App\\Events\\SomeEvent';
         socket.on(socket_chatroom, function(dd){
