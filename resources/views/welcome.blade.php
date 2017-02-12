@@ -135,9 +135,9 @@
             <!--{{$i=0}}-->
             @for ($i = 0; $i < count($products);$i++)
             <!--foreach (products as product)-->
-                @if ($i < 6)
+                @if ($i < 12)
                     <!--{{$product=$products[$i]}}-->
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3" align="center">
                         <a href="/api/trade_requests/{{$product->id}}">
                             <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="max-height:350px;">
                         <div class="caption" style="padding-top:0px;">
