@@ -105,7 +105,7 @@
                         </li>
                     </ul>
                     @endif
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
                 <li>
                 @if (isset($user) > 0)
                     <a href="/api/users_information"> Hello, {{$user->name}} </a>

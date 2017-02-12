@@ -38,7 +38,7 @@
               <img id="home" onclick="javascript:window.location.href='/'" src='/img/favicon.ico'>
             </div>
             <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
-              <ul class="nav navbar-nav">
+              <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
                 <li>
                     <a href="/login" >Sign In</a>
                 </li>
