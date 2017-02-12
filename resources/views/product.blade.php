@@ -52,9 +52,9 @@ item uploading page
                     </div>
                     -->
                     <div class="form-group">
-                        <label class="col-sm-3 col-md-3 control-label" for="file">One picture for item</label>
+                        <label class="col-sm-3 col-md-3 control-label" for="file_upload">One picture for item</label>
                         <div class="col-sm-8 col-md-8">
-                            <input id="file" name="image" class="form-control input-md" type="file"> <!--multiple="true"-->
+                            <input id="file_upload" name="image" class="form-control input-md" type="file"> <!--multiple="true"-->
                         </div>
                     </div>
                     <div class="form-group">
