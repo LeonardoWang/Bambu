@@ -210,10 +210,9 @@
 </body>
 
 <script src="http://localhost:6001/socket.io/socket.io.js"></script>
-var socket = io('http://localhost:6001');
 <script type="text/javascript">
 var chatroomNum = 0;
-
+var socket = io('http://localhost:6001');
 window.onload = function() {
     //load pic zoom func
     var elements = document.querySelectorAll( '.demo-image' );
