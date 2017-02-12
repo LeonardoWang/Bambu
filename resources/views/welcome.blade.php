@@ -140,14 +140,15 @@
                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
                         <a href="/api/trade_requests/{{$product->id}}">
                             <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="max-height:350px;">
-                        </a>
                         <div class="caption" style="padding-top:0px;">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div style="color:#9aa4af; overflow:hidden; height:35px;">
-                                        <p style="margin:0 0 0 0px;">{{$product->description}}</p>
+                                    <div style="color:#9aa4af; overflow:hidden; max-height:60px;">
+                                        <p style="padding:0px;margin:0px;">{{$product->title}}</p>
+                                        <p style="padding:0px;margin:0px;">￥<label style="color:#f44336; font-weight:900;">{{$product->price}}</label></p>
                                     </div>
-                                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="text-align:left;padding-left: 0px;">
+                                    <!--
+                                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="text-align:left;">
                                         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:5px;">
                                             <img style="width:20px;" src="/img/icons/svg/clocks.svg"/>
                                         </div>
@@ -158,12 +159,12 @@
                                         
                                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="text-align:left;">
                                         <p style="color:#f44336; margin-top:0px;">￥{{$product->price}}</p>
-                                    </div>
-                                    <!--<p>{{$product->image_file}}</p>-->
+                                    </div>-->
                                     <!--<p>created by <a href="#" class="bambu-color1">{{$product->user_name}}</a></p>-->
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
                 @endif
             @endfor

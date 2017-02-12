@@ -23,7 +23,7 @@ product show page
                                         </p>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                                        <p style="text-align:right;color:#f44336;">￥{{$product->price}}</p>
+                                        <p style="text-align:right;color:#f44336; font-weight:900;">￥{{$product->price}}</p>
                                     </div>
                                 </div>
                                 <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-1">
@@ -36,8 +36,6 @@ product show page
                         </div>
                 </div>
             </div>
-
-
 
             <div class="col-lg-4 col-lg-offset-1 col-md-6 col-md-offset-0 col-sm-8 col-sm-offset-2">
                 @if ($user->id != $product->user_id)
@@ -53,7 +51,7 @@ product show page
                     <div class="form-group">               
                         <label class="col-md-3 control-label">Price</label>
                         <div class="col-md-9">
-                            <p style="margin:0 0 0 0px; color:#f44336;">￥{{$product->price}}</p>
+                            <p style="margin:0 0 0 0px; color:#f44336; font-weight:900;">￥{{$product->price}}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -182,7 +180,7 @@ product show page
                                         </div>
                                         <div class="col-lg-5 col-md-5 col-sm-5" style="text-align:left;">
                                             <p style="color:#bdc3c7; font-size:10px; margin-top:0px;">{{substr($comment->created_at,0,10)}}<p>
-                                            <p style="color:#f44336; margin:0 0 0 0px;">￥ {{$comment->price}}</p>
+                                            <p style="color:#f44336; font-weight:900; margin:0 0 0 0px;">￥ {{$comment->price}}</p>
                                             @if ($user->id == $product->user_id || $user->id == $comment->user_id)
                                             <button onclick="deleteComment({{$comment->id}})" class="btn btn-sm"> delete it</button>
                                             @endif
