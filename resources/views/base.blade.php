@@ -70,7 +70,7 @@
                @if (isset($user) > 0)
                <ul class="nav navbar-nav navbar-right" style="padding-right:20px;">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" onclick="checkNotif()" src='/img/icons/svg/bell.svg'><strong class="caret"></strong></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/bell.svg'><strong class="caret"></strong></a>
                             <ul class="dropdown-menu">
                                 <li>
                                      <a href="/api/trade_requests/my">Trade requests</a>
@@ -231,6 +231,12 @@ function toggleChat(btn){
             }*/
 }
 
+function clearChatHistory(btn){
+    var user_remote_id = btn.id.replace(/dialog_clearbtn_/,"");
+    document.getElementById("dialog_userid_"+user_remote_id).innerHTML='';
+    document.getElementById("dialog_message_"+user_remote_id).innerHTML='';
+}
+
 function createChatRoom(user_remote_id){
     var user_remote_name;
     var chat_room_id;
@@ -285,11 +291,13 @@ function createChatRoom(user_remote_id){
                     console.log(data);
                     chat_room_id = data.chat_room_id;
 
-                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+user_remote_id+'" style="position:absolute;bottom:0px;left:400px"><div class="thumbnail" style="height:200px; overflow-y:auto;"><p style="text-align:left;font-size:13px;">chat history with '+user_remote_name+'</p><button id="dialog_closebtn_'+user_remote_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">close</button><div class="col-md-3 col-sm-3 col-xs-3 caption" id="dialog_userid_'+user_remote_id+'"></div> <div class="col-md-9 col-sm-3 col-xs-3 caption" id="dialog_message_'+user_remote_id+'"></div></div> <textarea class="thumbnail form-control" id="dialog_sendtext_'+user_remote_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)"></textarea>      <input id="'+user_remote_id+'" onclick="onSubmit('+user_remote_id+')" class="btn btn" value="send" /></div>';
+                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+user_remote_id+'" style="position:absolute;bottom:0px;left:400px"><div class="thumbnail" style="height:200px; overflow-y:auto;"><p style="text-align:left;font-size:12px;padding-top:18px;margin-bottom:0px;">chat history with '+user_remote_name+'</p><button id="dialog_clearbtn_'+user_remote_id+'" onclick="clearChatHistory(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">clear history</button><button id="dialog_closebtn_'+user_remote_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;left:0px;z-index:1000">close</button><div class="col-md-3 col-sm-3 col-xs-3 caption" id="dialog_userid_'+user_remote_id+'"></div> <div class="col-md-9 col-sm-3 col-xs-3 caption" id="dialog_message_'+user_remote_id+'"></div></div> <textarea class="thumbnail form-control" id="dialog_sendtext_'+user_remote_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)"></textarea>      <input id="'+user_remote_id+'" onclick="onSubmit('+user_remote_id+')" class="btn btn" value="send" /></div>';
 
-                    //show the last messages
-                    for(i = 0; i < data.message.length; i++)
+                    //show the last 10 messages
+                    for(i = data.message.length - 11; i < data.message.length; i++)
                     {
+                        if(i>=0)
+                        {
                         if(data.message[i].user_id==user_remote_id){
                             document.getElementById("dialog_userid_"+user_remote_id).innerHTML+=user_remote_name + "<br>";
                             document.getElementById("dialog_message_"+user_remote_id).innerHTML+=data.message[i].message + "<br>";
@@ -297,6 +305,7 @@ function createChatRoom(user_remote_id){
                         else{
                             document.getElementById("dialog_userid_"+user_remote_id).innerHTML+=userName + "<br>";
                             document.getElementById("dialog_message_"+user_remote_id).innerHTML+=data.message[i].message + "<br>";
+                        }
                         }
                     }
 
