@@ -12,8 +12,8 @@
         <meta name="viewport" content="width=100%, initial-scale=1.0, maximum-scale=1.0">
 
         <script src="/js/jquery-3.1.1.min.js"></script>
-        <script src="http://139.198.6.163:6001/socket.io/socket.io.js"></script>
-        
+        <script src="http://thebambu.com:6001/socket.io/socket.io.js"></script>
+
         <!-- Loading Bootstrap -->
         <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -209,6 +209,7 @@
 @endif
 
 </body>
+
 <script type='text/javascript'>
 var chatroomNum = 0;
 var socket;
@@ -219,7 +220,7 @@ window.onload = function() {
         Intense( elements );
     //notif socket open when onload
     var user_id = $("#user_id").val();
-    socket = io('http://139.198.6.163:6001');
+    socket = io('http://thebambu.com:6001');
     socket.on('connection', function (data) {
       //console.log(data);
       });
@@ -398,7 +399,7 @@ function createChatRoom(user_remote_id){
                 }
         });
 
-        socket = io('http://139.198.6.163:6001');
+        socket = io('http://thebambu.com:6001');
         //socket_chatroom1 = '1:App\\Events\\SomeEvent';
         socket_chatroom = chat_room_id + ':App\\Events\\SomeEvent';
         socket.on(socket_chatroom, function(dd){
