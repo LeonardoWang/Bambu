@@ -293,20 +293,22 @@ function onSubmit(id){
 function toggleChat(btn){
     var user_remote_id = btn.id.replace(/dialog_closebtn_/,"");
     var chatroom_name = "#chatroom_"+user_remote_id;
-    socket.disconnect(user_remote_id + ':App\\Events\\SomeEvent', function(data){
+    /*socket.disconnect(user_remote_id + ':App\\Events\\SomeEvent', function(data){
         console.log('remove listener of chatroom '+chat_room_id);
-    });
+    });*/
 
     $(chatroom_name).remove();
     chatroomNum--;
-            /*if($(chatroom_id).css("display")=="none") {
-                $(chatroom_id).css("display","block");
-                btn.innerHTML="hide";
-                //alert(document.getElementById("chatroomButton").innerHTML);
-            }else {
-                $(chatroom_id).css("display","none");
-                btn.innerHTML="show";
-            }*/
+
+    //hide function
+    /*if($(chatroom_id).css("display")=="none") {
+        $(chatroom_id).css("display","block");
+        btn.innerHTML="hide";
+        //alert(document.getElementById("chatroomButton").innerHTML);
+    }else {
+        $(chatroom_id).css("display","none");
+        btn.innerHTML="show";
+    }*/
 }
 
 function clearChatHistory(btn){
@@ -396,6 +398,7 @@ function createChatRoom(user_remote_id){
                 }
         });
 
+        socket = io('http://localhost:6001');
         //socket_chatroom1 = '1:App\\Events\\SomeEvent';
         socket_chatroom = chat_room_id + ':App\\Events\\SomeEvent';
         socket.on(socket_chatroom, function(dd){
@@ -433,7 +436,8 @@ function chatroom(){
             type:"get",
             url:'/api/chat_room/MyChatroom',
             data:{},
-                
+            async:false,
+
             success:function(data) {
                 //console.log(data.message);
 
