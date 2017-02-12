@@ -141,7 +141,7 @@ window.onload = function() {
         Intense( elements );
     //notif socket open when onload
     var user_id = $("#user_id").val();
-    socket = io('http://localhost:6001');
+    socket = io('http://139.198.6.163:6001');
     socket.on('connection', function (data) {
       //console.log(data);
       });
@@ -320,7 +320,7 @@ function createChatRoom(user_remote_id){
                 }
         });
 
-        socket = io('http://localhost:6001');
+        socket = io('http://139.198.6.163:6001');
         //socket_chatroom1 = '1:App\\Events\\SomeEvent';
         socket_chatroom = chat_room_id + ':App\\Events\\SomeEvent';
         socket.on(socket_chatroom, function(dd){
