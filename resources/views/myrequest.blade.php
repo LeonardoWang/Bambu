@@ -33,7 +33,7 @@ myrequest page
                                 </div>
                             </div>
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-top:18px;margin-left:0px;left:-20px">
-                                <button onclick="javascript:window.location.href='/api/trade_requests/{{$comment->item_id}}'" class="btn btn-sm bambu-color1">Check it out</button>
+                                <button onclick="javascript:window.location.href='/api/trade_requests/{{$comment->item_id}}'" class="btn btn-sm bambu-color1">Check It Out</button>
                             </div>
                     </div>
                 @endforeach
@@ -44,7 +44,7 @@ myrequest page
                     <div class="caption">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                <p>No any comments yet</p>
+                                <p>No any comment yet</p>
                             </div>
                         </div>
                     </div>

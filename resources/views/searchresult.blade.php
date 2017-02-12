@@ -83,7 +83,7 @@
             <!--foreach (products as product)-->
                 @if ($i < 6)
                     <!--{{$product=$products[$i]}}-->
-                    <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
                         <div class="thumbnail">
                             <div class="demo-image" data-image="/api/product/images/{{$product->image_file}}" data-title="{{$product->title}}" data-caption="{{$product->description}}"><img src="/api/product/images/{{$product->image_file}}" class="img-responsive"></div>
                             <div class="caption" style="padding-top:0px;">

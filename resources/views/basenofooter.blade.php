@@ -25,14 +25,9 @@
         <link href="/css/mycss.css" rel="stylesheet">
         <link rel="shortcut icon" href="/img/favicon.ico">
 
-        <!-- bambu-color1:#e53935;
-        bambu-color2:#f44336;
-        grey:#bdc3c7;
-    -->
     </head>
-
     <body>
-
+        
 <!--navbar-->
 <div style="margin-left:0px;margin-right:0px;">
         <nav class="navbar navbar-fixed-top" role="navigation">
@@ -45,72 +40,13 @@
             <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
               <ul class="nav navbar-nav">
                 <li>
-                @if (isset($user) > 0)
-                    <a href="/api/users_information"> hello, {{$user->name}} </a>
+                    <a href="/login" >Sign In</a>
                 </li>
                 <li>
-                    <a href ="/api/product">post item</a>
-                @else
-                    <a href="/login" >login</a>
-                </li>
-                <li>
-                    <a href="/register" >register</a>
-                @endif
+                    <a href="/register" >Register</a>
                 </li>
                 
-                <li><a href="#aboutUs">about us</a></li>
-                <li><div class="navbar-form col-xs-2 col-sm-2" style="margin-left:0px;padding-left:21px;">
-                    <div class="form-group">
-                        <div class="input-group" >
-                            <input type="text" id="inpu1" class="form-control" placeholder="Search"/>
-                            <span class="input-group-btn">
-                                <button onclick="sb()" class="btn"><span class="fui-search"></span></button>
-                            </span>
-                        </div>
-                    </div>
-                    </div>
-                </li>
-               </ul>
-               @if (isset($user) > 0)
-               <ul class="nav navbar-nav navbar-right" style="padding-right:20px;">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" onclick="checkNotif()" src='/img/icons/svg/bell.svg'><strong class="caret"></strong></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                     <a href="/api/trade_requests/my">Trade requests</a>
-                                </li>
-                                <li>
-                                     <a onclick="chatroom()">Unread messages</a>
-                                </li>
-                                <!--<li>
-                                     <a href="/api/chat_room/MyChatroom">Chat history</a>
-                                </li>-->
-                                <li class="divider">
-                                </li>
-                                <li>
-                                     <a href="mailto:brucewayne@pku.edu.cn">Contact us</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="personal-card" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/personal-card.svg'><strong class="caret"></strong></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="/api/product/myProduct">My items</a>
-                                </li>
-                                <li>
-                                     <a href="/api/users_information">Personal info</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                     <a href="/logout" >Log out</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    @endif
+                <!--<li><a href="#aboutUs">About us</a></li>-->
             </div><!-- /.navbar-collapse -->
         </nav><!-- /navbar -->
     </div>

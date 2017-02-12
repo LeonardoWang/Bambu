@@ -26,7 +26,6 @@
         <link rel="shortcut icon" href="/img/favicon.ico">
 
     </head>
-
     <body>
         
 <!--navbar-->
@@ -39,26 +38,25 @@
               <img id="home" onclick="javascript:window.location.href='/'" src='/img/favicon.ico'>
             </div>
             <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
-              <ul class="nav navbar-nav">
-                <li>
-                @if (isset($user) > 0)
-                    <a href="/api/users_information"> hello, {{$user->name}} </a>
-                </li>
-                <li>
-                    <a href ="/api/product">post item</a>
-                @else
-                    <a href="/login" >login</a>
-                </li>
-                <li>
-                    <a href="/register" >register</a>
-                @endif
-                </li>
-                
-                <li><a href="#aboutUs">about us</a></li>
-                <li><div class="navbar-form col-xs-2 col-sm-2" style="margin-left:0px;padding-left:21px;">
+
+            <ul class="nav navbar-nav">         
+                <li><div class="navbar-form col-xs-4 col-sm-4" style="margin-left:0px;padding-left:10px;">
                     <div class="form-group">
-                        <div class="input-group" >
-                            <input type="text" id="inpu1" class="form-control" placeholder="Search"/>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                            <select id="category" name="category" class="form-control" style="font-size:12px;border-bottom-left-radius: 6px;border-top-left-radius: 6px;" required="required">
+                                <option value="all">All Categories</option>
+                                <option value="art">Art & Music</option>
+                                <option value="beauty">Beauty, Health & Geocery</option>
+                                <option value="book">Book & Study</option>
+                                <option value="clothing">Clothing & Fashion</option>
+                                <option value="computer">Computer & Electronics</option>
+                                <option value="home">Home, Garden & Tools</option>
+                                <option value="sports">Sports & Outdoor</option>
+                                <option value="toys">Toys & Kids</option>
+                            </select>
+                            </span>
+                            <input type="text" id="inpu1" class="form-control" style="width:250px;" placeholder="Search"/>
                             <span class="input-group-btn">
                                 <button onclick="sb()" class="btn"><span class="fui-search"></span></button>
                             </span>
@@ -66,17 +64,17 @@
                     </div>
                     </div>
                 </li>
-               </ul>
-               @if (isset($user) > 0)
-               <ul class="nav navbar-nav navbar-right" style="padding-right:20px;">
+            </ul>
+                @if (isset($user) > 0)
+               <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/bell.svg'><strong class="caret"></strong></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/bell.svg'></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                     <a href="/api/trade_requests/my">Trade requests</a>
+                                     <a href="/api/trade_requests/my">Trade Requests</a>
                                 </li>
                                 <li>
-                                     <a onclick="chatroom()">Unread messages</a>
+                                     <a onclick="chatroom()">Chat Center</a>
                                 </li>
                                 <!--<li>
                                      <a href="/api/chat_room/MyChatroom">Chat history</a>
@@ -84,29 +82,48 @@
                                 <li class="divider">
                                 </li>
                                 <li>
-                                     <a href="mailto:brucewayne@pku.edu.cn">Contact us</a>
+                                     <a href="mailto:brucewayne@pku.edu.cn">Contact Us</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="personal-card" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/personal-card.svg'><strong class="caret"></strong></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="personal-card" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/personal-card.svg'></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="/api/product/myProduct">My items</a>
+                                    <a href="/api/product/myProduct">My Items</a>
                                 </li>
                                 <li>
-                                     <a href="/api/users_information">Personal info</a>
+                                     <a href="/api/users_information">Personal Info</a>
                                 </li>
                                 <li class="divider">
                                 </li>
                                 <li>
-                                     <a href="/logout" >Log out</a>
+                                     <a href="/logout" >Sign Out</a>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                     @endif
+                <ul class="nav navbar-nav navbar-right">
+                <li>
+                @if (isset($user) > 0)
+                    <a href="/api/users_information"> Hello, {{$user->name}} </a>
+                </li>
+                <li>
+                    <a href ="/api/product">Post Item</a>
+                @else
+                    <a href="/login" >Sign In</a>
+                </li>
+                <li>
+                    <a href="/register" >Register</a>
+                @endif
+                </li>
+                
+                <!--<li><a href="#aboutUs">About us</a></li>-->
+                
+               </ul>
+               
             </div><!-- /.navbar-collapse -->
         </nav><!-- /navbar -->
     </div>
@@ -126,7 +143,7 @@
     </div>
     @endif
     <p style="font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
-    <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
+    <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">Homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
 </footer>
 
 </body>

@@ -49,7 +49,7 @@
 						</div>
 						<div class="form-group" style="text-align:right;padding-right:5px;">
 							<a href="/password/email" class="login-link">Forgot Your Password?</a><br>
-							<a href="/register" class="login-link">Register now</a>
+							<a href="/register" class="login-link">Register Now</a>
 						</div>
 					</form>
 				</div>

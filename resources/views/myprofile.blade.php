@@ -65,7 +65,7 @@ myprofile page
                                     -->
                                     <div class="col-offset-3">
                                         <div class="form-group">
-                                            <button id="submit" name="submit" class="btn btn-product bambu-color1">update profile</button>
+                                            <button id="submit" name="submit" class="btn btn-product bambu-color1">Update Profile</button>
                                         </div>
                                     </div>
                                 </div>

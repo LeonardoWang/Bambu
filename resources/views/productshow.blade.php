@@ -10,7 +10,6 @@ product show page
         @foreach ($products as $product)
             <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-8 col-sm-offset-2">
                 <div>
-                    <div class="thumbnail" >
                         <div class="demo-image" data-image="/api/product/images/{{$product->image_file}}" data-title="{{$product->title}}" data-caption="{{$product->description}}">
                             <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="max-height:600px;">
                         </div>
@@ -39,7 +38,6 @@ product show page
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
 

@@ -26,7 +26,6 @@
         <link rel="shortcut icon" href="/img/favicon.ico">
 
     </head>
-    
     <body>
         
 <!--navbar-->
@@ -39,26 +38,25 @@
               <img id="home" onclick="javascript:window.location.href='/'" src='/img/favicon.ico'>
             </div>
             <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
-              <ul class="nav navbar-nav">
-                <li>
-                @if (isset($user) > 0)
-                    <a href="/api/users_information"> hello, {{$user->name}} </a>
-                </li>
-                <li>
-                    <a href ="/api/product">post item</a>
-                @else
-                    <a href="/login" >login</a>
-                </li>
-                <li>
-                    <a href="/register" >register</a>
-                @endif
-                </li>
-                
-                <li><a href="#aboutUs">about us</a></li>
-                <li><div class="navbar-form col-xs-2 col-sm-2" style="margin-left:0px;padding-left:21px;">
+
+            <ul class="nav navbar-nav">         
+                <li><div class="navbar-form col-xs-4 col-sm-4" style="margin-left:0px;padding-left:10px;">
                     <div class="form-group">
-                        <div class="input-group" >
-                            <input type="text" id="inpu1" class="form-control" placeholder="Search"/>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                            <select id="category" name="category" class="form-control" style="font-size:12px;border-bottom-left-radius: 6px;border-top-left-radius: 6px;" required="required">
+                                <option value="all">All Categories</option>
+                                <option value="art">Art & Music</option>
+                                <option value="beauty">Beauty, Health & Geocery</option>
+                                <option value="book">Book & Study</option>
+                                <option value="clothing">Clothing & Fashion</option>
+                                <option value="computer">Computer & Electronics</option>
+                                <option value="home">Home, Garden & Tools</option>
+                                <option value="sports">Sports & Outdoor</option>
+                                <option value="toys">Toys & Kids</option>
+                            </select>
+                            </span>
+                            <input type="text" id="inpu1" class="form-control" style="width:250px;" placeholder="Search"/>
                             <span class="input-group-btn">
                                 <button onclick="sb()" class="btn"><span class="fui-search"></span></button>
                             </span>
@@ -66,17 +64,17 @@
                     </div>
                     </div>
                 </li>
-               </ul>
-               @if (isset($user) > 0)
-               <ul class="nav navbar-nav navbar-right" style="padding-right:20px;">
+            </ul>
+                @if (isset($user) > 0)
+               <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/bell.svg'><strong class="caret"></strong></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/bell.svg'></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                     <a href="/api/trade_requests/my">Trade requests</a>
+                                     <a href="/api/trade_requests/my">Trade Requests</a>
                                 </li>
                                 <li>
-                                     <a onclick="chatroom()">Unread messages</a>
+                                     <a onclick="chatroom()">Chat Center</a>
                                 </li>
                                 <!--<li>
                                      <a href="/api/chat_room/MyChatroom">Chat history</a>
@@ -84,29 +82,48 @@
                                 <li class="divider">
                                 </li>
                                 <li>
-                                     <a href="mailto:brucewayne@pku.edu.cn">Contact us</a>
+                                     <a href="mailto:brucewayne@pku.edu.cn">Contact Us</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="personal-card" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/personal-card.svg'><strong class="caret"></strong></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="personal-card" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/personal-card.svg'></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="/api/product/myProduct">My items</a>
+                                    <a href="/api/product/myProduct">My Items</a>
                                 </li>
                                 <li>
-                                     <a href="/api/users_information">Personal info</a>
+                                     <a href="/api/users_information">Personal Info</a>
                                 </li>
                                 <li class="divider">
                                 </li>
                                 <li>
-                                     <a href="/logout" >Log out</a>
+                                     <a href="/logout" >Sign Out</a>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                     @endif
+                <ul class="nav navbar-nav navbar-right">
+                <li>
+                @if (isset($user) > 0)
+                    <a href="/api/users_information"> Hello, {{$user->name}} </a>
+                </li>
+                <li>
+                    <a href ="/api/product">Post Item</a>
+                @else
+                    <a href="/login" >Sign In</a>
+                </li>
+                <li>
+                    <a href="/register" >Register</a>
+                @endif
+                </li>
+                
+                <!--<li><a href="#aboutUs">About us</a></li>-->
+                
+               </ul>
+               
             </div><!-- /.navbar-collapse -->
         </nav><!-- /navbar -->
     </div>
@@ -120,32 +137,30 @@
             <!--foreach (products as product)-->
                 @if ($i < 6)
                     <!--{{$product=$products[$i]}}-->
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                        <div class="thumbnail">
-                            <a href="/api/trade_requests/{{$product->id}}">
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                        <a href="/api/trade_requests/{{$product->id}}">
                             <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="max-height:350px;">
-                            </a>
-                            <div class="caption" style="padding-top:0px;">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div style="color:#9aa4af; overflow:hidden; height:35px;">
-                                            <p style="margin:0 0 0 0px;">{{$product->description}}</p>
-                                        </div>
-                                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="text-align:left;padding-left: 0px;">
-                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:5px;">
-                                            <img style="width:20px;" src="/img/icons/svg/clocks.svg"/>
-                                            </div>
-                                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                            <p style="color:#bdc3c7; font-size:15px; margin-top:2px;">{{substr($product->created_at,0,10)}}<p>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="text-align:left;">
-                                            <p style="color:#f44336; margin-top:0px;">￥{{$product->price}}</p>
-                                        </div>
-                                        <!--<p>{{$product->image_file}}</p>-->
-                                        <!--<p>created by <a href="#" class="bambu-color1">{{$product->user_name}}</a></p>-->
+                        </a>
+                        <div class="caption" style="padding-top:0px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div style="color:#9aa4af; overflow:hidden; height:35px;">
+                                        <p style="margin:0 0 0 0px;">{{$product->description}}</p>
                                     </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="text-align:left;padding-left: 0px;">
+                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:5px;">
+                                            <img style="width:20px;" src="/img/icons/svg/clocks.svg"/>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                            <p style="color:#bdc3c7; font-size:15px; margin-top:2px;">{{substr($product->created_at,0,10)}}<p>
+                                        </div>
+                                    </div>
+                                        
+                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="text-align:left;">
+                                        <p style="color:#f44336; margin-top:0px;">￥{{$product->price}}</p>
+                                    </div>
+                                    <!--<p>{{$product->image_file}}</p>-->
+                                    <!--<p>created by <a href="#" class="bambu-color1">{{$product->user_name}}</a></p>-->
                                 </div>
                             </div>
                         </div>
@@ -160,27 +175,6 @@
             </ul>
             -->
         </div>
-
-    <!--<footer class="footer navbar" id = "aboutUs" style="margin: 0px; padding: 0px; width:102.5%; left:-1.5%">
-    @if (isset($user) > 0)
-    <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;display:none;">
-        <div class="col-md-12 column">
-            <div class="thumbnail" style="height:200px;">
-                <div class="col-md-3 caption" id="dialog_userid"></div>
-                <div class="col-md-9 caption" id="dialog_message"></div>
-            </div>
-            <form onsubmit="onSubmit(); return false;">
-                <textarea class="form-control thumbnail" id="sendtext" placeholder="please reply here"></textarea>
-                <div><input type="submit" class="btn" value="send" /></div>
-            </form>
-        </div>
-    </div>
-    <button id="chatroomButton" onclick="toggleChat()" class="btn btn-primary bambu-color1" style="position:absolute;bottom:10px; left:165px;">show</button>
-    @endif
-    <p style="text-align:center;font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
-        <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
-    </footer>-->
-
     </div>
 
 <footer class="footer navbar navbar-fixed-bottom" id = "aboutUs">
@@ -192,7 +186,7 @@
     </div>
     @endif
     <p style="font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
-    <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
+    <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">Homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
 </footer>
 
 @else
@@ -204,7 +198,7 @@
 
     <footer class="footer navbar-fixed-bottom" id = "aboutUs">
      <p style="text-align:center;font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
-        <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
+        <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">Homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
 </footer>
 @endif
 

@@ -38,7 +38,6 @@ other's profile page
                                             <p class="profile">{{$user_information->location}}</p>
                                         </div>
                                     </div>
-                                    <!--<p>{{$user_information->sex}}</p>-->
                                     <div class="form-group">
                                         <label class="col-md-3 col-sm-3 col-xs-3 control-label" for="sex">Gender</label>
                                         <div class="col-md-9 col-sm-9 col-xs-9">
@@ -55,7 +54,7 @@ other's profile page
                                     <input id="user_id" type="hidden" value="{{$user->id}}">
                                     <div class="col-offset-3">
                                         <div class="form-group">
-                                            <button id="chat" onclick="createChatRoom({{$user->id}})" class="btn btn-product bambu-color1">leave him/her a message</button>
+                                            <button id="chat" onclick="createChatRoom({{$user->id}})" class="btn btn-product bambu-color1">Chat With {{($user_information->sex=="female")?"Her":"Him"}}</button>
                                         </div>
                                     </div>
                                 </div>

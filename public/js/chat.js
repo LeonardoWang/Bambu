@@ -14,7 +14,7 @@ window.onload = function() {
     socket_notif = user_id+':App\\Events\\NotifEvent';
     socket.on(socket_notif, function(data){
         if(!document.getElementById("chatroom_"+data.user_id)){
-            alert('you\'ve received a new message, check it in \'Unread messages!\'');
+            alert('You\'ve received a new message, check it in \'Chat Center!\'');
             //notif btn
             document.getElementById('bell').src = '/img/icons/svg/bell-yellow.svg';
             $("#bell").attr({'data-container':'body', 'data-toggle': 'popover', 'data-placement': 'bottom', 'data-content': 'hello js' });
@@ -74,7 +74,7 @@ function onSubmit(id){
         });
     }
     else{
-        alert('no text!');
+        alert('No text!');
     }
 }
 
@@ -159,7 +159,7 @@ function createChatRoom(user_remote_id){
                     console.log(data);
                     chat_room_id = data.chat_room_id;
 
-                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+user_remote_id+'" style="position:absolute;bottom:0px;left:400px"><div class="thumbnail" style="height:200px; overflow-y:auto;"><p style="text-align:left;font-size:12px;padding-top:18px;margin-bottom:0px;">chat history with '+user_remote_name+'</p><button id="dialog_clearbtn_'+user_remote_id+'" onclick="clearChatHistory(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">clear history</button><button id="dialog_closebtn_'+user_remote_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;left:0px;z-index:1000">close</button><div class="col-md-3 col-sm-3 col-xs-3 caption" id="dialog_userid_'+user_remote_id+'"></div> <div class="col-md-9 col-sm-3 col-xs-3 caption" id="dialog_message_'+user_remote_id+'"></div></div> <textarea class="thumbnail form-control" id="dialog_sendtext_'+user_remote_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)"></textarea>      <input id="'+user_remote_id+'" onclick="onSubmit('+user_remote_id+')" class="btn btn" value="send" /></div>';
+                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+user_remote_id+'" style="position:absolute;bottom:0px;left:'+ (document.body.clientWidth-192) +'px"><div class="thumbnail" style="height:200px; overflow-y:auto;"><p style="text-align:left;font-size:12px;padding-top:18px;margin-bottom:0px;">chat history with '+user_remote_name+'</p><button id="dialog_clearbtn_'+user_remote_id+'" onclick="clearChatHistory(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">clear history</button><button id="dialog_closebtn_'+user_remote_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;left:0px;z-index:1000">close</button><div class="col-md-3 col-sm-3 col-xs-3 caption" id="dialog_userid_'+user_remote_id+'"></div> <div class="col-md-9 col-sm-3 col-xs-3 caption" id="dialog_message_'+user_remote_id+'"></div></div> <textarea class="thumbnail form-control" id="dialog_sendtext_'+user_remote_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)"></textarea>      <input id="'+user_remote_id+'" onclick="onSubmit('+user_remote_id+')" class="btn btn" value="send" /></div>';
 
                     //show the last 10 messages
                     for(i = data.message.length - 11; i < data.message.length; i++)
@@ -190,7 +190,7 @@ function createChatRoom(user_remote_id){
         //socket_chatroom1 = '1:App\\Events\\SomeEvent';
         socket_chatroom = chat_room_id + ':App\\Events\\SomeEvent';
         socket.on(socket_chatroom, function(dd){
-            console.log('received a new message from ' + dd.user_id);
+            console.log('Received a new message from user: ' + dd.user_id);
             console.log(dd);
             if(dd.message !== null || '')
             {
