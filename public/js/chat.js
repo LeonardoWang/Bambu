@@ -1,6 +1,5 @@
 var chatroomNum = 0;
-var socket = io('http://localhost:6001');
-
+var socket;
 window.onload = function() {
     //load pic zoom func
     var elements = document.querySelectorAll( '.demo-image' );
@@ -8,6 +7,7 @@ window.onload = function() {
         Intense( elements );
     //notif socket open when onload
     var user_id = $("#user_id").val();
+    socket = io('http://thebambu.com:6001');
     socket.on('connection', function (data) {
       //console.log(data);
       });
@@ -81,20 +81,28 @@ function onSubmit(id){
 function toggleChat(btn){
     var user_remote_id = btn.id.replace(/dialog_closebtn_/,"");
     var chatroom_name = "#chatroom_"+user_remote_id;
-    socket.disconnect(user_remote_id + ':App\\Events\\SomeEvent', function(data){
+    /*socket.disconnect(user_remote_id + ':App\\Events\\SomeEvent', function(data){
         console.log('remove listener of chatroom '+chat_room_id);
-    });
+    });*/
 
     $(chatroom_name).remove();
     chatroomNum--;
-            /*if($(chatroom_id).css("display")=="none") {
-                $(chatroom_id).css("display","block");
-                btn.innerHTML="hide";
-                //alert(document.getElementById("chatroomButton").innerHTML);
-            }else {
-                $(chatroom_id).css("display","none");
-                btn.innerHTML="show";
-            }*/
+
+    //hide function
+    /*if($(chatroom_id).css("display")=="none") {
+        $(chatroom_id).css("display","block");
+        btn.innerHTML="hide";
+        //alert(document.getElementById("chatroomButton").innerHTML);
+    }else {
+        $(chatroom_id).css("display","none");
+        btn.innerHTML="show";
+    }*/
+}
+
+function clearChatHistory(btn){
+    var user_remote_id = btn.id.replace(/dialog_clearbtn_/,"");
+    document.getElementById("dialog_userid_"+user_remote_id).innerHTML='';
+    document.getElementById("dialog_message_"+user_remote_id).innerHTML='';
 }
 
 function createChatRoom(user_remote_id){
@@ -151,11 +159,13 @@ function createChatRoom(user_remote_id){
                     console.log(data);
                     chat_room_id = data.chat_room_id;
 
-                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+user_remote_id+'" style="position:absolute;bottom:0px;left:400px"><div class="thumbnail" style="height:200px; overflow-y:auto;"><p style="text-align:left;font-size:13px;">chat history with '+user_remote_name+'</p><button id="dialog_closebtn_'+user_remote_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">close</button><div class="col-md-3 col-sm-3 col-xs-3 caption" id="dialog_userid_'+user_remote_id+'"></div> <div class="col-md-9 col-sm-3 col-xs-3 caption" id="dialog_message_'+user_remote_id+'"></div></div> <textarea class="thumbnail form-control" id="dialog_sendtext_'+user_remote_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)"></textarea>      <input id="'+user_remote_id+'" onclick="onSubmit('+user_remote_id+')" class="btn btn" value="send" /></div>';
+                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+user_remote_id+'" style="position:absolute;bottom:0px;left:400px"><div class="thumbnail" style="height:200px; overflow-y:auto;"><p style="text-align:left;font-size:12px;padding-top:18px;margin-bottom:0px;">chat history with '+user_remote_name+'</p><button id="dialog_clearbtn_'+user_remote_id+'" onclick="clearChatHistory(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">clear history</button><button id="dialog_closebtn_'+user_remote_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;left:0px;z-index:1000">close</button><div class="col-md-3 col-sm-3 col-xs-3 caption" id="dialog_userid_'+user_remote_id+'"></div> <div class="col-md-9 col-sm-3 col-xs-3 caption" id="dialog_message_'+user_remote_id+'"></div></div> <textarea class="thumbnail form-control" id="dialog_sendtext_'+user_remote_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)"></textarea>      <input id="'+user_remote_id+'" onclick="onSubmit('+user_remote_id+')" class="btn btn" value="send" /></div>';
 
-                    //show the last messages
-                    for(i = 0; i < data.message.length; i++)
+                    //show the last 10 messages
+                    for(i = data.message.length - 11; i < data.message.length; i++)
                     {
+                        if(i>=0)
+                        {
                         if(data.message[i].user_id==user_remote_id){
                             document.getElementById("dialog_userid_"+user_remote_id).innerHTML+=user_remote_name + "<br>";
                             document.getElementById("dialog_message_"+user_remote_id).innerHTML+=data.message[i].message + "<br>";
@@ -163,6 +173,7 @@ function createChatRoom(user_remote_id){
                         else{
                             document.getElementById("dialog_userid_"+user_remote_id).innerHTML+=userName + "<br>";
                             document.getElementById("dialog_message_"+user_remote_id).innerHTML+=data.message[i].message + "<br>";
+                        }
                         }
                     }
 
@@ -175,6 +186,7 @@ function createChatRoom(user_remote_id){
                 }
         });
 
+        socket = io('http://thebambu.com:6001');
         //socket_chatroom1 = '1:App\\Events\\SomeEvent';
         socket_chatroom = chat_room_id + ':App\\Events\\SomeEvent';
         socket.on(socket_chatroom, function(dd){
@@ -212,7 +224,8 @@ function chatroom(){
             type:"get",
             url:'/api/chat_room/MyChatroom',
             data:{},
-                
+            async:false,
+
             success:function(data) {
                 //console.log(data.message);
 
