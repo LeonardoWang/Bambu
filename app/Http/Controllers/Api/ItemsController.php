@@ -145,12 +145,8 @@ class ItemsController extends Controller
             return view('welcome')->with('user',$user);
         //->orWhere('description', 'like', '%'.$keyword.'%')->pluck('id')]);
     }
-    public function CSearch(Request $request,$keyword)
+    public function CSearch($category,$keyword)
     {
-        $this->validate($request, [
-            'category' => 'required',
-        ]);
-        $category = $request->input('category');
         $user = Auth::user();
         if(isset($keyword))
         {

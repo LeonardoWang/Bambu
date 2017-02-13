@@ -1,7 +1,51 @@
+function enterToSearch(thisTextArea,e){
+    if(window.event) // IE
+    {
+        keynum = e.keyCode;
+    }
+    else if(e.which) // Netscape/Firefox/Opera
+    {
+        keynum = e.which;
+    }
+
+    if (keynum == 13) // press enter
+    {
+        sb();
+    }
+}
+
+
 function sb(){
     s = document.getElementById('inpu1').value;
     if(s){
-        window.location.href="/items/KSearch/" + s;
+        category = document.getElementById('category').value;
+        if(category=='all'){
+            window.location.href="/items/KSearch/" + s;
+        }
+        else if(category=='art'){
+            window.location.href="/items/CSearch/art/" + s;
+        }
+        else if(category=='beauty'){
+            window.location.href="/items/CSearch/beauty/" + s;
+        }
+        else if(category=='book'){
+            window.location.href="/items/CSearch/book/" + s;
+        }
+        else if(category=='clothing'){
+            window.location.href="/items/CSearch/clothing/" + s;
+        }
+        else if(category=='computer'){
+            window.location.href="/items/CSearch/computer/" + s;
+        }
+        else if(category=='home'){
+            window.location.href="/items/CSearch/home/" + s;
+        }
+        else if(category=='sports'){
+            window.location.href="/items/CSearch/sports/" + s;
+        }
+        else if(category=='toys'){
+            window.location.href="/items/CSearch/toys/" + s;
+        }
     }
     else{
         alert("the search field can't be empty"); 
