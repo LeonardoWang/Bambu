@@ -146,7 +146,8 @@ class UsersController extends Controller
             Auth::login($user);
             echo "<script type='text/javascript'>alert('you have successfully registered!')</script>";
             $products = Item::orderBy('updated_at', 'desc')->get();
-            return view('welcome',compact('user','products'));
+            return view('auth.registersuccess');
+            //return view('welcome',compact('user','products'));
             /*User::where('email', $request->input('email'))->first();*/
         }
         else {
