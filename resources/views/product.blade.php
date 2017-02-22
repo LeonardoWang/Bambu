@@ -6,8 +6,8 @@ item uploading page
 
 @section('content')
 
-    <div class="col-lg-6 col-md-6 col-sm-8 col-lg-offset-3 col-md-offset-3 col-sm-offset-2 panel">
-        <div class="panel-title"><h3>Upload an item</h3></div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-lg-offset-4 col-md-offset-4 col-sm-offset-3 card card-2">
+        <div><h3 style="font-family:NexaBold">Upload item</h3></div>
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <strong>Error:</strong><br>
@@ -18,28 +18,24 @@ item uploading page
                     </ul>
                 </div>
             @endif
-        <div class="panel-body" >
+        <div>
             <form method="POST" action="product/addProduct" class="form-horizontal" enctype="multipart/form-data" role="form">
                 {!! csrf_field() !!}
                 <fieldset>
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-sm-3 col-md-3 control-label" for="name">Name</label>
-                        <div class="col-sm-8 col-md-8">
-                            <input id="name" name="title" type="text" placeholder="name your item!" class="form-control input-md" required="required">
+                        <div class="col-md-8 col-md-offset-2" style="padding-left:0px;padding-right:0px;">
+                            <input id="name" name="title" type="text" placeholder="ITEM NAME" class="form-control input-md" required="required">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 col-md-3 control-label" for="textarea">Description</label>
-                        <div class="col-sm-8 col-md-8">
-                            <textarea id="description" name="description" placeholder="describe more about your item" class="form-control" required="required"></textarea>
+                        <div class="col-md-8 col-md-offset-2" style="padding-left:0px;padding-right:0px;">
+                            <textarea id="description" name="description" placeholder="ITEM DESCRIPTION" class="form-control" required="required"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 col-md-3 control-label" for="price">Price</label>
-                        <div class="col-sm-8 col-md-8">
-                            <input id="price" name="price" type="text" placeholder="￥your price" class="form-control input-md" required="required">
-
+                        <div class="col-md-8 col-md-offset-2" style="padding-left:0px;padding-right:0px;">
+                            <input id="price" name="price" type="text" placeholder="PRICE" class="form-control input-md" required="required">
                         </div>
                     </div>
                     <!-- amount
@@ -52,14 +48,12 @@ item uploading page
                     </div>
                     -->
                     <div class="form-group">
-                        <label class="col-sm-3 col-md-3 control-label" for="file_upload">One picture for item</label>
-                        <div class="col-sm-8 col-md-8">
+                        <div class="col-md-8 col-md-offset-2" style="padding-left:0px;padding-right:0px;">
                             <input id="file_upload" name="image" class="form-control input-md" type="file"> <!--multiple="true"-->
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 col-md-3 control-label" for="category">Category</label>
-                        <div class="col-sm-8 col-md-8">
+                        <div class="col-md-8 col-md-offset-2" style="padding-left:0px;padding-right:0px;">
                             <select id="category" name="category" class="form-control input-md" required="required">
                                 <option value="art">Art & Music</option>
                                 <option value="beauty">Beauty, Health & Geocery</option>
@@ -74,10 +68,7 @@ item uploading page
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="submit"></label>
-                        <div class="col-md-6">
-                            <button id="submit" name="submit" class="btn btn-primary bambu-color1">upload and sell!</button>
-                        </div>
+                        <button id="submit" name="submit" class="col-md-8 col-md-offset-2 btn bambu-color1">CONFIRM</button>
                     </div>
 
                 </fieldset>

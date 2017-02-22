@@ -97,19 +97,19 @@ product show page
                     <!-- Text input-->
                     <div class="form-group">
                         <label class="col-sm-3 col-md-3 control-label" for="name">Name</label>
-                        <div class="col-sm-8 col-md-8">
+                        <div class="col-sm-9 col-md-9" style="padding:0px;">
                             <input id="name" name="title" type="text" value="{{$product->title}}" class="form-control input-md" required="required">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 col-md-3 control-label" for="textarea">Description</label>
-                        <div class="col-sm-8 col-md-8">
+                        <div class="col-sm-9 col-md-9" style="padding:0px;">
                             <textarea id="description" name="description" class="form-control" required="required">{{$product->description}}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 col-md-3 control-label" for="price">Price</label>
-                        <div class="col-sm-8 col-md-8">
+                        <div class="col-sm-9 col-md-9" style="padding:0px;">
                             <input id="price" name="price" type="text" value="￥ {{$product->price}}" class="form-control input-md" required="required">
 
                         </div>
@@ -132,7 +132,7 @@ product show page
                     </div>!-->
                     <div class="form-group">
                         <label class="col-sm-3 col-md-3 control-label" for="category">Category</label>
-                        <div class="col-sm-8 col-md-8">
+                        <div class="col-sm-9 col-md-9" style="padding:0px;">
                             <select id="category" name="category" class="form-control input-md" required="required">
                                 <option value="art" {{($product->category=="art")?"selected=":""}}>Art & Music</option>
                                 <option value="beauty" {{($product->category=="beauty")?"selected=":""}}>Beauty, Health & Geocery</option>
@@ -148,20 +148,18 @@ product show page
 
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="submit"></label>
-                        <div class="col-md-6">
-                            <button id="submit" name="submit" class="btn btn-primary bambu-color1">modify your item</button>
-                        </div>
+                        <button id="submit" name="submit" class="btn btn-primary bambu-color1 col-md-9">MODIFY ITEM</button>
                     </div>
 
                 </fieldset>
 
             </form>
-            <hr style="margin-top:0px;">
+            <hr style="margin-top:0px; height:1px;border:none;border-top:1px ridge #7f8c8d;">
                 @endif
 
                 <div class="col-md-12" style="max-height:226px;overflow-y:auto;">
                     @if (isset($comments)>0)
-                        <p>Comments to this item:</p>
+                        <p style="text-align:left">Comments to this item:</p>
                         @foreach ($comments as $comment)
                         <div class="row" id="comment{{$comment->id}}">
                             <div class="col-lg-3 col-md-3 col-sm-3">

@@ -40,9 +40,11 @@
             <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
 
             <ul class="nav navbar-nav">         
+                <li><p style="font-family:Milkshake;top:20px;font-size:24px;margin:5px 24px 5px 12px;">Bambù</p></li>
                 <li><div class="navbar-form col-xs-4 col-sm-4" style="margin-left:0px;padding-left:10px;">
                     <div class="form-group">
                         <div class="input-group">
+                            <input type="text" id="inpu1" class="form-control" style="width:250px;" placeholder="Search" onkeydown="enterToSearch(this,event)"/>
                             <span class="input-group-btn">
                             <select id="category" name="category" class="form-control" style="font-size:12px;border-bottom-left-radius: 6px;border-top-left-radius: 6px;" required="required">
                                 <option value="all">All Categories</option>
@@ -56,10 +58,10 @@
                                 <option value="toys">Toys & Kids</option>
                             </select>
                             </span>
-                            <input type="text" id="inpu1" class="form-control" style="width:250px;" placeholder="Search" onkeydown="enterToSearch(this,event)"/>
+                            <!--
                             <span class="input-group-btn">
                                 <button onclick="sb()" class="btn"><span class="fui-search"></span></button>
-                            </span>
+                            </span>-->
                         </div>
                     </div>
                     </div>
