@@ -35,7 +35,7 @@
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
                 <span class="sr-only">Toggle navigation</span>
               </button>
-              <img id="home" onclick="javascript:window.location.href='/'" src='/img/favicon.ico'>
+              <img id="home" onclick="javascript:window.location.href='/'" src='/img/favicon.png'>
             </div>
             <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
 
@@ -90,7 +90,7 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="personal-card" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/personal-card.svg'></a>
+                            <a href="/api/users_information" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" class="dropdown-toggle" data-toggle="dropdown">{{$user->name}}<img id="personal-card" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/personal-card.svg'></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="/api/product/myProduct">My Items</a>
@@ -110,9 +110,6 @@
                 <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
                 <li>
                 @if (isset($user) > 0)
-                    <a href="/api/users_information"> Hello, {{$user->name}} </a>
-                </li>
-                <li>
                     <a href ="/api/product">Post Item</a>
                 @else
                     <a href="/login" >Sign In</a>
@@ -129,7 +126,6 @@
             </div><!-- /.navbar-collapse -->
         </nav><!-- /navbar -->
     </div>
-
 <div class="container" style="width:100%;min-height:100%;">
     <div class="row" style="width:100%;margin:0px auto 60px auto; padding:auto;">
         @yield('content')
