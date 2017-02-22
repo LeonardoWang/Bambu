@@ -42,7 +42,7 @@ Route::get('logout','Api\UsersController@logout');
 Route::post('register', 'Api\UsersController@register');
 Route::get('api/product/images/{image_file}', 'Api\ImagesController@show');
 Route::get('items/KSearch/{keyword}', 'Api\ItemsController@KSearch');
-Route::get('items/CSearch/{category}/{keyword}', 'Api\ItemsController@CSearch');
+Route::get('items/CSearch/{category}/{keyword?}', 'Api\ItemsController@CSearch');
 Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 
 	//xp cannot sent DELETE request, so all destroy actions are seperatedly routed

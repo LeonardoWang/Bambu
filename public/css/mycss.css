@@ -13,7 +13,8 @@
                 width: 100%;
                 height:100%;
                 display: table;
-                font-family: NexaLight,Milkshake,-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; 
+                font-family: NexaLight,-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; 
+                background-color:#f2f2f2; 
             }
 
             a{

@@ -40,9 +40,11 @@
             <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
 
             <ul class="nav navbar-nav">         
+                <li><p style="font-family:Milkshake;top:20px;font-size:24px;margin:5px 24px 5px 12px;">Bambù</p></li>
                 <li><div class="navbar-form col-xs-4 col-sm-4" style="margin-left:0px;padding-left:10px;">
                     <div class="form-group">
                         <div class="input-group">
+                            <input type="text" id="inpu1" class="form-control" style="width:250px;" placeholder="Search" onkeydown="enterToSearch(this,event)"/>
                             <span class="input-group-btn">
                             <select id="category" name="category" class="form-control" style="font-size:12px;border-bottom-left-radius: 6px;border-top-left-radius: 6px;" required="required">
                                 <option value="all">All Categories</option>
@@ -56,10 +58,10 @@
                                 <option value="toys">Toys & Kids</option>
                             </select>
                             </span>
-                            <input type="text" id="inpu1" class="form-control" style="width:250px;" placeholder="Search" onkeydown="enterToSearch(this,event)"/>
+                            <!--
                             <span class="input-group-btn">
                                 <button onclick="sb()" class="btn"><span class="fui-search"></span></button>
-                            </span>
+                            </span>-->
                         </div>
                     </div>
                     </div>
@@ -132,20 +134,34 @@
 @if (isset($products) > 0)
     <div class="container">
         <div class="row" style="width:100%;margin:58px auto 60px auto; padding:auto;">
-            <!--{{$i=0}}-->
+            <div class="col-md-2" style="text-align:left;background-color:white;border-radius:10px;">
+                <h6 style="font-family:NexaBold;">Categories</h6>
+                <p>All Categories<br>
+                   <a style="color:#34495e;" href="/items/CSearch/art/">Art & Music</a><br>
+                   <a style="color:#34495e;" href="/items/CSearch/beauty/">Beauty, Health & Geocery<br>
+                   <a style="color:#34495e;" href="/items/CSearch/book/">Book & Study<br>
+                   <a style="color:#34495e;" href="/items/CSearch/clothing/">Clothing & Fashion<br>
+                   <a style="color:#34495e;" href="/items/CSearch/computer/">Computer & Electronics<br>
+                   <a style="color:#34495e;" href="/items/CSearch/home/">Home, Garden & Tools<br>
+                   <a style="color:#34495e;" href="/items/CSearch/sports/">Sports & Outdoor<br>
+                   <a style="color:#34495e;" href="/items/CSearch/toys/">Toys & Kids<br>
+                   </p>               
+            </div>
+            <div class="col-md-10">
             @for ($i = 0; $i < count($products);$i++)
             <!--foreach (products as product)-->
                 @if ($i < 12)
                     <!--{{$product=$products[$i]}}-->
                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3" align="center">
+                        <div style="background-color:white;border-radius:10px;">
                         <a href="/api/trade_requests/{{$product->id}}">
                             <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="max-height:350px;">
                         <div class="caption" style="padding-top:0px;">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div style="color:#9aa4af; overflow:hidden; max-height:60px;">
-                                        <p style="padding:0px;margin:0px;">{{$product->title}}</p>
-                                        <p style="padding:0px;margin:0px;">￥<label style="color:#f44336; font-weight:900;">{{$product->price}}</label></p>
+                                    <div style="color:#9aa4af; overflow:hidden; max-height:60px;text-align:left;">
+                                        <p style="padding:0px;margin:0px; color:#34495e">{{$product->title}}</p>
+                                        <p style="padding:0px;margin:0px;"><label style="color:#f44336; font-weight:900;">￥{{$product->price}}</label></p>
                                     </div>
                                     <!--
                                     <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="text-align:left;">
@@ -166,6 +182,7 @@
                         </div>
                         </a>
                     </div>
+                    </div>
                 @endif
             @endfor
             <!--pagination not used in homepage
@@ -175,6 +192,7 @@
             @endfor
             </ul>
             -->
+            </div>
         </div>
     </div>
 
