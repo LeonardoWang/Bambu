@@ -1,9 +1,8 @@
 @extends('basenofooter')
 
 @section('content')
-		<div class="col-xs-12 col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
-			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
+		<div class="col-xs-12 col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 card card-2">
+				<div style="font-family:NexaBold;font-size:32px;">Sign in</div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
@@ -20,40 +19,26 @@
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
-							<label class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label">Phone Number</label>
-							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-8">
-								<input type="tel" class="form-control" name="tel" required="">
-							</div>
+							<input type="tel" class="form-control" name="tel" placeholder="PHONE NUMBER" required="">
 						</div>
 
 						<div class="form-group">
-							<label class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label">Password</label>
-							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-8">
-								<input type="password" class="form-control" name="password" required="">
-							</div>
+							<input type="password" class="form-control" name="password" placeholder="PASSWORD" required="">
 						</div>
 
-						<div class="form-group">
-							<div class="row">
-							<div class="col-lg-5 col-lg-offset-1 col-md-7 col-md-offset-1 col-sm-7 col-sm-offset-1 col-xs-7 col-xs-offset-1">
-								<div class="checkbox">
-									<label class="control-label" style="font-size:13px;">
-										<input type="checkbox" name="remember"> Remember Me
-									</label>
-								</div>
-							</div>
-							<div class="col-lg-1 col-lg-offset-3 col-md-1 col-sm-1 col-xs-1">
-								<button type="submit" class="btn btn-primary">Login</button>
-							</div>
-							</div>
+						<div class="form-group" style="text-align:left; padding-left:3px;">
+							<label class="control-label">
+								<input type="checkbox" name="remember"> Remember Me
+							</label>
 						</div>
-						<div class="form-group" style="text-align:right;padding-right:5px;">
-							<a href="/password/email" class="login-link">Forgot Your Password?</a><br>
-							<a href="/register" class="login-link">Register Now</a>
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary col-md-12">SIGN IN</button>
+						</div>
+						<div class="form-group" style="text-align:center;font-size:15px;">
+							Forgot Your Password? <a href="/password/email" style="color:#65C1FF"><u>Click here</u></a>
 						</div>
 					</form>
 				</div>
-			</div>
 		</div>
 @endsection
 
