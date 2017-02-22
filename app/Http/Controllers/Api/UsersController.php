@@ -108,30 +108,34 @@ class UsersController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255|unique:users',
             'tel' => 'required|digits_between:5,32|unique:users',
+            'email' =>'required|email|unique:users',
             'password' => 'required|min:6',
             'password_confirmation' => 'required|min:6',
             'smscode' =>'required|digits:4'
         ]);
+        
         $messages = $validator->messages();
+
         //smscode verification
-        /*
         if($request->input('smscode')!=$request->input('verismscode'))
         {
             $messages="Incorrect smscode!";
             return back()->withErrors($messages);
-        }*/
+        }
 
         //password verification
         if($request->input('password')!=$request->input('password_confirmation'))
         {
-            $messages="your must type the same password in two times!";
+            $messages="your must type the same password two times!";
             return back()->withErrors($messages);
         }
+
         if(!$validator->fails()) {
             $user = User::create([
                 'name' => $request->input('name'),
                 'tel' => $request->input('tel'),
                 'password' => Hash::make($request->input('password')),
+                'email' => $request->input('email'),
             ]);
             $userinformation = new UserInformation();
             $userinformation->user_id = $user->id;

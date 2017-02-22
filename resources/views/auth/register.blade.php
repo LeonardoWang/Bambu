@@ -46,6 +46,13 @@
 						</div>
 
 						<div class="form-group">
+							<label class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label">Email</label>
+							<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+								<input type="text" class="form-control" name="email" required="">
+							</div>
+						</div>
+
+						<div class="form-group">
 							<label class="col-lg-3 col-md-3 col-sm-3 col-xs-4 control-label">Password</label>
 							<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
 								<input type="password" class="form-control" name="password" required="">
