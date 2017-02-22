@@ -13,7 +13,7 @@
                 width: 100%;
                 height:100%;
                 display: table;
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; 
+                font-family: NexaLight,Milkshake,-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; 
             }
 
             a{
@@ -184,3 +184,26 @@
                 color:#34495e;
                 font-size: 20px;
             }
+
+@font-face {
+    font-family: 'NexaLight';
+    src: url('../Flat-UI-master/fonts/nexa/NexaLight.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: 'NexaBold';
+    src: url('../Flat-UI-master/fonts/nexa/NexaBold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: 'Milkshake';
+    src: url('../Flat-UI-master/fonts/Milkshake/Milkshake.otf') format('opentype'),
+     url('../Flat-UI-master/fonts/Milkshake/Milkshake.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
