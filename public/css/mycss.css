@@ -86,8 +86,15 @@
                 border-color: #e53935;
             }
 
+            .form-control{
+                font-size:15px;
+                color:black;
+                border-color: #f2f2f2;
+                background-color: #f2f2f2;   
+            }
+
             .form-control:focus{
-                border-color: #e53935;
+                border-color: #f2f2f2;
             }
 
             .control-label{
@@ -172,6 +179,11 @@
                 color:#34495e;
                 font-size: 20px;
             }
+
+#inpu1{
+    font-family: NexaBold;
+    font-size:15px;
+}
 
 .card {
   background: #fff;

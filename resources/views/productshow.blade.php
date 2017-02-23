@@ -8,7 +8,7 @@ product show page
 <div style="margin-top:60px">
     @if (isset($products)==1)
         @foreach ($products as $product)
-            <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-8 col-sm-offset-2">
+            <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-8 col-sm-offset-2 card card-2">
                 <div>
                         <div class="demo-image" data-image="/api/product/images/{{$product->image_file}}" data-title="{{$product->title}}" data-caption="{{$product->description}}">
                             <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="max-height:600px;">
@@ -37,7 +37,7 @@ product show page
                 </div>
             </div>
 
-            <div class="col-lg-4 col-lg-offset-1 col-md-6 col-md-offset-0 col-sm-8 col-sm-offset-2">
+            <div class="col-lg-4 col-lg-offset-1 col-md-6 col-md-offset-0 col-sm-8 col-sm-offset-2 card card-2">
                 @if ($user->id != $product->user_id)
 
                 <form method="post" action="/api/trade_request_making" class="form-horizontal" enctype="multipart/form-data" role="form">
