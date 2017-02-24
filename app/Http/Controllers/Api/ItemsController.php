@@ -145,7 +145,7 @@ class ItemsController extends Controller
             return view('welcome')->with('user',$user);
         //->orWhere('description', 'like', '%'.$keyword.'%')->pluck('id')]);
     }
-    public function CSearch($category,$keyword)
+    public function CSearch1($category,$keyword)
     {
         $user = Auth::user();
         if(isset($keyword))
@@ -163,6 +163,15 @@ class ItemsController extends Controller
             $products = Item::where('category',$category)->get();
             return view('welcome',compact('user','products'));
         }    
+        //->orWhere('description', 'like', '%'.$keyword.'%')->pluck('id')]);
+    }
+    public function CSearch2($category)
+    {
+        $user = Auth::user();
+    
+        $products = Item::where('category',$category)->get();
+        return view('welcome',compact('user','products'));
+        
         //->orWhere('description', 'like', '%'.$keyword.'%')->pluck('id')]);
     }
     public function ProductIndex()
