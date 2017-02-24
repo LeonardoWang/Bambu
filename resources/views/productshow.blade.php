@@ -8,8 +8,7 @@ product show page
 <div style="margin-top:60px">
     @if (isset($products)==1)
         @foreach ($products as $product)
-            <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-8 col-sm-offset-2">
-                <div>
+            <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-8 col-sm-offset-2 card card-2">
                         <div class="demo-image" data-image="/api/product/images/{{$product->image_file}}" data-title="{{$product->title}}" data-caption="{{$product->description}}">
                             <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="max-height:600px;">
                         </div>
@@ -34,10 +33,9 @@ product show page
                                 </div>
                             </div>
                         </div>
-                </div>
             </div>
 
-            <div class="col-lg-4 col-lg-offset-1 col-md-6 col-md-offset-0 col-sm-8 col-sm-offset-2">
+            <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-8 col-sm-offset-2 card card-2">
                 @if ($user->id != $product->user_id)
 
                 <form method="post" action="/api/trade_request_making" class="form-horizontal" enctype="multipart/form-data" role="form">
@@ -81,37 +79,35 @@ product show page
 
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="submit"></label>
-                        <div style="padding-bottom:70px;"><div class="col-md-9">
-                            <button id="submit" name="submit" class="btn btn-primary bambu-color1">trade</button>
-                        </div>
+                        <div class="col-md-9" style="padding-bottom:50px;">
+                            <button id="submit" name="submit" class="btn btn-primary bambu-color1 col-md-12">trade</button>
                         </div>
                     </div>
                 </fieldset>
                 </form>
             <hr style="margin-top:-30px;">
                 @else
-
+                <div style="padding-top:50px;">
                 <form method="POST" action="product/addProduct" class="form-horizontal" enctype="multipart/form-data" role="form">
                 {!! csrf_field() !!}
                 <fieldset>
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-sm-3 col-md-3 control-label" for="name">Name</label>
-                        <div class="col-sm-8 col-md-8">
+                        <label class="col-md-3 control-label" for="name">Name</label>
+                        <div class="col-md-9">
                             <input id="name" name="title" type="text" value="{{$product->title}}" class="form-control input-md" required="required">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 col-md-3 control-label" for="textarea">Description</label>
-                        <div class="col-sm-8 col-md-8">
+                        <label class="col-md-3 control-label" for="textarea">Description</label>
+                        <div class="col-md-9">
                             <textarea id="description" name="description" class="form-control" required="required">{{$product->description}}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 col-md-3 control-label" for="price">Price</label>
-                        <div class="col-sm-8 col-md-8">
+                        <label class="col-md-3 control-label" for="price">Price</label>
+                        <div class="col-md-9">
                             <input id="price" name="price" type="text" value="￥ {{$product->price}}" class="form-control input-md" required="required">
-
                         </div>
                     </div>
                     <!-- amount
@@ -131,9 +127,9 @@ product show page
                         </div>
                     </div>!-->
                     <div class="form-group">
-                        <label class="col-sm-3 col-md-3 control-label" for="category">Category</label>
-                        <div class="col-sm-8 col-md-8">
-                            <select id="category" name="category" class="form-control input-md" required="required">
+                        <label class="col-md-3 control-label" for="category">Category</label>
+                        <div class="col-md-9">
+                            <select id="category" name="category" class="form-control input-md" style="font-family: NexaLight;" required="required">
                                 <option value="art" {{($product->category=="art")?"selected=":""}}>Art & Music</option>
                                 <option value="beauty" {{($product->category=="beauty")?"selected=":""}}>Beauty, Health & Geocery</option>
                                 <option value="book" {{($product->category=="book")?"selected=":""}}>Book & Study</option>
@@ -148,20 +144,21 @@ product show page
 
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="submit"></label>
-                        <div class="col-md-6">
-                            <button id="submit" name="submit" class="btn btn-primary bambu-color1">modify your item</button>
+                        <div class="col-md-9" style="padding-bottom:0px;">
+                        <button id="submit" name="submit" class="btn btn-primary bambu-color1 col-md-12" style="padding-left:10px;padding-right:10px;">MODIFY ITEM</button>
                         </div>
                     </div>
-
                 </fieldset>
-
             </form>
-            <hr style="margin-top:0px;">
+            </div>
+
+            <hr style="margin-top:0px; height:1px;border:none;border-top:1px ridge #7f8c8d;">
+            <!--up: item info, under:comments-->
                 @endif
 
                 <div class="col-md-12" style="max-height:226px;overflow-y:auto;">
                     @if (isset($comments)>0)
-                        <p>Comments to this item:</p>
+                        <p style="text-align:left">Comments to this item:</p>
                         @foreach ($comments as $comment)
                         <div class="row" id="comment{{$comment->id}}">
                             <div class="col-lg-3 col-md-3 col-sm-3">

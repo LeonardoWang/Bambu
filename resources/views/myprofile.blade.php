@@ -7,17 +7,17 @@ myprofile page
 @section('content')
 <div style="margin-top:58px;">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-        <div class="thumbnail" >
+        <div class="card card-2">
             <div class="caption">
                 <form method="post" action="/api/users/{{$user->id}}" class="form-horizontal" enctype="multipart/form-data" role="form">
                     <fieldset>
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3">
+                            <div class="col-lg-12">
                                 <div style="color:#9aa4af; max-height:550px; overflow-x:visible;">                                    
                                     @if($user_information->user_image=="/img/default_user_profile.jpg")
-                                            <img style="width:100px;height:100px;margin-bottom:10px;" src="{{$user_information->user_image}}"/>
+                                            <img style="width:100px;height:100px;margin-bottom:10px;" src="{{$user_information->user_image}}" class="img-circle"/>
                                         @else
-                                            <img style="width:100px;height:100px;margin-bottom:10px;" src="/api/product/images/{{$user_information->user_image}}"/>
+                                            <img style="width:100px;height:100px;margin-bottom:10px;" src="/api/product/images/{{$user_information->user_image}}" class="img-circle"/>
                                         @endif
                                     <div class="form-group">
                                         <label class="col-md-3 col-sm-3 col-xs-3 control-label" for="name">Profile picture</label>

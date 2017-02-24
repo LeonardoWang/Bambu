@@ -35,7 +35,7 @@
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
                 <span class="sr-only">Toggle navigation</span>
               </button>
-              <img id="home" onclick="javascript:window.location.href='/'" src='/img/favicon.ico'>
+              <img id="home" onclick="javascript:window.location.href='/'" src='/img/favicon.png'>
             </div>
             <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
 
@@ -46,7 +46,7 @@
                         <div class="input-group">
                             <input type="text" id="inpu1" class="form-control" style="width:250px;" placeholder="Search" onkeydown="enterToSearch(this,event)"/>
                             <span class="input-group-btn">
-                            <select id="category" name="category" class="form-control" style="font-size:12px;border-bottom-left-radius: 6px;border-top-left-radius: 6px;" required="required">
+                            <select id="category" name="category" class="form-control" style="font-family: NexaLight;color:#7f8c8d;border-bottom-right-radius: 6px;border-top-right-radius: 6px;" required="required">
                                 <option value="all">All Categories</option>
                                 <option value="art">Art & Music</option>
                                 <option value="beauty">Beauty, Health & Geocery</option>
@@ -90,7 +90,7 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="personal-card" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/personal-card.svg'></a>
+                            <a href="/api/users_information" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" class="dropdown-toggle" data-toggle="dropdown">{{$user->name}}<img id="personal-card" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/personal-card.svg'></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="/api/product/myProduct">My Items</a>
@@ -110,9 +110,6 @@
                 <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
                 <li>
                 @if (isset($user) > 0)
-                    <a href="/api/users_information"> Hello, {{$user->name}} </a>
-                </li>
-                <li>
                     <a href ="/api/product">Post Item</a>
                 @else
                     <a href="/login" >Sign In</a>
@@ -134,7 +131,7 @@
 @if (isset($products) > 0)
     <div class="container">
         <div class="row" style="width:100%;margin:58px auto 60px auto; padding:auto;">
-            <div class="col-md-2" style="text-align:left;background-color:white;border-radius:10px;">
+            <div class="col-md-2 card card-2" style="text-align:left;background-color:white;border-radius:10px;">
                 <h6 style="font-family:NexaBold;">Categories</h6>
                 <p>All Categories<br>
                    <a style="color:#34495e;" href="/items/CSearch/art/">Art & Music</a><br>
@@ -153,15 +150,15 @@
                 @if ($i < 12)
                     <!--{{$product=$products[$i]}}-->
                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3" align="center">
-                        <div style="background-color:white;border-radius:10px;">
+                        <div class="card card-1">
                         <a href="/api/trade_requests/{{$product->id}}">
-                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="max-height:350px;">
+                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="max-height:350px;border-radius:8px;">
                         <div class="caption" style="padding-top:0px;">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div style="color:#9aa4af; overflow:hidden; max-height:60px;text-align:left;">
-                                        <p style="padding:0px;margin:0px; color:#34495e">{{$product->title}}</p>
-                                        <p style="padding:0px;margin:0px;"><label style="color:#f44336; font-weight:900;">￥{{$product->price}}</label></p>
+                                    <div style="color:#9aa4af; overflow:hidden; max-height:80px;text-align:left;">
+                                        <p style="padding:0px 0px 0px 20px;margin:0px;font-family:NexaBold; font-size:17px;color:#34495e">{{$product->title}}<br>
+                                        <label style="font-family:NexaBold; font-size:18px;color:#f44336; font-weight:900;">￥{{$product->price}}</label></p>
                                     </div>
                                     <!--
                                     <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="text-align:left;">

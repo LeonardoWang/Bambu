@@ -35,16 +35,18 @@
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
                 <span class="sr-only">Toggle navigation</span>
               </button>
-              <img id="home" onclick="javascript:window.location.href='/'" src='/img/favicon.ico'>
+              <img id="home" onclick="javascript:window.location.href='/'" src='/img/favicon.png'>
             </div>
             <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
 
             <ul class="nav navbar-nav">         
+                <li><p style="font-family:Milkshake;top:20px;font-size:24px;margin:5px 24px 5px 12px;">Bambù</p></li>
                 <li><div class="navbar-form col-xs-4 col-sm-4" style="margin-left:0px;padding-left:10px;">
                     <div class="form-group">
                         <div class="input-group">
+                            <input type="text" id="inpu1" class="form-control" style="width:250px;" placeholder="Search" onkeydown="enterToSearch(this,event)"/>
                             <span class="input-group-btn">
-                            <select id="category" name="category" class="form-control" style="font-size:12px;border-bottom-left-radius: 6px;border-top-left-radius: 6px;" required="required">
+                            <select id="category" name="category" class="form-control" style="font-family: NexaLight;color:#7f8c8d;border-bottom-right-radius: 6px;border-top-right-radius: 6px;" required="required">
                                 <option value="all">All Categories</option>
                                 <option value="art">Art & Music</option>
                                 <option value="beauty">Beauty, Health & Geocery</option>
@@ -56,10 +58,10 @@
                                 <option value="toys">Toys & Kids</option>
                             </select>
                             </span>
-                            <input type="text" id="inpu1" class="form-control" style="width:250px;" placeholder="Search"/>
+                            <!--
                             <span class="input-group-btn">
                                 <button onclick="sb()" class="btn"><span class="fui-search"></span></button>
-                            </span>
+                            </span>-->
                         </div>
                     </div>
                     </div>

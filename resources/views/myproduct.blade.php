@@ -9,15 +9,17 @@ trade confirmation page
 <div style="margin-top:58px;">
 @if (isset($products) > 0)
             @foreach ($products as $product)
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3" align="center">
+                        <div class="card card-1">
                             <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
                             <a href="/api/trade_requests/{{$product->id}}">
-                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="max-height:350px;">
+                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="max-height:350px;border-radius:8px;">
                             </a>
                             <div class="caption">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div style="color:#9aa4af; overflow:hidden; height:35px;">
+                                        <p style="padding:0px 0px 0px 20px;margin:0px;font-family:NexaBold; font-size:17px;color:#34495e">{{$product->title}}</p>
+                                        <div style="color:#9aa4af; overflow:hidden; max-height:80px;text-align:left;">
                                             <p style="margin:0 0 0 0px;">{{$product->description}}</p>
                                         </div>
                                         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8" style="text-align:left;padding-left: 0px;">
@@ -30,7 +32,7 @@ trade confirmation page
                                         </div>
                                         
                                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4" style="text-align:left;">
-                                            <p style="color:#f44336; margin-top:0px;">￥{{$product->price}}</p>
+                                            <label style="font-family:NexaBold; font-size:18px;color:#f44336; font-weight:900;">￥{{$product->price}}</label>
                                         </div>
                                         <!--<h5>{{$product->title}}</h5>-->
                                         <!--<p>{{$product->image_file}}</p>-->
@@ -42,6 +44,7 @@ trade confirmation page
                                         <a href="javascript:if(confirm('Are you sure to delete it?'))location='/api/items/{{$product->id}}/delete'" class="btn btn-success btn-product bambu-color1"><span class="fa fa-shopping-cart"></span> Delete it</a></div>
                                 </div>
                             </div>
+                        </div>
                     </div>
             @endforeach
             <!-- pagination

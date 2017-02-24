@@ -20,17 +20,10 @@
             a{
                 cursor: pointer;
                 color: white;
-                border-color:#e53935;
                 }
 
             a:hover,a:focus,a:active{
                 color:#bdc3c7;
-                background: hsla(0,0%,7%,0.5);
-                background-color: white;
-                background-image: none;
-                background-clip: border-box;
-                background-position-x: 0%;
-                background-position-y: 0%;
             }
 
             p{
@@ -44,12 +37,6 @@
 
             .ba:hover,.ba:focus,.ba:active{
                 color:#f44336;
-                background: hsla(0,0%,7%,0.5);
-                background-color: white;
-                background-image: none;
-                background-clip: border-box;
-                background-position-x: 0%;
-                background-position-y: 0%;
             }
 
             label{
@@ -99,8 +86,15 @@
                 border-color: #e53935;
             }
 
+            .form-control{
+                font-size:15px;
+                color:black;
+                border-color: #f2f2f2;
+                background-color: #f2f2f2;   
+            }
+
             .form-control:focus{
-                border-color: #e53935;
+                border-color: #f2f2f2;
             }
 
             .control-label{
@@ -185,6 +179,43 @@
                 color:#34495e;
                 font-size: 20px;
             }
+
+#inpu1{
+    font-family: NexaBold;
+    font-size:15px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.card-2 {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.card-3 {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.card-4 {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.card-5 {
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
 
 @font-face {
     font-family: 'NexaLight';

@@ -35,16 +35,18 @@
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
                 <span class="sr-only">Toggle navigation</span>
               </button>
-              <img id="home" onclick="javascript:window.location.href='/'" src='/img/favicon.ico'>
+              <img id="home" onclick="javascript:window.location.href='/'" src='/img/favicon.png'>
             </div>
             <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
 
             <ul class="nav navbar-nav">         
+                <li><p style="font-family:Milkshake;top:20px;font-size:24px;margin:5px 24px 5px 12px;">Bambù</p></li>
                 <li><div class="navbar-form col-xs-4 col-sm-4" style="margin-left:0px;padding-left:10px;">
                     <div class="form-group">
                         <div class="input-group">
+                            <input type="text" id="inpu1" class="form-control" style="width:250px;" placeholder="Search" onkeydown="enterToSearch(this,event)"/>
                             <span class="input-group-btn">
-                            <select id="category" name="category" class="form-control" style="font-size:12px;border-bottom-left-radius: 6px;border-top-left-radius: 6px;" required="required">
+                            <select id="category" name="category" class="form-control" style="font-family: NexaLight;color:#7f8c8d;border-bottom-right-radius: 6px;border-top-right-radius: 6px;" required="required">
                                 <option value="all">All Categories</option>
                                 <option value="art">Art & Music</option>
                                 <option value="beauty">Beauty, Health & Geocery</option>
@@ -56,10 +58,10 @@
                                 <option value="toys">Toys & Kids</option>
                             </select>
                             </span>
-                            <input type="text" id="inpu1" class="form-control" style="width:250px;" placeholder="Search" onkeydown="enterToSearch(this,event)"/>
+                            <!--
                             <span class="input-group-btn">
                                 <button onclick="sb()" class="btn"><span class="fui-search"></span></button>
-                            </span>
+                            </span>-->
                         </div>
                     </div>
                     </div>
@@ -88,7 +90,7 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="personal-card" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/personal-card.svg'></a>
+                            <a href="/api/users_information" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" class="dropdown-toggle" data-toggle="dropdown">{{$user->name}}<img id="personal-card" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/personal-card.svg'></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="/api/product/myProduct">My Items</a>
@@ -108,9 +110,6 @@
                 <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
                 <li>
                 @if (isset($user) > 0)
-                    <a href="/api/users_information"> Hello, {{$user->name}} </a>
-                </li>
-                <li>
                     <a href ="/api/product">Post Item</a>
                 @else
                     <a href="/login" >Sign In</a>
@@ -127,7 +126,6 @@
             </div><!-- /.navbar-collapse -->
         </nav><!-- /navbar -->
     </div>
-
 <div class="container" style="width:100%;min-height:100%;">
     <div class="row" style="width:100%;margin:0px auto 60px auto; padding:auto;">
         @yield('content')
