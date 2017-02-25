@@ -23,7 +23,7 @@
 						</div>
 
 						<div class="form-group">
-							<input type="tel" class="form-control" name="tel" id="tel" placeholder="PNONE NUMBER" required="">
+							<input type="tel" class="form-control" name="tel" id="tel" placeholder="PHONE NUMBER" required="">
 						</div>
 
 						<div class="form-group">
