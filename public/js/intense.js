@@ -73,12 +73,12 @@ var Intense = (function() {
     // As well as the right fitting width/height of the image.
     function getFit( source, container ) {
 
-      var heightRatio = window.innerHeight / source.h;
+      var heightRatio = window.innerHeight / source.h /2;
 
-      if( (source.w * heightRatio) > window.innerWidth /2) {
+      if( (source.w * heightRatio) > window.innerWidth /4) {
         return { w: source.w * heightRatio, h: source.h * heightRatio, fit: true };
       } else {
-        var widthRatio = window.innerWidth / source.w /2;
+        var widthRatio = window.innerWidth / source.w /4;
         return { w: source.w * widthRatio, h: source.h * widthRatio, fit: false };
       }
     }
@@ -146,12 +146,12 @@ var Intense = (function() {
        */
       var containerProperties = {
         'backgroundColor': 'rgba(0,0,0,0.8)',
-        'width': '50%',
-        'height': '100%',
+        'width': '20%',
+        'height': '49%',
         'min-width': '500px',
         'position': 'fixed',
-        'top': '0px',
-        'left': '0px',
+        'top': '16%',
+        'left': '10%',
         'overflow': 'hidden',
         'zIndex': '999999',
         'margin': '0px',
@@ -181,7 +181,7 @@ var Intense = (function() {
        *  Caption Container
        */
       var captionContainerProperties = {
-        'font-family': '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+        'font-family': 'NexaLight,-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
         'position': 'fixed',
         'bottom': '0px',
         'left': '0px',
@@ -237,8 +237,8 @@ var Intense = (function() {
 
       setDimensions();
 
-      mouse.x = window.innerWidth / 2;
-      mouse.y = window.innerHeight / 2;
+      mouse.x = window.innerWidth / 4;
+      mouse.y = window.innerHeight / 4;
       
       document.body.appendChild( container );
       setTimeout( function() {
@@ -263,10 +263,10 @@ var Intense = (function() {
 
       targetDimensions = { w: target.width, h: target.height };
       var wid;
-      if(window.innerWidth/2 < 500)
-        wid = window.innerWidth;
-      else
-        wid = window.innerWidth/2;
+      //if(window.innerWidth/4 < 200)
+      //  wid = window.innerWidth;
+      //else
+        wid = window.innerWidth/4;
       containerDimensions = { w: wid, h: window.innerHeight };
       overflowArea = {x: containerDimensions.w - targetDimensions.w, y: containerDimensions.h - targetDimensions.h};
 
