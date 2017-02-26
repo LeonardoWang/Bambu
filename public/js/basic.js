@@ -99,5 +99,15 @@ function preview(file,num)
     else
     {  
     prevDiv.innerHTML = '<div class="img" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + file.value + '\'"></div>';  
+} 
 }  
-}  
+
+function changeImg(num,address){
+    //document.getElementById('imgdiv').data-image='/api/product/images/'+address;
+    document.getElementById('img').src='/api/product/images/'+address;
+    $("#li1").attr("class", "");
+    $("#li2").attr("class", ""); 
+    $("#li3").attr("class", ""); 
+    $("#li4").attr("class", ""); 
+    $("#li"+num).attr("class", "active");  
+}

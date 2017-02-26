@@ -9,19 +9,46 @@ product show page
     @if (isset($products)==1)
         @foreach ($products as $product)
             <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-8 col-sm-offset-2 card card-2">
-                        <div class="demo-image" data-image="/api/product/images/{{$product->image_file}}" data-title="{{$product->title}}" data-caption="{{$product->description}}">
-                            <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="max-height:600px;">
-                        </div>
-                        <div class="caption">
-                            <div class="row">
-                                <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-1">
-                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="padding:0px;">
-                                        <p style="text-align:left;font-size:15px;">seller :  <a href="/api/user/{{$product->user_id}}/info/" class = "ba">{{$product->user_name}}</a>
+                    <div id="imgdiv" class="demo-image" data-image="/api/product/images/{{$product->image_file_1}}" data-title="{{$product->title}}" data-caption="{{$product->description}}">
+                        <img id="img" src="/api/product/images/{{$product->image_file_1}}" class="img-responsive" style="max-height:600px;">
+                    </div>
+                    <div class="caption">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-1">
+                                <nav style="text-align:center;">
+                                <ul class="pagination">
+                                    @if (strlen($product->image_file_1)>0)
+                                    <div style="width: 41px; height: 41px;cursor: pointer;display:inline">
+                                        <li id="li1" class="active" onclick="changeImg(1,'{{$product->image_file_1}}')"><a href="#">1</a></li>
+                                    </div>
+                                    @endif
+
+                                    @if (strlen($product->image_file_2)>0)
+                                    <div style="width: 41px; height: 41px;cursor: pointer;display:inline">
+                                        <li id="li2" onclick="changeImg(2,'{{$product->image_file_2}}')"><a href="#">2</a></li>
+                                    </div>
+                                    @endif
+
+                                    @if (strlen($product->image_file_3)>0)
+                                    <div style="width: 41px; height: 41px;cursor: pointer;display:inline">
+                                        <li id="li3" onclick="changeImg(3,'{{$product->image_file_3}}')"><a href="#">3</a></li>
+                                    </div>
+                                    @endif
+
+                                    @if (strlen($product->image_file_4)>0)
+                                    <div style="width: 41px; height: 41px;cursor: pointer;display:inline">
+                                        <li id="li4" onclick="changeImg(4,'{{$product->image_file_4}}')"><a href="#">4</a></li>
+                                    </div>
+                                    @endif
+                                </ul>
+                                </nav>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="padding:0px;">
+                                    <p style="text-align:left;font-size:15px;">seller :  <a href="/api/user/{{$product->user_id}}/info/" class = "ba">{{$product->user_name}}</a>
                                         @if ($user->id != $product->user_id)
                                         <img onclick="createChatRoom({{$product->user_id}})" style="margin-left:10px;width:35px;cursor:pointer;" src="/img/icons/svg/chat.svg"/>@endif
                                         </p>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                         <p style="text-align:right;color:#f44336; font-weight:900;">￥{{$product->price}}</p>
                                     </div>
                                 </div>
@@ -31,8 +58,8 @@ product show page
                                 <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-1">
                                     <div style="overflow: auto; max-height:180px;"><p style="font-size:15px;text-align:left;">{{$product->description}}</p></div>
                                 </div>
-                            </div>
                         </div>
+                    </div>
             </div>
 
             <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-8 col-sm-offset-2 card card-2">
@@ -119,13 +146,6 @@ product show page
                         </div>
                     </div>
                     -->
-                    <!--
-                    <div class="form-group">
-                        <label class="col-sm-3 col-md-3 control-label" for="file">One picture for item</label>
-                        <div class="col-sm-8 col-md-8">
-                            <input id="file" name="image" class="form-control input-md" type="file"> multiple="true"
-                        </div>
-                    </div>!-->
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="category">Category</label>
                         <div class="col-md-9">

@@ -133,7 +133,7 @@
         <div class="row" style="width:100%;margin:58px auto 60px auto; padding:auto;">
             <div class="col-md-2 card card-2" style="text-align:left;background-color:white;border-radius:10px;">
                 <h6 style="font-family:NexaBold;">Categories</h6>
-                <p>All Categories<br>
+                    <!--<p>All Categories<br>-->
                    <a style="color:#34495e;" href="/items/CSearch/art/">Art & Music</a><br>
                    <a style="color:#34495e;" href="/items/CSearch/beauty/">Beauty, Health & Geocery<br>
                    <a style="color:#34495e;" href="/items/CSearch/book/">Book & Study<br>
@@ -202,7 +202,7 @@
     </div>
     @endif
     <p style="font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
-    <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">Homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
+    <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">Homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:support@thebambu.com">contact us</a></p>
 </footer>
 
 @else
@@ -214,7 +214,7 @@
 
     <footer class="footer navbar-fixed-bottom" id = "aboutUs">
      <p style="text-align:center;font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
-        <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">Homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
+        <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">Homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:support@thebambu.com">contact us</a></p>
 </footer>
 @endif
 

@@ -27,7 +27,7 @@ myprofile page
                                             <!--<button type="button" onclick="uploadProfilePicture()" class="btn btn-xs">upload your profile picture</button>-->
                                         </div>
                                     </div>
-                                    <h6>{{$user->name}}'s Profile</h6>
+                                    <h6 style="color:black;">{{$user->name}}'s Profile</h6>
                                     <hr>
                                     <div class="form-group">
                                         <div class="col-md-8 col-md-offset-2">
@@ -36,7 +36,7 @@ myprofile page
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-8 col-md-offset-2">
-                                            <select id="sex" name="sex" placeholder="Gender" class="form-control input-md" required="required">
+                                            <select id="sex" name="sex" class="form-control input-md" required="required">
                                                 <option value="male" {{($user_information->sex=="male")?"selected=":""}}>Male</option>
                                                 <option value="female" {{($user_information->sex=="female")?"selected=":""}}>Female</option>
                                                 <option value="unknown" {{($user_information->sex=="unknown")?"selected=":""}}>Unknown</option>
@@ -50,6 +50,24 @@ myprofile page
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-8 col-md-offset-2">
+                                            <!--<select id="city" name="city" class="form-control input-md" required="required">
+                                                <option value="Beijing" {{($user_information->city=="Beijing")?"selected=":""}}>Beijing</option>
+                                                <option value="Shanghai" {{($user_information->city=="Tianjin")?"selected=":""}}>Tianjin</option>
+                                                <option value="HongKong" {{($user_information->city=="Shanghai")?"selected=":""}}>Shanghai</option>
+                                                <option value="Macao" {{($user_information->city=="Shanghai")?"selected=":""}}>Shanghai</option>
+                                                <option value="Taipei" {{($user_information->city=="Shanghai")?"selected=":""}}>Shanghai</option>
+                                                <option value="Tianjin" {{($user_information->city=="Shanghai")?"selected=":""}}>Shanghai</option>
+                                                <option value="Chongqing" {{($user_information->city=="Shanghai")?"selected=":""}}>Shanghai</option>
+                                                <option value="Shenzhen" {{($user_information->city=="Shanghai")?"selected=":""}}>Shanghai</option>
+                                                <option value="Guangzhou" {{($user_information->city=="Shanghai")?"selected=":""}}>Shanghai</option>
+                                                <option value="Shenyang" {{($user_information->city=="Shanghai")?"selected=":""}}>Shanghai</option>
+                                                <option value="Qingdao" {{($user_information->city=="Shanghai")?"selected=":""}}>Shanghai</option>
+                                                <option value="Dalian" {{($user_information->city=="Shanghai")?"selected=":""}}>Shanghai</option>
+                                                <option value="Changchun" {{($user_information->city=="Shanghai")?"selected=":""}}>Shanghai</option>
+                                                <option value="Harbin" {{($user_information->city=="Harbin")?"selected=":""}}>Shanghai</option>
+                                                <option value="Chengdu" {{($user_information->city=="Shanghai")?"selected=":""}}>Chengdu</option>
+                                                <option value="Changsha" {{($user_information->city=="Shanghai")?"selected=":""}}>Changsha</option>
+                                            </select>-->
                                             <input id="city" name="city" type="text" value="{{$user_information->city}}" placeholder="City" class="form-control input-md">
                                         </div>
                                     </div>

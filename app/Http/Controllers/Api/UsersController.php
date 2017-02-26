@@ -140,8 +140,8 @@ class UsersController extends Controller
             $userinformation = new UserInformation();
             $userinformation->user_id = $user->id;
             $userinformation->sex ='unknown';
-            $userinformation->city ='unknown';
-            $userinformation->city ='unknown';
+            $userinformation->city ='Beijing';
+            $userinformation->address ='unknown';
             $userinformation->user_image = '/img/default_user_profile.jpg';
             $userinformation->save();
             Auth::login($user);
