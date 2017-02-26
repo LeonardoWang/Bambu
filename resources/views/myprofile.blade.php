@@ -13,7 +13,7 @@ myprofile page
                     <fieldset>
                         <div class="row">
                             <div class="col-md-12">
-                                <div style="color:#9aa4af; max-height:600px; overflow-x:visible;">                                    
+                                <div style="color:#9aa4af; max-height:650px; overflow-x:visible;">                                    
                                     @if($user_information->user_image=="/img/default_user_profile.jpg")
                                             <img style="width:100px;height:100px;margin-bottom:10px;" src="{{$user_information->user_image}}" class="img-circle"/>
                                         @else
@@ -36,21 +36,26 @@ myprofile page
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-8 col-md-offset-2">
-                                            <input id="tel" name="tel" type="text" value="{{$user->tel}}" class="form-control input-md" readOnly="true" style="border-width:0px;color:black;">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-8 col-md-offset-2">
-                                            <input id="location" name="location" type="text" value="{{$user_information->location}}" placeholder="Location" class="form-control input-md">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-8 col-md-offset-2">
                                             <select id="sex" name="sex" placeholder="Gender" class="form-control input-md" required="required">
                                                 <option value="male" {{($user_information->sex=="male")?"selected=":""}}>Male</option>
                                                 <option value="female" {{($user_information->sex=="female")?"selected=":""}}>Female</option>
                                                 <option value="unknown" {{($user_information->sex=="unknown")?"selected=":""}}>Unknown</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-8 col-md-offset-2">
+                                            <input id="tel" name="tel" type="text" value="{{$user->tel}}" class="form-control input-md" readOnly="true" style="border-width:0px;color:black;">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-8 col-md-offset-2">
+                                            <input id="city" name="city" type="text" value="{{$user_information->city}}" placeholder="City" class="form-control input-md">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-8 col-md-offset-2">
+                                            <input id="address" name="address" type="text" value="{{$user_information->address}}" placeholder="Address" class="form-control input-md">
                                         </div>
                                     </div>
                                     <!--<div class="form-group">
