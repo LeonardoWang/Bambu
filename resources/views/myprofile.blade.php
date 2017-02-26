@@ -12,16 +12,18 @@ myprofile page
                 <form method="post" action="/api/users/{{$user->id}}" class="form-horizontal" enctype="multipart/form-data" role="form">
                     <fieldset>
                         <div class="row">
-                            <div class="col-lg-12">
-                                <div style="color:#9aa4af; max-height:550px; overflow-x:visible;">                                    
+                            <div class="col-md-12">
+                                <div style="color:#9aa4af; max-height:600px; overflow-x:visible;">                                    
                                     @if($user_information->user_image=="/img/default_user_profile.jpg")
                                             <img style="width:100px;height:100px;margin-bottom:10px;" src="{{$user_information->user_image}}" class="img-circle"/>
                                         @else
                                             <img style="width:100px;height:100px;margin-bottom:10px;" src="/api/product/images/{{$user_information->user_image}}" class="img-circle"/>
                                         @endif
                                     <div class="form-group">
-                                        <div class="col-md-8 col-md-offset-2">
-                                            <input id="image" name="image" class="form-control input-sm" type="file">
+                                        <div class="col-md-4 col-md-offset-4 upload-button">
+                                            <div class="upload"></div>
+                                            <p class="upload-text">CHOOSE FILE</p>
+                                            <input id="image" name="image" class="fileupload col-md-12" type="file">
                                             <!--<button type="button" onclick="uploadProfilePicture()" class="btn btn-xs">upload your profile picture</button>-->
                                         </div>
                                     </div>

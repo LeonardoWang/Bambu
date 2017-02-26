@@ -48,8 +48,33 @@ item uploading page
                     </div>
                     -->
                     <div class="form-group">
-                        <div class="col-md-8 col-md-offset-2" style="padding-left:0px;padding-right:0px;">
-                            <input id="file_upload" name="image" class="form-control input-md" type="file"> <!--multiple="true"-->
+                        <div class="col-md-2 col-md-offset-2 upload-button">
+                            <span>
+                                <div class="upload"></div>
+                                <p class="upload-text">CHOOSE FILE</p>
+                                <input id="file_upload_1" name="image_1" class="fileupload col-md-12" type="file"> <!--multiple="true"-->
+                            </span>
+                        </div>
+                        <div class="col-md-2 upload-button">
+                            <span>
+                                <div class="upload"></div>
+                                <p class="upload-text">CHOOSE FILE</p>
+                                <input id="file_upload_2" name="image_2" class="fileupload col-md-12" type="file"> <!--multiple="true"-->
+                            </span>
+                        </div>
+                        <div class="col-md-2 upload-button">
+                            <span>
+                                <div class="upload"></div>
+                                <p class="upload-text">CHOOSE FILE</p>
+                                <input id="file_upload_3" name="image_3" class="fileupload col-md-12" type="file"> <!--multiple="true"-->
+                            </span>
+                        </div>
+                        <div class="col-md-2 upload-button">
+                            <span>
+                                <div class="upload"></div>
+                                <p class="upload-text">CHOOSE FILE</p>
+                                <input id="file_upload_4" name="image_4" class="fileupload col-md-12" type="file"> <!--multiple="true"-->
+                            </span>
                         </div>
                     </div>
                     <div class="form-group">

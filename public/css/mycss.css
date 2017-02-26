@@ -191,6 +191,38 @@
     font-size:15px;
 }
 
+.upload {position:absolute;
+    left:0; right:0; top:0; bottom:0;
+    margin:auto;
+    width: 48px;
+    height:48px;
+    background: url('/img/add.png') no-repeat;
+}
+
+.fileupload{
+    opacity:0;
+    padding-left:0px;padding-right:0px;
+    height:80px;
+}
+
+.upload-text{
+    font-size: 12px;
+    color:#7f8c8d;
+    position:absolute;
+    left:0; right:0; top:0; bottom:0;
+    margin:auto;
+    margin-top: 62px;
+}
+
+.upload-button{
+    height:85px;
+    background-color:#f2f2f2;
+    padding-left:0px;
+    padding-right:0px;
+    border:white 2px solid;
+    border-radius: 6px;
+}
+
 .card {
   background: #fff;
   border-radius: 10px;
