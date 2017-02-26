@@ -12,7 +12,7 @@ other's profile page
             <div class="caption">
                          <div class="row">
                             <div class="col-lg-12">
-                                <div style="color:#9aa4af; max-height:550px; overflow-x:visible;">
+                                <div style="color:#9aa4af; max-height:650px; overflow-x:visible;">
                                     @if(!strlen($user_information->user_image))
                                             <img style="width:100px;" src="/img/default_user_profile.jpg" class="img-circle"/>
                                         @else
@@ -27,21 +27,27 @@ other's profile page
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label class="col-md-3 col-sm-3 col-xs-3" for="sex">Gender</label>
+                                        <div class="col-md-9 col-sm-9 col-xs-9">
+                                            <p class="profile">{{$user_information->sex}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="col-md-3 col-sm-3 col-xs-3" for="tel">Phone</label>
                                         <div class="col-md-9 col-sm-9 col-xs-9">
                                             <p class="profile">{{$user->tel}}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 col-sm-3 col-xs-3" for="location">Location</label>
+                                        <label class="col-md-3 col-sm-3 col-xs-3" for="city">City</label>
                                         <div class="col-md-9 col-sm-9 col-xs-9">
-                                            <p class="profile">{{$user_information->location}}</p>
+                                            <p class="profile">{{$user_information->city}}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 col-sm-3 col-xs-3" for="sex">Gender</label>
+                                        <label class="col-md-3 col-sm-3 col-xs-3" for="address">Address</label>
                                         <div class="col-md-9 col-sm-9 col-xs-9">
-                                            <p class="profile">{{$user_information->sex}}</p>
+                                            <p class="profile">{{$user_information->address}}</p>
                                         </div>
                                     </div>
                                     <!--<div class="form-group">
