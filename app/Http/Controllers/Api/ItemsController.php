@@ -202,15 +202,64 @@ class ItemsController extends Controller
                 //$item->keywords = $request->input('keywords');
                 $item->save();
                 $item_id = $item->id;
-                if ($request->hasFile('image')) {
+                $flag = false;
+                if ($request->hasFile('image_1')) {
                     $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
                     Storage::put('images/' . $file_name,
-                        file_get_contents($request->file('image')->getRealPath()));
+                        file_get_contents($request->file('image_1')->getRealPath()));
                     $image_record = New Image;
                     $image_record->item_id = $item_id;
                     $image_record->filename = $file_name;
                     $item->image_file = $file_name;
-                    if ($image_record->save() && $item->save()){
+                    $flag = true;
+                    $image_record->save();
+                    /*if ($image_record->save() && $item->save()){
+                        echo "<script type='text/javascript'>alert('your item is successfully uploaded!')</script>";
+                        $products = Item::orderBy('updated_at', 'desc')->get();
+                        //return $file_name;
+                        return view('welcome',compact('user','products'));
+                    }else {
+                        echo "<script type='text/javascript'>alert('There's something wrong! Please check your nerwork connection.')</script>";
+                        return 0;
+                    }*/
+                }
+                if ($request->hasFile('image_2')) {
+                    $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+                    Storage::put('images/' . $file_name,
+                        file_get_contents($request->file('image_2')->getRealPath()));
+                    $image_record = New Image;
+                    $image_record->item_id = $item_id;
+                    $image_record->filename = $file_name;
+                    if($flag == false)
+                        $item->image_file = $file_name;
+                    $flag = true;
+                    $image_record->save();
+                }
+                if ($request->hasFile('image_3')) {
+                    $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+                    Storage::put('images/' . $file_name,
+                        file_get_contents($request->file('image_3')->getRealPath()));
+                    $image_record = New Image;
+                    $image_record->item_id = $item_id;
+                    $image_record->filename = $file_name;
+                    if($flag == false)
+                        $item->image_file = $file_name;
+                    $flag = true;
+                    $image_record->save();
+                }
+                if ($request->hasFile('image_4')) {
+                    $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+                    Storage::put('images/' . $file_name,
+                        file_get_contents($request->file('image_4')->getRealPath()));
+                    $image_record = New Image;
+                    $image_record->item_id = $item_id;
+                    $image_record->filename = $file_name;
+                    if($flag == false)
+                        $item->image_file = $file_name;
+                    $flag = true;
+                    $image_record->save();
+                }
+                if ($item->save()){
                         echo "<script type='text/javascript'>alert('your item is successfully uploaded!')</script>";
                         $products = Item::orderBy('updated_at', 'desc')->get();
                         //return $file_name;
@@ -219,10 +268,7 @@ class ItemsController extends Controller
                         echo "<script type='text/javascript'>alert('There's something wrong! Please check your nerwork connection.')</script>";
                         return 0;
                     }
-                }
-                else {
-                    return 'no image file';
-                }
+                
             } 
             else {
                 return back()->withErrors($validator->messages());

@@ -15,7 +15,8 @@ class CreateUserInformationTable extends Migration
         Schema::create('user_information', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('user_id');
-          $table->text('location');
+          $table->text('city');
+          $table->text('address');
           $table->enum('sex',['male','female','unknown']);
           $table->text('rank');
           $table->string('user_image');
