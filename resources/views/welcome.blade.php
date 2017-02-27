@@ -71,9 +71,9 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a onclick="chatroom()" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/bell.svg'></a>
-                    <ul class="dropdown-menu dropdown-menu-style">
+                    <!--<ul class="dropdown-menu dropdown-menu-style">
                         <a href="/api/chat_room/MyChatroom"><li class="dropdown-menu-li"><p style="font-size:16px;padding:10px;">CHATROOM</p></li></a>
-                    </ul>
+                    </ul>-->
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">

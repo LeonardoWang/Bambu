@@ -1,4 +1,3 @@
-var chatroomNum = 0;
 var socket;
 window.onload = function() {
     //load pic zoom func
@@ -78,15 +77,9 @@ function onSubmit(id){
     }
 }
 
-function toggleChat(btn){
-    var user_remote_id = btn.id.replace(/dialog_closebtn_/,"");
+function toggleChat(user_remote_id){
     var chatroom_name = "#chatroom_"+user_remote_id;
-    /*socket.disconnect(user_remote_id + ':App\\Events\\SomeEvent', function(data){
-        console.log('remove listener of chatroom '+chat_room_id);
-    });*/
-
     $(chatroom_name).remove();
-    chatroomNum--;
 
     //hide function
     /*if($(chatroom_id).css("display")=="none") {
@@ -97,6 +90,10 @@ function toggleChat(btn){
         $(chatroom_id).css("display","none");
         btn.innerHTML="show";
     }*/
+}
+
+function closeChat(){
+    $("#chatroom").empty();
 }
 
 function clearChatHistory(btn){
@@ -126,7 +123,6 @@ function createChatRoom(user_remote_id){
                     console.log(textStatus); // paser error;
                 }
     });
-    chatroomNum++;
 
     $.ajax({
                 type:"get",
@@ -159,10 +155,10 @@ function createChatRoom(user_remote_id){
                     console.log(data);
                     chat_room_id = data.chat_room_id;
 
-                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+user_remote_id+'" style="position:absolute;bottom:0px;left:'+ (document.body.clientWidth-192) +'px"><div class="thumbnail" style="height:200px; overflow-y:auto;"><p style="text-align:left;font-size:12px;padding-top:18px;margin-bottom:0px;">chat history with '+user_remote_name+'</p><button id="dialog_clearbtn_'+user_remote_id+'" onclick="clearChatHistory(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">clear history</button><button id="dialog_closebtn_'+user_remote_id+'" onclick="toggleChat(this)" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;left:0px;z-index:1000">close</button><div class="col-md-3 col-sm-3 col-xs-3 caption" id="dialog_userid_'+user_remote_id+'"></div> <div class="col-md-9 col-sm-3 col-xs-3 caption" id="dialog_message_'+user_remote_id+'"></div></div> <textarea class="thumbnail form-control-1" id="dialog_sendtext_'+user_remote_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)"></textarea>      <input id="'+user_remote_id+'" onclick="onSubmit('+user_remote_id+')" class="btn btn" value="send" /></div>';
+                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+user_remote_id+'" style="position:absolute;bottom:20px;width:600px;left:'+ (document.body.clientWidth-692) +'px"><div class="thumbnail" style="background:#f2f2f2;border:0px;margin-bottom:0px;height:350px; overflow-y:auto;"><p style="text-align:left;font-size:12px;padding-top:18px;margin-bottom:0px;">chat history with '+user_remote_name+'</p><button onclick="toggleChat('+user_remote_id+')" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">CLOSE</button><button onclick="clearChatHistory(this)" class="btn btn-xs bambu-color1" style="position:absolute;bottom:50px;right:0px;z-index:1000">CLEAR</button><div class="col-md-3 col-sm-3 col-xs-3 caption" id="dialog_userid_'+user_remote_id+'"></div> <div class="col-md-9 col-sm-3 col-xs-3 caption" id="dialog_message_'+user_remote_id+'"></div></div> <textarea class="thumbnail form-control-1" id="dialog_sendtext_'+user_remote_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)" style="width:600px;"></textarea>      <input id="'+user_remote_id+'" style="position:absolute;width:60px;bottom:10px;right:0px;z-index:1000" onclick="onSubmit('+user_remote_id+')" class="btn btn-xs" value="SEND" /></div>';
 
-                    //show the last 10 messages
-                    for(i = data.message.length - 11; i < data.message.length; i++)
+                    //show the last 15 messages
+                    for(i = data.message.length - 16; i < data.message.length; i++)
                     {
                         if(i>=0)
                         {
@@ -228,16 +224,44 @@ function chatroom(){
 
             success:function(data) {
                 //console.log(data.message);
-
+                document.getElementById("chatroom").innerHTML+='<div id="chatroom_nav" style="z-index:-1;border-radius:6px;position:absolute;bottom:27px;left:'+ (document.body.clientWidth-792) +'px;width:700px;height:480px;background:#fff;"><h6 style="color:black;">Messages</h6><img src="/img/cross.png" onclick="closeChat()" style="cursor:pointer;position:absolute;top:0px;right:0px;z-index:1000"></div><div id="chatroom_left" style="background:#f2f2f2;width:100px;height:429px;border-radius:6px;position:absolute;bottom:27px;left:'+ (document.body.clientWidth-792) +'px"></div>';
                 for(i = 0; i < data.chat_room_array.length; i++)
                 {
+                    var user_remote_id;
+                    var user_remote_name;
                     if(data.chat_room_array[i].user_sell_id !== data.chat_room_array[i].user_buy_id) 
+                    {    
                         if(data.chat_room_array[i].user_sell_id != user_id)
-                            createChatRoom(data.chat_room_array[i].user_sell_id);
+                        {
+                            user_remote_id = data.chat_room_array[i].user_sell_id;                            
+                        }
                         else if(data.chat_room_array[i].user_buy_id !== user_id)
-                            createChatRoom(data.chat_room_array[i].user_buy_id);
-                }
+                        {
+                            user_remote_id = data.chat_room_array[i].user_buy_id;
+                        }
+                        $.ajax({
+                            type:"get",
+                            url:'/user_name/' + user_remote_id,
+                            data:{},
+                            async:false,
 
+                            success:function(data) {
+                                console.log(data);
+                                user_remote_name = data.name;
+                            },
+                            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                                console.log(XMLHttpRequest);
+                                console.log(textStatus); // paser error;
+                            }
+                        });
+                        document.getElementById("chatroom_left").innerHTML+='<a onclick="createChatRoom('+user_remote_id+')">' + user_remote_name +'</a>';
+                    }
+                }
+                if(data.chat_room_array[0].user_sell_id !== data.chat_room_array[0].user_buy_id) 
+                    if(data.chat_room_array[0].user_sell_id != user_id)
+                        createChatRoom(data.chat_room_array[0].user_sell_id);
+                    else if(data.chat_room_array[0].user_buy_id !== user_id)
+                        createChatRoom(data.chat_room_array[0].user_buy_id);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 console.log(XMLHttpRequest);

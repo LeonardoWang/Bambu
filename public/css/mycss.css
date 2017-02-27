@@ -369,3 +369,5 @@
     background:#F9ADA0;
     -webkit-transition:all .15s;
 }
+
+textarea{resize: none;}
