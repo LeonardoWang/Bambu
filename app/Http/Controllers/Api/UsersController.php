@@ -262,4 +262,11 @@ class UsersController extends Controller
         $user_information = UserInformation::find($id);
         return view('profile',compact('user','user_information'));//view('user_information')->with('user_information',$user_information);
     }
+
+    public function showImage($id)
+    {
+        $user_information = UserInformation::find($id);
+        $file = Storage::get('images/' . $user_information->user_image);
+        return (new Response($file, 200))->header('Content-Type', 'image/jpeg');
+    }
 }

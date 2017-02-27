@@ -212,7 +212,7 @@ class ItemsController extends Controller
                     $item->image_file = $file_name;
                     $item->image_file_1 = $file_name;
                     $flag = 2;
-                    return 2;
+                    
                     //$image_record->save();
                     /*if ($image_record->save() && $item->save()){
                         echo "<script type='text/javascript'>alert('your item is successfully uploaded!')</script>";
