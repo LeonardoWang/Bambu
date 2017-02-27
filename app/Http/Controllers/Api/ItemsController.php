@@ -199,7 +199,7 @@ class ItemsController extends Controller
                 $flag = 1;
                 
                 if ($request->hasFile('image_1')) {
-                    $file_name = strval($user->id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+                    $file_name = 'product/'.strval($user->id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
                     Storage::put('images/' . $file_name,
                         file_get_contents($request->file('image_1')->getRealPath()));
                     //$image_record = New Image;
@@ -220,7 +220,7 @@ class ItemsController extends Controller
                     }*/
                 }
                 if ($request->hasFile('image_2')) {
-                    $file_name = strval($user->id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+                    $file_name = 'product/'.strval($user->id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
                     Storage::put('images/' . $file_name,
                         file_get_contents($request->file('image_2')->getRealPath()));
                     //$image_record = New Image;
@@ -234,7 +234,7 @@ class ItemsController extends Controller
                     //$image_record->save();
                 }
                 if ($request->hasFile('image_3')) {
-                    $file_name = strval($user->id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+                    $file_name = 'product/'.strval($user->id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
                     Storage::put('images/' . $file_name,
                         file_get_contents($request->file('image_3')->getRealPath()));
                     $item->image_file_3 = $file_name;
@@ -245,7 +245,7 @@ class ItemsController extends Controller
                     $flag = 2;
                 }
                 if ($request->hasFile('image_4')) {
-                    $file_name = strval($user->id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+                    $file_name = 'product/'.strval($user->id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
                     Storage::put('images/' . $file_name,
                         file_get_contents($request->file('image_4')->getRealPath()));
                     $item->image_file_4 = $file_name;

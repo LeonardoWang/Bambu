@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Http\Response;
 use App\Http\Requests;
 use Crypt;
 use Hash;
@@ -182,7 +182,7 @@ class UsersController extends Controller
         $this->validate($request, [
             'name' => 'required|max:20',
             'image' => 'image',
-            'location' => 'max:20'
+            'city' => 'max:20'
         ]);
         //echo "<script type='text/javascript'>alert('start updating')</script>";
         
@@ -203,16 +203,16 @@ class UsersController extends Controller
             
         $userinformation = UserInformation::find($user->id);
         $userinformation->sex = $request->input('sex');
-        $userinformation->location = $request->input('location');
-
+        $userinformation->city = $request->input('city');
+        $userinformation->address = $request->input('address');
         if ($request->hasFile('image')) {
-            if(!empty($userinformation->user_image)){
+            if(!empty($userinformation->user_image&&Storage::exists('images/'.$userinformation->user_image))){
                 Storage::delete('images/' . $userinformation->user_image);
             }
             $file_name = strval($user->id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
-            Storage::put('images/' . $file_name,
+            Storage::put('images/profile/' . $file_name,
                 file_get_contents($request->file('image')->getRealPath()));
-            $userinformation->user_image = $file_name;
+            $userinformation->user_image = 'profile/'.$file_name;
             $userinformation->save();
             echo "<script type='text/javascript'>alert('save with picture!')</script>";
             $user_information = UserInformation::find($user->id);
@@ -232,12 +232,12 @@ class UsersController extends Controller
         $userinformation = UserInformation::find($user->id);
         if ($request->hasFile('image')) {
             if(!empty($userinformation->user_image)){
-                Storage::delete('images/' . $userinformation->user_image);
+                Storage::delete('images/profile/'.$userinformation->user_image);
             }
             $file_name = strval($user->id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
-            Storage::put('images/' . $file_name,
+            Storage::put('images/profile/'.$file_name,
                 file_get_contents($request->file('image')->getRealPath()));
-            $userinformation->user_image = $file_name;
+            $userinformation->user_image = 'profile/'.$file_name;
             $userinformation->save();
             echo "<script type='text/javascript'>alert('save with picture!')</script>";
             $user_information = UserInformation::find($user->id);
@@ -266,7 +266,22 @@ class UsersController extends Controller
     public function showImage($id)
     {
         $user_information = UserInformation::find($id);
-        $file = Storage::get('images/' . $user_information->user_image);
-        return (new Response($file, 200))->header('Content-Type', 'image/jpeg');
+        $file = $user_information->user_image;
+        $value;
+        if($file == "/img/default_user_profile.jpg")
+            $value = "/img/default_user_profile.jpg";
+        else
+            $value =  "api/product/images/".$file;  
+        return response()->json(array(
+            'image_path' => $value
+        ));
+    }
+
+    public function ImagePath($id)
+    {
+        response()->json(array(
+            'chat_room_array' => $chatroom,
+            'notif' => $notif
+        ));
     }
 }

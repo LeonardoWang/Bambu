@@ -37,9 +37,15 @@ class ImagesController extends Controller
         }
     }
 
-    public function show($image_file)
+    public function showProfile($image_file)
     {
-        $file = Storage::get('images/' . $image_file);
+        $file = Storage::get('images/profile/' . $image_file);
+        return (new Response($file, 200))->header('Content-Type', 'image/jpeg');
+    }
+
+    public function showProduct($image_file)
+    {
+        $file = Storage::get('images/product/' . $image_file);
         return (new Response($file, 200))->header('Content-Type', 'image/jpeg');
     }
 

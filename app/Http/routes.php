@@ -40,7 +40,8 @@ Route::controllers([
 Route::post('login', 'Api\UsersController@login');
 Route::get('logout','Api\UsersController@logout');
 Route::post('register', 'Api\UsersController@register');
-Route::get('api/product/images/{image_file}', 'Api\ImagesController@show');
+Route::get('api/product/images/profile/{image_file}', 'Api\ImagesController@showProfile');
+Route::get('api/product/images/product/{image_file}', 'Api\ImagesController@showProduct');
 Route::get('api/user/images/{user_id}', 'Api\UsersController@showImage');
 Route::get('items/KSearch/{keyword}', 'Api\ItemsController@KSearch');
 Route::get('items/CSearch/{category}/{keyword}', 'Api\ItemsController@CSearch1');
