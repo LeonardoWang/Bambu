@@ -68,12 +68,14 @@
                 </li>
             </ul>
                 @if (isset($user) > 0)
+
+
                <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/bell.svg'></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                     <a href="/api/trade_requests/my">Trade Requests</a>
+                                     Trade Requests
                                 </li>
                                 <li>
                                      <a onclick="chatroom()">Chat Center</a>
@@ -88,30 +90,25 @@
                                 </li>
                             </ul>
                         </li>
-
-                        <li class="dropdown">
-                            <a href="/api/users_information" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" class="dropdown-toggle" data-toggle="dropdown">{{$user->name}}<img id="personal-card" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/personal-card.svg'></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="/api/product/myProduct">My Items</a>
-                                </li>
-                                <li>
-                                     <a href="/api/users_information">Personal Info</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                     <a href="/logout" >Sign Out</a>
-                                </li>
-                            </ul>
-                        </li>
                     </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <div class="user">
+                        <p class="user-name">{{$user->name}}<span class="user-menu"></span></p>
+                    <div class="user-nav">
+                        <ul style="padding-left:0px; top:0px;">
+                            <a href ="/api/product"><li style="color:#7f8c8d;">Post Item<span class="user-nav-settings"></span></li></a>
+                            <a href="/api/users_information"><li style="color:#7f8c8d;">Personal Info<span class="user-nav-settings"></span></li></a>
+                            <a href="/api/product/myProduct"><li style="color:#7f8c8d;">My Items<span class="user-nav-stats"></span></li></a>
+                            <a href="/api/trade_requests/my"><li style="color:#7f8c8d;">Messages<span class="user-nav-messages"></span></li></a>
+                            <a href="/logout"><li style="color:#7f8c8d;">Sign Out<span class="user-nav-signout"></span></li></a>
+                        </ul>
+                    </div>
+                    </div>
+                </ul>
                     @endif
                 <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
                 <li>
-                @if (isset($user) > 0)
-                    <a href ="/api/product">Post Item</a>
-                @else
+                @if (!isset($user))
                     <a href="/login" >Sign In</a>
                 </li>
                 <li>
