@@ -190,6 +190,7 @@ class ItemsController extends Controller
         if(Auth::check())
         {
             $user = Auth::user();
+            
             if (!$validator->fails()) {
                 $item = new Item;
                 $item->title = $request->input('title');
@@ -200,18 +201,18 @@ class ItemsController extends Controller
                 $item->status = 'unreviewed';
                 $item->category = $request->input('category');
                 //$item->keywords = $request->input('keywords');
-                $item->save();
-                $item_id = $item->id;
-                $flag = false;
+                $flag = 1;
+                
                 if ($request->hasFile('image_1')) {
-                    $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+                    $file_name = strval($user->id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
                     Storage::put('images/' . $file_name,
                         file_get_contents($request->file('image_1')->getRealPath()));
                     //$image_record = New Image;
                     //$image_record->item_id = $item_id;
                     $item->image_file = $file_name;
                     $item->image_file_1 = $file_name;
-                    $flag = true;
+                    $flag = 2;
+                    return 2;
                     //$image_record->save();
                     /*if ($image_record->save() && $item->save()){
                         echo "<script type='text/javascript'>alert('your item is successfully uploaded!')</script>";
@@ -224,37 +225,43 @@ class ItemsController extends Controller
                     }*/
                 }
                 if ($request->hasFile('image_2')) {
-                    $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+                    $file_name = strval($user->id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
                     Storage::put('images/' . $file_name,
                         file_get_contents($request->file('image_2')->getRealPath()));
                     //$image_record = New Image;
                     //$image_record->item_id = $item_id;
                     $item->image_file_2 = $file_name;
-                    if($flag == false)
+                    if($flag == 1)
+                    {
                         $item->image_file = $file_name;
-                    $flag = true;
+                    }
+                    $flag = 2;
                     //$image_record->save();
                 }
                 if ($request->hasFile('image_3')) {
-                    $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+                    $file_name = strval($user->id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
                     Storage::put('images/' . $file_name,
                         file_get_contents($request->file('image_3')->getRealPath()));
                     $item->image_file_3 = $file_name;
-                    if($flag == false)
+                    if($flag == 1)
+                    {
                         $item->image_file = $file_name;
-                    $flag = true;
+                    }
+                    $flag = 2;
                 }
                 if ($request->hasFile('image_4')) {
-                    $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
+                    $file_name = strval($user->id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
                     Storage::put('images/' . $file_name,
                         file_get_contents($request->file('image_4')->getRealPath()));
                     $item->image_file_4 = $file_name;
-                    if($flag == false)
-                        $item->image_file = $file_name;
-                    $flag = true;
+                    if($flag == 1)
+                    {  
+                       $item->image_file = $file_name;
+                    } 
+                    $flag = 2;
                     
                 }
-                if(flag == false)
+                if($flag == 1)
                 {
                      echo "<script type='text/javascript'>alert('please add picture!')</script>";
                      return 0;
