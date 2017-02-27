@@ -20,6 +20,10 @@ class CreateItemsTable extends Migration
           $table->float('price');
           $table->text('description');
           $table->string('image_file');
+          $table->string('image_file_1');
+          $table->string('image_file_2');
+          $table->string('image_file_3');
+          $table->string('image_file_4');
           $table->enum('status', ['selling', 'sold']);
           $table->string('category');
           

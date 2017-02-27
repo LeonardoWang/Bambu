@@ -207,12 +207,12 @@ class ItemsController extends Controller
                     $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
                     Storage::put('images/' . $file_name,
                         file_get_contents($request->file('image_1')->getRealPath()));
-                    $image_record = New Image;
-                    $image_record->item_id = $item_id;
-                    $image_record->filename = $file_name;
+                    //$image_record = New Image;
+                    //$image_record->item_id = $item_id;
                     $item->image_file = $file_name;
+                    $item->image_file_1 = $file_name;
                     $flag = true;
-                    $image_record->save();
+                    //$image_record->save();
                     /*if ($image_record->save() && $item->save()){
                         echo "<script type='text/javascript'>alert('your item is successfully uploaded!')</script>";
                         $products = Item::orderBy('updated_at', 'desc')->get();
@@ -227,37 +227,37 @@ class ItemsController extends Controller
                     $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
                     Storage::put('images/' . $file_name,
                         file_get_contents($request->file('image_2')->getRealPath()));
-                    $image_record = New Image;
-                    $image_record->item_id = $item_id;
-                    $image_record->filename = $file_name;
+                    //$image_record = New Image;
+                    //$image_record->item_id = $item_id;
+                    $item->image_file_2 = $file_name;
                     if($flag == false)
                         $item->image_file = $file_name;
                     $flag = true;
-                    $image_record->save();
+                    //$image_record->save();
                 }
                 if ($request->hasFile('image_3')) {
                     $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
                     Storage::put('images/' . $file_name,
                         file_get_contents($request->file('image_3')->getRealPath()));
-                    $image_record = New Image;
-                    $image_record->item_id = $item_id;
-                    $image_record->filename = $file_name;
+                    $item->image_file_3 = $file_name;
                     if($flag == false)
                         $item->image_file = $file_name;
                     $flag = true;
-                    $image_record->save();
                 }
                 if ($request->hasFile('image_4')) {
                     $file_name = strval($item_id) . strval(time()) . strval(mt_rand(1,100)) . '.jpg';
                     Storage::put('images/' . $file_name,
                         file_get_contents($request->file('image_4')->getRealPath()));
-                    $image_record = New Image;
-                    $image_record->item_id = $item_id;
-                    $image_record->filename = $file_name;
+                    $item->image_file_4 = $file_name;
                     if($flag == false)
                         $item->image_file = $file_name;
                     $flag = true;
-                    $image_record->save();
+                    
+                }
+                if(flag == false)
+                {
+                     echo "<script type='text/javascript'>alert('please add picture!')</script>";
+                     return 0;
                 }
                 if ($item->save()){
                         echo "<script type='text/javascript'>alert('your item is successfully uploaded!')</script>";
