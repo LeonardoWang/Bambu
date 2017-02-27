@@ -277,11 +277,4 @@ class UsersController extends Controller
         ));
     }
 
-    public function ImagePath($id)
-    {
-        response()->json(array(
-            'chat_room_array' => $chatroom,
-            'notif' => $notif
-        ));
-    }
 }
