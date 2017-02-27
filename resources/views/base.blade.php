@@ -91,7 +91,7 @@
                 </div>
             </ul>
             @else
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
                 <li>
                     <a href="/login" >Sign In</a>
                 </li>
@@ -128,4 +128,8 @@
 <script src='/js/intense.js'></script>
 <script src="/js/chat.js"></script>
 <script src="/js/basic.js"></script>
+<script>
+$('li.dropdown').mouseover(function() { 
+    $(this).addClass('open');}); 
+    </script>
 </html>

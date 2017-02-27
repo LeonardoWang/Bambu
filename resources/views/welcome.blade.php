@@ -91,7 +91,7 @@
                 </div>
             </ul>
             @else
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
                 <li>
                     <a href="/login" >Sign In</a>
                 </li>
