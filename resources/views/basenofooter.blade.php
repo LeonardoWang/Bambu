@@ -112,6 +112,11 @@
     </div>
 </div>
 
+<div id="chatroom" style="position:absolute;bottom:10px;">
+    <!--chatroom added here-->
+    <div id="chatroom_user"></div>
+</div>
+
 </body>
 <script>
 $('li.dropdown').mouseover(function() { 

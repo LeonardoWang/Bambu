@@ -216,6 +216,18 @@ function enterToSubmit(thisTextArea,e){
 
 function chatroom(){
     var user_id = $("#user_id").val();
+
+　/*    $.ajax({
+            type:"get",
+            url:'/api/user/images/'+user_id,
+            data:{},
+            async:false,
+
+            success:function(data){
+
+            };
+    });
+*/
     $.ajax({
             type:"get",
             url:'/api/chat_room/MyChatroom',

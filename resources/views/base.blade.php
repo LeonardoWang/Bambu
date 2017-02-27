@@ -116,9 +116,10 @@
     @if (isset($user) > 0)
     <input type="hidden" id="userName" value="{{$user->name}}">
     <input type="hidden" id="user_id" value="{{$user->id}}">
-    <div id="chatroom" style="position:absolute;bottom:10px;background-color:transparent;">
+    <div id="chatroom" style="position:absolute;bottom:10px;">
         <!--chatroom added here-->
-    </div>
+        <div id="chatroom_user"></div>
+     </div>
     @endif
     <p style="color:#7f8c8d;font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
     <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">Homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
