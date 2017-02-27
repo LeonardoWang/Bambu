@@ -155,7 +155,7 @@ function createChatRoom(user_remote_id){
                     console.log(data);
                     chat_room_id = data.chat_room_id;
 
-                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_'+user_remote_id+'" style="position:absolute;bottom:20px;width:600px;left:'+ (document.body.clientWidth-692) +'px"><div class="thumbnail" style="background:#f2f2f2;border:0px;margin-bottom:0px;height:350px; overflow-y:auto;"><p style="text-align:left;font-size:12px;padding-top:18px;margin-bottom:0px;">chat history with '+user_remote_name+'</p><button onclick="toggleChat('+user_remote_id+')" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">CLOSE</button><button onclick="clearChatHistory(this)" class="btn btn-xs bambu-color1" style="position:absolute;bottom:50px;right:0px;z-index:1000">CLEAR</button><div class="col-md-3 col-sm-3 col-xs-3 caption" id="dialog_userid_'+user_remote_id+'"></div> <div class="col-md-9 col-sm-3 col-xs-3 caption" id="dialog_message_'+user_remote_id+'"></div></div> <textarea class="thumbnail form-control-1" id="dialog_sendtext_'+user_remote_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)" style="width:600px;"></textarea>      <input id="'+user_remote_id+'" style="position:absolute;width:60px;bottom:10px;right:0px;z-index:1000" onclick="onSubmit('+user_remote_id+')" class="btn btn-xs" value="SEND" /></div>';
+                    document.getElementById("chatroom_user").innerHTML='<div id="chatroom_'+user_remote_id+'" style="position:absolute;bottom:20px;width:600px;left:'+ (document.body.clientWidth-692) +'px"><div class="thumbnail" style="background:#f2f2f2;border:0px;margin-bottom:0px;height:350px; overflow-y:auto;"><p style="text-align:left;font-size:12px;padding-top:18px;margin-bottom:0px;">chat history with '+user_remote_name+'</p><button onclick="toggleChat('+user_remote_id+')" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">CLOSE</button><button onclick="clearChatHistory(this)" class="btn btn-xs bambu-color1" style="position:absolute;bottom:50px;right:0px;z-index:1000">CLEAR</button><div class="col-md-3 col-sm-3 col-xs-3 caption" id="dialog_userid_'+user_remote_id+'"></div> <div class="col-md-9 col-sm-3 col-xs-3 caption" id="dialog_message_'+user_remote_id+'"></div></div> <textarea class="thumbnail form-control-1" id="dialog_sendtext_'+user_remote_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)" style="width:600px;"></textarea>      <input id="'+user_remote_id+'" style="position:absolute;width:60px;bottom:10px;right:0px;z-index:1000" onclick="onSubmit('+user_remote_id+')" class="btn btn-xs" value="SEND" /></div>';
 
                     //show the last 15 messages
                     for(i = data.message.length - 16; i < data.message.length; i++)
@@ -216,6 +216,18 @@ function enterToSubmit(thisTextArea,e){
 
 function chatroom(){
     var user_id = $("#user_id").val();
+
+　/*    $.ajax({
+            type:"get",
+            url:'/api/user/images/'+user_id,
+            data:{},
+            async:false,
+
+            success:function(data){
+
+            };
+    });
+*/
     $.ajax({
             type:"get",
             url:'/api/chat_room/MyChatroom',
@@ -254,7 +266,7 @@ function chatroom(){
                                 console.log(textStatus); // paser error;
                             }
                         });
-                        document.getElementById("chatroom_left").innerHTML+='<a onclick="createChatRoom('+user_remote_id+')">' + user_remote_name +'</a>';
+                        document.getElementById("chatroom_left").innerHTML+='<a onclick="createChatRoom('+user_remote_id+')">' + user_remote_name +'</a><br>';
                     }
                 }
                 if(data.chat_room_array[0].user_sell_id !== data.chat_room_array[0].user_buy_id) 
