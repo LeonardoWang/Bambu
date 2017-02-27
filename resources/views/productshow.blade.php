@@ -115,7 +115,7 @@ product show page
             <hr style="margin-top:-30px;">
                 @else
                 <div style="padding-top:50px;">
-                <form method="POST" action="product/addProduct" class="form-horizontal" enctype="multipart/form-data" role="form">
+                <form method="POST" action="/api/items/{{$product->id}}" class="form-horizontal" enctype="multipart/form-data" role="form">
                 {!! csrf_field() !!}
                 <fieldset>
                     <!-- Text input-->
