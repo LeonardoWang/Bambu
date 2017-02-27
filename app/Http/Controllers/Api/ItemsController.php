@@ -87,20 +87,15 @@ class ItemsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'number' => 'required',
-            'user_id' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-            'status' => 'required'
+            'price' => 'required|numeric',
+            'description' => 'required|min:5',
         ]);
 
         $item = Item::find($id);
         $item->title = $request->input('title');
-        $item->number = $request->input('number');
-        $item->user_id = $request->input('user_id');
         $item->price = $request->input('price');
         $item->description = $request->input('description');
-        $item->status = $request->input('status');
+        $item->category = $request->input('category');
 
         if ($item->save()) {
             return 1;
