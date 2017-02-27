@@ -67,59 +67,41 @@
                     </div>
                 </li>
             </ul>
-                @if (isset($user) > 0)
-
-
-               <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/bell.svg'></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                     Trade Requests
-                                </li>
-                                <li>
-                                     <a onclick="chatroom()">Chat Center</a>
-                                </li>
-                                <!--<li>
-                                     <a href="/api/chat_room/MyChatroom">Chat history</a>
-                                </li>-->
-                                <li class="divider">
-                                </li>
-                                <li>
-                                     <a href="mailto:brucewayne@pku.edu.cn">Contact Us</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <div class="user">
-                        <p class="user-name">{{$user->name}}<span class="user-menu"></span></p>
+            @if (isset($user) > 0)
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a onclick="chatroom()" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/bell.svg'></a>
+                    <!--<ul class="dropdown-menu dropdown-menu-style">
+                        <a href="/api/chat_room/MyChatroom"><li class="dropdown-menu-li"><p style="font-size:16px;padding:10px;">CHATROOM</p></li></a>
+                    </ul>-->
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
+                <div class="user">
+                    <p class="user-name">{{$user->name}}<span class="user-menu"></span></p>
                     <div class="user-nav">
                         <ul style="padding-left:0px; top:0px;">
-                            <a href ="/api/product"><li style="color:#7f8c8d;">Post Item<span class="user-nav-settings"></span></li></a>
+                            <a href ="/api/product"><li style="color:#7f8c8d;">Post Item<span></span></li></a>
                             <a href="/api/users_information"><li style="color:#7f8c8d;">Personal Info<span class="user-nav-settings"></span></li></a>
                             <a href="/api/product/myProduct"><li style="color:#7f8c8d;">My Items<span class="user-nav-stats"></span></li></a>
-                            <a href="/api/trade_requests/my"><li style="color:#7f8c8d;">Messages<span class="user-nav-messages"></span></li></a>
+                            <a href="/api/trade_requests/my"><li style="color:#7f8c8d;">Trade Requests<span class="user-nav-messages"></span></li></a>
                             <a href="/logout"><li style="color:#7f8c8d;">Sign Out<span class="user-nav-signout"></span></li></a>
                         </ul>
                     </div>
-                    </div>
-                </ul>
-                    @endif
-                <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
+                </div>
+            </ul>
+            @else
+            <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
                 <li>
-                @if (!isset($user))
                     <a href="/login" >Sign In</a>
                 </li>
                 <li>
                     <a href="/register" >Register</a>
-                @endif
                 </li>
-                
                 <!--<li><a href="#aboutUs">About us</a></li>-->
+            </ul>
+            @endif
                 
-               </ul>
-               
             </div><!-- /.navbar-collapse -->
         </nav><!-- /navbar -->
     </div>
@@ -198,7 +180,7 @@
         <!--chatroom added here-->
     </div>
     @endif
-    <p style="font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
+    <p style="color:#7f8c8d;font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
     <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">Homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:support@thebambu.com">contact us</a></p>
 </footer>
 
@@ -210,7 +192,7 @@
     </div>
 
     <footer class="footer navbar-fixed-bottom" id = "aboutUs">
-     <p style="text-align:center;font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
+     <p style="color:#7f8c8d;text-align:center;font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
         <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">Homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:support@thebambu.com">contact us</a></p>
 </footer>
 @endif
@@ -219,6 +201,10 @@
 
 <script src="/js/chat.js"></script>
 <script src="/js/basic.js"></script>
+<script>
+$('li.dropdown').mouseover(function() { 
+    $(this).addClass('open');}); 
+    </script>
 </html>
 
 

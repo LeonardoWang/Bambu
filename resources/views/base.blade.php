@@ -67,65 +67,45 @@
                     </div>
                 </li>
             </ul>
-                @if (isset($user) > 0)
-               <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/bell.svg'></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                     <a href="/api/trade_requests/my">Trade Requests</a>
-                                </li>
-                                <li>
-                                     <a onclick="chatroom()">Chat Center</a>
-                                </li>
-                                <!--<li>
-                                     <a href="/api/chat_room/MyChatroom">Chat history</a>
-                                </li>-->
-                                <li class="divider">
-                                </li>
-                                <li>
-                                     <a href="mailto:brucewayne@pku.edu.cn">Contact Us</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="/api/users_information" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" class="dropdown-toggle" data-toggle="dropdown">{{$user->name}}<img id="personal-card" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/personal-card.svg'></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="/api/product/myProduct">My Items</a>
-                                </li>
-                                <li>
-                                     <a href="/api/users_information">Personal Info</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                     <a href="/logout" >Sign Out</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    @endif
-                <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
+            @if (isset($user) > 0)
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a onclick="chatroom()" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/bell.svg'></a>
+                    <!--<ul class="dropdown-menu dropdown-menu-style">
+                        <a href="/api/chat_room/MyChatroom"><li class="dropdown-menu-li"><p style="font-size:16px;padding:10px;">CHATROOM</p></li></a>
+                    </ul>-->
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
+                <div class="user">
+                    <p class="user-name">{{$user->name}}<span class="user-menu"></span></p>
+                    <div class="user-nav">
+                        <ul style="padding-left:0px; top:0px;">
+                            <a href ="/api/product"><li style="color:#7f8c8d;">Post Item<span></span></li></a>
+                            <a href="/api/users_information"><li style="color:#7f8c8d;">Personal Info<span class="user-nav-settings"></span></li></a>
+                            <a href="/api/product/myProduct"><li style="color:#7f8c8d;">My Items<span class="user-nav-stats"></span></li></a>
+                            <a href="/api/trade_requests/my"><li style="color:#7f8c8d;">Trade Requests<span class="user-nav-messages"></span></li></a>
+                            <a href="/logout"><li style="color:#7f8c8d;">Sign Out<span class="user-nav-signout"></span></li></a>
+                        </ul>
+                    </div>
+                </div>
+            </ul>
+            @else
+            <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
                 <li>
-                @if (isset($user) > 0)
-                    <a href ="/api/product">Post Item</a>
-                @else
                     <a href="/login" >Sign In</a>
                 </li>
                 <li>
                     <a href="/register" >Register</a>
-                @endif
                 </li>
-                
                 <!--<li><a href="#aboutUs">About us</a></li>-->
+            </ul>
+            @endif
                 
-               </ul>
-               
             </div><!-- /.navbar-collapse -->
         </nav><!-- /navbar -->
     </div>
+    
 <div class="container" style="width:100%;min-height:100%;">
     <div class="row" style="width:100%;margin:0px auto 60px auto; padding:auto;">
         @yield('content')
@@ -140,7 +120,7 @@
         <!--chatroom added here-->
     </div>
     @endif
-    <p style="font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
+    <p style="color:#7f8c8d;font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
     <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">Homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
 </footer>
 
@@ -148,4 +128,8 @@
 <script src='/js/intense.js'></script>
 <script src="/js/chat.js"></script>
 <script src="/js/basic.js"></script>
+<script>
+$('li.dropdown').mouseover(function() { 
+    $(this).addClass('open');}); 
+    </script>
 </html>

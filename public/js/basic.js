@@ -87,19 +87,21 @@ function deleteComment(id){
 
 function preview(file,num)
 {  
-    var prevDiv = document.getElementById('preview'+num);  
+    var prevDiv = document.getElementById('preview'+num);
     if (file.files && file.files[0])  
     {  
         var reader = new FileReader();  
         reader.onload = function(evt){  
-        prevDiv.innerHTML = '<img style="max-width:50px;" src="' + evt.target.result + '" />';  
-    }    
-    reader.readAsDataURL(file.files[0]);  
+            $("#preview"+num).css("z-index","1000");
+            prevDiv.innerHTML = '<img style="max-height:80px;max-width:80px;" src="' + evt.target.result + '" />';  
+        }    
+        reader.readAsDataURL(file.files[0]);  
     }  
     else
     {  
-    prevDiv.innerHTML = '<div class="img" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + file.value + '\'"></div>';  
-} 
+        $("#preview"+num).css("z-index","1000");
+        prevDiv.innerHTML = '<div class="img" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + file.value + '\'"></div>';  
+    } 
 }  
 
 function changeImg(num,address){
