@@ -103,6 +103,7 @@ function clearChatHistory(btn){
 }
 
 function createChatRoom(user_remote_id){
+    var user_id = $("#user_id").val();
     var user_remote_name;
     var chat_room_id;
     var userName = $("#userName").val();
@@ -190,11 +191,34 @@ function createChatRoom(user_remote_id){
             console.log(dd);
             if(dd.message !== null || '')
             {
-                document.getElementById("dialog_userid_" + dd.user_id).innerHTML+=user_remote_name + "<br>";
+                //document.getElementById("dialog_userid_" + dd.user_id).innerHTML+=user_remote_name + "<br>";
+                document.getElementById("dialog_userid_" + dd.user_id).innerHTML+="<img id='user_profile_"+dd.user_id+"'>"+ "<br>";
                 document.getElementById("dialog_message_" + dd.user_id).innerHTML+=dd.message + "<br>";
             }
      });
     }
+
+    $.ajax({
+            type:"get",
+            url:'/api/user/images/'+user_id,
+            data:{},
+            async:false,
+
+            success:function(data){
+                document.getElementById("user_profile_"+user_id).src=data.image_path;
+            };
+    });
+
+    $.ajax({
+            type:"get",
+            url:'/api/user/images/'+user_remote_id,
+            data:{},
+            async:false,
+
+            success:function(data){
+                document.getElementById("user_profile_"+user_remote_id).src=data.image_path;
+            };
+    });
 }
 
 function enterToSubmit(thisTextArea,e){
@@ -217,17 +241,6 @@ function enterToSubmit(thisTextArea,e){
 function chatroom(){
     var user_id = $("#user_id").val();
 
-　/*    $.ajax({
-            type:"get",
-            url:'/api/user/images/'+user_id,
-            data:{},
-            async:false,
-
-            success:function(data){
-
-            };
-    });
-*/
     $.ajax({
             type:"get",
             url:'/api/chat_room/MyChatroom',
