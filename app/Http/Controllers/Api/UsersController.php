@@ -128,11 +128,11 @@ class UsersController extends Controller
         $messages = $validator->messages();
 
         //smscode verification
-        /*if($request->input('smscode')!=$request->input('verismscode'))
+        if($request->input('smscode')!=$request->input('verismscode'))
         {
             $messages="Incorrect smscode!";
             return back()->withErrors($messages);
-        }*/
+        }
 
         //password verification
         if($request->input('password')!=$request->input('password_confirmation'))
@@ -152,7 +152,7 @@ class UsersController extends Controller
             $userinformation->user_id = $user->id;
             $userinformation->sex ='unknown';
             $userinformation->city ='Beijing';
-            $userinformation->address ='unknown';
+            //$userinformation->address ='';
             $userinformation->user_image = '/img/default_user_profile.jpg';
             $userinformation->save();
             Auth::login($user);
@@ -209,7 +209,7 @@ class UsersController extends Controller
             }
             $user->name = $request->input('name');// user name is changed
             $user->save();
-            echo "<script type='text/javascript'>alert('name changed successfully!')</script>";
+            //echo "<script type='text/javascript'>alert('name changed successfully!')</script>";
         }
             
         $userinformation = UserInformation::where('user_id',$user->id)->first();
@@ -265,13 +265,13 @@ class UsersController extends Controller
     {
         $user = Auth::user();
         $user_information = UserInformation::where('user_id',$user->id)->first();
-        return view('myprofile',compact('user','user_information'));//view('user_information')->with('user_information',$user_information);
+        return view('myprofile',compact('user','user_information'));
     }
     public function otheruserInformationPage($id)
     {
         $user = Auth::user();
         $user_information = UserInformation::find('user_id',$id)->first();
-        return view('profile',compact('user','user_information'));//view('user_information')->with('user_information',$user_information);
+        return view('profile',compact('user','user_information'));
     }
 
     public function showImage($id)

@@ -51,7 +51,7 @@ item uploading page
                         <div class="col-md-2 col-md-offset-2 upload-button">
                             <span>
                                 <div class="upload"></div>
-                                <p class="upload-text">CHOOSE FILE</p>
+                                <p id="p_1" class="upload-text">CHOOSE FILE</p>
                                 <input id="file_upload_1" name="image_1" class="fileupload col-md-12" type="file" onchange="preview(this,1)">
                                 <div id="preview1" style="left:0; right:0; top:0; bottom:0;margin:auto;position:absolute; z-index:-1;"></div>
                             </span>
@@ -59,7 +59,7 @@ item uploading page
                         <div class="col-md-2 upload-button">
                             <span>
                                 <div class="upload"></div>
-                                <p class="upload-text">CHOOSE FILE</p>
+                                <p id="p_2" class="upload-text">CHOOSE FILE</p>
                                 <input id="file_upload_2" name="image_2" class="fileupload col-md-12" type="file" onchange="preview(this,2)">
                                 <div id="preview2" style="left:0; right:0; top:0; bottom:0;margin:auto;position:absolute; z-index:-1;"></div>
                             </span>
@@ -67,7 +67,7 @@ item uploading page
                         <div class="col-md-2 upload-button">
                             <span>
                                 <div class="upload"></div>
-                                <p class="upload-text">CHOOSE FILE</p>
+                                <p id="p_3" class="upload-text">CHOOSE FILE</p>
                                 <input id="file_upload_3" name="image_3" class="fileupload col-md-12" type="file" onchange="preview(this,3)">
                                 <div id="preview3" style="left:0; right:0; top:0; bottom:0;margin:auto;position:absolute; z-index:-1;"></div>
                             </span>
@@ -75,7 +75,7 @@ item uploading page
                         <div class="col-md-2 upload-button">
                             <span>
                                 <div class="upload"></div>
-                                <p class="upload-text">CHOOSE FILE</p>
+                                <p id="p_4" class="upload-text">CHOOSE FILE</p>
                                 <input id="file_upload_4" name="image_4" class="fileupload col-md-12" type="file" onchange="preview(this,4)">
                                 <div id="preview4" style="left:0; right:0; top:0; bottom:0;margin:auto;position:absolute; z-index:-1;"></div>
                             </span>

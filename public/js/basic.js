@@ -96,11 +96,13 @@ function preview(file,num)
             prevDiv.innerHTML = '<img style="max-height:80px;max-width:80px;" src="' + evt.target.result + '" />';  
         }    
         reader.readAsDataURL(file.files[0]);  
+        $('#p_'+num).empty();
     }  
     else
     {  
         $("#preview"+num).css("z-index","1000");
         prevDiv.innerHTML = '<div class="img" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + file.value + '\'"></div>';  
+        $('#p_'+num).empty();
     } 
 }  
 
