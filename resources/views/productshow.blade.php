@@ -128,13 +128,13 @@ product show page
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="textarea">Description</label>
                         <div class="col-md-9">
-                            <textarea id="description" name="description" class="form-control" required="required">{{$product->description}}</textarea>
+                            <textarea id="description" name="description" class="form-control" required="required" value="{{$product->description}}">{{$product->description}}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="price">Price</label>
                         <div class="col-md-9">
-                            <input id="price" name="price" type="text" value="￥ {{$product->price}}" class="form-control input-md" required="required">
+                            <input id="price" name="price" type="text" value="{{$product->price}}" class="form-control input-md" required="required">
                         </div>
                     </div>
                     <!-- amount
