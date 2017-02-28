@@ -203,7 +203,7 @@ class UsersController extends Controller
             if(!isset($tmp_usr))
             {
                 $user = Auth::user();
-                $user_information = UserInformation::find($user->id);
+                $user_information = UserInformation::where('user_id',$user->id)->first();
                 echo "<script type='text/javascript'>alert('this name is occupied by other!')</script>";
                 return view('myprofile',compact('user','user_information'));// tel is used by other
             }
@@ -212,7 +212,7 @@ class UsersController extends Controller
             echo "<script type='text/javascript'>alert('name changed successfully!')</script>";
         }
             
-        $userinformation = UserInformation::find($user->id);
+        $userinformation = UserInformation::where('user_id',$user->id)->first();
         $userinformation->sex = $request->input('sex');
         $userinformation->city = $request->input('city');
         $userinformation->address = $request->input('address');
@@ -226,13 +226,13 @@ class UsersController extends Controller
             $userinformation->user_image = 'profile/'.$file_name;
             $userinformation->save();
             echo "<script type='text/javascript'>alert('save with picture!')</script>";
-            $user_information = UserInformation::find($user->id);
+            $user_information = UserInformation::where('user_id',$user->id)->first();
             return view('myprofile',compact('user','user_information'));
         }
         else{
             $userinformation->save();
             echo "<script type='text/javascript'>alert('profile successfully update. Saved without picture.')</script>";
-            $user_information = UserInformation::find($user->id);
+            $user_information = UserInformation::where('user_id',$user->id)->first();
             return view('myprofile',compact('user','user_information'));
         }
     }
@@ -240,7 +240,7 @@ class UsersController extends Controller
     public function userImageUpdate(Request $request)
     {
         $user = Auth::user();
-        $userinformation = UserInformation::find($user->id);
+        $userinformation = UserInformation::where('user_id',$user->id)->first();
         if ($request->hasFile('image')) {
             if(!empty($userinformation->user_image)){
                 Storage::delete('images/profile/'.$userinformation->user_image);
@@ -251,26 +251,26 @@ class UsersController extends Controller
             $userinformation->user_image = 'profile/'.$file_name;
             $userinformation->save();
             echo "<script type='text/javascript'>alert('save with picture!')</script>";
-            $user_information = UserInformation::find($user->id);
+            $user_information = UserInformation::where('user_id',$user->id)->first();
             return view('myprofile',compact('user','user_information'));
         }
         else{
             $userinformation->save();
             echo "<script type='text/javascript'>alert('profile successfully update. Saved without picture.')</script>";
-            $user_information = UserInformation::find($user->id);
+            $user_information = UserInformation::where('user_id',$user->id)->first();
             return view('myprofile',compact('user','user_information'));
         }
     }
     public function userInformationPage()
     {
         $user = Auth::user();
-        $user_information = UserInformation::find($user->id);
+        $user_information = UserInformation::where('user_id',$user->id)->first();
         return view('myprofile',compact('user','user_information'));//view('user_information')->with('user_information',$user_information);
     }
     public function otheruserInformationPage($id)
     {
         $user = Auth::user();
-        $user_information = UserInformation::find($id);
+        $user_information = UserInformation::find('user_id',$id)->first();
         return view('profile',compact('user','user_information'));//view('user_information')->with('user_information',$user_information);
     }
 
@@ -280,9 +280,9 @@ class UsersController extends Controller
         $file = $user_information->user_image;
         $value;
         if($file == "/img/default_user_profile.jpg")
-            $value = "/img/default_user_profile.jpg";
+            $value = "http://bambu.localhost/img/default_user_profile.jpg";
         else
-            $value =  "api/product/images/".$file;  
+            $value =  "http://bambu.localhost/api/product/images/".$file;  
         return response()->json(array(
             'image_path' => $value
         ));

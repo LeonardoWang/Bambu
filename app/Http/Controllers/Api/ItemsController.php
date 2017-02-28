@@ -85,20 +85,21 @@ class ItemsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
+
+        $validator = Validator::make($request->all(), [
             'title' => 'required',
             'price' => 'required|numeric',
             'description' => 'required|min:5',
         ]);
-
+        if ($validator->fails())
+            return back()->withErrors($validator->messages());
         $item = Item::find($id);
         $item->title = $request->input('title');
         $item->price = $request->input('price');
         $item->description = $request->input('description');
         $item->category = $request->input('category');
-
         if ($item->save()) {
-            return 1;
+            return back();
         } else {
             return 0;
         }
@@ -259,7 +260,7 @@ class ItemsController extends Controller
                 if($flag == 1)
                 {
                      echo "<script type='text/javascript'>alert('please add picture!')</script>";
-                     return 0;
+                     return back();
                 }
                 if ($item->save()){
                         echo "<script type='text/javascript'>alert('your item is successfully uploaded!')</script>";
@@ -268,7 +269,7 @@ class ItemsController extends Controller
                         return view('welcome',compact('user','products'));
                     }else {
                         echo "<script type='text/javascript'>alert('There's something wrong! Please check your nerwork connection.')</script>";
-                        return 0;
+                        return back();
                     }
                 
             } 
