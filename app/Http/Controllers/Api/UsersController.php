@@ -96,6 +96,17 @@ class UsersController extends Controller
 
         
     }
+    public function forgetPassword()
+    {
+        return view('auth.password');
+    }
+
+    public function createPassword()
+    {
+        return view('auth.createpassword');
+    }
+
+
     public function logout()
     {
         if (Auth::check()) {

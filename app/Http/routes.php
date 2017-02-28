@@ -40,6 +40,8 @@ Route::controllers([
 Route::post('login', 'Api\UsersController@login');
 Route::get('logout','Api\UsersController@logout');
 Route::post('register', 'Api\UsersController@register');
+Route::get('forgetPassword','Api\UsersController@forgetPassword');
+
 Route::get('api/product/images/profile/{image_file}', 'Api\ImagesController@showProfile');
 Route::get('api/product/images/product/{image_file}', 'Api\ImagesController@showProduct');
 Route::get('api/user/images/{user_id}', 'Api\UsersController@showImage');
@@ -57,7 +59,8 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 	Route::post('userImage/{id}', 'Api\UsersController@userImageUpdate');
 	Route::get('users_information','Api\UsersController@userInformationPage');
 	Route::get('user/{id}/info', 'Api\UsersController@otherUserInformationPage');
-	
+	Route::get('createPassword','Api\UsersController@createPassword');
+
 	Route::get('product','Api\ItemsController@ProductIndex');
 	Route::post('product/addProduct','Api\ItemsController@ProductAdd');
 	Route::get('product/show','Api\ItemsController@ProductShow');
