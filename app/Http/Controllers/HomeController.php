@@ -83,12 +83,6 @@ class HomeController extends Controller
         ));
     }
 
-
-    public function test()
-    {
-        return view('test');
-    }
-
     public function userName($id)
     {
         $user = User::Where('id',$id)->first();
