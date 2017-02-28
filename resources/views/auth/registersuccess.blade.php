@@ -6,7 +6,7 @@
 		<img style="width:250px;" src="/img/thumb.png"></img><br><br>
 		Welcome to Bambu!
 	</h3>
-	<script type="text/javascript">setTimeout('go()',3000); 
+	<script type="text/javascript">setTimeout('go()',2000); 
 	function go(){
 	window.location.href='/';
 	}
