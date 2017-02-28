@@ -109,7 +109,7 @@
 @if (isset($products) > 0)
     <div class="container">
         <div class="row" style="width:100%;margin:58px auto 60px auto; padding:auto;">
-            <div class="col-md-2 card card-2" style="text-align:left;background-color:white;border-radius:10px;padding-bottom:30px;">
+            <div class="col-md-2 card card-2" style="text-align:left;background-color:white;border-radius:10px;margin-bottom:30px;">
                 <h6 style="font-family:NexaBold;">Categories</h6>
                    <p><!--All Categories<br>-->
                    <a style="color:#34495e;" href="/items/CSearch/art/">Art & Music</a><br>

@@ -24,17 +24,17 @@ item uploading page
                 <fieldset>
                     <!-- Text input-->
                     <div class="form-group">
-                        <div class="col-md-8 col-md-offset-2" style="padding-left:0px;padding-right:0px;">
+                        <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2" style="padding-left:0px;padding-right:0px;">
                             <input id="name" name="title" type="text" placeholder="ITEM NAME" class="form-control input-md" required="required">
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-8 col-md-offset-2" style="padding-left:0px;padding-right:0px;">
+                        <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2" style="padding-left:0px;padding-right:0px;">
                             <textarea id="description" name="description" placeholder="ITEM DESCRIPTION" class="form-control" required="required"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-8 col-md-offset-2" style="padding-left:0px;padding-right:0px;">
+                        <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2" style="padding-left:0px;padding-right:0px;">
                             <input id="price" name="price" type="text" placeholder="PRICE" class="form-control input-md" required="required">
                         </div>
                     </div>
@@ -48,7 +48,7 @@ item uploading page
                     </div>
                     -->
                     <div class="form-group">
-                        <div class="col-md-2 col-md-offset-2 upload-button">
+                        <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 col-xs-2 col-xs-offset-2 upload-button">
                             <span>
                                 <div class="upload"></div>
                                 <p id="p_1" class="upload-text">CHOOSE FILE</p>
@@ -56,7 +56,7 @@ item uploading page
                                 <div id="preview1" style="left:0; right:0; top:0; bottom:0;margin:auto;position:absolute; z-index:-1;"></div>
                             </span>
                         </div>
-                        <div class="col-md-2 upload-button">
+                        <div class="col-md-2 col-sm-2 col-xs-2 upload-button">
                             <span>
                                 <div class="upload"></div>
                                 <p id="p_2" class="upload-text">CHOOSE FILE</p>
@@ -64,7 +64,7 @@ item uploading page
                                 <div id="preview2" style="left:0; right:0; top:0; bottom:0;margin:auto;position:absolute; z-index:-1;"></div>
                             </span>
                         </div>
-                        <div class="col-md-2 upload-button">
+                        <div class="col-md-2 col-sm-2 col-xs-2 upload-button">
                             <span>
                                 <div class="upload"></div>
                                 <p id="p_3" class="upload-text">CHOOSE FILE</p>
@@ -72,7 +72,7 @@ item uploading page
                                 <div id="preview3" style="left:0; right:0; top:0; bottom:0;margin:auto;position:absolute; z-index:-1;"></div>
                             </span>
                         </div>
-                        <div class="col-md-2 upload-button">
+                        <div class="col-md-2 col-sm-2 col-xs-2 upload-button">
                             <span>
                                 <div class="upload"></div>
                                 <p id="p_4" class="upload-text">CHOOSE FILE</p>
@@ -82,7 +82,7 @@ item uploading page
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-8 col-md-offset-2" style="padding-left:0px;padding-right:0px;">
+                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2" style="padding-left:0px;padding-right:0px;">
                             <select id="category" name="category" class="form-control input-md" required="required">
                                 <option value="art">Art & Music</option>
                                 <option value="beauty">Beauty, Health & Geocery</option>
@@ -97,7 +97,7 @@ item uploading page
                     </div>
 
                     <div class="form-group">
-                        <button id="submit" name="submit" class="col-md-8 col-md-offset-2 btn bambu-color1">CONFIRM</button>
+                        <button id="submit" name="submit" class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 btn bambu-color1">CONFIRM</button>
                     </div>
 
                 </fieldset>
