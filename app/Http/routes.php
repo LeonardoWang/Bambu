@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -13,23 +13,10 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
-Route::get('/test', 'HomeController@test');
 
 Route::get('/register','HomeController@register');
 Route::get('/smscode','HomeController@sendSMS');
-
 Route::get('/login', 'HomeController@login');
-Route::get('/test',"HomeController@test");
-
-Route::get('/notifEvent', function(){
-    Event::fire(new \App\Events\NotifEvent(1));
-    return "hello world";
-});
-
-Route::get('/event', function(){
-    Event::fire(new \App\Events\SomeEvent(2,1,"22132132"));
-    return "hello world";
-});
 
 Route::get('/user_name/{id}','HomeController@userName');
 Route::controllers([
@@ -40,7 +27,7 @@ Route::controllers([
 Route::post('login', 'Api\UsersController@login');
 Route::get('logout','Api\UsersController@logout');
 Route::post('register', 'Api\UsersController@register');
-Route::get('forgetPassword','Api\UsersController@forgetPassword');
+Route::get('createpassword','Api\UsersController@createPassword');
 
 Route::get('api/product/images/profile/{image_file}', 'Api\ImagesController@showProfile');
 Route::get('api/product/images/product/{image_file}', 'Api\ImagesController@showProduct');
@@ -76,13 +63,9 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 	Route::get('trade_requests/{id}','Api\TradeRequestsController@doRequest');
 	
 	Route::post('trade_request_making','Api\TradeRequestsController@postRequest');
+	
 	//Route::resource('trade_requests', 'Api\TradeRequestsController', ['only' => ['index', 'store', 'show']]);
-	
-	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	//Route::post('trade_requests/{id}', 'Api\TradeRequestsController@update');
-	//Route::get('trade_requests/doRequest', 'Api\TradeRequestsController@doRequest');
-	
-	//Route::get('trade_requests/{id}/delete', 'Api\TradeRequestsController@destroy');
 
 	Route::get('chat_room','Api\ChatController@Chatroom');
 	Route::get('chat_room/MyChatroom','Api\ChatController@MyChatroom');

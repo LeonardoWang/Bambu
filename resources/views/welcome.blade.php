@@ -127,7 +127,7 @@
             <!--foreach (products as product)-->
                 @if ($i < 12)
                     <!--{{$product=$products[$i]}}-->
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3" align="center">
+                    <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3" align="center">
                         <div class="card card-1">
                         <a href="/api/trade_requests/{{$product->id}}">
                             <img src="/api/product/images/{{$product->image_file}}" class="img-responsive" style="max-height:350px;border-radius:8px;">

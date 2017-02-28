@@ -28,7 +28,9 @@ myprofile page
                                         </div>
                                     </div>
                                     <h6 style="color:black;">{{$user->name}}'s Profile</h6>
-                                    <hr>
+                                    <button type="button" onclick="javascript:window.location.href='/createpassword'" class="btn btn-xs col-md-4 col-md-offset-4">Change Password</button>
+                                    <br>
+                                    <hr style="margin-top:0px;">
                                     <div class="form-group">
                                         <div class="col-md-8 col-md-offset-2">
                                             <input id="name" name="name" type="text" value="{{$user->name}}" placeholder="Name" class="form-control input-md" required="">
