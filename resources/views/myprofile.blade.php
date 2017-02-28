@@ -23,8 +23,8 @@ myprofile page
                                         <div class="col-md-4 col-md-offset-4 upload-button">
                                             <div class="upload"></div>
                                             <p class="upload-text">CHOOSE FILE</p>
-                                            <input id="image" name="image" class="fileupload col-md-12" type="file">
-                                            <!--<button type="button" onclick="uploadProfilePicture()" class="btn btn-xs">upload your profile picture</button>-->
+                                            <input id="image" name="image" class="fileupload col-md-12" type="file" onchange="preview(this,1)">
+                                            <div id="preview1" style="left:0; right:0; top:0; bottom:0;margin:auto;position:absolute; z-index:-1;"></div>
                                         </div>
                                     </div>
                                     <h6 style="color:black;">{{$user->name}}'s Profile</h6>
