@@ -13,31 +13,31 @@ myprofile page
                     <fieldset>
                         <div class="row">
                             <div class="col-md-12">
-                                <div style="color:#9aa4af; max-height:650px; overflow-x:visible;">                                    
+                                <div style="color:#9aa4af; max-height:700px; overflow-x:visible;">         
                                     @if($user_information->user_image=="/img/default_user_profile.jpg")
-                                            <img style="width:100px;height:100px;margin-bottom:10px;" src="{{$user_information->user_image}}" class="img-circle"/>
-                                        @else
-                                            <img style="width:100px;height:100px;margin-bottom:10px;" src="/api/product/images/{{$user_information->user_image}}" class="img-circle"/>
-                                        @endif
+                                        <img style="width:100px;height:100px;margin-bottom:10px;" src="{{$user_information->user_image}}" class="img-circle"/>
+                                    @else
+                                        <img style="width:100px;height:100px;margin-bottom:10px;" src="/api/product/images/{{$user_information->user_image}}" class="img-circle"/>
+                                    @endif
                                     <div class="form-group">
-                                        <div class="col-md-4 col-md-offset-4 upload-button">
+                                        <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4 upload-button">
                                             <div class="upload"></div>
                                             <p id="p_1" class="upload-text">CHOOSE FILE</p>
-                                            <input id="image" name="image" class="fileupload col-md-12" type="file" onchange="preview(this,1)">
+                                            <input id="image" name="image" class="fileupload col-md-12 col-xs-12" type="file" onchange="preview(this,1)">
                                             <div id="preview1" style="left:0; right:0; top:0; bottom:0;margin:auto;position:absolute; z-index:-1;"></div>
                                         </div>
                                     </div>
                                     <h6 style="color:black;">{{$user->name}}'s Profile</h6>
-                                    <button type="button" onclick="javascript:window.location.href='/createpassword'" class="btn btn-xs col-md-4 col-md-offset-4">Change Password</button>
+                                    <button type="button" onclick="javascript:window.location.href='/createpassword'" class="btn btn-xs col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4">Change Password</button>
                                     <br>
                                     <hr style="margin-top:0px;">
                                     <div class="form-group">
-                                        <div class="col-md-8 col-md-offset-2">
+                                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
                                             <input id="name" name="name" type="text" value="{{$user->name}}" placeholder="Name" class="form-control input-md" required="">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-8 col-md-offset-2">
+                                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
                                             <select id="sex" name="sex" class="form-control input-md" required="required">
                                                 <option value="male" {{($user_information->sex=="male")?"selected=":""}}>Male</option>
                                                 <option value="female" {{($user_information->sex=="female")?"selected=":""}}>Female</option>
@@ -46,12 +46,12 @@ myprofile page
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-8 col-md-offset-2">
+                                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
                                             <input id="tel" name="tel" type="text" value="{{$user->tel}}" class="form-control input-md" readOnly="true" style="border-width:0px;color:black;">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-8 col-md-offset-2">
+                                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
                                             <!--<select id="city" name="city" class="form-control input-md" required="required">
                                                 <option value="Beijing" {{($user_information->city=="Beijing")?"selected=":""}}>Beijing</option>
                                                 <option value="Shanghai" {{($user_information->city=="Tianjin")?"selected=":""}}>Tianjin</option>
@@ -74,7 +74,7 @@ myprofile page
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-8 col-md-offset-2">
+                                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
                                             <input id="address" name="address" type="text" value="{{$user_information->address}}" placeholder="Address" class="form-control input-md">
                                         </div>
                                     </div>
