@@ -6,12 +6,7 @@
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
-							<strong>Wrong username or wrong password!</strong><br><a href = "/password/email" style="background-color:inherit;">Forgot your password?</a>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
+							<strong>Wrong username or wrong password!</strong><br>Don't have a Bambù account? <a class="ba" href = "/register" style="background-color:inherit;">Register here</a>
 						</div>
 					@endif
 
