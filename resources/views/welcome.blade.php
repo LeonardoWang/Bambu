@@ -112,15 +112,15 @@
         <div class="row" style="width:100%;margin:58px auto 60px auto; padding:auto;">
             <div class="col-md-2 card card-2" style="text-align:left;background-color:white;border-radius:10px;">
                 <h6 style="font-family:NexaBold;">Categories</h6>
-                    <!--<p>All Categories<br>-->
+                   <p><!--All Categories<br>-->
                    <a style="color:#34495e;" href="/items/CSearch/art/">Art & Music</a><br>
-                   <a style="color:#34495e;" href="/items/CSearch/beauty/">Beauty, Health & Geocery<br>
-                   <a style="color:#34495e;" href="/items/CSearch/book/">Book & Study<br>
-                   <a style="color:#34495e;" href="/items/CSearch/clothing/">Clothing & Fashion<br>
-                   <a style="color:#34495e;" href="/items/CSearch/computer/">Computer & Electronics<br>
-                   <a style="color:#34495e;" href="/items/CSearch/home/">Home, Garden & Tools<br>
-                   <a style="color:#34495e;" href="/items/CSearch/sports/">Sports & Outdoor<br>
-                   <a style="color:#34495e;" href="/items/CSearch/toys/">Toys & Kids<br>
+                   <a style="color:#34495e;" href="/items/CSearch/beauty/">Beauty, Health & Geocery</a><br>
+                   <a style="color:#34495e;" href="/items/CSearch/book/">Book & Study</a><br>
+                   <a style="color:#34495e;" href="/items/CSearch/clothing/">Clothing & Fashion</a><br>
+                   <a style="color:#34495e;" href="/items/CSearch/computer/">Computer & Electronics</a><br>
+                   <a style="color:#34495e;" href="/items/CSearch/home/">Home, Garden & Tools</a><br>
+                   <a style="color:#34495e;" href="/items/CSearch/sports/">Sports & Outdoor</a><br>
+                   <a style="color:#34495e;" href="/items/CSearch/toys/">Toys & Kids</a><br>
                    </p>               
             </div>
             <div class="col-md-10">

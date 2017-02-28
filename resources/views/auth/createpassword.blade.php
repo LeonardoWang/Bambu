@@ -1,9 +1,8 @@
 @extends('basenofooter')
 
 @section('content')
-		<div class="col-xs-12 col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
-			<div class="panel panel-default">
-				<div class="panel-heading">Reset Password</div>
+		<div class="col-xs-12 col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 card card-2">
+			<div style="font-family:NexaBold;font-size:32px;">Create New Password</div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
@@ -21,28 +20,25 @@
 						<input type="hidden" name="token" value="{{ $token }}">
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+							<div class="col-md-6 col-md-offset-3">
+								<input type="phone" class="form-control" name="phone" placeholder="Cell Phone Number">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
+							<div class="col-md-6 col-md-offset-3">
+								<input type="password" class="form-control" name="password" placeholder="Password">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
+							<div class="col-md-6 col-md-offset-3">
+								<input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
+							<div class="col-md-6 col-md-offset-3">
 								<button type="submit" class="btn btn-primary">
 									Reset Password
 								</button>
@@ -51,5 +47,4 @@
 					</form>
 				</div>
 			</div>
-		</div>
 @endsection

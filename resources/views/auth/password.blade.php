@@ -1,9 +1,8 @@
 @extends('basenofooter')
 
 @section('content')
-		<div class="col-xs-12 col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
-			<div class="panel panel-default">
-				<div class="panel-heading">Reset Password</div>
+		<div class="col-xs-12 col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 card card-2">
+			<div style="font-family:NexaBold;font-size:32px;">Forgot Password?</div>
 				<div class="panel-body">
 					@if (session('status'))
 						<div class="alert alert-success">
@@ -26,14 +25,13 @@
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+							<div class="col-md-6 col-md-offset-3">
+								<input type="email" class="form-control" name="email" placeholder="E-Mail Address" value="{{ old('email') }}">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
+							<div class="col-md-6 col-md-offset-3">
 								<button type="submit" class="btn btn-primary">
 									Send Password Reset Link
 								</button>
@@ -42,5 +40,4 @@
 					</form>
 				</div>
 			</div>
-		</div>
 @endsection
