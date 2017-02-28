@@ -12,8 +12,8 @@
         <meta name="viewport" content="width=100%, initial-scale=1.0, maximum-scale=1.0">
 
         <script src="/js/jquery-3.1.1.min.js"></script>
-        <script src="/js/sms.js"></script>
-        <script src="/js/basic.js"></script>
+        <script src="http://thebambu.com:6001/socket.io/socket.io.js"></script>
+
         <!-- Loading Bootstrap -->
         <link href="/Flat-UI-master/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -71,9 +71,9 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a onclick="chatroom()" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/bell.svg'></a>
-                    <ul class="dropdown-menu dropdown-menu-style">
+                    <!--<ul class="dropdown-menu dropdown-menu-style">
                         <a href="/api/chat_room/MyChatroom"><li class="dropdown-menu-li"><p style="font-size:16px;padding:10px;">CHATROOM</p></li></a>
-                    </ul>
+                    </ul>-->
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
@@ -118,6 +118,9 @@
 </div>
 
 </body>
+<script src="/js/sms.js"></script>
+<script src="/js/chat.js"></script>
+<script src="/js/basic.js"></script>
 <script>
 $('li.dropdown').mouseover(function() { 
     $(this).addClass('open');}); 
