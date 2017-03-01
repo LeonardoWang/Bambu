@@ -13,7 +13,7 @@ trade confirmation page
                         <div class="card card-1">
                             <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
                             <a href="/api/trade_requests/{{$product->id}}">
-                            <img src="images/{{$product->image_file}}" class="img-responsive" style="max-height:350px;border-radius:8px;">
+                            <img src="/images/{{$product->image_file}}" class="img-responsive" style="max-height:350px;border-radius:8px;">
                             </a>
                             <div class="caption">
                                 <div class="row">

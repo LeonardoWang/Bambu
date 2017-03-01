@@ -16,7 +16,7 @@ other's profile page
                                     @if(!strlen($user_information->user_image))
                                             <img style="width:100px;" src="/img/default_user_profile.jpg" class="img-circle"/>
                                         @else
-                                            <img style="width:100px;" src="{{$user_information->user_image}}" class="img-circle"/>
+                                            <img style="width:100px;" src="/images/{{$user_information->user_image}}" class="img-circle"/>
                                         @endif
                                     <h6>{{$user->name}}'s Profile</h6>
                                     <hr>

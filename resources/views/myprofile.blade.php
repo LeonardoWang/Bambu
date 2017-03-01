@@ -14,7 +14,7 @@ myprofile page
                         <div class="row">
                             <div class="col-md-12">
                                 <div style="color:#9aa4af; max-height:700px; overflow-x:visible;">         
-                                    <img style="width:100px;height:100px;margin-bottom:10px;" src="{{$user_information->user_image}}" class="img-circle"/>
+                                    <img style="width:100px;height:100px;margin-bottom:10px;" src="/images/{{$user_information->user_image}}" class="img-circle"/>
                                     <div class="form-group">
                                         <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4 upload-button">
                                             <div class="upload"></div>

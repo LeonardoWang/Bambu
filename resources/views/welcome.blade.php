@@ -55,7 +55,7 @@
                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3" align="center">
                         <div class="card card-1">
                         <a href="/api/trade_requests/{{$product->id}}">
-                            <img src="images/{{$product->image_file}}" class="img-responsive" style="max-height:350px;border-radius:8px;">
+                            <img src="/images/{{$product->image_file}}" class="img-responsive" style="max-height:350px;border-radius:8px;">
                         <div class="caption" style="padding-top:0px;">
                             <div class="row">
                                 <div class="col-md-12">

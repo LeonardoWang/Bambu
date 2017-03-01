@@ -107,8 +107,8 @@ function preview(file,num)
 }  
 
 function changeImg(num,address){
-    $("#imgdiv").attr({'data-image':'images/'+address}); 
-    document.getElementById('img').src='images/'+address;
+    $("#imgdiv").attr({'data-image':'/images/'+address}); 
+    document.getElementById('img').src='/images/'+address;
     $("#li1").css("background", "#dfe2e5");
     $("#li2").css("background", "#dfe2e5"); 
     $("#li3").css("background", "#dfe2e5"); 

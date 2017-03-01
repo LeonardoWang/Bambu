@@ -13,7 +13,7 @@ myrequest page
                         
                             <div class="col-lg-1 col-md-2 col-sm-2 col-xs-2">
                                 <a href="/api/user/{{$comment->user_id}}/info/">
-                                    <img class="img-circle" src="{{$comment->user_image}}" style="width:60px;">
+                                    <img class="img-circle" src="/images/{{$comment->user_image}}" style="width:60px;">
                                 </a>
                             </div>
                             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">
