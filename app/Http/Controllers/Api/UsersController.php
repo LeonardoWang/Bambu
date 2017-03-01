@@ -130,9 +130,63 @@ class UsersController extends Controller
         }
         Auth::login($user);
         return redirect()->intended('/');
-        
-
     }
+
+    public function SMSpassword()
+    {
+        $iphone=$_GET['iphone'];
+        $user = User::Where('tel',$iphone)->first();
+        if(empty($user))
+        {
+            echo "<script type='text/javascript'>alert('error phone number')</script>";
+            return back();
+        }
+        $code=rand(100000,999999);
+        $user->password = Hash::make($code);
+        setcookie('code',$code,time()+600);
+        $url='http://api.sms.cn/sms/?ac=send&uid=marcwong&pwd=99ba044dd4904759e99d9e7888b15fe8&mobile='.$iphone.'&content={"new password":"'.$code.'"}&template=100006';
+        $data=array();
+        $method='POST';
+        
+        //1.初始化
+        $ch = curl_init();
+        
+        //2.请求地址
+        curl_setopt($ch,CURLOPT_URL,$url);
+        
+        //3.请求方式
+        curl_setopt($ch,CURLOPT_CUSTOMREQUEST,$method);
+        
+        //4.参数如下
+        curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,FALSE);//https
+        curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,FALSE);
+        curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (compatible; MSIE 5.01; Windows NT 5.0)');//模拟浏览器
+        curl_setopt($ch,CURLOPT_FOLLOWLOCATION,1);
+        curl_setopt($ch,CURLOPT_AUTOREFERER,1);
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array('Accept-Encoding: gzip, deflate'));//gzip解压内容
+        curl_setopt($ch,CURLOPT_ENCODING,'gzip,deflate');
+
+        //5.post方式的时候添加数据
+        if($method=="POST"){
+            curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
+        }
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+        
+        //6.执行
+        $tmpInfo=curl_exec($ch);
+    
+        //7.如果出错
+        if (curl_errno($ch))
+        {
+            return curl_error($ch);
+        }
+        curl_close($ch);
+        $user->save();
+        $stat = substr($tmpInfo, 9,3);
+        echo "<script type='text/javascript'>alert('new password have send to your phone')</script>";
+        return back();
+    }
+
 
     public function logout()
     {
