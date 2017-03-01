@@ -2,6 +2,33 @@
         var nums = 30;
         var btn;
 
+        function sendSMSPassword(thisBtn){
+        btn = thisBtn;
+        btn.disabled = true; //将按钮置为不可点击
+        btn.innerHTML = 'resend after ' + nums + ' s';
+        clock = setInterval(doLoop, 1000); //一秒执行一次
+
+        var iphone=$("#tel").val();
+        //console.log(iphone);
+        $.ajax({
+            type:"get",
+            url:'/smspassword',
+            data:{'iphone':iphone},
+
+            success:function(msg){
+                console.log(msg);
+                if(msg.stat=='100'){
+                    alert('SMS code has sent, please use the new password to sign in!');
+                }else{
+                    alert('SMS code sent failed, check your network.');
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert('SMS code sent failed, check your network.');
+            },
+        });
+        }
+
         function sendSMS(thisBtn){
         btn = thisBtn;
         btn.disabled = true; //将按钮置为不可点击
@@ -26,8 +53,6 @@
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 alert('SMS code sent failed, check your network.');
-                console.log(XMLHttpRequest);
-                console.log(textStatus); // paser error;
             },
         });
         }

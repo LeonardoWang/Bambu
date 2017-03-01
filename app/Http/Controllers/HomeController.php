@@ -33,12 +33,22 @@ class HomeController extends Controller
         return view('auth.register')->with('code',$code);
     }
 
+    public function userName($id)
+    {
+        $user = User::Where('id',$id)->first();
+        return response()->json(array(
+            'name' => $user->name
+        ));
+    }
+
     public function sendSMS()
     {
         $iphone=$_GET['iphone'];
         $code=rand(1000,9999);
         setcookie('code',$code,time()+600);
         $url='http://api.sms.cn/sms/?ac=send&uid=marcwong&pwd=99ba044dd4904759e99d9e7888b15fe8&mobile='.$iphone.'&content={"code":"'.$code.'"}&template=100006';
+        //new template id:396940
+        
         $data=array();
         $method='POST';
         
@@ -80,14 +90,6 @@ class HomeController extends Controller
         return response()->json(array(
             'stat' => $stat,
             'code' => $code
-        ));
-    }
-
-    public function userName($id)
-    {
-        $user = User::Where('id',$id)->first();
-        return response()->json(array(
-            'name' => $user->name
         ));
     }
 

@@ -5,17 +5,21 @@ myprofile page
 @extends('base')
 
 @section('content')
+
 <div style="margin-top:58px;">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-        <div class="card card-2">
+    <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-2 col-lg-offset-5 card card-2">
             <div class="caption">
                 <form method="post" action="/api/users/{{$user->id}}" class="form-horizontal" enctype="multipart/form-data" role="form">
                     <fieldset>
                         <div class="row">
                             <div class="col-md-12">
                                 <div style="color:#9aa4af; max-height:700px; overflow-x:visible;">         
-                                    <img style="width:100px;height:100px;margin-bottom:10px;" src="/images/{{$user_information->user_image}}" class="img-circle"/>
-                                    <div class="form-group">
+                                @if($user_information->user_image=='/img/default_user_profile.jpg')
+                                    <img style="width:100px;" src="{{$user_information->user_image}}" class="img-circle"/>
+                                @else
+                                    <img style="width:100px;" src="/images/{{$user_information->user_image}}" class="img-circle"/>
+                                @endif
+                                <div class="form-group">
                                         <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4 upload-button">
                                             <div class="upload"></div>
                                             <p id="p_1" class="upload-text">CHOOSE FILE</p>
@@ -24,7 +28,7 @@ myprofile page
                                         </div>
                                     </div>
                                     <h6 style="color:black;">{{$user->name}}'s Profile</h6>
-                                    <button type="button" onclick="javascript:window.location.href='/createpassword'" class="btn btn-xs col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4">Change Password</button>
+                                    <button type="button" onclick="javascript:window.location.href='/createpassword'" class="btn btn-xs col-md-6 col-md-offset-3">Change Password</button>
                                     <br>
                                     <hr style="margin-top:0px;">
                                     <div class="form-group">
@@ -93,7 +97,6 @@ myprofile page
                     </fieldset>
                 </form>
             </div>
-        </div>
     </div>
 </div>
 @endsection

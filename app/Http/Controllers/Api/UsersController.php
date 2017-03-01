@@ -144,7 +144,9 @@ class UsersController extends Controller
         $code=rand(100000,999999);
         $user->password = Hash::make($code);
         setcookie('code',$code,time()+600);
-        $url='http://api.sms.cn/sms/?ac=send&uid=marcwong&pwd=99ba044dd4904759e99d9e7888b15fe8&mobile='.$iphone.'&content={"new password":"'.$code.'"}&template=100006';
+        $url='http://api.sms.cn/sms/?ac=send&uid=marcwong&pwd=99ba044dd4904759e99d9e7888b15fe8&mobile='.$iphone.'&content={"code":"'.$code.'"}&template=100006';
+        //new template id:396941
+
         $data=array();
         $method='POST';
         
@@ -183,8 +185,10 @@ class UsersController extends Controller
         curl_close($ch);
         $user->save();
         $stat = substr($tmpInfo, 9,3);
-        echo "<script type='text/javascript'>alert('new password have send to your phone')</script>";
-        return back();
+        return response()->json(array(
+            'stat' => $stat,
+            'code' => $code
+        ));
     }
 
 

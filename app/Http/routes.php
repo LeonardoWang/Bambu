@@ -20,7 +20,7 @@ Route::get('images/product/{image_file}', 'Api\ImagesController@showProduct');
 
 Route::get('/register','HomeController@register');
 Route::get('/smscode','HomeController@sendSMS');
-Route::get('/smspassword','UsersController@SMSpassword');
+Route::get('/smspassword','Api\UsersController@SMSpassword');
 Route::get('/login', 'HomeController@login');
 
 Route::get('/user_name/{id}','HomeController@userName');

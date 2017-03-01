@@ -2,7 +2,7 @@
 
 @section('content')
 		<div class="col-xs-12 col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 card card-2">
-			<div style="font-family:NexaBold;font-size:32px;">Create New Password</div>
+			<div style="font-family:NexaBold;font-size:32px;">Change Password</div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
@@ -43,7 +43,7 @@
 
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary col-md-12">
-								Reset Password
+								Create Password
 							</button>
 						</div>
 					</form>

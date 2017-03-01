@@ -21,23 +21,14 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="/password/email">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
-							<div class="col-md-6 col-md-offset-3">
-								<input type="email" class="form-control" name="email" placeholder="E-Mail Address" value="{{ old('email') }}">
+							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="padding-left:0px;">
+								<input type="tel" class="form-control" name="tel" id="tel" placeholder="PHONE NUMBER" required="">
 							</div>
+								<button type="button" onclick="sendSMSPassword(this)" class="btn btn-primary col-lg-4 col-md-4 col-sm-4 col-xs-4">Send New Password</button>
 						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-3">
-								<button type="submit" class="btn btn-primary">
-									Send Reset Link
-								</button>
-							</div>
-						</div>
-					</form>
 				</div>
 			</div>
 @endsection

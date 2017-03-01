@@ -7,13 +7,13 @@ other's profile page
 @section('content')
 
 <div style="margin-top:58px;">
-    <div class="col-xs-8 col-xs-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-2 col-lg-offset-5 card card-2">
+    <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-2 col-lg-offset-5 card card-2">
             <div class="caption">
                 <div class="row">
                     <div class="col-md-12">
                         <div style="color:#9aa4af; max-height:650px; overflow-x:visible;">
-                            @if(!strlen($user_information->user_image))
-                                <img style="width:100px;" src="/img/default_user_profile.jpg" class="img-circle"/>
+                            @if($user_information->user_image=='/img/default_user_profile.jpg')
+                                <img style="width:100px;" src="{{$user_information->user_image}}" class="img-circle"/>
                             @else
                                 <img style="width:100px;" src="/images/{{$user_information->user_image}}" class="img-circle"/>
                             @endif
