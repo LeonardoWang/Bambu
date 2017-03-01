@@ -62,7 +62,7 @@ product show page
                     </div>
             </div>
 
-            <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-8 col-sm-offset-2 card card-2">
+            <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-xs-12 card card-2">
                 @if ($user->id != $product->user_id)
 
                 <form method="post" action="/api/trade_request_making" class="form-horizontal" enctype="multipart/form-data" role="form">
@@ -176,7 +176,7 @@ product show page
             <!--up: item info, under:comments-->
                 @endif
 
-                <div class="col-md-12" style="max-height:226px;overflow-y:auto;">
+                <div class="col-md-12" style="max-height:315px;overflow-y:auto;">
                     @if (isset($comments)>0)
                         <p style="text-align:left">Comments to this item:</p>
                         @foreach ($comments as $comment)
