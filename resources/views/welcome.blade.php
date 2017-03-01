@@ -34,7 +34,7 @@
 @if (isset($products) > 0)
     <div class="container">
         <div class="row" style="width:100%;margin:58px auto 60px auto; padding:auto;">
-            <div class="col-md-2 card card-2" style="text-align:left;background-color:white;border-radius:10px;margin-bottom:30px;">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-3 col-md-offset-0 col-lg-3 col-lg-offset-0 card card-2" style="text-align:left;background-color:white;border-radius:10px;margin-bottom:30px;">
                 <h6 style="font-family:NexaBold;">Categories</h6>
                    <p><!--All Categories<br>-->
                    <a style="color:#34495e;" href="/items/CSearch/art/">Art & Music</a><br>
@@ -47,12 +47,12 @@
                    <a style="color:#34495e;" href="/items/CSearch/toys/">Toys & Kids</a><br>
                    </p>               
             </div>
-            <div class="col-md-10">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
             @for ($i = 0; $i < count($products);$i++)
             <!--foreach (products as product)-->
                 @if ($i < 12)
                     <!--{{$product=$products[$i]}}-->
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3" align="center">
+                    <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3" align="center">
                         <div class="card card-1">
                         <a href="/api/trade_requests/{{$product->id}}">
                             <img src="/images/{{$product->image_file}}" class="img-responsive" style="max-height:350px;border-radius:8px;">
