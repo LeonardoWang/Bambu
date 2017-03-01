@@ -50,6 +50,8 @@ Route::group(['prefix' => 'api','middleware' => 'auth'], function () {
 	Route::get('users_information','Api\UsersController@userInformationPage');
 	Route::get('user/{id}/info', 'Api\UsersController@otherUserInformationPage');
 	Route::get('createPassword','Api\UsersController@createPassword');
+	Route::post('resetPassword','Api\UsersController@resetPassword');
+
 
 	Route::get('product','Api\ItemsController@ProductIndex');
 	Route::post('product/addProduct','Api\ItemsController@ProductAdd');

@@ -15,7 +15,7 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="/password/reset">
+					<form class="form-horizontal" role="form" method="POST" action="api/resetPassword">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						
 						<!--<div class="form-group">

@@ -106,6 +106,33 @@ class UsersController extends Controller
         return view('auth.createpassword');
     }
 
+    public function resetPassword(Request $request)
+    {
+        $user = Auth::user();
+        $validator = Validator::make($request->all(), [
+            'password_old' => 'required|min:6',
+            'password_confirmation' => 'required|min:6',
+            'password' =>'required|min:6'
+        ]);
+        if(!Auth::attempt(['tel' => $user->tel, 'password' =>$request->input('password_old')]))
+        {
+            $messages="password wrong!";
+            return back()->withErrors($messages);
+        }
+        if($request->input('password')!=$request->input('password_confirmation'))
+        {
+            $messages="your must type the same password two times!";
+            return back()->withErrors($messages);
+        }
+        if(!$validator->fails()){
+            $user->password = Hash::make($request->input('password'));
+            $user->save();
+        }
+        Auth::login($user);
+        return redirect()->intended('/');
+        
+
+    }
 
     public function logout()
     {
