@@ -53,7 +53,7 @@ other's profile page
                                     <!--<div class="form-group">
                                         <label class="col-md-3" for="rank">Rank</label>
                                             <div class="col-md-9 col-sm-9 col-xs-9">
-                                                <input id="rank" name="rank" type="text" value="{{$user_informationuser_information->rank}}" class="form-control input-md" required="">
+                                                <input id="rank" name="rank" type="text" value="{{$user_information->rank}}" class="form-control input-md" required="">
                                             </div>
                                         </div>
                                     -->
