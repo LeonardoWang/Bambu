@@ -3,10 +3,15 @@ var local_user_profile;
 var remote_user_profile;
 
 window.onload = function() {
+    //navbar
+    //if(window.screen.availWidth<768)
+    if(document.body.clientWidth<768)
+        $("#navbar-collapse-01").attr("class", "collapse bambu-color1");
     //load pic zoom func
     var elements = document.querySelectorAll( '.demo-image' );
     if(elements && typeof(Intense)=="function")
         Intense( elements );
+    
     //notif socket open when onload
     var user_id = $("#user_id").val();
     socket = io('http://thebambu.com:6001');
@@ -195,7 +200,7 @@ function createChatRoom(user_remote_id){
                 $(".user_profile_"+user_remote_id).attr("src",data.image_path);
             }
     });
-    
+
     //scroll to the bottom
     var scroll = document.getElementById("chatroom_scroll");
     scroll.scrollTop = scroll.scrollHeight;

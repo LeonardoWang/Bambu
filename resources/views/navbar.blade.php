@@ -1,13 +1,14 @@
 <!--navbar-->
 <div style="margin-left:0px;margin-right:0px;">
-    <nav class="navbar navbar-static-top navbar-fixed-top" role="navigation" style="background:#e53935">
+    <nav class="navbar navbar-fixed-top" role="navigation">
         <div class="navbar-header bambu-color1">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01"></button>
-            <span class="sr-only">Toggle navigation</span>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+                <span class="sr-only">Toggle navigation</span>
+            </button>
             <img id="home" onclick="javascript:window.location.href='/'" src='/img/favicon.png'>
             <p style="display:inline-block;font-family:Milkshake;font-size:32px;margin:auto;">Bambù</p>
         </div>
-        <div class="navbar-collapse" id="navbar-collapse-01">
+        <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
             <ul class="nav navbar-nav">
                 <li><div class="navbar-form" style="margin-left:0px;padding-left:40px;padding-right:20px;width:400px;">
                     <div class="form-group">
@@ -50,7 +51,7 @@
                 </div>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown" style="text-align:right;">
+                <li class="dropdown" style="text-align:right;padding-right:20px;">
                     <a onclick="chatroom()" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/bell.svg'></a>
                     <!--<ul class="dropdown-menu dropdown-menu-style">
                         <a href="/api/chat_room/MyChatroom"><li class="dropdown-menu-li"><p style="font-size:16px;padding:10px;">CHATROOM</p></li></a>
