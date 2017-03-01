@@ -27,90 +27,14 @@
 
     </head>
     <body>
-        
-<!--navbar-->
-<div style="margin-left:0px;margin-right:0px;">
-        <nav class="navbar navbar-fixed-top" role="navigation">
-            <div class="navbar-header bambu-color1">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
-                <span class="sr-only">Toggle navigation</span>
-              </button>
-              <img id="home" onclick="javascript:window.location.href='/'" src='/img/favicon.png'>
-            </div>
-            <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
 
-            <ul class="nav navbar-nav">         
-                <li><p style="font-family:Milkshake;top:20px;font-size:24px;margin:5px 24px 5px 12px;">Bambù</p></li>
-                <li><div class="navbar-form col-xs-4 col-sm-4" style="margin-left:0px;padding-left:10px;">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" id="inpu1" class="form-control" style="width:250px;" placeholder="Search" onkeydown="enterToSearch(this,event)"/>
-                            <span class="input-group-btn">
-                            <select id="category" name="category" class="form-control" style="font-family: NexaLight;color:#7f8c8d;border-bottom-right-radius: 6px;border-top-right-radius: 6px;" required="required">
-                                <option value="all">All Categories</option>
-                                <option value="art">Art & Music</option>
-                                <option value="beauty">Beauty, Health & Geocery</option>
-                                <option value="book">Book & Study</option>
-                                <option value="clothing">Clothing & Fashion</option>
-                                <option value="computer">Computer & Electronics</option>
-                                <option value="home">Home, Garden & Tools</option>
-                                <option value="sports">Sports & Outdoor</option>
-                                <option value="toys">Toys & Kids</option>
-                            </select>
-                            </span>
-                            <!--
-                            <span class="input-group-btn">
-                                <button onclick="sb()" class="btn"><span class="fui-search"></span></button>
-                            </span>-->
-                        </div>
-                    </div>
-                    </div>
-                </li>
-            </ul>
-            @if (isset($user) > 0)
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a onclick="chatroom()" class="dropdown-toggle" data-toggle="dropdown"><img id="bell" style="width:24px;" onmouseover="notifOnMouseOver(this)" onmouseout="notifOnMouseOut(this)" src='/img/icons/svg/bell.svg'></a>
-                    <!--<ul class="dropdown-menu dropdown-menu-style">
-                        <a href="/api/chat_room/MyChatroom"><li class="dropdown-menu-li"><p style="font-size:16px;padding:10px;">CHATROOM</p></li></a>
-                    </ul>-->
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
-                <div class="user">
-                    <p class="user-name">{{$user->name}}<span class="user-menu"></span></p>
-                    <div class="user-nav">
-                        <ul style="padding-left:0px; top:0px;">
-                            <a href ="/api/product"><li style="color:#7f8c8d;">Post Item<span></span></li></a>
-                            <a href="/api/users_information"><li style="color:#7f8c8d;">Personal Info<span class="user-nav-settings"></span></li></a>
-                            <a href="/api/product/myProduct"><li style="color:#7f8c8d;">My Items<span class="user-nav-stats"></span></li></a>
-                            <a href="/api/trade_requests/my"><li style="color:#7f8c8d;">Trade Requests<span class="user-nav-messages"></span></li></a>
-                            <a href="/logout"><li style="color:#7f8c8d;">Sign Out<span class="user-nav-signout"></span></li></a>
-                        </ul>
-                    </div>
-                </div>
-            </ul>
-            @else
-            <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
-                <li>
-                    <a href="/login" >Sign In</a>
-                </li>
-                <li>
-                    <a href="/register" >Register</a>
-                </li>
-                <!--<li><a href="#aboutUs">About us</a></li>-->
-            </ul>
-            @endif
-                
-            </div><!-- /.navbar-collapse -->
-        </nav><!-- /navbar -->
-    </div>
+@extends('navbar')
 
 <!-- products on the home page -->
 @if (isset($products) > 0)
     <div class="container">
         <div class="row" style="width:100%;margin:58px auto 60px auto; padding:auto;">
-            <div class="col-md-2 card card-2" style="text-align:left;background-color:white;border-radius:10px;">
+            <div class="col-md-2 card card-2" style="text-align:left;background-color:white;border-radius:10px;margin-bottom:30px;">
                 <h6 style="font-family:NexaBold;">Categories</h6>
                    <p><!--All Categories<br>-->
                    <a style="color:#34495e;" href="/items/CSearch/art/">Art & Music</a><br>
@@ -202,10 +126,10 @@
 
 <script src="/js/chat.js"></script>
 <script src="/js/basic.js"></script>
-<script>
+<!--<script>
 $('li.dropdown').mouseover(function() { 
     $(this).addClass('open');}); 
-    </script>
+</script>-->
 </html>
 
 

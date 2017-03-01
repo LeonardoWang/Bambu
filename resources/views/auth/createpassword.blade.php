@@ -18,30 +18,33 @@
 					<form class="form-horizontal" role="form" method="POST" action="/password/reset">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-3">
-								<input type="phone" class="form-control" name="phone" placeholder="Cell Phone Number">
-							</div>
+						<!--<div class="form-group">
+								<input type="tel" class="form-control" name="tel"id="tel" placeholder="PHONE NUMBER">
 						</div>
 
 						<div class="form-group">
-							<div class="col-md-6 col-md-offset-3">
-								<input type="password" class="form-control" name="password" placeholder="Password">
+							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="padding-left:0px;">
+								<input type="text" class="form-control" name="smscode" placeholder="Verification Code" required="">
 							</div>
+								<button type="button" onclick="sendSMS(this)" class="btn btn-primary col-lg-4 col-md-4 col-sm-4 col-xs-4">send code</button>
+						</div>-->
+
+						<div class="form-group">
+							<input type="password" class="form-control" name="password_old" placeholder="OLD PASSWORD">
 						</div>
 
 						<div class="form-group">
-							<div class="col-md-6 col-md-offset-3">
-								<input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
-							</div>
+							<input type="password" class="form-control" name="password" placeholder="NEW PASSWORD">
 						</div>
 
 						<div class="form-group">
-							<div class="col-md-6 col-md-offset-3">
-								<button type="submit" class="btn btn-primary">
-									Reset Password
-								</button>
-							</div>
+								<input type="password" class="form-control" name="password_confirmation" placeholder="CONFIRM PASSWORD">
+						</div>
+
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary col-md-12">
+								Reset Password
+							</button>
 						</div>
 					</form>
 				</div>

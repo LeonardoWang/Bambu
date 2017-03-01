@@ -11,7 +11,7 @@ other's profile page
         <div class="card card-2">
             <div class="caption">
                          <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-md-12">
                                 <div style="color:#9aa4af; max-height:650px; overflow-x:visible;">
                                     @if(!strlen($user_information->user_image))
                                             <img style="width:100px;" src="/img/default_user_profile.jpg" class="img-circle"/>

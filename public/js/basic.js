@@ -96,20 +96,22 @@ function preview(file,num)
             prevDiv.innerHTML = '<img style="max-height:80px;max-width:80px;" src="' + evt.target.result + '" />';  
         }    
         reader.readAsDataURL(file.files[0]);  
+        $('#p_'+num).empty();
     }  
     else
     {  
         $("#preview"+num).css("z-index","1000");
         prevDiv.innerHTML = '<div class="img" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + file.value + '\'"></div>';  
+        $('#p_'+num).empty();
     } 
 }  
 
 function changeImg(num,address){
-    //document.getElementById('imgdiv').data-image='/api/product/images/'+address;
+    $("#imgdiv").attr({'data-image':'/api/product/images/'+address}); 
     document.getElementById('img').src='/api/product/images/'+address;
-    $("#li1").attr("class", "");
-    $("#li2").attr("class", ""); 
-    $("#li3").attr("class", ""); 
-    $("#li4").attr("class", ""); 
-    $("#li"+num).attr("class", "active");  
+    $("#li1").css("background", "#dfe2e5");
+    $("#li2").css("background", "#dfe2e5"); 
+    $("#li3").css("background", "#dfe2e5"); 
+    $("#li4").css("background", "#dfe2e5"); 
+    $("#li"+num).css("background", "#e53935");  
 }

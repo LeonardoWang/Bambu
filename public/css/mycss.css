@@ -148,7 +148,8 @@
 
 
             #home{
-                width:53px;
+                margin-top: -20px;
+                width:54px;
                 cursor: pointer;
             }
 
@@ -277,7 +278,7 @@
     font-style: normal;
   }
 
-.user{background:#fff; margin-top:6px; border-radius:4px; width:270px; height:40px; padding:15px;box-shadow:rgba(0,0,0,.3) 0px 2px 4px}
+.user{background:#fff; margin-top:9px; border-radius:4px; width:320px; height:35px; padding:15px;box-shadow:rgba(0,0,0,.3) 0px 2px 4px}
 
 
 .user:hover .user-nav {
@@ -286,7 +287,7 @@
   top:2px;
 }
 
-.user-name{top:-11px;font-size:20px;color:#7f8c8d; position:relative;}
+.user-name{top:-11px;font-size:18px;color:#7f8c8d; position:relative;}
 
 .user-nav{position:relative; visibility:hidden; opacity:0;-webkit-transition:all .15s; top:0;-webkit-transform: translate3d(0, 0, 0)}
 
@@ -312,9 +313,9 @@
 .user-nav ul li:last-child{border-radius:0 0 4px 4px}
 
 
-.user-nav ul li:hover{background:#F9ADA0; color:#fff;-webkit-transition:all .15s;}
+.user-nav ul li:hover,.user-nav ul li:active{background:#F9ADA0; color:#fff;-webkit-transition:all .15s;}
 
-.user-nav ul li:hover span{background-position-x:-20px;}
+.user-nav ul li:hover,.user-nav ul li:active span{background-position-x:-20px;}
 
 .user-nav-settings{
    background-position-y:-20px;
@@ -364,7 +365,7 @@
     color:#7f8c8d;
 }
 
-.dropdown-menu-li:hover{
+.dropdown-menu-li:hover,.dropdown-menu-li:active{
     color:#7f8c8d;
     background:#F9ADA0;
     -webkit-transition:all .15s;
