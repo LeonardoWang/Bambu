@@ -60,10 +60,10 @@
             </ul>
             @else
             <ul class="nav navbar-nav navbar-right" style="margin-right:30px;">
-                <li>
+                <li style="padding-left:20px;">
                     <a href="/login" >Sign In</a>
                 </li>
-                <li>
+                <li style="padding-left:20px;">
                     <a href="/register" >Register</a>
                 </li>
                 <!--<li><a href="#aboutUs">About us</a></li>-->
