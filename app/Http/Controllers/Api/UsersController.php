@@ -270,13 +270,13 @@ class UsersController extends Controller
     public function otheruserInformationPage($id)
     {
         $user = Auth::user();
-        $user_information = UserInformation::find('user_id',$id)->first();
+        $user_information = UserInformation::where('user_id',$id)->first();
         return view('profile',compact('user','user_information'));//view('user_information')->with('user_information',$user_information);
     }
 
     public function showImage($id)
     {
-        $user_information = UserInformation::find($id);
+        $user_information = UserInformation::where('user_id',$id)->first();
         $file = $user_information->user_image;
         $value;
         if($file == "/img/default_user_profile.jpg")
