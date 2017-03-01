@@ -283,7 +283,7 @@ class UsersController extends Controller
         if($file == "/img/default_user_profile.jpg")
             $value = "http://www.thebambu.com/img/default_user_profile.jpg";
         else
-            $value =  "http://www.thebambu.com/api/product/images/".$file;  
+            $value =  "http://www.thebambu.com/images/".$file;  
         return response()->json(array(
             'image_path' => $value
         ));

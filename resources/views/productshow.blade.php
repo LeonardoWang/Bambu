@@ -10,7 +10,7 @@ product show page
         @foreach ($products as $product)
             <div class="col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-0 col-sm-8 col-sm-offset-2 card card-2" style="margin-bottom:30px;">
                     <div id="imgdiv" class="demo-image" data-image="/api/product/images/{{$product->image_file_1}}" data-title="{{$product->title}}" data-caption="{{$product->description}}">
-                        <img id="img" src="/api/product/images/{{$product->image_file_1}}" class="img-responsive" style="max-height:600px;">
+                        <img id="img" src="images/{{$product->image_file_1}}" class="img-responsive" style="max-height:600px;">
                     </div>
                     <div class="caption">
                         <div class="row">
