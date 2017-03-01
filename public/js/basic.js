@@ -107,11 +107,11 @@ function preview(file,num)
 }  
 
 function changeImg(num,address){
-    //document.getElementById('imgdiv').data-image='/api/product/images/'+address;
+    $("#imgdiv").attr({'data-image':'/api/product/images/'+address}); 
     document.getElementById('img').src='/api/product/images/'+address;
-    $("#li1").attr("class", "");
-    $("#li2").attr("class", ""); 
-    $("#li3").attr("class", ""); 
-    $("#li4").attr("class", ""); 
-    $("#li"+num).attr("class", "active");  
+    $("#li1").css("background", "#dfe2e5");
+    $("#li2").css("background", "#dfe2e5"); 
+    $("#li3").css("background", "#dfe2e5"); 
+    $("#li4").css("background", "#dfe2e5"); 
+    $("#li"+num).css("background", "#e53935");  
 }

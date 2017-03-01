@@ -19,25 +19,25 @@ product show page
                                 <ul class="pagination">
                                     @if (strlen($product->image_file_1)>0)
                                     <div style="width: 41px; height: 41px;cursor: pointer;display:inline">
-                                        <li id="li1" class="active" onclick="changeImg(1,'{{$product->image_file_1}}')"><a href="#">1</a></li>
+                                        <li onclick="changeImg(1,'{{$product->image_file_1}}')"><a id="li1" style="background:#e53935;border-bottom-left-radius:6px;border-top-left-radius:6px" href="#">1</a></li>
                                     </div>
                                     @endif
 
                                     @if (strlen($product->image_file_2)>0)
                                     <div style="width: 41px; height: 41px;cursor: pointer;display:inline">
-                                        <li id="li2" onclick="changeImg(2,'{{$product->image_file_2}}')"><a href="#">2</a></li>
+                                        <li onclick="changeImg(2,'{{$product->image_file_2}}')"><a id="li2" style="background:#dfe2e5;border-bottom-left-radius:6px;border-top-left-radius:6px" href="#">2</a></li>
                                     </div>
                                     @endif
 
                                     @if (strlen($product->image_file_3)>0)
                                     <div style="width: 41px; height: 41px;cursor: pointer;display:inline">
-                                        <li id="li3" onclick="changeImg(3,'{{$product->image_file_3}}')"><a href="#">3</a></li>
+                                        <li onclick="changeImg(3,'{{$product->image_file_3}}')"><a id="li3" style="background:#dfe2e5;border-bottom-left-radius:6px;border-top-left-radius:6px" href="#">3</a></li>
                                     </div>
                                     @endif
 
                                     @if (strlen($product->image_file_4)>0)
                                     <div style="width: 41px; height: 41px;cursor: pointer;display:inline">
-                                        <li id="li4" onclick="changeImg(4,'{{$product->image_file_4}}')"><a href="#">4</a></li>
+                                        <li onclick="changeImg(4,'{{$product->image_file_4}}')"><a id="li4" style="background:#dfe2e5;border-bottom-left-radius:6px;border-top-left-radius:6px" href="#">4</a></li>
                                     </div>
                                     @endif
                                 </ul>
