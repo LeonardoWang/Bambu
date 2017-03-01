@@ -14,11 +14,7 @@ myprofile page
                         <div class="row">
                             <div class="col-md-12">
                                 <div style="color:#9aa4af; max-height:700px; overflow-x:visible;">         
-                                    @if($user_information->user_image=="/img/default_user_profile.jpg")
-                                        <img style="width:100px;height:100px;margin-bottom:10px;" src="{{$user_information->user_image}}" class="img-circle"/>
-                                    @else
-                                        <img style="width:100px;height:100px;margin-bottom:10px;" src="/api/product/images/{{$user_information->user_image}}" class="img-circle"/>
-                                    @endif
+                                    <img style="width:100px;height:100px;margin-bottom:10px;" src="{{$user_information->user_image}}" class="img-circle"/>
                                     <div class="form-group">
                                         <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4 upload-button">
                                             <div class="upload"></div>
