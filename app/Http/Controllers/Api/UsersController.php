@@ -128,11 +128,11 @@ class UsersController extends Controller
         $messages = $validator->messages();
 
         //smscode verification
-        if($request->input('smscode')!=$request->input('verismscode'))
+        /*if($request->input('smscode')!=$request->input('verismscode'))
         {
             $messages="Incorrect smscode!";
             return back()->withErrors($messages);
-        }
+        }*/
 
         //password verification
         if($request->input('password')!=$request->input('password_confirmation'))
@@ -288,5 +288,6 @@ class UsersController extends Controller
             'image_path' => $value
         ));
     }
+
 
 }

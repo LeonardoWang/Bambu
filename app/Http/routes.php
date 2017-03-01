@@ -1,4 +1,4 @@
-	<?php
+<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -10,9 +10,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use Illuminate\Http\Response;
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
+
+Route::get('images/profile/{image_file}', 'Api\ImagesController@showProfile');
+Route::get('images/product/{image_file}', 'Api\ImagesController@showProduct');
 
 Route::get('/register','HomeController@register');
 Route::get('/smscode','HomeController@sendSMS');
@@ -29,8 +33,7 @@ Route::get('logout','Api\UsersController@logout');
 Route::post('register', 'Api\UsersController@register');
 Route::get('createpassword','Api\UsersController@createPassword');
 
-Route::get('api/product/images/profile/{image_file}', 'Api\ImagesController@showProfile');
-Route::get('api/product/images/product/{image_file}', 'Api\ImagesController@showProduct');
+
 Route::get('api/user/images/{user_id}', 'Api\UsersController@showImage');
 Route::get('items/KSearch/{keyword}', 'Api\ItemsController@KSearch');
 Route::get('items/CSearch/{category}/{keyword}', 'Api\ItemsController@CSearch1');
