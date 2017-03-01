@@ -7,8 +7,7 @@ other's profile page
 @section('content')
 
 <div style="margin-top:58px;">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
-        <div class="card card-2">
+    <div class="col-xs-8 col-xs-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-2 col-lg-offset-5 card card-2">
             <div class="caption">
                 <div class="row">
                     <div class="col-md-12">
@@ -18,12 +17,12 @@ other's profile page
                             @else
                                 <img style="width:100px;" src="/images/{{$user_information->user_image}}" class="img-circle"/>
                             @endif
-                        <h6>{{$user_information->name}}'s Profile</h6>
+                        <h6>{{$user_other->name}}'s Profile</h6>
                         <hr>
                         <div class="form-group">
                             <label class="col-md-3 col-sm-3 col-xs-3" for="name">Name</label>
                             <div class="col-md-9 col-sm-9 col-xs-9">
-                                <p class="profile">{{$user_information->name}}</p>
+                                <p class="profile">{{$user_other->name}}</p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -35,7 +34,7 @@ other's profile page
                         <div class="form-group">
                             <label class="col-md-3 col-sm-3 col-xs-3" for="tel">Phone</label>
                             <div class="col-md-9 col-sm-9 col-xs-9">
-                                <p class="profile">{{$user_information->tel}}</p>
+                                <p class="profile">{{$user_other->tel}}</p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -50,13 +49,12 @@ other's profile page
                                 <p class="profile">{{$user_information->address}}</p>
                             </div>
                         </div>
-                                    <!--<div class="form-group">
-                                        <label class="col-md-3" for="rank">Rank</label>
-                                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                                <input id="rank" name="rank" type="text" value="{{$user_informationuser_information->rank}}" class="form-control input-md" required="">
-                                            </div>
-                                        </div>
-                                    -->
+                            <!--<div class="form-group">
+                                <label class="col-md-3" for="rank">Rank</label>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <input id="rank" name="rank" type="text" value="{{$user_information->rank}}" class="form-control input-md" required="">
+                                </div>
+                            /div>-->
                         <input id="user_id" type="hidden" value="{{$user_information->id}}">
                         <div class="col-offset-3">
                             <div class="form-group">
@@ -66,7 +64,6 @@ other's profile page
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>
