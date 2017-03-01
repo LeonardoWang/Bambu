@@ -297,9 +297,9 @@ class UsersController extends Controller
     public function otheruserInformationPage($id)
     {
         $user = Auth::user();
-
+        $user_other = User::find($id);;
         $user_information = UserInformation::where('user_id',$id)->first();
-        return view('profile',compact('user','user_information'));//view('user_information')->with('user_information',$user_information);
+        return view('profile',compact('user','user_other','user_information'));
     }
 
     public function showImage($id)
