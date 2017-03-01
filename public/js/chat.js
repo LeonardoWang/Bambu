@@ -150,7 +150,7 @@ function createChatRoom(user_remote_id){
                         if(i>=0)
                         {
                             if(data.message[i].user_id==user_remote_id){
-                            document.getElementById("dialog_chatmessage_"+user_remote_id).innerHTML+="<img style='width:36px;' class='img-circle user_profile_"+data.message[i].user_id+"'><div style='position:relative;width:auto; display:inline-block !important; display:inline; height:35px;background:white;border-radius:5px;margin:25px 0px 0px 15px;padding:0px 10px 0px 10px;'><div style='position:absolute;top:5px;left:-15px;width:0;height:0;font-size:0;border:solid 8px;border-color:#f2f2f2 white #f2f2f2 #f2f2f2;'></div><p style='color:black;padding-top:5px;font-size:15px;'>"+data.message[i].message + "</p></div>";
+                            document.getElementById("dialog_chatmessage_"+user_remote_id).innerHTML+="<img style='width:36px;' class='img-circle user_profile_"+data.message[i].user_id+"'><div style='position:relative;width:auto; display:inline-block !important; display:inline; height:35px;background:white;border-radius:5px;margin:25px 0px 0px 15px;padding:0px 10px 0px 10px;'><div style='position:absolute;top:5px;left:-15px;width:0;height:0;font-size:0;border:solid 8px;border-color:#f2f2f2 white #f2f2f2 #f2f2f2;'></div><p style='color:black;padding-top:5px;font-size:15px;'>"+data.message[i].message + "</p></div><br>";
                             }
                             else{
                             document.getElementById("dialog_chatmessage_"+user_remote_id).innerHTML+="<div align='right' style='padding-top:20px;'><div style='position:relative;width:auto; display:inline-block !important;margin-right:5px;height:35px;background:#A0D468;border-radius:5px;padding:0px 10px 0px 10px;'><p style='padding-top:5px;font-size:15px;color:black'>"+data.message[i].message + "</p><div style='position:absolute;top:5px;right:-16px;width:0;height:0;font-size:0;border:solid 8px;border-color:#f2f2f2 #f2f2f2 #f2f2f2 #A0D468  ;'></div></div><img style='width:36px;margin:5px 0px 0px 16px;' class='img-circle user_profile_"+data.message[i].user_id+"'></div>";
@@ -169,7 +169,7 @@ function createChatRoom(user_remote_id){
             console.log(dd);
             if(dd.message !== null || '')
             {
-                document.getElementById("dialog_chatmessage_"+dd.user_id).innerHTML+="<img style='width:36px;' class='img-circle user_profile_"+dd.user_id+"'><div style='position:relative;width:auto; display:inline-block !important; display:inline; height:35px;background:white;border-radius:5px;margin:25px 0px 0px 15px;padding:0px 10px 0px 10px;'><div style='position:absolute;top:5px;left:-15px;width:0;height:0;font-size:0;border:solid 8px;border-color:#DDDDDD white #DDDDDD #DDDDDD;'></div><p style='color:black;padding-top:5px;font-size:15px;'>"+dd.message + "</p></div>";
+                document.getElementById("dialog_chatmessage_"+dd.user_id).innerHTML+="<img style='width:36px;' class='img-circle user_profile_"+dd.user_id+"'><div style='position:relative;width:auto; display:inline-block !important; display:inline; height:35px;background:white;border-radius:5px;margin:25px 0px 0px 15px;padding:0px 10px 0px 10px;'><div style='position:absolute;top:5px;left:-15px;width:0;height:0;font-size:0;border:solid 8px;border-color:#DDDDDD white #DDDDDD #DDDDDD;'></div><p style='color:black;padding-top:5px;font-size:15px;'>"+dd.message + "</p></div><br>";
             }
      });
     }

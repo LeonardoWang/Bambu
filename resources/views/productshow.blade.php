@@ -183,12 +183,12 @@ product show page
                         <div class="row" id="comment{{$comment->id}}">
                             <div class="col-lg-3 col-md-3 col-sm-3">
                                 <a href="/api/user/{{$comment->user_id}}/info/">
-                                    <img class="img-circle" src="{{$comment->user_image}}" style="max-width:80px;">
+                                    <img class="img-circle" src="/images/{{$comment->user_image}}" style="max-width:80px;">
                                 </a>
                             </div>
                             <div class="col-lg-9 col-md-9 col-sm-9" style="text-align:left;">
                                 <div class="thumbnail" >
-                                <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
+                                <!--<img src="/images/{{$product->image_file}}" class="img-responsive">-->
                                 <div class="caption" style="padding-top:0px;">
                                     <div class="row">
                                         <div class="col-lg-7 col-md-7 col-sm-7" style="text-align:left;">
