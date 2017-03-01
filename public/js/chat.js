@@ -95,11 +95,11 @@ function closeChat(){
     $("#chatroom").empty();
 }
 
-//<button id="dialog_clearbtn_'+user_remote_id+'" onclick="clearChatHistory(this)" class="btn btn-xs bambu-color1" style="position:absolute;bottom:55px;right:0px;z-index:1000">CLEAR</button>
+/*<button id="dialog_clearbtn_'+user_remote_id+'" onclick="clearChatHistory(this)" class="btn btn-xs bambu-color1" style="position:absolute;bottom:55px;right:0px;z-index:1000">CLEAR</button>
 function clearChatHistory(btn){
     var user_remote_id = btn.id.replace(/dialog_clearbtn_/,"");
     document.getElementById("dialog_chatmessage_"+user_remote_id).innerHTML='';
-}
+}*/
 
 function createChatRoom(user_remote_id){
     var user_id = $("#user_id").val();
@@ -117,8 +117,7 @@ function createChatRoom(user_remote_id){
                     user_remote_name = data.name;
                 }
     });
-
-    $.ajax({
+    /*$.ajax({
                 type:"get",
                 url:'/api/chat/GetChatRoomIDByUserID',
                 data:{'user_id':user_remote_id},
@@ -128,7 +127,7 @@ function createChatRoom(user_remote_id){
                     //console.log(data);
                     chat_room_id = data.chat_room_id;
                 }
-    });
+    });*/
 
     if(!document.getElementById("chatroom_"+user_remote_id))
     {
@@ -162,7 +161,6 @@ function createChatRoom(user_remote_id){
         });
 
         socket = io('http://thebambu.com:6001');
-        //socket_chatroom1 = '1:App\\Events\\SomeEvent';
         socket_chatroom = chat_room_id + ':App\\Events\\SomeEvent';
         socket.on(socket_chatroom, function(dd){
             console.log('Received a new message from user: ' + dd.user_id);
@@ -197,6 +195,7 @@ function createChatRoom(user_remote_id){
                 $(".user_profile_"+user_remote_id).attr("src",data.image_path);
             }
     });
+    
     //scroll to the bottom
     var scroll = document.getElementById("chatroom_scroll");
     scroll.scrollTop = scroll.scrollHeight;
