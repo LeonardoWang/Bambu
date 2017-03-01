@@ -45,7 +45,7 @@
         <div id="chatroom_user"></div>
      </div>
     @endif
-    <p style="color:#7f8c8d;font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
+    <p id = "footerp1" style="color:#7f8c8d;font-size:11px;margin-bottom:0px;"> copyright@Onesia Group ltd. All Rights Reserved<br>京ICP备15050380-2<br>
     <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="/">Homepage</a> | <a style="font-weight:inherit;color:inherit;background-color:inherit;" href="mailto:brucewayne@pku.edu.cn">contact us</a></p>
 </footer>
 

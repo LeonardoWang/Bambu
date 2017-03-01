@@ -1,12 +1,19 @@
 var socket;
 var local_user_profile;
 var remote_user_profile;
-
+var isPhone = false;
 window.onload = function() {
     //navbar
     //if(window.screen.availWidth<768)
     if(document.body.clientWidth<768)
+    {
+        isPhone=true;
         $("#navbar-collapse-01").attr("class", "collapse bambu-color1");
+        if($("#footerp1")!=null)
+            $("#footerp1").remove();
+        if($("#aboutUs")!=null)
+            $("#aboutUs").css("background","none");
+    }
     //load pic zoom func
     var elements = document.querySelectorAll( '.demo-image' );
     if(elements && typeof(Intense)=="function")
@@ -112,27 +119,16 @@ function createChatRoom(user_remote_id){
     var chat_room_id;
     var userName = $("#userName").val();
     $.ajax({
-                type:"get",
-                url:'/user_name/' + user_remote_id,
-                data:{},
-                async:false,
+        type:"get",
+        url:'/user_name/' + user_remote_id,
+        data:{},
+        async:false,
 
-                success:function(data) {
-                    //console.log(data);
-                    user_remote_name = data.name;
-                }
+        success:function(data) {
+            //console.log(data);
+            user_remote_name = data.name;
+        }
     });
-    /*$.ajax({
-                type:"get",
-                url:'/api/chat/GetChatRoomIDByUserID',
-                data:{'user_id':user_remote_id},
-                async:false,
-                
-                success:function(data){
-                    //console.log(data);
-                    chat_room_id = data.chat_room_id;
-                }
-    });*/
 
     if(!document.getElementById("chatroom_"+user_remote_id))
     {
@@ -146,8 +142,11 @@ function createChatRoom(user_remote_id){
                     //console.log(data);
                     chat_room_id = data.chat_room_id;
 
-                    document.getElementById("chatroom_user").innerHTML='<div id="chatroom_'+user_remote_id+'" style="position:absolute;bottom:20px;width:595px;left:'+ (document.body.clientWidth-692) +'px"><div id="chatroom_scroll" class="thumbnail" style="background:#f2f2f2;border:0px;margin-bottom:0px;height:344px; overflow-y:auto;"><p style="text-align:center;font-size:14px;padding-top:10px;margin-bottom:0px;">chat history with '+user_remote_name+'</p><button onclick="toggleChat('+user_remote_id+')" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">CLOSE</button><div id="dialog_chatmessage_'+user_remote_id+'" style="text-align:left;"></div></div><textarea class="thumbnail form-control-1" id="dialog_sendtext_'+user_remote_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)" style="width:595px;margin-bottom:11px;"></textarea>      <input id="'+user_remote_id+'" style="position:absolute;width:60px;bottom:12px;right:0px;z-index:1000" onclick="onSubmit('+user_remote_id+')" class="btn btn-xs" value="SEND" />';
-
+                    if(!isPhone)//pc
+                        document.getElementById("chatroom_user").innerHTML='<div id="chatroom_'+user_remote_id+'" style="position:absolute;bottom:20px;width:595px;left:'+ (document.body.clientWidth-692) +'px"><div id="chatroom_scroll" class="thumbnail" style="background:#f2f2f2;border:0px;margin-bottom:0px;height:344px; overflow-y:auto;"><p style="text-align:center;font-size:14px;padding-top:10px;margin-bottom:0px;">chat history with '+user_remote_name+'</p><button onclick="toggleChat('+user_remote_id+')" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">CLOSE</button><div id="dialog_chatmessage_'+user_remote_id+'" style="text-align:left;"></div></div><textarea class="thumbnail form-control-1" id="dialog_sendtext_'+user_remote_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)" style="width:595px;margin-bottom:11px;"></textarea>      <input id="'+user_remote_id+'" style="position:absolute;width:60px;bottom:12px;right:0px;z-index:1000" onclick="onSubmit('+user_remote_id+')" class="btn btn-xs" value="SEND" />';
+                    else//mobile
+                        document.getElementById("chatroom_user").innerHTML='<div id="chatroom_'+user_remote_id+'" style="position:absolute;bottom:20px;width:295px;left:'+ (document.body.clientWidth-392) +'px"><div id="chatroom_scroll" class="thumbnail" style="background:#f2f2f2;border:0px;margin-bottom:0px;height:344px; overflow-y:auto;"><p style="text-align:center;font-size:14px;padding-top:10px;margin-bottom:0px;">chat history with '+user_remote_name+'</p><button onclick="toggleChat('+user_remote_id+')" class="btn btn-xs bambu-color1" style="position:absolute;top:0px;right:0px;z-index:1000">CLOSE</button><div id="dialog_chatmessage_'+user_remote_id+'" style="text-align:left;"></div></div><textarea class="thumbnail form-control-1" id="dialog_sendtext_'+user_remote_id+'" placeholder="reply here" onkeydown="enterToSubmit(this,event)" style="width:295px;margin-bottom:11px;"></textarea>      <input id="'+user_remote_id+'" style="position:absolute;width:60px;bottom:12px;right:0px;z-index:1000" onclick="onSubmit('+user_remote_id+')" class="btn btn-xs" value="SEND" />';
+                    
                     //show the last 15 messages
                     for(i = data.message.length - 16; i < data.message.length; i++)
                     {
@@ -234,7 +233,10 @@ function chatroom(){
 
             success:function(data) {
                 //console.log(data.message);
-                document.getElementById("chatroom").innerHTML+='<div id="chatroom_nav" style="z-index:-1;border:4px solid #7f8c8d;border-radius:10px;position:absolute;bottom:27px;left:'+ (document.body.clientWidth-792) +'px;width:700px;height:480px;background:#fff;"><h6 style="color:black;">Messages</h6><img src="/img/cross.png" onclick="closeChat()" style="cursor:pointer;position:absolute;top:0px;right:0px;z-index:1000"></div><div id="chatroom_left" style="background:#DDDDDD;width:95px;height:424px;border-radius:6px;position:absolute;bottom:32px;left:'+ (document.body.clientWidth-787) +'px"></div>';
+                if(!isPhone)//pc
+                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_nav" style="z-index:-1;border:4px solid #7f8c8d;border-radius:10px;position:absolute;bottom:27px;left:'+ (document.body.clientWidth-792) +'px;width:700px;height:480px;background:#fff;"><h6 style="color:black;">Messages</h6><img src="/img/cross.png" onclick="closeChat()" style="cursor:pointer;position:absolute;top:0px;right:0px;z-index:1000"></div><div id="chatroom_left" style="background:#DDDDDD;width:95px;height:424px;border-radius:6px;position:absolute;bottom:32px;left:'+ (document.body.clientWidth-787) +'px"></div>';
+                else//mobile
+                    document.getElementById("chatroom").innerHTML+='<div id="chatroom_nav" style="z-index:-1;border:4px solid #7f8c8d;border-radius:10px;position:absolute;bottom:27px;left:'+ (document.body.clientWidth-492) +'px;width:300px;height:480px;background:#fff;"><h6 style="color:black;">Messages</h6><img src="/img/cross.png" onclick="closeChat()" style="cursor:pointer;position:absolute;top:0px;right:0px;z-index:1000"></div><div id="chatroom_left" style="background:#DDDDDD;width:95px;height:424px;border-radius:6px;position:absolute;bottom:32px;left:'+ (document.body.clientWidth-787) +'px"></div>';
                 for(i = 0; i < data.chat_room_array.length; i++)
                 {
                     var user_remote_id;
@@ -262,7 +264,8 @@ function chatroom(){
                         });
                     }
                 }
-                if(data.chat_room_array[0].user_sell_id !== data.chat_room_array[0].user_buy_id) 
+
+                if((data.chat_room_array[0]!=null) && (data.chat_room_array[0].user_sell_id !== data.chat_room_array[0].user_buy_id)) 
                     if(data.chat_room_array[0].user_sell_id != user_id)
                         createChatRoom(data.chat_room_array[0].user_sell_id);
                     else if(data.chat_room_array[0].user_buy_id !== user_id)
