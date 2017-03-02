@@ -11,6 +11,8 @@ window.onload = function() {
         $("#navbar-collapse-01").attr("class", "collapse bambu-color1");
         if($("#footerp1")!=null)
             $("#footerp1").remove();
+        if($("#index-category")!=null)
+            $("#index-category").remove();
         if($("#aboutUs")!=null)
             $("#aboutUs").css("background","none");
     }

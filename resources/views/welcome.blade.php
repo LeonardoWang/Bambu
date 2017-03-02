@@ -34,7 +34,7 @@
 @if (isset($products) > 0)
     <div class="container">
         <div class="row" style="width:100%;margin:58px auto 60px auto; padding:auto;">
-            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-3 col-md-offset-0 col-lg-3 col-lg-offset-0 card card-2" style="text-align:left;background-color:white;border-radius:10px;margin-bottom:30px;">
+            <div id="index-category" class="col-md-3 col-md-offset-0 col-lg-3 col-lg-offset-0 card card-2" style="text-align:left;background-color:white;border-radius:10px;margin-bottom:30px;">
                 <h6 style="font-family:NexaBold;">Categories</h6>
                    <p><!--All Categories<br>-->
                    <a style="color:#34495e;" href="/items/CSearch/art/">Art & Music</a><br>
