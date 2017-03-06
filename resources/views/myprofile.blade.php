@@ -28,7 +28,7 @@ myprofile page
                                         </div>
                                     </div>
                                     <h6 style="color:black;">{{$user->name}}'s Profile</h6>
-                                    <button type="button" onclick="javascript:window.location.href='/createpassword'" class="btn btn-xs col-md-6 col-md-offset-3">Change Password</button>
+                                    <button type="button" onclick="javascript:window.location.href='/createPassword'" class="btn btn-xs col-md-6 col-md-offset-3">Change Password</button>
                                     <br>
                                     <hr style="margin-top:0px;">
                                     <div class="form-group">

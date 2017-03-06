@@ -30,7 +30,7 @@
 							<button type="submit" class="btn btn-primary col-md-12">SIGN IN</button>
 						</div>
 						<div class="form-group" style="text-align:center;font-size:15px;">
-							Forgot Your Password? <a href="/password/email" style="color:#65C1FF"><u>Click here</u></a>
+							Forgot Your Password? <a href="/forgetPassword" style="color:#65C1FF"><u>Click here</u></a>
 						</div>
 					</form>
 				</div>

@@ -144,8 +144,8 @@ class UsersController extends Controller
         $code=rand(100000,999999);
         $user->password = Hash::make($code);
         setcookie('code',$code,time()+600);
-        $url='http://api.sms.cn/sms/?ac=send&uid=marcwong&pwd=99ba044dd4904759e99d9e7888b15fe8&mobile='.$iphone.'&content={"code":"'.$code.'"}&template=100006';
-        //new template id:396941
+        $url='http://api.sms.cn/sms/?ac=send&uid=marcwong&pwd=99ba044dd4904759e99d9e7888b15fe8&mobile='.$iphone.'&content={"code":"'.$code.'"}&template=396941';
+        //old template id:100006
 
         $data=array();
         $method='POST';
@@ -213,11 +213,11 @@ class UsersController extends Controller
         $messages = $validator->messages();
 
         //smscode verification
-        /*if($request->input('smscode')!=$request->input('verismscode'))
+        if($request->input('smscode')!=$request->input('verismscode'))
         {
             $messages="Incorrect smscode!";
             return back()->withErrors($messages);
-        }*/
+        }
 
         //password verification
         if($request->input('password')!=$request->input('password_confirmation'))
@@ -245,7 +245,6 @@ class UsersController extends Controller
             $products = Item::orderBy('updated_at', 'desc')->get();
             return view('auth.registersuccess');
             //return view('welcome',compact('user','products'));
-            /*User::where('email', $request->input('email'))->first();*/
         }
         else {
             return back()->withErrors($messages);//back()->with('message','注册失败');
@@ -310,13 +309,13 @@ class UsersController extends Controller
                 file_get_contents($request->file('image')->getRealPath()));
             $userinformation->user_image = 'profile/'.$file_name;
             $userinformation->save();
-            echo "<script type='text/javascript'>alert('save with picture!')</script>";
+            echo "<script type='text/javascript'>alert('Profile successfully updated!')</script>";//saved with picture!
             $user_information = UserInformation::where('user_id',$user->id)->first();
             return view('myprofile',compact('user','user_information'));
         }
         else{
             $userinformation->save();
-            echo "<script type='text/javascript'>alert('profile successfully update. Saved without picture.')</script>";
+            echo "<script type='text/javascript'>alert('Profile successfully update!')</script>";//Saved without picture.
             $user_information = UserInformation::where('user_id',$user->id)->first();
             return view('myprofile',compact('user','user_information'));
         }

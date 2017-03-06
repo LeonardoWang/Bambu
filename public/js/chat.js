@@ -15,12 +15,19 @@ window.onload = function() {
             $("#index-category").remove();
         if($("#aboutUs")!=null)
             $("#aboutUs").css("background","none");
+        if($("#nav-bambu")!=null)
+        {
+            $("#nav-bambu").remove();
+            $("#home").css("margin-top","0px");
+        }
     }
-    //load pic zoom func
-    var elements = document.querySelectorAll( '.demo-image' );
-    if(elements && typeof(Intense)=="function")
-        Intense( elements );
-    
+    else{
+        //load pic zoom func
+        var elements = document.querySelectorAll( '.demo-image' );
+        if(elements && typeof(Intense)=="function")
+            Intense( elements );
+    }
+
     //notif socket open when onload
     var user_id = $("#user_id").val();
     socket = io('http://thebambu.com:6001');

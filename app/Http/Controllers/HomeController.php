@@ -46,8 +46,8 @@ class HomeController extends Controller
         $iphone=$_GET['iphone'];
         $code=rand(1000,9999);
         setcookie('code',$code,time()+600);
-        $url='http://api.sms.cn/sms/?ac=send&uid=marcwong&pwd=99ba044dd4904759e99d9e7888b15fe8&mobile='.$iphone.'&content={"code":"'.$code.'"}&template=100006';
-        //new template id:396940
+        $url='http://api.sms.cn/sms/?ac=send&uid=marcwong&pwd=99ba044dd4904759e99d9e7888b15fe8&mobile='.$iphone.'&content={"code":"'.$code.'"}&template=396940';
+        //old template id:100006
         
         $data=array();
         $method='POST';

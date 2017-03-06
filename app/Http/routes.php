@@ -26,13 +26,14 @@ Route::get('/login', 'HomeController@login');
 Route::get('/user_name/{id}','HomeController@userName');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+	//'password' => 'Auth\PasswordController',
 ]);
 
 Route::post('login', 'Api\UsersController@login');
 Route::get('logout','Api\UsersController@logout');
 Route::post('register', 'Api\UsersController@register');
-Route::get('createpassword','Api\UsersController@createPassword');
+Route::get('forgetPassword','Api\UsersController@forgetPassword');
+Route::get('createPassword','Api\UsersController@createPassword');
 
 
 Route::get('api/user/images/{user_id}', 'Api\UsersController@showImage');

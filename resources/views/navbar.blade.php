@@ -6,14 +6,14 @@
                 <span class="sr-only">Toggle navigation</span>
             </button>
             <img id="home" onclick="javascript:window.location.href='/'" src='/img/favicon.png'>
-            <p style="display:inline-block;font-family:Milkshake;font-size:32px;margin:auto;">Bambù</p>
+            <p id="nav-bambu" style="display:inline-block;font-family:Milkshake;font-size:32px;margin:auto;">Bambù</p>
         </div>
         <div class="collapse navbar-collapse bambu-color1" id="navbar-collapse-01">
             <ul class="nav navbar-nav">
-                <li><div class="navbar-form" style="margin-left:0px;padding-left:40px;padding-right:20px;width:400px;">
+                <li><div class="navbar-form" style="margin-left:0px;padding-left:40px;padding-right:20px;width:360px;">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" id="inpu1" class="form-control" style="width:160px;" placeholder="Search" onkeydown="enterToSearch(this,event)"/>
+                            <input type="text" id="inpu1" class="form-control" style="width:120px;" placeholder="Search" onkeydown="enterToSearch(this,event)"/>
                             <span class="input-group-btn" style="width:100%;">
                             <select id="category" name="category" class="form-control" style="font-family: NexaLight;color:#7f8c8d;border-bottom-right-radius: 0px;border-top-right-radius: 0px;" required="required">
                                 <option value="all">All Categories</option>

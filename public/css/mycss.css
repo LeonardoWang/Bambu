@@ -278,7 +278,7 @@
     font-style: normal;
   }
 
-.user{background:#fff; margin-top:9px; border-radius:4px; width:320px; height:35px; padding:15px;box-shadow:rgba(0,0,0,.3) 0px 2px 4px}
+.user{background:#fff; margin-top:9px; border-radius:4px; width:280px; height:35px; padding:15px;box-shadow:rgba(0,0,0,.3) 0px 2px 4px}
 
 
 .user:hover .user-nav {

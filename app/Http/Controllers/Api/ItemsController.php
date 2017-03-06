@@ -180,7 +180,7 @@ class ItemsController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'price' => 'required|numeric',
+            'price' => 'required',
             'description' => 'required|min:5',
         ]);
         if(Auth::check())
