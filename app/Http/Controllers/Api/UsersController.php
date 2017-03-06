@@ -356,7 +356,8 @@ class UsersController extends Controller
         $user = Auth::user();
         $user_other = User::find($id);;
         $user_information = UserInformation::where('user_id',$id)->first();
-        return view('profile',compact('user','user_other','user_information'));
+        $products = $user_other->items()->orderBy('updated_at', 'desc')->get();
+        return view('profile',compact('user','user_other','user_information','products'));
     }
 
     public function showImage($id)

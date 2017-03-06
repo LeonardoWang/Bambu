@@ -9,8 +9,7 @@ trade confirmation page
 <div style="margin-top:58px;">
 @if (isset($products) > 0)
             @foreach ($products as $product)
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3" align="center">
-                        <div class="card card-1">
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 card card-1" align="center">
                             <!--<img src="images/{{$product->image_file}}" class="img-responsive">-->
                             <a href="/api/trade_requests/{{$product->id}}">
                             <img src="/images/{{$product->image_file}}" class="img-responsive" style="max-height:350px;border-radius:8px;">
@@ -44,7 +43,6 @@ trade confirmation page
                                         <a href="javascript:if(confirm('Are you sure to delete it?'))location='/api/items/{{$product->id}}/delete'" class="btn btn-success btn-product bambu-color1"><span class="fa fa-shopping-cart"></span> Delete it</a></div>
                                 </div>
                             </div>
-                        </div>
                     </div>
             @endforeach
             <!-- pagination

@@ -27,10 +27,10 @@
 						</div>
 
 						<div class="form-group">
-							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="padding-left:0px;">
+							<div class="col-lg-8 col-md-8 col-sm-7 col-xs-6" style="padding-left:0px;">
 								<input type="text" class="form-control" name="smscode" placeholder="VERIFICATION CODE" required="">
 							</div>
-								<button type="button" onclick="sendSMS(this)" class="btn btn-primary col-lg-4 col-md-4 col-sm-4 col-xs-4">send code</button>
+								<button type="button" onclick="sendSMS(this)" class="btn btn-primary col-lg-4 col-md-4 col-sm-5 col-xs-6">Send Code</button>
 						</div>
 
 						<div class="form-group">
