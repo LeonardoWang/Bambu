@@ -7,7 +7,7 @@ other's profile page
 @section('content')
 
 <div style="margin-top:58px;">
-    <div style="width:100%;" class="card card-2">
+    <div style="width:100%;margin-bottom:15px;" class="card card-2">
         <div class="caption">
                 <div style="color:#9aa4af; overflow-x:visible;overflow-y:auto;">
                         @if($user_information->user_image=='/img/default_user_profile.jpg')
